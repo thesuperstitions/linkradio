@@ -3,15 +3,15 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: ReverseEngineering
+	Model Element	: TestTypes
 //!	Generated Date	: Wed, 9, Apr 2008  
-	File Path	: DefaultComponent\DefaultConfig\ReverseEngineering.h
+	File Path	: DefaultComponent\DefaultConfig\TestTypes.h
 *********************************************************************/
 
 
-#ifndef ReverseEngineering_H 
+#ifndef TestTypes_H 
 
-#define ReverseEngineering_H 
+#define TestTypes_H 
 
 #include <oxf/oxf.h>
 #include <string>
@@ -21,12 +21,13 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
+#include "FrameworkTest.h"
 
 //----------------------------------------------------------------------------
-// ReverseEngineering.h                                                                  
+// TestTypes.h                                                                  
 //----------------------------------------------------------------------------
 
-//## package ReverseEngineering 
+//## package FrameworkTest::TestTypes 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -69,6 +70,20 @@ typedef struct   /* structure of NIO Configuration Packet */
 } NIO_BD_CONFIG;
 //#]
 
+//#[ type NIO_MESG 
+typedef struct   /* structure of NIO Message Packet */
+{
+    unsigned int   *address;   /* Buffer Address */
+    unsigned int   req_size;   /* Number of words (interface width) */
+    int            time_out;   /* Referenced in tics   */
+    unsigned int   delay_time; /* Granularity of 10 usecs */
+    unsigned int   tfr_size;   /* Number of words (interface width) */
+    unsigned int   buf_time;   /* Local time the buffer was finished */
+    short int      data_msg_number;   /* unique # for each message */
+    unsigned short int retry_count; /* How many times to retry the I/O */
+} NIO_MESG;
+//#]
+
 //#[ type NTDS_CTRL_FUNC 
 typedef struct
 {
@@ -90,24 +105,20 @@ typedef struct
 
 //## type device_node 
 struct device_node {
-    unsigned int attribute_0 : 26;		//## attribute attribute_0 
-    NIO_BD_CONFIG board;		//## attribute board 
     int device_id;		//## attribute device_id 
-    char enet_address[ENET_ADDRESS_SIZE];		//## attribute enet_address 
+    int port;		//## attribute port 
     int enet_port;		//## attribute enet_port 
-    NTDS_CTRL_FUNC function;		//## attribute function 
+    char enet_address[ENET_ADDRESS_SIZE];		//## attribute enet_address 
+    unsigned int attribute_0 : 26;		//## attribute attribute_0 
+    unsigned int redundant_channel_flag : 1;		//## attribute redundant_channel_flag 
+    unsigned int no_remote_enable : 1;		//## attribute no_remote_enable 
+    unsigned int raw_input_que_type : 1;		//## attribute raw_input_que_type 
+    unsigned int packed_output_queue : 1;		//## attribute packed_output_queue 
     unsigned int in_signal_queue : 1;		//## attribute in_signal_queue 
+    unsigned int out_signal_queue : 1;		//## attribute out_signal_queue 
     // Must be a multiple 4 
     char name_string[12];		//## attribute name_string 
-    device_node * next;		//## attribute next 
-    unsigned int no_remote_enable : 1;		//## attribute no_remote_enable 
-    unsigned int out_signal_queue : 1;		//## attribute out_signal_queue 
-    unsigned int packed_output_queue : 1;		//## attribute packed_output_queue 
-    int port;		//## attribute port 
-    unsigned int raw_input_que_type : 1;		//## attribute raw_input_que_type 
-    unsigned int redundant_channel_flag : 1;		//## attribute redundant_channel_flag 
     unsigned int user1;		//## attribute user1 
-    unsigned int user10;		//## attribute user10 
     unsigned int user2;		//## attribute user2 
     unsigned int user3;		//## attribute user3 
     unsigned int user4;		//## attribute user4 
@@ -116,22 +127,20 @@ struct device_node {
     unsigned int user7;		//## attribute user7 
     unsigned int user8;		//## attribute user8 
     unsigned int user9;		//## attribute user9 
+    unsigned int user10;		//## attribute user10 
+    NIO_BD_CONFIG board;		//## attribute board 
+    NTDS_CTRL_FUNC function;		//## attribute function 
+    device_node * next;		//## attribute next 
 };
 
 //## type DEVICE_DATA 
 typedef device_node DEVICE_DATA;
 
 
-//## attribute ENET_ADDRESS_SIZE 
-#define ENET_ADDRESS_SIZE 20
-
-//## attribute OK 
-#define OK 0
-
 
 
 #endif  
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\ReverseEngineering.h
+	File Path	: DefaultComponent\DefaultConfig\TestTypes.h
 *********************************************************************/
 

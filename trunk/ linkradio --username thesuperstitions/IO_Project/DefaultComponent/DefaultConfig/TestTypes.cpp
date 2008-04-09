@@ -3,25 +3,23 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: FrameworkTest
+	Model Element	: TestTypes
 //!	Generated Date	: Wed, 9, Apr 2008  
-	File Path	: DefaultComponent\DefaultConfig\FrameworkTest.cpp
+	File Path	: DefaultComponent\DefaultConfig\TestTypes.cpp
 *********************************************************************/
 
-#include "FrameworkTest.h"
-#include "FrameworkTester.h"
+#include "TestTypes.h"
 
 //----------------------------------------------------------------------------
-// FrameworkTest.cpp                                                                  
+// TestTypes.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package FrameworkTest 
-
+//## package FrameworkTest::TestTypes 
 
 
 
 
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\FrameworkTest.cpp
+	File Path	: DefaultComponent\DefaultConfig\TestTypes.cpp
 *********************************************************************/
 

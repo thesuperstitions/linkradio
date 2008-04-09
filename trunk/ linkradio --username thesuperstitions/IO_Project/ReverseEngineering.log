@@ -1,14 +1,7 @@
 
-Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h'
+Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ntds_common\ntdsTypes.h'
 Adding package 'ReverseEngineering' to project 'IO_Project'. ok.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h, Line: 14 #include ctime ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h, Line: 27 #include framework/utils/Exception.h ignored--file not found.
-Adding package 'framework' to package 'ReverseEngineering'. ok.
-Adding package 'utils' to package 'framework'. ok.
-Analyzing class 'timespec' from File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h, Line: 37
-Adding class 'timespec' to package 'ReverseEngineering'. ok.
-Analyzing class 'Sleep' from File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h, Line: 33
-Adding class 'Sleep' to package 'utils'. ok.
+Analyzing struct 'device_node' from File: C:\Documents and Settings\rosskw1\My Documents\ntds_common\ntdsTypes.h, Line: 68
 
 Reverse Engineering Done. See detailed report in the log file.
 

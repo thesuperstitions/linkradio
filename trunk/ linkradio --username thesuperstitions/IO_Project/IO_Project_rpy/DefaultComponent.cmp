@@ -41,7 +41,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		- _name = "Files";
 		- m_path = "";
 		- Elements = { IRPYRawContainer 
-			- size = 61;
+			- size = 67;
 			- value = 
 			{ IHandle 
 				- _m2Class = "";
@@ -231,9 +231,27 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				- _name = "utils";
 				- _id = GUID b6acb6f4-06ce-4ebf-ab9b-7a9fb813ea04;
 			}
+			{ IHandle 
+				- _m2Class = "";
+			}
+			{ IHandle 
+				- _m2Class = "";
+			}
+			{ IHandle 
+				- _m2Class = "";
+			}
+			{ IHandle 
+				- _m2Class = "";
+			}
+			{ IHandle 
+				- _m2Class = "";
+			}
+			{ IHandle 
+				- _m2Class = "";
+			}
 		}
 		- Files = { IRPYRawContainer 
-			- size = 16;
+			- size = 17;
 			- value = 
 			{ IFolder 
 				- _id = GUID 6b222bf0-02a3-47e2-8f9a-9ccbee0ca1a9;
@@ -1376,6 +1394,29 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					- size = 0;
 				}
 			}
+			{ IFolder 
+				- _id = GUID a6b7acae-89c8-4bcd-aeb3-de15d7c1137b;
+				- _myState = 8192;
+				- _name = "ntds_common";
+				- m_path = "";
+				- Elements = { IRPYRawContainer 
+					- size = 0;
+				}
+				- Files = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IFile 
+						- _id = GUID 8266b8f7-0eb3-4504-b4f9-8f1ffb8b8c96;
+						- _myState = 8192;
+						- _name = "ntdsTypes";
+						- m_path = "";
+						- m_type = specFile;
+						- Fragments = { IRPYRawContainer 
+							- size = 0;
+						}
+					}
+				}
+			}
 		}
 	}
 	- m_configActive = { ICodeGenConfigInfoHandle 
@@ -1456,7 +1497,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 									}
 									{ IProperty 
 										- _Name = "CreateFilesIn";
-										- _Value = "Component";
+										- _Value = "None";
 										- _Type = Enum;
 										- _ExtraTypeInfo = "Component, None";
 									}
@@ -1473,7 +1514,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 									}
 									{ IProperty 
 										- _Name = "ReflectDataMembers";
-										- _Value = "VisibilityAndHelpers";
+										- _Value = "None";
 										- _Type = Enum;
 										- _ExtraTypeInfo = "None, VisibilityOnly, VisibilityAndHelpers";
 									}
@@ -1525,7 +1566,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 									- value = 
 									{ IProperty 
 										- _Name = "Files";
-										- _Value = "C:\\Documents and Settings\\rosskw1\\My Documents\\ComponentizedCombatSystemFramework\\framework\\utils\\Sleep.h";
+										- _Value = "C:\\Documents and Settings\\rosskw1\\My Documents\\ntds_common\\ntdsTypes.h";
 										- _Type = String;
 									}
 								}
@@ -1640,7 +1681,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 	}
 	- HandlesInMe = { IRPYRawContainer 
-		- size = 6;
+		- size = 7;
 		- value = 
 		{ IHandle 
 			- _m2Class = "ISubsystem";
@@ -1690,8 +1731,16 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _name = "FrameworkTest";
 			- _id = GUID 915edaf7-df19-4281-9d22-aec45244fbf3;
 		}
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "TestTypes.sbs";
+			- _subsystem = "FrameworkTest";
+			- _class = "";
+			- _name = "TestTypes";
+			- _id = GUID 9d3c6034-4b1d-4f0a-87ad-a34763347834;
+		}
 	}
-	- weakCGTime = 4.3.2008::17:22:20;
-	- strongCGTime = 4.3.2008::17:22:20;
+	- weakCGTime = 4.9.2008::17:45:15;
+	- strongCGTime = 4.9.2008::17:45:15;
 }
 

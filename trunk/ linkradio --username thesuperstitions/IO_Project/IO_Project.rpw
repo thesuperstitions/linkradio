@@ -1,8 +1,7 @@
 I-Logix-RPY-Archive version 8.0.9 * 893629
 { CGEMdiWorkspace 
 	- stubList = { IRPYRawContainer 
-		- size = 1;
-		- value = GUID 962d8355-dfcd-40f5-bc95-3a0c6679ee3c; 
+		- size = 0;
 	}
 	- myViewsWithID = { IRPYRawContainer 
 		- size = 1;
@@ -30,12 +29,12 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
-			- _UpLeft = 0 20 ;
-			- _DownRight = 1637 1010 ;
+			- _UpLeft = 0 0 ;
+			- _DownRight = 1637 1014 ;
 			- _instanceName = "";
 		}
 	}
-	- _fullName = "C:\\Documents and Settings\\rosskw1\\My Documents\\SVN-Google\\HLA_IO\\IO_Project\\IO_Project";
+	- _fullName = "C:\\Documents and Settings\\rosskw1\\My Documents\\SVN-Google\\IO_Project\\IO_Project";
 	- m_SearchScopeList = { IRPYRawContainer 
 		- size = 0;
 	}

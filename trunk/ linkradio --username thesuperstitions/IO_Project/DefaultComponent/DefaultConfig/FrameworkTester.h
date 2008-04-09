@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: FrameworkTester
-//!	Generated Date	: Tue, 1, Apr 2008  
+//!	Generated Date	: Wed, 9, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkTester.h
 *********************************************************************/
 
@@ -21,10 +21,13 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
+#include "FrameworkTest.h"
 // dependency FrameworkFederateAmbassador 
 #include "FrameworkFederateAmbassador.h"
 // dependency RtiAmbassador 
 #include "RtiAmbassador.h"
+// dependency TestTypes 
+#include "TestTypes.h"
 
 //----------------------------------------------------------------------------
 // FrameworkTester.h                                                                  
@@ -33,10 +36,15 @@
 
 namespace Framework {
     
-    namespace Control {
-        class ExampleFederate;
-    }
+    namespace IO {
+        class C_IO_Functions;
+        
+    } 
     
+namespace Control {
+    class ExampleFederate;
+}
+
 }
 
 
@@ -61,8 +69,21 @@ public :
     ~FrameworkTester();
 
 
+////    Operations    ////
+public :
+    
+    //## operation Configure_NTDS_Device(DEVICE_DATA *) 
+    int Configure_NTDS_Device(DEVICE_DATA * devices_ptr);
+
+
 ////    Additional operations    ////
 public :
+    
+    //## auto_generated 
+    int getInterfaceCount() const;
+    
+    //## auto_generated 
+    void setInterfaceCount(int p_interfaceCount);
     
     //## auto_generated 
     Framework::Control::ExampleFederate* getFederate_1() const;
@@ -95,6 +116,12 @@ protected :
     //## auto_generated 
     void cleanUpRelations();
 
+
+////    Attributes    ////
+protected :
+    
+    int interfaceCount;		//## attribute interfaceCount 
+    
 
 ////    Relations and components    ////
 protected :

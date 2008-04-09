@@ -1,7 +1,7 @@
 I-Logix-RPY-Archive version 8.0.9 * 893629
 
 - m_fileModifyTime = { IRPYRawContainer 
-	- size = 134;
+	- size = 137;
 	- value = "DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\Mutex.h" 4.2.2008::18:41:42
 	"DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\MutexLock.h" 4.3.2008::13:27:8
 	"DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\Thread.cpp" 4.3.2008::13:56:26
@@ -46,10 +46,10 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\FrameworkFederateAmbassador.h" 4.9.2008::13:3:8
 	"DefaultComponent\\DefaultConfig\\FrameworkSingletons.cpp" 2.20.2008::14:33:28
 	"DefaultComponent\\DefaultConfig\\FrameworkSingletons.h" 2.20.2008::14:33:28
-	"DefaultComponent\\DefaultConfig\\FrameworkTest.cpp" 2.21.2008::15:36:17
-	"DefaultComponent\\DefaultConfig\\FrameworkTest.h" 2.21.2008::13:7:35
-	"DefaultComponent\\DefaultConfig\\FrameworkTester.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FrameworkTester.h" 4.9.2008::13:3:8
+	"DefaultComponent\\DefaultConfig\\FrameworkTest.cpp" 4.9.2008::16:31:49
+	"DefaultComponent\\DefaultConfig\\FrameworkTest.h" 4.9.2008::17:41:15
+	"DefaultComponent\\DefaultConfig\\FrameworkTester.cpp" 4.9.2008::17:41:29
+	"DefaultComponent\\DefaultConfig\\FrameworkTester.h" 4.9.2008::17:41:29
 	"DefaultComponent\\DefaultConfig\\HLA_FederateInterface.cpp" 4.9.2008::13:3:8
 	"DefaultComponent\\DefaultConfig\\HLA_FederateInterface.h" 4.9.2008::13:3:8
 	"DefaultComponent\\DefaultConfig\\HLA_PostOffice.cpp" 4.9.2008::13:15:31
@@ -74,8 +74,8 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\RTI_Ambassador.h" 2.15.2008::13:27:19
 	"DefaultComponent\\DefaultConfig\\RTIambassador.cpp" 2.15.2008::18:6:59
 	"DefaultComponent\\DefaultConfig\\RTIambassador.h" 2.15.2008::18:6:59
-	"DefaultComponent\\DefaultConfig\\ReverseEngineering.cpp" 4.3.2008::17:22:28
-	"DefaultComponent\\DefaultConfig\\ReverseEngineering.h" 4.3.2008::17:22:28
+	"DefaultComponent\\DefaultConfig\\ReverseEngineering.cpp" 4.9.2008::13:3:8
+	"DefaultComponent\\DefaultConfig\\ReverseEngineering.h" 4.9.2008::17:45:47
 	"DefaultComponent\\DefaultConfig\\RtiAmbassador.cpp" 4.9.2008::13:3:8
 	"DefaultComponent\\DefaultConfig\\RtiAmbassador.h" 4.9.2008::13:3:8
 	"DefaultComponent\\DefaultConfig\\RtiAmbassadorObject.cpp" 2.21.2008::12:11:49
@@ -84,6 +84,8 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\Serializer.h" 4.9.2008::13:3:9
 	"DefaultComponent\\DefaultConfig\\Sleep.cpp" 4.9.2008::13:3:8
 	"DefaultComponent\\DefaultConfig\\Sleep.h" 4.9.2008::13:3:9
+	"DefaultComponent\\DefaultConfig\\TestTypes.cpp" 4.9.2008::16:39:4
+	"DefaultComponent\\DefaultConfig\\TestTypes.h" 4.9.2008::17:45:57
 	"DefaultComponent\\DefaultConfig\\Thread.cpp" 4.9.2008::13:3:9
 	"DefaultComponent\\DefaultConfig\\Thread.h" 4.9.2008::13:3:8
 	"DefaultComponent\\DefaultConfig\\Timer.cpp" 4.9.2008::13:3:8
@@ -124,6 +126,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\framework.h" 4.2.2008::12:58:18
 	"DefaultComponent\\DefaultConfig\\mutex.cpp" 4.2.2008::18:3:47
 	"DefaultComponent\\DefaultConfig\\mutex.h" 4.2.2008::18:3:47
+	"DefaultComponent\\DefaultConfig\\ntds_common\\ntdsTypes.h" 4.9.2008::16:44:18
 	"DefaultComponent\\DefaultConfig\\thread\\thread.h" 4.2.2008::13:18:51
 	"DefaultComponent\\DefaultConfig\\utils.cpp" 4.4.2008::13:8:46
 	"DefaultComponent\\DefaultConfig\\utils.h" 4.4.2008::13:8:46
@@ -138,7 +141,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"c:\\documents and settings\\rosskw1\\my documents\\svn-google\\hla_io\\io_project\\defaultcomponent\\defaultconfig\\framework.cpp" 2.20.2008::17:39:12
 	
 }
-- size = 29;
+- size = 36;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -147,7 +150,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Message";
 	- _id = GUID 859c4e60-1747-44a5-9491-2868fc48dd51;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -156,7 +159,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "IO_Handler";
 	- _id = GUID 7a29fc07-139c-43be-98cd-d5747865cb5f;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -165,7 +168,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "C_IO_Functions";
 	- _id = GUID e2ec2408-a6c3-40e6-b1fd-77ab8aa0dfb4;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";
@@ -174,7 +177,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Serializer";
 	- _id = GUID 0b4af63c-82bd-4c18-98d9-d51a75aae8c1;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "FrameworkTest.sbs";
@@ -183,7 +186,16 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FrameworkTester";
 	- _id = GUID 91c58e0c-f1c9-4e25-a6ee-224e7449ba3f;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID d94eb1e8-3817-4e62-9b31-89cbe4f467a8;
+}
+- genTime = 4.9.2008::17:45:47;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -192,7 +204,25 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Buffer";
 	- _id = GUID 404bed6e-6063-4893-babb-668204371250;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
+- hElement = { IHandle 
+	- _m2Class = "ISubsystem";
+	- _filename = "TestTypes.sbs";
+	- _subsystem = "FrameworkTest";
+	- _class = "";
+	- _name = "TestTypes";
+	- _id = GUID 9d3c6034-4b1d-4f0a-87ad-a34763347834;
+}
+- genTime = 4.9.2008::17:45:57;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID 95a7bf4f-43a1-4fed-a383-9115dab6cc7f;
+}
+- genTime = 4.9.2008::17:41:18;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Framework.sbs";
@@ -201,7 +231,16 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FrameworkFederateAmbassador";
 	- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID 0ca5a4bc-3b14-4e91-8a0c-a39375eceea9;
+}
+- genTime = 4.9.2008::16:18:32;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "IO.sbs";
@@ -210,7 +249,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "IO";
 	- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "Control.sbs";
@@ -219,7 +258,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Control";
 	- _id = GUID 4d9e2ad4-1c34-4722-ab87-77f5f75a8cab;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -228,7 +267,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateMessage";
 	- _id = GUID 685300f8-76ae-4ae9-b4a1-9f2859ffa96e;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";
@@ -237,7 +276,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateInterfaceFactory";
 	- _id = GUID 33704959-484f-4e7d-ab1e-77c760fb3e21;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -246,7 +285,16 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "HLA_FederateInterface";
 	- _id = GUID dde46e90-5f22-43aa-9977-e8d01f7597e8;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID 3e135d95-b1d5-4031-ae35-203c75bc352a;
+}
+- genTime = 4.9.2008::16:44:20;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -255,7 +303,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateIO_Handler";
 	- _id = GUID cf4439a3-1222-47bd-9929-fed3599f6153;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";
@@ -264,7 +312,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "ExampleFederate";
 	- _id = GUID 8e2edf7d-ae8e-425a-bc47-e064bfe396d9;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "utils.sbs";
@@ -273,7 +321,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Thread";
 	- _id = GUID 7c9c9e29-d0f9-42a0-a78f-f9d105a531e6;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "utils.sbs";
@@ -291,7 +339,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FrameworkTest";
 	- _id = GUID 915edaf7-df19-4281-9d22-aec45244fbf3;
 }
-- genTime = 2.21.2008::15:36:17;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -300,7 +348,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateInterface";
 	- _id = GUID 1993cc7d-a0e3-4f31-a771-97a1d245afb2;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "utils.sbs";
@@ -309,7 +357,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Timer";
 	- _id = GUID b4f67702-5b8c-47ea-a98f-a2af3aa1533d;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -318,7 +366,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "OASIS_FederateInterface";
 	- _id = GUID 12d4e50c-e8ec-4fa7-a815-0064e91ff122;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -327,7 +375,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateIO_InputThread";
 	- _id = GUID 08d934c9-5a9e-474f-9c40-0e68cd987029;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -336,7 +384,16 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "HLA_PostOffice";
 	- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID c40b43f7-58d4-463d-815b-0ad218b0e6ee;
+}
+- genTime = 4.9.2008::16:25:30;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "Framework.sbs";
@@ -345,7 +402,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Framework";
 	- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";
@@ -354,7 +411,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Federate";
 	- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -363,7 +420,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateIO_OutputThread";
 	- _id = GUID c18affa8-09db-417f-b9d0-6123a5a8262e;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "utils.sbs";
@@ -372,7 +429,16 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Sleep";
 	- _id = GUID 77f57fcd-d06d-4b55-ae17-83a20664b275;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID 4238055a-4bad-4510-b8b0-b0a3ec43e619;
+}
+- genTime = 4.9.2008::16:31:57;
 - hElement = { IHandle 
 	- _m2Class = "ICodeGenConfigInfo";
 	- _filename = "DefaultComponent.cmp";
@@ -381,7 +447,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "DefaultComponent\\DefaultConfig";
 	- _id = GUID 3f090632-d3d9-4dbc-a074-3e37a8bea6bd;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -390,7 +456,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "PostOffice";
 	- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Framework.sbs";
@@ -399,5 +465,5 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "RtiAmbassador";
 	- _id = GUID a94d4c4c-554b-4761-8754-07e6b5d9d57b;
 }
-- genTime = 4.9.2008::13:17:2;
+- genTime = 4.9.2008::17:45:57;
 

@@ -103,7 +103,9 @@ OBJS= \
   FrameworkTester.obj \
   Framework.obj \
   IO.obj \
-  Control.obj
+  Control.obj \
+  FrameworkTest.obj \
+  TestTypes.obj
 
 
 
@@ -316,7 +318,7 @@ Timer.obj : Timer.cpp Timer.h    Sleep.h Thread.h
 
 
 
-FrameworkTester.obj : FrameworkTester.cpp FrameworkTester.h    FrameworkFederateAmbassador.h RtiAmbassador.h ExampleFederate.h 
+FrameworkTester.obj : FrameworkTester.cpp FrameworkTester.h    FrameworkTest.h FrameworkFederateAmbassador.h RtiAmbassador.h ExampleFederate.h TestTypes.h C_IO_Functions.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FrameworkTester.obj" "FrameworkTester.cpp" 
 
@@ -337,6 +339,18 @@ IO.obj : IO.cpp IO.h    FederateInterface.h FederateMessage.h IO_Handler.h Messa
 Control.obj : Control.cpp Control.h    Serializer.h Federate.h ExampleFederate.h FederateInterfaceFactory.h Framework.h PostOffice.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Control.obj" "Control.cpp" 
+
+
+
+FrameworkTest.obj : FrameworkTest.cpp FrameworkTest.h    FrameworkTester.h 
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FrameworkTest.obj" "FrameworkTest.cpp" 
+
+
+
+TestTypes.obj : TestTypes.cpp TestTypes.h    FrameworkTest.h 
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"TestTypes.obj" "TestTypes.cpp" 
 
 
 
@@ -389,6 +403,8 @@ clean:
 	if exist Framework.obj erase Framework.obj
 	if exist IO.obj erase IO.obj
 	if exist Control.obj erase Control.obj
+	if exist FrameworkTest.obj erase FrameworkTest.obj
+	if exist TestTypes.obj erase TestTypes.obj
 	if exist $(TARGET_MAIN)$(OBJ_EXT) erase $(TARGET_MAIN)$(OBJ_EXT)
 	if exist *$(OBJ_EXT) erase *$(OBJ_EXT)
 	if exist $(TARGET_NAME).pdb erase $(TARGET_NAME).pdb

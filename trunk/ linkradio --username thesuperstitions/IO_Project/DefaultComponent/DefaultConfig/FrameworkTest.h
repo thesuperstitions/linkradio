@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: FrameworkTest
-//!	Generated Date	: Thu, 21, Feb 2008  
+//!	Generated Date	: Wed, 9, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkTest.h
 *********************************************************************/
 
@@ -21,8 +21,6 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-// operation theFederateInterfaceFactory(HLA_FederateFrameworkType) 
-#include "FederateInterfaceFactory.h"
 
 //----------------------------------------------------------------------------
 // FrameworkTest.h                                                                  
@@ -37,6 +35,12 @@ class FrameworkTester;
 #pragma warning(disable: 4786)
 #endif
 
+
+//## attribute ENET_ADDRESS_SIZE 
+#define ENET_ADDRESS_SIZE 20
+
+//## attribute OK 
+#define OK 0
 
 
 
