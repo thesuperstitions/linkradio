@@ -1,9 +1,18 @@
 
 Parsing Summary:
-"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\FederateIO_OutputThread.cpp":LINE 141 *** The type of this declaration  >>void (class FederateMessage* ) << is not the same as any homographic member-function:
-     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\FederateIO_OutputThread.h":LINE 107:  void (class FederateMessage* ) 
-"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\FederateIO_OutputThread.cpp":LINE 145 *** The type of this declaration  >>void (class FederateMessage* ) << is not the same as any homographic member-function:
-     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\FederateIO_OutputThread.h":LINE 110:  void (class FederateMessage* ) 
+"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.cpp":LINE 186 *** The type of this declaration  >>void (class HLA_FederateInterface* ) << is not the same as any homographic member-function:
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.h":LINE 173:  void (class rti1516::InteractionClassHandle) 
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.h":LINE 167:  void (class HLA_FederateInterface* ) 
+"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.cpp":LINE 193 *** The type of this declaration  >>void (class HLA_FederateInterface* ) << is not the same as any homographic member-function:
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.h":LINE 148:  void (class rti1516::InteractionClassHandle) 
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.h":LINE 139:  void (class HLA_FederateInterface* ) 
+"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.cpp":LINE 201 *** The type of this declaration  >>class HLA_FederateInterface*  (class rti1516::InteractionClassHandle) const << is not the same as any homographic member-function:
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.h":LINE 142:  class HLA_FederateInterface*  (class rti1516::InteractionClassHandle) const 
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.h":LINE 130:  UNKNOWN CLASS
+"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.cpp":LINE 205 *** The type of this declaration  >>void (class rti1516::InteractionClassHandle, class HLA_FederateInterface* ) << is not the same as any homographic member-function:
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.h":LINE 170:  void (class rti1516::InteractionClassHandle, class HLA_FederateInterface* ) 
+"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.cpp":LINE 209 *** The type of this declaration  >>void (class rti1516::InteractionClassHandle, class HLA_FederateInterface* ) << is not the same as any homographic member-function:
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\DefaultComponent\DefaultConfig\HLA_PostOffice.h":LINE 145:  void (class rti1516::InteractionClassHandle, class HLA_FederateInterface* ) 
 
 Reverse Engineering Done.
 

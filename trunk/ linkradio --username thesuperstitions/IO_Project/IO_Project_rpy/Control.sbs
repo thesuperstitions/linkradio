@@ -92,7 +92,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 	}
 	- _lastID = 1;
-	- weakCGTime = 4.7.2008::13:37:36;
+	- weakCGTime = 4.9.2008::13:10:36;
 	- strongCGTime = 4.4.2008::16:0:1;
 	- _defaultComposite = GUID af3e0535-63f3-40be-97b9-0f6965d34524;
 	- _eventsBaseID = -1;
@@ -104,7 +104,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 1;
-			- weakCGTime = 4.7.2008::13:37:36;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.4.2008::16:0:1;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -269,7 +269,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				}
 			}
 			- _lastID = 4;
-			- weakCGTime = 4.4.2008::15:30:27;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 2.15.2008::13:4:26;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -692,7 +692,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				}
 			}
 			- _lastID = 12;
-			- weakCGTime = 4.4.2008::14:49:59;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.4.2008::14:49:59;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -922,7 +922,7 @@ setFederate(this);
 			}
 			- _name = "ExampleFederate";
 			- _lastID = 3;
-			- weakCGTime = 3.27.2008::14:42:14;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 3.27.2008::14:42:14;
 			- Operations = { IRPYRawContainer 
 				- size = 4;
@@ -1267,7 +1267,7 @@ switch (federateType)
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
 			- _lastID = 3;
-			- weakCGTime = 4.1.2008::16:24:41;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 3.26.2008::16:35:25;
 			- Operations = { IRPYRawContainer 
 				- size = 2;

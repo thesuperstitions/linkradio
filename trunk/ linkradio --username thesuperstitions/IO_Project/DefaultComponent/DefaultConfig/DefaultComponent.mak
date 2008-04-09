@@ -226,13 +226,13 @@ PostOffice.obj : PostOffice.cpp PostOffice.h    IO.h Federate.h FederateInterfac
 
 
 
-HLA_PostOffice.obj : HLA_PostOffice.cpp HLA_PostOffice.h    IO.h FrameworkFederateAmbassador.h HLA_FederateInterface.h FederateInterface.h FederateMessage.h Buffer.h PostOffice.h Federate.h 
+HLA_PostOffice.obj : HLA_PostOffice.cpp HLA_PostOffice.h    IO.h FrameworkFederateAmbassador.h HLA_FederateInterface.h FederateIO_InputThread.h FederateInterface.h FederateMessage.h Buffer.h PostOffice.h Federate.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"HLA_PostOffice.obj" "HLA_PostOffice.cpp" 
 
 
 
-FederateIO_Handler.obj : FederateIO_Handler.cpp FederateIO_Handler.h    IO.h FederateInterface.h FederateInterfaceFactory.h FederateIO_OutputThread.h FederateIO_InputThread.h Federate.h FederateMessage.h PostOffice.h Buffer.h C_IO_Functions.h IO_Handler.h Serializer.h Timer.h Thread.h 
+FederateIO_Handler.obj : FederateIO_Handler.cpp FederateIO_Handler.h    IO.h FederateInterface.h FederateInterfaceFactory.h FederateIO_OutputThread.h Federate.h FederateMessage.h FederateIO_InputThread.h PostOffice.h Buffer.h C_IO_Functions.h IO_Handler.h Serializer.h Timer.h Thread.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FederateIO_Handler.obj" "FederateIO_Handler.cpp" 
 
@@ -262,7 +262,7 @@ FederateIO_OutputThread.obj : FederateIO_OutputThread.cpp FederateIO_OutputThrea
 
 
 
-FederateIO_InputThread.obj : FederateIO_InputThread.cpp FederateIO_InputThread.h    IO.h FederateIO_OutputThread.h FederateIO_Handler.h FederateMessage.h Thread.h 
+FederateIO_InputThread.obj : FederateIO_InputThread.cpp FederateIO_InputThread.h    IO.h FederateIO_Handler.h FederateIO_OutputThread.h FederateMessage.h Thread.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FederateIO_InputThread.obj" "FederateIO_InputThread.cpp" 
 

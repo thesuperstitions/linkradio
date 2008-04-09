@@ -48,7 +48,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID 4393fd1b-4891-4ff5-9de8-20c8248afa9a;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 4.4.2008::13:9:50;
+			- weakCGTime = 4.8.2008::15:4:29;
 			- strongCGTime = 4.3.2008::17:15:29;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
@@ -251,7 +251,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			}
 			- _name = "Sleep";
 			- _lastID = 1;
-			- weakCGTime = 4.4.2008::13:8:24;
+			- weakCGTime = 4.9.2008::13:10:37;
 			- strongCGTime = 4.3.2008::18:21:0;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -775,7 +775,7 @@ sleep(request, interposition_safe);";
 / right now it does boost threads.";
 			}
 			- _lastID = 2;
-			- weakCGTime = 4.3.2008::17:16:49;
+			- weakCGTime = 4.9.2008::13:10:37;
 			- strongCGTime = 4.3.2008::17:16:49;
 			- Operations = { IRPYRawContainer 
 				- size = 11;
@@ -1341,7 +1341,7 @@ for a subclass to have direct access to the thread.";
 				}
 			}
 			- _lastID = 10;
-			- weakCGTime = 4.8.2008::15:6:8;
+			- weakCGTime = 4.9.2008::13:10:37;
 			- strongCGTime = 4.8.2008::14:36:41;
 			- Operations = { IRPYRawContainer 
 				- size = 6;
@@ -1755,9 +1755,6 @@ Thread::start();
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
-			}
-			- Associations = { IRPYRawContainer 
-				- size = 0;
 			}
 			- _classModifier = Unspecified;
 		}

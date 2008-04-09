@@ -1,82 +1,88 @@
-04, 08, 2008 (12:55:47): Starting Pre-Save actions
+04, 09, 2008 (09:20:51): Starting Pre-Save actions
 
-04, 08, 2008 (12:55:47): Starting Dialogs Check/Save
-04, 08, 2008 (12:55:47): Finished Dialogs Check/Save
-04, 08, 2008 (12:55:47): Starting Controlled Files Resolution
-04, 08, 2008 (12:55:47): Finished Controlled Files Resolution
-04, 08, 2008 (12:55:47): Starting Save VBA
-04, 08, 2008 (12:55:47): Finished Save VBA
-04, 08, 2008 (12:55:47): Finished Pre-Save actions
+04, 09, 2008 (09:20:51): Starting Dialogs Check/Save
+04, 09, 2008 (09:20:51): Finished Dialogs Check/Save
+04, 09, 2008 (09:20:51): Starting Controlled Files Resolution
+04, 09, 2008 (09:20:51): Finished Controlled Files Resolution
+04, 09, 2008 (09:20:51): Starting Save VBA
+04, 09, 2008 (09:20:51): Finished Save VBA
+04, 09, 2008 (09:20:51): Finished Pre-Save actions
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project.rpy
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project.rpy on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project.rpy
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project.rpy on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\filesTable.dat on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\filesTable.dat on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\filesTable.dat on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\filesTable.dat on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Framework.sbs
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Framework.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Framework.sbs
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Framework.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\IO.sbs
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\IO.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\IO.sbs
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\IO.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\IOClassDiagram.omd
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\IOClassDiagram.omd on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\IOClassDiagram.omd
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\IOClassDiagram.omd on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\IOClassDiagram.omd on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\IOClassDiagram.omd on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Use_Case_42.2.msc
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Use_Case_42.2.msc on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Use_Case_42.2.msc
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Use_Case_42.2.msc on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Use_Case_42.2.msc on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Use_Case_42.2.msc on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\IO.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\IO.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Time.sbs
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Time.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Time.sbs
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Time.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Time.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Time.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Control.sbs
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Control.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Control.sbs
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Control.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Control.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Control.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\utils.sbs
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\utils.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\utils.sbs
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\utils.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\utils.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\utils.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Framework.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Framework.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\FrameworkTest.sbs
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\FrameworkTest.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\FrameworkTest.sbs
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\FrameworkTest.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\FrameworkTest.sbs on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\TestDiagram.omd
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\TestDiagram.omd on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Model1.omd
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Model1.omd on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\TestDiagram.omd on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\Model1.omd on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\FrameworkTest.sbs on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\DefaultComponent.cmp
-04, 08, 2008 (12:55:47): 
-Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\DefaultComponent.cmp on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Model1.omd
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Model1.omd on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project_rpy\DefaultComponent.cmp on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\Model1.omd on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\IO_Project.rpy on Tuesday, April 08, 2008 (12:55:47)
+04, 09, 2008 (09:20:51): Creating C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\DefaultComponent.cmp
+04, 09, 2008 (09:20:51): 
+Started writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\DefaultComponent.cmp on Wednesday, April 09, 2008 (09:20:51)
 
-04, 08, 2008 (12:55:47): End Log
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project_rpy\DefaultComponent.cmp on Wednesday, April 09, 2008 (09:20:51)
+
+04, 09, 2008 (09:20:51): Finished writing C:\Documents and Settings\rosskw1\My Documents\SVN-Google\IO_Project\IO_Project.rpy on Wednesday, April 09, 2008 (09:20:51)
+
+04, 09, 2008 (09:20:51): End Log

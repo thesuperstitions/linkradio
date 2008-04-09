@@ -131,7 +131,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID dafa1e7c-fb05-4f62-9adf-1098d2a3a2f0;
 		}
 	}
-	- weakCGTime = 4.8.2008::16:28:44;
+	- weakCGTime = 4.9.2008::13:10:36;
 	- strongCGTime = 4.1.2008::16:59:27;
 	- _defaultComposite = GUID b3558c13-0914-4592-a3eb-dbfbf70d98db;
 	- _eventsBaseID = -1;
@@ -143,7 +143,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 6;
-			- weakCGTime = 4.7.2008::13:17:30;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.1.2008::16:59:27;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -239,7 +239,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			}
 			- _name = "FederateInterface";
 			- _lastID = 10;
-			- weakCGTime = 4.3.2008::16:51:1;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 3.27.2008::14:49:53;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -393,7 +393,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 8192;
 			- _name = "FederateMessage";
 			- _lastID = 6;
-			- weakCGTime = 4.4.2008::13:59:35;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.1.2008::17:59:30;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -551,7 +551,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 8192;
 			- _name = "IO_Handler";
 			- _lastID = 6;
-			- weakCGTime = 4.8.2008::16:52:33;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 3.25.2008::18:28:47;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -674,7 +674,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 8192;
 			- _name = "Message";
 			- _lastID = 3;
-			- weakCGTime = 4.1.2008::18:9:19;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.1.2008::18:9:19;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -810,7 +810,7 @@ getItsBuffer()->setItsMessage(this);
 			- _myState = 8192;
 			- _name = "PostOffice";
 			- _lastID = 8;
-			- weakCGTime = 3.27.2008::14:30:34;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 3.4.2008::13:57:2;
 			- Operations = { IRPYRawContainer 
 				- size = 7;
@@ -1268,9 +1268,60 @@ getItsBuffer()->setItsMessage(this);
 			- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
 			- _myState = 8192;
 			- _name = "HLA_PostOffice";
+			- Dependencies = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IDependency 
+					- _id = GUID e5ab2202-62ae-445d-b53c-33f03d18efbd;
+					- _myState = 2048;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Dependency";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "UsageType";
+												- _Value = "Implementation";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Specification,Implementation,Existence";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "FederateIO_InputThread";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "Usage";
+							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 08d934c9-5a9e-474f-9c40-0e68cd987029;
+					}
+				}
+			}
 			- _lastID = 9;
-			- weakCGTime = 4.4.2008::14:3:31;
-			- strongCGTime = 3.25.2008::18:20:56;
+			- weakCGTime = 4.9.2008::13:15:30;
+			- strongCGTime = 4.9.2008::13:15:30;
 			- Operations = { IRPYRawContainer 
 				- size = 9;
 				- value = 
@@ -1613,7 +1664,7 @@ Framework::IO::FederateMessage* msg = new Framework::IO::FederateMessage(hfi_ptr
 //this->addTheMessage(reinterpret_cast<Framework::IO::Message*>(msg));
 
 // Send the Interaction Parameter to the FederateInterface (HLA_FederateInterface in this case).
-hfi_ptr->getItsFederateIO_Handler()->recvMessage(msg);";
+hfi_ptr->getItsFederateIO_Handler()->getItsFederateIO_InputThread()->addFederateMessage(msg);";
 					}
 				}
 				{ IPrimitiveOperation 
@@ -2014,8 +2065,8 @@ Framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cas
 				}
 			}
 			- _lastID = 19;
-			- weakCGTime = 4.8.2008::16:28:58;
-			- strongCGTime = 4.8.2008::16:28:58;
+			- weakCGTime = 4.9.2008::13:10:36;
+			- strongCGTime = 4.9.2008::12:20:20;
 			- Operations = { IRPYRawContainer 
 				- size = 6;
 				- value = 
@@ -2189,12 +2240,10 @@ setItsFederateInterfaceFactory( new Framework::Control::FederateInterfaceFactory
 
 // Spin off a thread to handle output of Federate Messages.
 setItsFederateIO_OutputThread( new  FederateIO_OutputThread() );
-getItsFederateIO_OutputThread()->setItsFederateIO_Handler(this);
 getItsFederateIO_OutputThread()->start();
 
 // Spin off a thread to handle input of Federate Messages.
 setItsFederateIO_InputThread( new  FederateIO_InputThread() );
-getItsFederateIO_InputThread()->setItsFederateIO_Handler(this);
 getItsFederateIO_InputThread()->start();
 
 ";
@@ -2324,11 +2373,12 @@ if (getRecvMessageActive() == true)
   if (getItsFederateMessage() == NULL)
   {  
     setItsFederateMessage(federateMessage);
-    setRecvMessageActive(false);
+    setRecvMessageActive(false);  
+    return(true);
   } 
 }
 
-return( getRecvMessageActive() );
+return(false);
 ";
 					}
 				}
@@ -2445,7 +2495,7 @@ timerExpired = true;
 					- _isVirtual = 0;
 				}
 				{ IGeneralization 
-					- _id = GUID 6ae2f5bd-1cbd-4226-874d-005a011fb653;
+					- _id = GUID b50055aa-2c90-4478-b990-31b9e3d8f0b6;
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "utils.sbs";
@@ -2521,22 +2571,6 @@ timerExpired = true;
 					- _navigability = Navigable;
 				}
 				{ IAssociationEnd 
-					- _id = GUID 11193550-1cb5-4305-be2c-eb07827e2b0b;
-					- _myState = 10240;
-					- _name = "itsFederateIO_InputThread";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 08d934c9-5a9e-474f-9c40-0e68cd987029;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-				{ IAssociationEnd 
 					- _id = GUID 73af12b2-c28f-4762-8156-8c63eeb60e9f;
 					- _myState = 10240;
 					- _name = "itsFederate";
@@ -2572,6 +2606,23 @@ timerExpired = true;
 					}
 					- _inverse = { IHandle 
 						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 9a101399-cb0b-4fb5-b506-908cdb28a171;
+					- _myState = 10240;
+					- _name = "itsFederateIO_InputThread";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 08d934c9-5a9e-474f-9c40-0e68cd987029;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID da83f38b-9564-4b25-b07b-c2cde8125416;
 					}
 					- _linkName = "";
 					- _linkType = Assoc;
@@ -2618,7 +2669,7 @@ timerExpired = true;
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
 			- _lastID = 3;
-			- weakCGTime = 4.1.2008::16:43:41;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.1.2008::16:43:41;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -2952,7 +3003,7 @@ isInteractionClassHandleSet = true;";
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
-			- weakCGTime = 4.1.2008::16:44:21;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.1.2008::16:44:21;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -3077,7 +3128,7 @@ isInteractionClassHandleSet = true;";
 				}
 			}
 			- _lastID = 3;
-			- weakCGTime = 4.1.2008::15:53:8;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 3.13.2008::15:20:48;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -3474,7 +3525,7 @@ sizeOfByteArray = 0;";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
 			- _lastID = 11;
-			- weakCGTime = 4.8.2008::14:23:22;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.8.2008::14:22:28;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -3579,10 +3630,12 @@ while (true)
   {
     boost::detail::thread::lock_ops<boost::mutex>::unlock(myMutex);
   } 
+  
+  this->yield();
    
-  ts.tv_nsec = 1 * Framework::utils::Sleep::NANOSECONDS_PER_MILLISECOND;
-  ts.tv_sec = 0;
-  Framework::utils::Sleep::sleep(ts);
+//              ts.tv_nsec = 1 * Framework::utils::Sleep::NANOSECONDS_PER_MILLISECOND;
+//              ts.tv_sec = 0;
+//              Framework::utils::Sleep::sleep(ts);
 };  ";
 					}
 				}
@@ -3747,8 +3800,8 @@ while (true)
 			- _myState = 8192;
 			- _name = "FederateIO_InputThread";
 			- _lastID = 1;
-			- weakCGTime = 4.7.2008::13:51:18;
-			- strongCGTime = 4.4.2008::13:45:13;
+			- weakCGTime = 4.9.2008::13:10:36;
+			- strongCGTime = 4.9.2008::12:20:20;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
 				- value = 
@@ -3791,7 +3844,7 @@ while (true)
       fm_Ptr = *itsFederateMessage.begin();  // Get the first FederateMessage in the list. 
     
       // Send the message to the Post Office for delivery.  
-      if (fm_Ptr->getFederateInterface()->FederateInterface::getItsFederateIO_Handler()->passMessageToApplication(fm_Ptr) == true)
+      if (/*fm_Ptr->getFederateInterface()->FederateInterface::*/getItsFederateIO_Handler()->passMessageToApplication(fm_Ptr) == true)
       {
         // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
         removeItsFederateMessage(fm_Ptr);   // Remove the just-sent FederateMessage from the list.
@@ -3805,10 +3858,11 @@ while (true)
   {
     boost::detail::thread::lock_ops<boost::mutex>::unlock(myMutex);
   } 
-   
-  ts.tv_nsec = 1 * Framework::utils::Sleep::NANOSECONDS_PER_MILLISECOND;
-  ts.tv_sec = 0;
-  Framework::utils::Sleep::sleep(ts);
+      
+  this->yield();
+//              ts.tv_nsec = 1 * Framework::utils::Sleep::NANOSECONDS_PER_MILLISECOND;
+//              ts.tv_sec = 0;
+//              Framework::utils::Sleep::sleep(ts);
 };  ";
 					}
 				}
@@ -3831,7 +3885,25 @@ while (true)
 				- _m2Class = "";
 			}
 			- Associations = { IRPYRawContainer 
-				- size = 0;
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID da83f38b-9564-4b25-b07b-c2cde8125416;
+					- _myState = 10240;
+					- _name = "itsFederateIO_Handler_1";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID cf4439a3-1222-47bd-9929-fed3599f6153;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 9a101399-cb0b-4fb5-b506-908cdb28a171;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
 			}
 			- _classModifier = Unspecified;
 		}
@@ -3895,7 +3967,7 @@ while (true)
 				}
 			}
 			- _lastID = 2;
-			- weakCGTime = 4.8.2008::15:51:0;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 4.7.2008::13:18:2;
 			- Operations = { IRPYRawContainer 
 				- size = 2;

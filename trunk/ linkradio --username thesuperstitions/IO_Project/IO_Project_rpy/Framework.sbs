@@ -85,7 +85,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID b6acb6f4-06ce-4ebf-ab9b-7a9fb813ea04;
 		}
 	}
-	- weakCGTime = 4.4.2008::16:0:14;
+	- weakCGTime = 4.9.2008::13:10:36;
 	- strongCGTime = 3.14.2008::13:23:16;
 	- _defaultComposite = GUID f087b006-c4f9-4606-927d-0806f058af46;
 	- _eventsBaseID = -1;
@@ -97,7 +97,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 18;
-			- weakCGTime = 4.4.2008::16:0:14;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 3.14.2008::13:23:16;
 			- Operations = { IRPYRawContainer 
 				- size = 6;
@@ -486,7 +486,7 @@ return temp;";
 			}
 			- _name = "FrameworkFederateAmbassador";
 			- _lastID = 7;
-			- weakCGTime = 3.25.2008::13:37:0;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 3.25.2008::13:32:19;
 			- Operations = { IRPYRawContainer 
 				- size = 12;
@@ -1776,7 +1776,7 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
-			- weakCGTime = 2.21.2008::0:36:35;
+			- weakCGTime = 4.9.2008::13:10:36;
 			- strongCGTime = 2.20.2008::15:5:22;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -1995,6 +1995,8 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 					- _id = GUID 3a18aaee-752f-4e88-80fe-76d21f321c2b;
 					- _name = "SSDS_TCP_CEC";
 					- _value = "4
+
+
 
 
 

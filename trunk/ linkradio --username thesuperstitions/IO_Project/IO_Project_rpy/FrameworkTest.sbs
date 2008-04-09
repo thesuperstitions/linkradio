@@ -148,7 +148,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				- _name = "TestDiagram";
 				- _id = GUID 962d8355-dfcd-40f5-bc95-3a0c6679ee3c;
 			}
-			- weakCGTime = 2.21.2008::15:35:36;
+			- weakCGTime = 4.9.2008::13:10:37;
 			- strongCGTime = 2.21.2008::15:19:50;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
