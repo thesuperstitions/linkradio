@@ -1,0 +1,2009 @@
+I-Logix-RPY-Archive version 8.0.9 C++ 893629
+{ ISubsystem 
+	- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
+	- _myState = 8192;
+	- _properties = { IPropertyContainer 
+		- Subjects = { IRPYRawContainer 
+			- size = 2;
+			- value = 
+			{ IPropertySubject 
+				- _Name = "CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Operation";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "VariableLengthArgumentList";
+								- _Value = "False";
+								- _Type = Bool;
+							}
+						}
+					}
+				}
+			}
+			{ IPropertySubject 
+				- _Name = "CPP_CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 2;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Class";
+						- Properties = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IProperty 
+								- _Name = "SpecIncludes";
+								- _Value = "";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "SpecificationProlog";
+								- _Value = "";
+								- _Type = MultiLine;
+							}
+						}
+					}
+					{ IPropertyMetaclass 
+						- _Name = "Package";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "DefineNameSpace";
+								- _Value = "True";
+								- _Type = Bool;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	- _name = "Framework";
+	- _lastID = 13;
+	- Declaratives = { IRPYRawContainer 
+		- size = 4;
+		- value = 
+		{ ISubsystem 
+			- fileName = "IO";
+			- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
+		}
+		{ ISubsystem 
+			- fileName = "Time";
+			- _id = GUID f62ff23a-c0b5-4597-bba0-efbb7e3a8b36;
+		}
+		{ ISubsystem 
+			- fileName = "Control";
+			- _id = GUID 4d9e2ad4-1c34-4722-ab87-77f5f75a8cab;
+		}
+		{ ISubsystem 
+			- fileName = "utils";
+			- _id = GUID b6acb6f4-06ce-4ebf-ab9b-7a9fb813ea04;
+		}
+	}
+	- weakCGTime = 4.4.2008::16:0:14;
+	- strongCGTime = 3.14.2008::13:23:16;
+	- _defaultComposite = GUID f087b006-c4f9-4606-927d-0806f058af46;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 3;
+		- value = 
+		{ IClass 
+			- _id = GUID f087b006-c4f9-4606-927d-0806f058af46;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _lastID = 18;
+			- weakCGTime = 4.4.2008::16:0:14;
+			- strongCGTime = 3.14.2008::13:23:16;
+			- Operations = { IRPYRawContainer 
+				- size = 6;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID fb298173-f306-402d-abba-b9a860fe77dc;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Inline";
+												- _Value = "in_declaration";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "none,in_header,in_source,in_declaration";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "convert";
+					- TemplateParameters = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ITemplateParameter 
+							- _id = GUID 3e71139e-b5a3-49b1-8d24-d3437a889a53;
+							- _name = "T";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 7eb57623-164a-426a-a852-f98408a8f7b1;
+								- _myState = 8192;
+								- _declaration = "class";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+						}
+					}
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 3;
+						- value = 
+						{ IArgument 
+							- _id = GUID 8c6e61ce-71e8-47de-b46e-7aa4b8e35b67;
+							- _name = "param";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 35dab9a8-fc67-4d0e-9c14-2e5809db6d01;
+								- _myState = 8192;
+								- _declaration = "const std::string &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID fb68e73d-df18-482f-a6be-47b40169cc25;
+							- _name = "value";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 01448697-a447-4992-9bb8-e4510c6c53fa;
+								- _myState = 8192;
+								- _declaration = "const std::string &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 36bd3ebe-ed81-4114-b3bb-bd34cee08512;
+							- _name = "dest";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 700a8cf5-7c2f-4475-8ed7-2f56263bbf03;
+								- _myState = 8192;
+								- _declaration = "T &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "bool";
+						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "istringstream convert( value );
+convert >> dest;
+if ( convert.fail() )
+{
+   std::cout << \"Bad Parameter Value\\n\"
+      << \"Param: \" << param
+      << \"\\tValue: \" << value << endl;
+   return false;
+}
+return true;";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 08faa782-a5b7-4bbf-8e00-2280ef8e6270;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 3;
+											- value = 
+											{ IProperty 
+												- _Name = "ImplementationEpilog";
+												- _Value = "";
+												- _Type = MultiLine;
+											}
+											{ IProperty 
+												- _Name = "Inline";
+												- _Value = "in_declaration";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "none,in_header,in_source,in_declaration";
+											}
+											{ IProperty 
+												- _Name = "SpecificationProlog";
+												- _Value = "";
+												- _Type = MultiLine;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "DtToString";
+					- _description = { IDescription 
+						- _text = "Convert narrow string to wide string";
+					}
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 80ec8810-5b78-492a-9ec6-231f6d094b72;
+							- _name = "in_val";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID a06be39a-e787-40c0-a1e6-3ffdc6e88a20;
+								- _myState = 8192;
+								- _declaration = "const std::wstring &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- myReturnType = { IType 
+						- _id = GUID 5e2f167e-c5bf-4fd3-af4b-50a69ca2992a;
+						- _myState = 8192;
+						- _declaration = "std::string";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "std::string temp;
+std::wstring::const_iterator b = in_val.begin();
+const std::wstring::const_iterator e = in_val.end();
+while (b != e)
+{
+   temp += static_cast<char>(*b);
+   ++b;
+}
+return temp;";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 4c98a10e-0b15-4e71-914b-d6895b3b67f8;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Inline";
+												- _Value = "in_declaration";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "none,in_header,in_source,in_declaration";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "DtToWString";
+					- _description = { IDescription 
+						- _text = "Convert narrow C string to wide string";
+					}
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID d296a0c8-6538-4e9c-bf9f-cafa4454de6a;
+							- _name = "in_val";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 0a83b6d9-bd29-4c4a-b80b-f56df2a5927b;
+								- _myState = 8192;
+								- _declaration = "const char *";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- myReturnType = { IType 
+						- _id = GUID 3f54a334-4ec3-4ce4-a89c-abbd5d7825c7;
+						- _myState = 8192;
+						- _declaration = "std::wstring";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "std::wstring temp;
+while (*in_val != '\\0')
+temp += *in_val++;
+return temp;";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 9932fef7-9944-447c-a31e-5ebd881fde48;
+					- _name = "getTheRtiAmbassador";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- myReturnType = { IType 
+						- _id = GUID e9fa551f-d8d8-485e-920b-90a9a8660504;
+						- _myState = 8192;
+						- _declaration = "rti1516::RTIambassador*";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "return(NULL);";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID bfaeea0d-5871-4acc-9c27-8d53258f0e1c;
+					- _name = "getFrameworkFederateAmbassador";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- myReturnType = { IType 
+						- _id = GUID df4e8099-2120-4faa-b788-ef047407c646;
+						- _myState = 8192;
+						- _declaration = "FrameworkFederateAmbassador*";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "return(NULL);";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 0019b688-e075-4712-b34e-96914fc60769;
+					- _name = "RealTimeMode";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "bool";
+						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "return(true);";
+					}
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
+			- _myState = 8192;
+			- _properties = { IPropertyContainer 
+				- Subjects = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertySubject 
+						- _Name = "CPP_CG";
+						- Metaclasses = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertyMetaclass 
+								- _Name = "Class";
+								- Properties = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IProperty 
+										- _Name = "ImplementationProlog";
+										- _Value = "using namespace std;
+";
+										- _Type = MultiLine;
+									}
+									{ IProperty 
+										- _Name = "SpecificationProlog";
+										- _Value = "using namespace std;
+";
+										- _Type = MultiLine;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			- _name = "FrameworkFederateAmbassador";
+			- _lastID = 7;
+			- weakCGTime = 3.25.2008::13:37:0;
+			- strongCGTime = 3.25.2008::13:32:19;
+			- Operations = { IRPYRawContainer 
+				- size = 12;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID efcf74ca-1ed1-41b1-a77d-e3c8bd32bebf;
+					- _name = "publishInteractionClass";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 9f61c98f-9217-4729-80e0-7efd83434fd4;
+							- _name = "theParameterValues";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 4bb1ce64-fccc-47ad-8e6e-87d10c6f8db8;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 5c4461d8-2b6c-45d6-8904-1c9cfdeff443;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ThrowExceptions";
+												- _Value = " rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::InvalidLogicalTime, rti1516::FederateInternalError ";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "receiveInteraction";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 9;
+						- value = 
+						{ IArgument 
+							- _id = GUID 854fa39b-033a-4219-8ef5-57f67092a667;
+							- _name = "theInteraction";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 493f2893-f77b-40a8-aafc-252b6b037301;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 761fe467-b49e-4f0e-a23c-c49b9281aa13;
+							- _name = "theParameterValues";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 6cb14a01-c39d-480b-8635-20bd5897ba51;
+								- _myState = 8192;
+								- _declaration = "const rti1516::ParameterHandleValueMap &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 513dfea5-afeb-416e-ae1c-65da6ac36d95;
+							- _name = "theUserSuppliedTag";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 489d9c04-245e-44ec-addc-27dacd115f8c;
+								- _myState = 8192;
+								- _declaration = "const rti1516::VariableLengthData &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 2b1eaaf7-a96c-4adb-ab0e-13d1955f679b;
+							- _name = "sentOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 32771642-f481-4cbf-8c1e-31486fae642a;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 4c92fcdc-c6a5-4fbc-b19c-30e002236c60;
+							- _name = "theType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 62c29722-5aa0-4e26-a553-e27276e6e800;
+								- _myState = 8192;
+								- _declaration = "rti1516::TransportationType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID d150e9d9-e26a-4ad4-8914-bcf28238d0e4;
+							- _name = "theTime";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID cce1e5b4-0445-45c2-8bea-458fbfb6ee43;
+								- _myState = 8192;
+								- _declaration = "const rti1516::LogicalTime &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 920ca8fc-9801-40cf-9a3f-eaed4606f079;
+							- _name = "receivedOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID b053c5e9-517d-43d3-8af6-90a296c240bd;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 4a78a4aa-4ed2-4617-a7a1-2b70461603d9;
+							- _name = "theHandle";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 89261bbd-75ee-44b0-965f-d93282485c1f;
+								- _myState = 8192;
+								- _declaration = "rti1516::MessageRetractionHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 4eaec484-89d1-41f9-8287-f1217fdaab1b;
+							- _name = "theSentRegionHandleSet";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 6ef143a9-a093-496d-a670-765dac041e15;
+								- _myState = 8192;
+								- _declaration = "const rti1516::RegionHandleSet &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "    receiveInteraction(theInteraction,
+          theParameterValues,
+          theUserSuppliedTag,
+          sentOrder,
+          theType);
+";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 7adbbc3b-b031-4e47-a19b-4802c3dcb644;
+					- _name = "subscribeInteractionClass";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 99cad0a6-20e4-4d76-8d8d-6831ad24ed05;
+							- _name = "interactionClassHandle";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID b8bc6692-1440-46d4-b9ef-3034af4a67f9;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "Framework::getTheRtiAmbassador()->subscribeInteractionClass(interactionClassHandle);";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID aba8dc8b-55c7-4399-b2ae-0c862aee3905;
+					- _name = "getInteractionClassHandle";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID ea715ef3-e906-4ee4-97de-cf795eb4d324;
+							- _name = "interactionName";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 4bfe60e8-48be-4a89-9e27-094a1ec34a7e;
+								- _myState = 8192;
+								- _declaration = "std::wstring";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- myReturnType = { IType 
+						- _id = GUID a7a254df-de7d-4aad-bd36-7c71d2fdcb85;
+						- _myState = 8192;
+						- _declaration = "rti1516::InteractionClassHandle";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "return( Framework::getTheRtiAmbassador()->getInteractionClassHandle(interactionName) );";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 011cea2e-a5d7-4c04-aeb0-e9056e40844b;
+					- _name = "getParameterHandle";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 2;
+						- value = 
+						{ IArgument 
+							- _id = GUID f27dd92e-2908-4d58-869f-543a0cb4cc20;
+							- _name = "interactionClassHandle";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 01a0ee2d-06ce-4df9-801f-4468f24df8d1;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 1ee3881a-f85f-4c88-ae26-ef1f35c48465;
+							- _name = "parameterName";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID d4654516-c1e5-432f-87cf-44a4622c56bc;
+								- _myState = 8192;
+								- _declaration = "std::wstring";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- myReturnType = { IType 
+						- _id = GUID 3d37199c-41cf-49a5-b7c6-d80f974c5f24;
+						- _myState = 8192;
+						- _declaration = "rti1516::ParameterHandle";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "return ( getTheRtiAmbassador()->getParameterHandle(interactionClassHandle, parameterName) );";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID b4effae2-d96f-48f4-9008-b578c01597c8;
+					- _name = "sendRO";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 4;
+						- value = 
+						{ IArgument 
+							- _id = GUID 08035e79-b5cb-4337-9497-824e466c97ea;
+							- _name = "interactionClassHandle";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 82f50a8b-e6db-492a-b595-913eecd17f6b;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 8bd0da6e-36a2-4097-b9ee-a8ea63906f76;
+							- _name = "parameterHandle";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 61f6b20b-45e1-43fb-a17f-ec69ba5f9a56;
+								- _myState = 8192;
+								- _declaration = "rti1516::ParameterHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 0047cafa-0138-4a8b-ad0e-527f6cfe391a;
+							- _name = "interactionName";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 07473471-88fc-4493-9840-ef0d22dca18a;
+							- _name = "messageToSend";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "
+rti1516::ParameterHandleValueMap map;
+rti1516::VariableLengthData tagData( interactionName, sizeof(interactionName)+1 );
+
+
+map[parameterHandle] = rti1516::VariableLengthData(&messageToSend, sizeof(messageToSend));
+                      
+Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, tagData);
+                      ";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID d52b2356-92cc-49c4-bfa7-186af7ae286e;
+					- _name = "sendTSO";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 4;
+						- value = 
+						{ IArgument 
+							- _id = GUID 8aba3ba6-1a75-4f10-8522-4161a9e9d9f4;
+							- _name = "interactionClassHandle";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 19975271-4f4c-4ae1-9d22-bc5682f72eaf;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 7ccd0336-c4fd-4b5f-a239-356203f2aff1;
+							- _name = "parameterHandle";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 16b63e06-03c3-4748-a3bd-79fa97f43b77;
+								- _myState = 8192;
+								- _declaration = "rti1516::ParameterHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 4a7c0561-a97b-439e-b95b-e0865b95fffb;
+							- _name = "interactionName";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID cb6e487a-8c35-4898-9e67-6c498ac7dcb6;
+							- _name = "messageToSend";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 9ff45fb2-73ce-4feb-9bec-2e689157c07d;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ThrowExceptions";
+												- _Value = " rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::FederateInternalError ";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "receiveInteraction";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 6;
+						- value = 
+						{ IArgument 
+							- _id = GUID 434812c2-cacc-4344-985c-f9215e97874a;
+							- _name = "theInteraction";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID b6d6d845-b516-47f9-b5c2-8e4f7ad128c5;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID a284f866-b6be-4389-acfd-dbdfa7b5cbc6;
+							- _name = "theParameterValues";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 1639b8aa-ddd6-469f-9a03-6b211afc4d79;
+								- _myState = 8192;
+								- _declaration = "const rti1516::ParameterHandleValueMap &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID dabb8c86-0b0b-4ca0-bdb9-9425240f95e1;
+							- _name = "theUserSuppliedTag";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 6417f9cb-6ee1-478c-9490-593d46f5d693;
+								- _myState = 8192;
+								- _declaration = "const rti1516::VariableLengthData &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 4e894b8f-eb16-4b22-8412-91477e06ee69;
+							- _name = "sentOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 3463fc27-ccbd-4edf-acc3-e437384ee1df;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID bcf43fab-e10c-424d-a58e-5fe1605e2a9d;
+							- _name = "theType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 5134f95e-309e-4a16-85ea-42d4ebc29cd5;
+								- _myState = 8192;
+								- _declaration = "rti1516::TransportationType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 4d14380e-f224-4e40-8a07-6a31713af7e3;
+							- _name = "theSentRegionHandleSet";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID cf805035-0279-4cd8-bd19-36c71c026d44;
+								- _myState = 8192;
+								- _declaration = "const rti1516::RegionHandleSet &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "   receiveInteraction(theInteraction,
+          theParameterValues,
+          theUserSuppliedTag,
+          sentOrder,
+          theType);
+";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 84837afc-b6b5-4194-9598-9895671fff32;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ThrowExceptions";
+												- _Value = "rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::FederateInternalError ";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "receiveInteraction";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 7;
+						- value = 
+						{ IArgument 
+							- _id = GUID 0168d98b-b9ec-494d-9990-05317d1e731c;
+							- _name = "theInteraction";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 58f05d62-cfee-468c-a314-eb8350b17005;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID b88294d7-17a0-48d3-903f-9b53e3fd149d;
+							- _name = "theParameterValues";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 0e04c5ce-a52d-4130-8149-6ac1bda60c81;
+								- _myState = 8192;
+								- _declaration = "const rti1516::ParameterHandleValueMap &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID b9004e98-794c-4a45-ac70-881fbe5605cb;
+							- _name = "theUserSuppliedTag";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID aa6f9c26-4f2c-485e-bb2d-945cff01f6fe;
+								- _myState = 8192;
+								- _declaration = "const rti1516::VariableLengthData &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 32e6a067-108d-4253-b6cf-1c373aaf9508;
+							- _name = "sentOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID cc981788-861c-47df-813b-592b12d9560a;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 5b3f7286-eee9-4796-b5db-d7a3679cf699;
+							- _name = "theType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 0257ab12-4476-45ed-bc40-242650c7adda;
+								- _myState = 8192;
+								- _declaration = "rti1516::TransportationType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 94804e54-c0a4-4176-a526-afc9b613a359;
+							- _name = "theTime";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 00c22a11-c24a-4ab2-8294-74cd81b2124f;
+								- _myState = 8192;
+								- _declaration = "const rti1516::LogicalTime &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 9e7c9397-8113-4336-a71a-2c0940510232;
+							- _name = "receivedOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 55bb5129-6b83-440a-b35c-7fb9e3ca6685;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "   receiveInteraction(theInteraction,
+          theParameterValues,
+          theUserSuppliedTag,
+          sentOrder,
+          theType);
+";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 8a9a1a10-339a-4beb-84e7-6eb878d9f67a;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ThrowExceptions";
+												- _Value = "rti1516:: InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized,rti1516:: InteractionClassNotSubscribed,rti1516:: FederateInternalError ";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "receiveInteraction";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 8;
+						- value = 
+						{ IArgument 
+							- _id = GUID 19f8b39b-2d1b-4fca-b1b6-6c5e07107cf5;
+							- _name = "theInteraction";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 29983cf5-2170-4361-9cc1-3dd2787c4440;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 5f773ddc-451a-407c-bd43-6200500ddde1;
+							- _name = "theParameterValues";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID a0e789cd-9521-4655-9c81-92444d134a6b;
+								- _myState = 8192;
+								- _declaration = "const rti1516::ParameterHandleValueMap &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 6881d322-cac2-4d99-b97f-64fa666a784a;
+							- _name = "theUserSuppliedTag";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 7eaa3487-c029-4a66-a15e-56d121aebd49;
+								- _myState = 8192;
+								- _declaration = "const rti1516::VariableLengthData &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 04056e52-6b56-4502-b7d4-48fc2e68fca0;
+							- _name = "sentOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 6cd11e01-cf68-4453-af2e-e29b41f86fd8;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 5c860c8c-6914-47ea-9465-1009ae7e9bcf;
+							- _name = "theType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID c3763d5a-0ad5-41d5-8480-972419bee6b1;
+								- _myState = 8192;
+								- _declaration = "rti1516::TransportationType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID b57cf676-3a53-4286-904e-9ec86ed54a21;
+							- _name = "theTime";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 21c6e199-a585-4b60-94f4-af010d3a2dde;
+								- _myState = 8192;
+								- _declaration = "const rti1516::LogicalTime &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID baa9ffb2-c5f0-4ec2-a2b6-e210bc305e44;
+							- _name = "receivedOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 61715aa0-b175-470c-9b06-7d63513a06ce;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 50194dbf-b518-49db-86a3-9d14fc9fc6c8;
+							- _name = "theSentRegionHandleSet";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID c06ae1e3-e3da-49ad-8a27-ca0a3a8d4e01;
+								- _myState = 8192;
+								- _declaration = "const rti1516::RegionHandleSet &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "   receiveInteraction(theInteraction,
+          theParameterValues,
+          theUserSuppliedTag,
+          sentOrder,
+          theType);";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 45e3430e-720d-40e3-9fdb-cec86e2c0be3;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ThrowExceptions";
+												- _Value = "rti1516:: InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::InvalidLogicalTime, rti1516::FederateInternalError ";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "receiveInteraction";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 8;
+						- value = 
+						{ IArgument 
+							- _id = GUID 6a3fbc1f-4ef8-4769-ab27-2a5ad28e13fb;
+							- _name = "theInteraction";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 8587822b-beed-4b86-b9a5-ad51a5845ff6;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 632202db-f5c1-4fec-8a84-d8eaa613aef7;
+							- _name = "theParameterValues";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 1711cbef-0192-42de-a5e4-9c3c1122fc12;
+								- _myState = 8192;
+								- _declaration = "const rti1516::ParameterHandleValueMap &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 67d76d71-6f36-46d4-a487-1261b3cda15c;
+							- _name = "theUserSuppliedTag";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID b64ba1cc-cb0a-43b3-9352-8bdbfb42b028;
+								- _myState = 8192;
+								- _declaration = "const rti1516::VariableLengthData &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 3454e9d2-d792-4176-9457-9eed8a32e6d6;
+							- _name = "sentOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID ac18b380-520c-4cc7-b4dc-d9e697902cf7;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 3e7672f5-5307-4dc8-b87a-d3dee5622153;
+							- _name = "theType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID d66a9c79-b99f-41f4-822c-a8bed8e3ae5f;
+								- _myState = 8192;
+								- _declaration = "rti1516::TransportationType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 3c3b9a34-5588-47d1-9a6a-67f23c798f6a;
+							- _name = "theTime";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 8b91b690-cdb2-4eb3-89cf-ba4d44d600e0;
+								- _myState = 8192;
+								- _declaration = "const rti1516::LogicalTime &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 079a2f27-02af-4bff-9a23-53e68b50e79c;
+							- _name = "receivedOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID d2dbd3f9-616f-4e04-88e9-83c53c9ea9ac;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID f610f078-cda2-4750-9c43-b448023992f6;
+							- _name = "theHandle";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 46860b58-4f87-4628-9f7d-a09781f9b856;
+								- _myState = 8192;
+								- _declaration = "rti1516::MessageRetractionHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "   receiveInteraction(theInteraction,
+          theParameterValues,
+          theUserSuppliedTag,
+          sentOrder,
+          theType);
+";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID d88da6e3-11d0-4dea-9e17-6fd1dbcaea62;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ThrowExceptions";
+												- _Value = "rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::FederateInternalError";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "receiveInteraction";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 5;
+						- value = 
+						{ IArgument 
+							- _id = GUID 02f93ef3-5eed-44a1-9678-02d3f63d4af3;
+							- _name = "theInteraction";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 24f7ef93-7501-4291-9833-811cb6a7c565;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 1b425f52-bb26-4e9c-9cdd-385a00add964;
+							- _name = "theParameterValues";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 83ef8fd8-fbab-4a67-947b-613c698d84e6;
+								- _myState = 8192;
+								- _declaration = "const rti1516::ParameterHandleValueMap &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 65229c02-ad13-4cb3-8d79-ab26593e8648;
+							- _name = "theUserSuppliedTag";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 69aa26a1-0173-4e4a-9737-9b868d7155c2;
+								- _myState = 8192;
+								- _declaration = "const rti1516::VariableLengthData &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID bf7eabda-33cd-4f63-994a-f4cf7850b3be;
+							- _name = "sentOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID bd22966b-c144-4924-a883-7ccf679d2440;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID f60d64f8-0181-4687-a17b-f2c916e3030f;
+							- _name = "theType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 3c8ecca5-66b8-4a70-9340-96480ac73b9a;
+								- _myState = 8192;
+								- _declaration = "rti1516::TransportationType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "getItsHLA_PostOffice()->receiveInteraction(theInteraction, theParameterValues, theUserSuppliedTag, sentOrder, theType);";
+					}
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 60f9c4ba-1f12-4412-927d-ece61029ace6;
+					- _myState = 10240;
+					- _name = "itsHLA_PostOffice";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "IO.sbs";
+						- _subsystem = "Framework::IO";
+						- _class = "";
+						- _name = "HLA_PostOffice";
+						- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _filename = "IO.sbs";
+						- _subsystem = "Framework::IO";
+						- _class = "HLA_PostOffice";
+						- _name = "theFrameworkFederateAmbassador";
+						- _id = GUID 8c11aba0-994b-411b-90a1-c918385cf369;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 039afa0a-b0e6-4dbf-b9d7-19e730720594;
+					- _myState = 10240;
+					- _name = "itsRtiAmbassador";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID a94d4c4c-554b-4761-8754-07e6b5d9d57b;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID e8af1f8b-c7a7-4105-a8eb-bcbc6ebbc2a9;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a94d4c4c-554b-4761-8754-07e6b5d9d57b;
+			- _myState = 8192;
+			- _name = "RtiAmbassador";
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = "IOClassDiagram.omd";
+				- _subsystem = "Framework::IO";
+				- _class = "";
+				- _name = "IOClassDiagram";
+				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
+			}
+			- weakCGTime = 2.21.2008::0:36:35;
+			- strongCGTime = 2.20.2008::15:5:22;
+			- Operations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IConstructor 
+					- _id = GUID cdcf9df2-6e4e-42b5-a782-648946c86257;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID c62a3808-40d5-436a-8299-c41112477521;
+							- _name = "frameworkFederateAmbassador";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 65c7d789-7736-4a79-97e3-546e561bd4ec;
+								- _myState = 8192;
+								- _declaration = "FrameworkFederateAmbassador*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "";
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "if (frameworkFederateAmbassador != NULL)
+{
+	setItsFrameworkFederateAmbassador(frameworkFederateAmbassador);  
+	frameworkFederateAmbassador->setItsRtiAmbassador(this); 
+}";
+					}
+					- _initializer = "";
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID e8af1f8b-c7a7-4105-a8eb-bcbc6ebbc2a9;
+					- _myState = 10240;
+					- _name = "itsFrameworkFederateAmbassador";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 039afa0a-b0e6-4dbf-b9d7-19e730720594;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- Types = { IRPYRawContainer 
+		- size = 6;
+		- value = 
+		{ IType 
+			- _id = GUID bd892c23-ade2-4df0-814c-2b73918c0673;
+			- _myState = 8192;
+			- _name = "FrameworkMessage";
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 8dee02ac-c4e8-4395-a036-55ab1b26f569;
+			- _myState = 8192;
+			- _name = "MessageType";
+			- _description = { IDescription 
+				- _text = "Returned in \"getType\" function in class \"Federate I/O Handler.  I believe that this is the Message Type to be passed by the I/O Handler.";
+			}
+			- _lastID = 2;
+			- Literals = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID f7f0d5fb-dd81-47ba-b315-04a1ac32602d;
+					- _name = "CEC_Msg_Type_1";
+					- _value = "1";
+				}
+			}
+			- _kind = Enumeration;
+		}
+		{ IType 
+			- _id = GUID 6b2281aa-cebf-438f-8f30-70fecf43f565;
+			- _myState = 8192;
+			- _name = "FederateFrameworkType";
+			- _lastID = 2;
+			- Literals = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID c64a6ddd-0297-4347-b271-30d5402fcc18;
+					- _name = "HLA_FederateFrameworkType";
+					- _value = "";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 3c571b64-a2dc-4313-a637-f7167d1ad093;
+					- _name = "OASIS_FederateFrameworkType";
+					- _value = "";
+				}
+			}
+			- _kind = Enumeration;
+		}
+		{ IType 
+			- _id = GUID 3ee11ac5-a2f0-48eb-8839-5fddf443e272;
+			- _myState = 8192;
+			- _name = "FederateType";
+			- _lastID = 2;
+			- Literals = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID 1560bc61-3b69-48b0-a63b-4194e3b51274;
+					- _name = "SSDS_FederateType";
+					- _value = "";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 69b79a12-322e-4c2a-ae8c-10af0326c70e;
+					- _name = "CEC_FederateType";
+					- _value = "";
+				}
+			}
+			- _kind = Enumeration;
+		}
+		{ IType 
+			- _id = GUID 1d1da621-e4e4-4ae8-a664-158d51b7889b;
+			- _myState = 8192;
+			- _name = "timespec";
+			- _lastID = 2;
+			- Attrs = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IAttribute 
+					- _id = GUID d4ab57f6-1d6e-4e65-af13-a320b067a4f8;
+					- _name = "tv_sec";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 42008ae8-b441-491c-8f63-21bc74c7ecbc;
+						- _myState = 8192;
+						- _declaration = "time_t";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 6af9c014-ea03-4de6-b83f-35be8d2795e8;
+					- _name = "tv_nsec";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "long";
+						- _id = GUID 8d6ece2f-4774-4e46-a346-b71b55717d33;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID b20879ed-f3bb-4c05-a3f1-7368f035d6f9;
+			- _myState = 8192;
+			- _name = "InterfaceType";
+			- _lastID = 5;
+			- Literals = { IRPYRawContainer 
+				- size = 5;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID fcf3f3ec-004f-426e-a330-a04424bd05f9;
+					- _name = "CEC_NTDS_SPY";
+					- _value = "0";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 0cfbf8ca-342e-46f7-a6cf-96bf31cb68c2;
+					- _name = "CEC_NTDS_CND";
+					- _value = "1";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 1c745c94-9dd2-42ad-8bc8-6966339e2939;
+					- _name = "CEC_NTDS_R48";
+					- _value = "2";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 263bb439-67d4-4800-9ee2-f3a3a10a8e64;
+					- _name = "CEC_NTDS_R49";
+					- _value = "3";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 3a18aaee-752f-4e88-80fe-76d21f321c2b;
+					- _name = "SSDS_TCP_CEC";
+					- _value = "4
+
+
+
+";
+				}
+			}
+			- _kind = Enumeration;
+		}
+	}
+	- _configurationRelatedTime = 4.4.2008::15:31:26;
+}
+

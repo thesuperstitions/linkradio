@@ -1,0 +1,9 @@
+
+Parsing Summary:
+"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\FederateIO_OutputThread.cpp":LINE 141 *** The type of this declaration  >>void (class FederateMessage* ) << is not the same as any homographic member-function:
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\FederateIO_OutputThread.h":LINE 107:  void (class FederateMessage* ) 
+"C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\FederateIO_OutputThread.cpp":LINE 145 *** The type of this declaration  >>void (class FederateMessage* ) << is not the same as any homographic member-function:
+     "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\FederateIO_OutputThread.h":LINE 110:  void (class FederateMessage* ) 
+
+Reverse Engineering Done.
+
