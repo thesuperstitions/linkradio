@@ -1,0 +1,20 @@
+
+Collect Macros 'C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h'
+File: C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h, Line: 12 #include string ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h, Line: 13 #include sstream ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h, Line: 14 #include iomanip ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h, Line: 15 #include iostream ignored--file not found.
+
+Collect Macros Done. See detailed report in the log file.
+
+
+Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h'
+Adding package 'ReverseEngineering' to project 'IO_Project'. ok.
+File: C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h, Line: 12 #include string ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h, Line: 13 #include sstream ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h, Line: 14 #include iomanip ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\AssemblaSVN\HLA_IO\IO_Project\DefaultComponent\DefaultConfig\stringUtil.h, Line: 15 #include iostream ignored--file not found.
+Adding package 'std' to package 'ReverseEngineering'. ok.
+
+Reverse Engineering Done. See detailed report in the log file.
+

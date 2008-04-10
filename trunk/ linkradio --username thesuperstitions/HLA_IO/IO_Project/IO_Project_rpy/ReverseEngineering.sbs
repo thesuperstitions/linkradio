@@ -1,0 +1,107 @@
+I-Logix-RPY-Archive version 8.0.9 C++ 893629
+{ ISubsystem 
+	- _id = GUID 3523dec0-c622-4818-8235-9041c20aa9cc;
+	- _myState = 8192;
+	- _properties = { IPropertyContainer 
+		- Subjects = { IRPYRawContainer 
+			- size = 2;
+			- value = 
+			{ IPropertySubject 
+				- _Name = "CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 2;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Class";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "CreateImplicitDependencies";
+								- _Value = "False";
+								- _Type = Bool;
+							}
+						}
+					}
+					{ IPropertyMetaclass 
+						- _Name = "Type";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "GenerateDeclarationDependency";
+								- _Value = "False";
+								- _Type = Bool;
+							}
+						}
+					}
+				}
+			}
+			{ IPropertySubject 
+				- _Name = "CPP_CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Type";
+						- Properties = { IRPYRawContainer 
+							- size = 4;
+							- value = 
+							{ IProperty 
+								- _Name = "In";
+								- _Value = "$type";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "InOut";
+								- _Value = "$type";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "Out";
+								- _Value = "$type";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "ReturnType";
+								- _Value = "$type";
+								- _Type = String;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	- _name = "ReverseEngineering";
+	- Declaratives = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ ISubsystem 
+			- fileName = "boost";
+			- _id = GUID 4540df20-8bec-4b94-8462-978232e8a1f3;
+		}
+	}
+	- weakCGTime = 4.3.2008::13:56:26;
+	- strongCGTime = 4.3.2008::13:55:54;
+	- _defaultComposite = GUID c00c857b-ce94-4ad2-99da-1b0ccd9b46f5;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID c00c857b-ce94-4ad2-99da-1b0ccd9b46f5;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 4.3.2008::13:56:26;
+}
+

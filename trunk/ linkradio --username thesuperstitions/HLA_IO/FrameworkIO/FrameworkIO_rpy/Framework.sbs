@@ -1,0 +1,168 @@
+I-Logix-RPY-Archive version 8.0.9 C++ 893629
+{ ISubsystem 
+	- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
+	- _myState = 8192;
+	- _properties = { IPropertyContainer 
+		- Subjects = { IRPYRawContainer 
+			- size = 2;
+			- value = 
+			{ IPropertySubject 
+				- _Name = "CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Operation";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "VariableLengthArgumentList";
+								- _Value = "False";
+								- _Type = Bool;
+							}
+						}
+					}
+				}
+			}
+			{ IPropertySubject 
+				- _Name = "CPP_CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 2;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Class";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "SpecificationProlog";
+								- _Value = "";
+								- _Type = MultiLine;
+							}
+						}
+					}
+					{ IPropertyMetaclass 
+						- _Name = "Package";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "DefineNameSpace";
+								- _Value = "True";
+								- _Type = Bool;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	- _name = "Framework";
+	- _lastID = 6;
+	- Declaratives = { IRPYRawContainer 
+		- size = 4;
+		- value = 
+		{ ISubsystem 
+			- fileName = "IO";
+			- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
+		}
+		{ ISubsystem 
+			- fileName = "Time";
+			- _id = GUID f62ff23a-c0b5-4597-bba0-efbb7e3a8b36;
+		}
+		{ ISubsystem 
+			- fileName = "Control";
+			- _id = GUID 4d9e2ad4-1c34-4722-ab87-77f5f75a8cab;
+		}
+		{ ISubsystem 
+			- fileName = "Federate";
+			- _id = GUID 461e2625-b40e-4c84-aace-aedfc93ba43b;
+		}
+	}
+	- weakCGTime = 2.14.2008::22:22:39;
+	- strongCGTime = 2.14.2008::22:9:58;
+	- _defaultComposite = GUID f087b006-c4f9-4606-927d-0806f058af46;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID f087b006-c4f9-4606-927d-0806f058af46;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _lastID = 1;
+			- weakCGTime = 2.14.2008::22:22:39;
+			- strongCGTime = 2.12.2008::20:48:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- Types = { IRPYRawContainer 
+		- size = 4;
+		- value = 
+		{ IType 
+			- _id = GUID 3ee11ac5-a2f0-48eb-8839-5fddf443e272;
+			- _myState = 8192;
+			- _name = "FederateType";
+			- _lastID = 2;
+			- Literals = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID 1560bc61-3b69-48b0-a63b-4194e3b51274;
+					- _name = "SSDS";
+					- _value = "";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 69b79a12-322e-4c2a-ae8c-10af0326c70e;
+					- _name = "CEC";
+					- _value = "";
+				}
+			}
+			- _kind = Enumeration;
+		}
+		{ IType 
+			- _id = GUID bd892c23-ade2-4df0-814c-2b73918c0673;
+			- _myState = 8192;
+			- _name = "FrameworkMessage";
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 8dee02ac-c4e8-4395-a036-55ab1b26f569;
+			- _myState = 8192;
+			- _name = "MessageType";
+			- _description = { IDescription 
+				- _text = "Returned in \"getType\" function in class \"Federate I/O Handler.  I believe that this is the Message Type to be passed by the I/O Handler.";
+			}
+			- _lastID = 1;
+			- _kind = Enumeration;
+		}
+		{ IType 
+			- _id = GUID 6b2281aa-cebf-438f-8f30-70fecf43f565;
+			- _myState = 8192;
+			- _name = "FederateFrameworkType";
+			- _lastID = 2;
+			- Literals = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID c64a6ddd-0297-4347-b271-30d5402fcc18;
+					- _name = "HLA_FederateFrameworkType";
+					- _value = "";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 3c571b64-a2dc-4313-a637-f7167d1ad093;
+					- _name = "OASIS_FederateFrameworkType";
+					- _value = "";
+				}
+			}
+			- _kind = Enumeration;
+		}
+	}
+	- _configurationRelatedTime = 2.8.2008::14:49:1;
+}
+
