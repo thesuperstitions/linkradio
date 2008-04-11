@@ -1,0 +1,7 @@
+
+Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ntds_common\ntdsTypes.h'
+Adding package 'ReverseEngineering' to project 'IO_Project'. ok.
+Analyzing struct 'device_node' from File: C:\Documents and Settings\rosskw1\My Documents\ntds_common\ntdsTypes.h, Line: 68
+
+Reverse Engineering Done. See detailed report in the log file.
+

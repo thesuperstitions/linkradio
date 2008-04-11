@@ -1,0 +1,24 @@
+Implementation Header
+
+/********************************************************************
+	Rhapsody	: $RhapsodyVersion 
+	Login		: $Login
+	Component	: $ComponentName 
+	Configuration 	: $ConfigurationName
+	Model Element	: $FullModelElementName
+//!	Generated Date	: $CodeGeneratedDate 
+	File Path	: $FullCodeGeneratedFileName
+*********************************************************************/
+
+
+Specification Header
+
+/*********************************************************************
+	Rhapsody	: $RhapsodyVersion 
+	Login		: $Login
+	Component	: $ComponentName 
+	Configuration 	: $ConfigurationName
+	Model Element	: $FullModelElementName
+//!	Generated Date	: $CodeGeneratedDate 
+	File Path	: $FullCodeGeneratedFileName
+*********************************************************************/

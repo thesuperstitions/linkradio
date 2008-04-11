@@ -1,0 +1,38 @@
+
+Reverse Engineering 'C:\MAK\makRti3.2\include\RTItypes.hh'
+Removing Package 'ReverseEngineering' from Project 'FrameworkIO'. ok.
+Adding package 'ReverseEngineering' to project 'FrameworkIO'. ok.
+Analyzing class 'Region' from File: C:\MAK\makRti3.2\include\RTItypes.hh, Line: 125
+Adding class 'Region' to package 'ReverseEngineering'. ok.
+Analyzing class 'FederateAmbassador' from File: C:\MAK\makRti3.2\include\RTItypes.hh, Line: 127
+Adding class 'FederateAmbassador' to package 'ReverseEngineering'. ok.
+Analyzing struct 'EventRetractionHandle_s' from File: C:\MAK\makRti3.2\include\RTItypes.hh, Line: 541
+
+Parsing Summary:
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 39 *** syntax error on input RTI_EXCEPT
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 118 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 167 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 167 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 255 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 255 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 265 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 265 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 291 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 291 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 300 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 300 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 321 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 321 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 330 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 330 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 410 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 410 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 419 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 419 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 472 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 472 *** parsing resumes at '{'
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 530 *** syntax error on input "{"
+"C:\MAK\makRti3.2\include\RTItypes.hh":LINE 530 *** parsing resumes at '{'
+
+Reverse Engineering Done. See detailed report in the log file.
+

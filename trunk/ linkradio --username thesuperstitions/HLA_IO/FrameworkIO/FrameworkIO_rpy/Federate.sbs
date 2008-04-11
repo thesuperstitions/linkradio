@@ -1,0 +1,472 @@
+I-Logix-RPY-Archive version 8.0.9 C++ 893629
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "Framework.sbs";
+		- _subsystem = "";
+		- _class = "";
+		- _name = "Framework";
+		- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
+	}
+	- _id = GUID 461e2625-b40e-4c84-aace-aedfc93ba43b;
+	- _myState = 8192;
+	- _name = "Federate";
+	- _lastID = 1;
+	- weakCGTime = 2.14.2008::22:39:52;
+	- strongCGTime = 2.8.2008::15:29:37;
+	- _defaultComposite = GUID 5bed08d4-3513-4d8a-b8bf-9490e15a779a;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 4;
+		- value = 
+		{ IClass 
+			- _id = GUID 5bed08d4-3513-4d8a-b8bf-9490e15a779a;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- weakCGTime = 2.14.2008::21:6:27;
+			- strongCGTime = 2.8.2008::15:29:37;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 8e2edf7d-ae8e-425a-bc47-e064bfe396d9;
+			- _myState = 8192;
+			- _name = "ExampleFederate";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "IO.sbs";
+					- _subsystem = "Framework::IO";
+					- _class = "";
+					- _name = "example";
+					- _id = GUID f0bee0fc-4391-455e-88a8-7c4d1ee19e94;
+				}
+			}
+			- weakCGTime = 2.14.2008::18:47:7;
+			- strongCGTime = 2.8.2008::15:29:42;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 98821754-bda7-4e18-b442-7659e30d5346;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
+			- _myState = 8192;
+			- _properties = { IPropertyContainer 
+				- Subjects = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertySubject 
+						- _Name = "CG";
+						- Metaclasses = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertyMetaclass 
+								- _Name = "Class";
+								- Properties = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IProperty 
+										- _Name = "GenerateImplicitConstructors";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			- _name = "Federate";
+			- _lastID = 8;
+			- weakCGTime = 2.14.2008::18:47:7;
+			- strongCGTime = 2.13.2008::16:45:50;
+			- Operations = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IConstructor 
+					- _id = GUID d035728b-ee09-4e18-864e-a97f114eeaeb;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID e10db791-626d-4e15-89de-18a344ce947b;
+							- _name = "fedFrameworkType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 4c5b6240-3918-4371-8b51-f99e0d0e728a;
+								- _myState = 8192;
+								- _declaration = "FederateFrameworkType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "";
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "setFederateInterfaceFactory( new FederateInterfaceFactory() );";
+					}
+					- _initializer = "
+federateFrameworkType(fedFrameworkType)";
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 6fbdf8cf-def0-4dc5-9bf9-22d8aae62667;
+					- _name = "getType";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- myReturnType = { IType 
+						- _id = GUID 00b2e2a6-6e0c-49fb-9d29-87fb79276ee3;
+						- _myState = 8192;
+						- _declaration = "FederateType";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 1;
+					- _itsBody = { IBody 
+						- _bodyData = "return(type);";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 5795f10a-2d9a-4719-99c2-0a3a861f3442;
+					- _name = "useCase_42_1_announcePublication";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "FederateInterface* SPYtoCECNtds = federateInterfaceFactory->createFederateInterface(\"SPYtoCECNtds\", HLA_FederateFrameworkType); 
+addItsFederateInterface(\"SPYtoCECNtds\", SPYtoCECNtds)
+PostOffice::announcePublication(SPYtoCECNtds);   
+
+//PostOffice::announceSubscription(CECtoSPYNtds);   ";
+					}
+				}
+			}
+			- Attrs = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IAttribute 
+					- _id = GUID c7b1282a-8f87-4d79-b57d-cb07644a1dd1;
+					- _name = "federateFrameworkType";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID cf21fb74-fecf-461a-9e70-eb466f97bdf7;
+						- _myState = 8192;
+						- _declaration = "FederateFrameworkType";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 8bab0691-7e65-4f63-b5d5-b059d5d170ea;
+					- _name = "federateInterfaceFactory";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID e8e2ab32-4d0d-4d47-9a7c-c95cf3eb75b8;
+						- _myState = 8192;
+						- _declaration = "FederateInterfaceFactory*";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 1a3e816a-9f82-451b-b284-8e1ef656ec5e;
+					- _name = "interfaceName";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 63fb5d59-c545-4a29-b7a2-6e0480d3858a;
+						- _myState = 8192;
+						- _declaration = "std::string";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 7746d984-3bb6-4873-9926-8d1a798b35ce;
+					- _myState = 10240;
+					- _name = "itsPostOffice";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "IO.sbs";
+						- _subsystem = "Framework::IO";
+						- _class = "";
+						- _name = "PostOffice";
+						- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _filename = "IO.sbs";
+						- _subsystem = "Framework::IO";
+						- _class = "PostOffice";
+						- _name = "itsFederate";
+						- _id = GUID f61970c5-f17c-4724-b031-003e93bde471;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 3fe5aa8d-3411-4ee2-89a2-9fffa78884ad;
+					- _myState = 10240;
+					- _name = "itsFederateInterfaceFactory";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 33704959-484f-4e7d-ab1e-77c760fb3e21;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 9df26689-e827-4b00-bafe-64b176fa0404;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 5868dc65-d84f-431e-b3d6-e34865611de7;
+					- _myState = 10240;
+					- _name = "itsFederateInterface";
+					- _multiplicity = "0..*";
+					- _qualifier = "interfaceName";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "IO.sbs";
+						- _subsystem = "Framework::IO";
+						- _class = "";
+						- _name = "FederateInterface";
+						- _id = GUID 1993cc7d-a0e3-4f31-a771-97a1d245afb2;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 33704959-484f-4e7d-ab1e-77c760fb3e21;
+			- _myState = 8192;
+			- _name = "FederateInterfaceFactory";
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = "IOClassDiagram.omd";
+				- _subsystem = "Framework::IO";
+				- _class = "";
+				- _name = "IOClassDiagram";
+				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
+			}
+			- _lastID = 2;
+			- weakCGTime = 2.14.2008::21:6:27;
+			- strongCGTime = 2.14.2008::21:6:27;
+			- Operations = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID e0c1a489-0cb8-4a01-a0ee-1e244f080b2f;
+					- _name = "createFederateInterface";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 1084fe1a-7c1c-4193-af55-a61337f30611;
+							- _name = "name";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 132b478d-6dee-4948-bfc2-8ee2136eb3e1;
+								- _myState = 8192;
+								- _declaration = "std::string";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- myReturnType = { IType 
+						- _id = GUID 6338f8e7-31bf-404d-b360-f8582eed3100;
+						- _myState = 8192;
+						- _declaration = "FederateInterface*";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "// Based upon some later-to-be-identified configuration value, the factory creates
+// the appropriate FederateInterface.
+switch(federateFrameworkType)
+{
+  case HLA_FederateFrameworkType:
+    HLA_FederateInterface* HLA_FedInterface = new HLA_FederateInterface(name); 
+    return( (FederateInterface*)HLA_FedInterface);
+  break;
+  
+  case OASIS_FederateFrameworkType:
+    OASIS_FederateInterface* OASIS_FedInterface = new OASIS_FederateInterface(name); 
+    return( (FederateInterface*)OASIS_FedInterface);
+  break;
+};            ";
+					}
+				}
+				{ IConstructor 
+					- _id = GUID ad930eed-fb4f-490c-aa5d-2df7b7bb5244;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 0c2f4978-8d79-4748-93a5-e82b39203f53;
+							- _name = "fedFrameworkType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID ee346322-cea6-4d16-9bed-43d5d8c019ec;
+								- _myState = 8192;
+								- _declaration = "FederateFrameworkType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "";
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "";
+					}
+					- _initializer = "federateFrameworkType(fedFrameworkType)";
+				}
+			}
+			- Attrs = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAttribute 
+					- _id = GUID d418f1e2-d8d8-434b-9041-96ae8b549927;
+					- _name = "federateFrameworkType";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID dc08246d-d0c2-40f3-8cb7-9db720aca652;
+						- _myState = 8192;
+						- _declaration = "FederateFrameworkType";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 9df26689-e827-4b00-bafe-64b176fa0404;
+					- _myState = 10240;
+					- _name = "itsFederate";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 3fe5aa8d-3411-4ee2-89a2-9fffa78884ad;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 2.14.2008::22:39:52;
+}
+

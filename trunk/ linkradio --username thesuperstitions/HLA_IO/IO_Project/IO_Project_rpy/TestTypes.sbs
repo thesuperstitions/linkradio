@@ -1,0 +1,785 @@
+I-Logix-RPY-Archive version 8.0.9 C++ 893629
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "FrameworkTest.sbs";
+		- _subsystem = "";
+		- _class = "";
+		- _name = "FrameworkTest";
+		- _id = GUID 915edaf7-df19-4281-9d22-aec45244fbf3;
+	}
+	- _id = GUID 9d3c6034-4b1d-4f0a-87ad-a34763347834;
+	- _myState = 8192;
+	- _name = "TestTypes";
+	- weakCGTime = 4.9.2008::17:45:45;
+	- strongCGTime = 4.9.2008::16:38:59;
+	- _defaultComposite = GUID fd432f57-83fd-4ac3-a080-4323c5dff508;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID fd432f57-83fd-4ac3-a080-4323c5dff508;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- Types = { IRPYRawContainer 
+		- size = 6;
+		- value = 
+		{ IType 
+			- _id = GUID 708707a3-11b7-4ffc-a249-78150d609ffd;
+			- _myState = 8192;
+			- _name = "NTDS_TEST_MSGS";
+			- _declaration = "typedef struct
+  {
+    unsigned int time;
+    unsigned int test;
+    unsigned int user1;
+    unsigned int user2;
+
+  } %s";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 5ea79ba0-b24e-43c3-88db-ce1d7d853579;
+			- _myState = 8192;
+			- _name = "NIO_BD_CONFIG";
+			- _declaration = "typedef struct   /* structure of NIO Configuration Packet */
+{
+        /* Primary port address is Used as backplane id on VME driver */
+   unsigned int   primary_ntds_port_address;
+   unsigned int   secondary_ntds_port_address;
+   int            address_modifier;
+   char           enet_address[ENET_ADDRESS_SIZE];
+   int            enet_port;
+ 
+   unsigned int                       :  3,
+                io_mode               :  4, /* CAT I, CAT II, CAT III */
+                interrupt_level       :  3, /* VME interrupt level    */
+                manual_ei_mode        :  1, /* Auto or Manual         */
+                word_size             :  4, /* BYTE, WORD, LONG WORD  */
+                io_type               :  4, /* A, B, C, D, or E       */
+                int_enable            :  1, /* Enable interrupts T/F  */
+                passive_mode          :  1, /* passive tap            */
+                server_enable         :  1, /* enables the vme server */
+                driver_type           :  4, /* VME, ANTARES, GET,     */
+                secondary_driver_type :  4, /* VME, ANTARES, GET,     */
+                init_mode             :  2; /* LOCAL, REMOTE, SATELLITE_INTERFACE, or TEST */
+} %s";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 0edb6e27-14ee-434f-81b7-0e1120650893;
+			- _myState = 8192;
+			- _name = "NIO_MESG";
+			- _declaration = "typedef struct   /* structure of NIO Message Packet */
+{
+    unsigned int   *address;   /* Buffer Address */
+    unsigned int   req_size;   /* Number of words (interface width) */
+    int            time_out;   /* Referenced in tics   */
+    unsigned int   delay_time; /* Granularity of 10 usecs */
+    unsigned int   tfr_size;   /* Number of words (interface width) */
+    unsigned int   buf_time;   /* Local time the buffer was finished */
+    short int      data_msg_number;   /* unique # for each message */
+    unsigned short int retry_count; /* How many times to retry the I/O */
+} %s";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 78cca24c-21f6-4eeb-b44f-a7d4c5d663f6;
+			- _myState = 8192;
+			- _name = "NTDS_CTRL_FUNC";
+			- _declaration = "typedef struct
+{
+   int  (*init_comm) (int, int);
+   int  (*enable_comm) (int, int);
+   int  (*disable_comm) (int, int);
+   int  (*reset_comm) (int, int);
+   int  (*restart_comm) (int, int);
+   int  (*test_comm) (int, int);  /* Used for NTDS_Wrap */
+   int  (*level2_comm) (int, NTDS_TEST_MSGS); /* allows invocation of protocol's Level 2 function dispatcher.*/
+   int  (*output_comm) (int, int);
+   int  (*input_comm) (int, int, NIO_MESG *);
+   int  (*spcl_comm) (int, int);
+   int  (*suspend_comm) (int, int);
+   int  (*resume_comm) (int, int);
+   int  (*redundant_channel_comm) (int, int, int, int); /* Device, Port, State */
+} %s";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 66fd6131-6a1b-403b-8d91-556d59b8b3c4;
+			- _myState = 8192;
+			- _properties = { IPropertyContainer 
+				- Subjects = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertySubject 
+						- _Name = "CG";
+						- Metaclasses = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertyMetaclass 
+								- _Name = "Class";
+								- Properties = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IProperty 
+										- _Name = "AttributesAutoArrange";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			- _name = "device_node";
+			- Attrs = { IRPYRawContainer 
+				- size = 25;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 923a4624-3d8c-4663-be78-bbd999b53d98;
+					- _name = "device_id";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "int";
+						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 80486e69-fb3c-4d41-9af9-8a50278dabb8;
+					- _name = "port";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "int";
+						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 037a54c1-c74d-4f38-90c3-a681110f8637;
+					- _name = "enet_port";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "int";
+						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID fd121931-9ab7-41fb-a6a2-7e456b9c3d8a;
+					- _name = "enet_address";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 487c7ef6-be1b-418b-a4f6-1d813ba8fd6c;
+						- _myState = 8192;
+						- _declaration = "char %s[ENET_ADDRESS_SIZE] ";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 39d23aef-ede6-499e-b1b7-996070400296;
+					- _myState = 2048;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "BitField";
+												- _Value = "26";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "attribute_0";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 870c7d89-2a2d-407e-af24-ea066a76692f;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "BitField";
+												- _Value = "1";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "redundant_channel_flag";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 7648a1f5-1c79-40ec-b8fa-efb3f3d49194;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "BitField";
+												- _Value = "1";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "no_remote_enable";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 3eafa167-13cd-4250-aa2e-597ab5b232cc;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "BitField";
+												- _Value = "1";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "raw_input_que_type";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 9ef8d3d8-e86c-439f-b01b-e701d7d0e672;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "BitField";
+												- _Value = "1";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "packed_output_queue";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 0e819630-0d56-4340-b2dd-95ef0f7f0c1b;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "BitField";
+												- _Value = "1";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "in_signal_queue";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 185ae64a-f278-4c9f-8c0e-26bd27922860;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "BitField";
+												- _Value = "1";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "out_signal_queue";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 10cdfb4d-ac34-4eee-9095-c452451b1994;
+					- _name = "name_string";
+					- _description = { IDescription 
+						- _text = "Must be a multiple 4 ";
+					}
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 75f94815-8e82-4801-8f7a-86e4b9362361;
+						- _myState = 8192;
+						- _declaration = "char %s[12] ";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 6d43504b-2235-473f-bb86-a2e5a100443f;
+					- _name = "user1";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 8e198c0a-7807-4bc4-9418-ba1872897ef1;
+					- _name = "user2";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 8bfbdc96-f789-4357-9fc3-cd584d6753ef;
+					- _name = "user3";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID cfccf78b-cc3a-40c8-9399-fa58ae4b3f02;
+					- _name = "user4";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 5efefb78-d8d8-45b6-bef7-5360e8e6f668;
+					- _name = "user5";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID bc3aa6c2-7874-4968-a3e8-24ae8e2f47eb;
+					- _name = "user6";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID d0b0330b-7f3f-4269-a5e1-d24daf5950f0;
+					- _name = "user7";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 3955219c-6e6e-47a8-9cf3-5828c87bd656;
+					- _name = "user8";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 31773c88-39b0-4190-9445-9423d283aa74;
+					- _name = "user9";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 5aa39be5-c08b-4807-a190-5eb5451aa232;
+					- _name = "user10";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 99ccb05e-a57a-48fd-8b49-7d6051bba95d;
+					- _name = "board";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID 5ea79ba0-b24e-43c3-88db-ce1d7d853579;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 0be430af-a319-4ab2-a53e-f8a4dd6fcab9;
+					- _name = "function";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID 78cca24c-21f6-4eeb-b44f-a7d4c5d663f6;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID b2f1cab3-0684-40e2-a59f-8a26c3ad6c83;
+					- _name = "next";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 85aee9e4-e163-48ef-987b-99d8f17d0018;
+						- _myState = 8192;
+						- _declaration = "device_node *";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 55ea4880-c963-42d5-9e78-9d9becc9ed17;
+			- _myState = 8192;
+			- _name = "DEVICE_DATA";
+			- _typedefBaseType = { IClassifierHandle 
+				- _m2Class = "IType";
+				- _id = GUID 66fd6131-6a1b-403b-8d91-556d59b8b3c4;
+			}
+			- _typedefMultiplicity = "1";
+			- _typedefIsOrdered = 0;
+			- _typedefIsReference = 0;
+			- _typedefIsConstant = 0;
+			- _kind = Typedef;
+		}
+	}
+	- _configurationRelatedTime = 12.31.1969::19:0:0;
+}
+

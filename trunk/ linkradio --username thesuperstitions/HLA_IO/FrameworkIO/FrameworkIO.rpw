@@ -1,0 +1,69 @@
+I-Logix-RPY-Archive version 8.0.9 * 893629
+{ CGEMdiWorkspace 
+	- stubList = { IRPYRawContainer 
+		- size = 0;
+	}
+	- myViewsWithID = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 2;
+				- m_showCmd = 3;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 22;
+				- m_nTop = 22;
+				- m_nRight = 1419;
+				- m_nBottom = 424;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = "IOClassDiagram.omd";
+				- _subsystem = "Framework::IO";
+				- _class = "";
+				- _name = "IOClassDiagram";
+				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
+			}
+			- _UpLeft = 330 162 ;
+			- _DownRight = 1649 856 ;
+			- _instanceName = "";
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 0;
+				- m_showCmd = 1;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 44;
+				- m_nTop = 44;
+				- m_nRight = 1201;
+				- m_nBottom = 522;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IMSC";
+				- _filename = "Use_Case_42.2.msc";
+				- _subsystem = "Framework::IO";
+				- _class = "";
+				- _name = "Use_Case_42.2";
+				- _id = GUID dafa1e7c-fb05-4f62-9adf-1098d2a3a2f0;
+			}
+			- _UpLeft = 0 0 ;
+			- _DownRight = 1129 411 ;
+			- _instanceName = "";
+		}
+	}
+	- _fullName = "C:\\Documents and Settings\\rosskw1\\My Documents\\AssemblaSVN\\HLA_IO\\FrameworkIO\\FrameworkIO";
+	- m_SearchScopeList = { IRPYRawContainer 
+		- size = 0;
+	}
+}
+
