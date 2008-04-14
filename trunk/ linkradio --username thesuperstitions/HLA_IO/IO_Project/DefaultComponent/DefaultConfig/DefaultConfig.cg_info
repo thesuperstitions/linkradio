@@ -6,68 +6,68 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\MutexLock.h" 4.3.2008::13:27:8
 	"DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\Thread.cpp" 4.3.2008::13:56:26
 	"DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\Thread.h" 4.3.2008::13:59:9
-	"DefaultComponent\\DefaultConfig\\Buffer.cpp" 4.9.2008::13:3:9
-	"DefaultComponent\\DefaultConfig\\Buffer.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\C_IO_Functions.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\C_IO_Functions.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Control.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Control.h" 4.9.2008::13:3:9
+	"DefaultComponent\\DefaultConfig\\Buffer.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Buffer.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\C_IO_Functions.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\C_IO_Functions.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Control.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Control.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\DefaultConfig\\FederateIO_HandlerInputThread.h" 4.3.2008::16:57:10
 	"DefaultComponent\\DefaultConfig\\DefaultConfig\\std.cpp" 2.15.2008::18:14:50
 	"DefaultComponent\\DefaultConfig\\DefaultConfig\\std.h" 2.15.2008::18:14:50
 	"DefaultComponent\\DefaultConfig\\DefaultConfig\\stringUtil.h" 2.15.2008::20:41:55
-	"DefaultComponent\\DefaultConfig\\ExampleFederate.cpp" 4.9.2008::13:3:9
-	"DefaultComponent\\DefaultConfig\\ExampleFederate.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Federate.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Federate.h" 4.9.2008::13:3:9
+	"DefaultComponent\\DefaultConfig\\ExampleFederate.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\ExampleFederate.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Federate.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Federate.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\FederateDataOutputThread.cpp" 4.3.2008::16:4:18
 	"DefaultComponent\\DefaultConfig\\FederateDataOutputThread.h" 4.3.2008::16:4:18
-	"DefaultComponent\\DefaultConfig\\FederateIO_Handler.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FederateIO_Handler.h" 4.9.2008::13:3:9
+	"DefaultComponent\\DefaultConfig\\FederateIO_Handler.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\FederateIO_Handler.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\FederateIO_HandlerOutputThread.cpp" 4.3.2008::16:23:59
 	"DefaultComponent\\DefaultConfig\\FederateIO_HandlerOutputThread.h" 4.3.2008::16:23:59
-	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.cpp" 4.9.2008::13:3:9
-	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.h" 4.9.2008::13:3:8
+	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.cpp" 4.11.2008::11:49:22
+	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.h" 4.11.2008::11:49:22
+	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\FederateIO_Thread.cpp" 4.3.2008::16:2:18
 	"DefaultComponent\\DefaultConfig\\FederateIO_Thread.h" 4.3.2008::15:59:7
-	"DefaultComponent\\DefaultConfig\\FederateInterface.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FederateInterface.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FederateInterfaceFactory.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FederateInterfaceFactory.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FederateMessage.cpp" 4.9.2008::13:3:9
-	"DefaultComponent\\DefaultConfig\\FederateMessage.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Framework.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Framework.h" 4.9.2008::13:17:2
+	"DefaultComponent\\DefaultConfig\\FederateInterface.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\FederateInterface.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\FederateInterfaceFactory.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\FederateInterfaceFactory.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\FederateMessage.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\FederateMessage.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Framework.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Framework.h" 4.11.2008::12:35:19
 	"DefaultComponent\\DefaultConfig\\FrameworkControl.cpp" 2.20.2008::13:44:7
 	"DefaultComponent\\DefaultConfig\\FrameworkControl.h" 2.20.2008::13:44:7
-	"DefaultComponent\\DefaultConfig\\FrameworkFederateAmbassador.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\FrameworkFederateAmbassador.h" 4.9.2008::13:3:8
+	"DefaultComponent\\DefaultConfig\\FrameworkFederateAmbassador.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\FrameworkFederateAmbassador.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\FrameworkSingletons.cpp" 2.20.2008::14:33:28
 	"DefaultComponent\\DefaultConfig\\FrameworkSingletons.h" 2.20.2008::14:33:28
 	"DefaultComponent\\DefaultConfig\\FrameworkTest.cpp" 4.9.2008::16:31:49
 	"DefaultComponent\\DefaultConfig\\FrameworkTest.h" 4.9.2008::17:41:15
 	"DefaultComponent\\DefaultConfig\\FrameworkTester.cpp" 4.9.2008::17:41:29
 	"DefaultComponent\\DefaultConfig\\FrameworkTester.h" 4.9.2008::17:41:29
-	"DefaultComponent\\DefaultConfig\\HLA_FederateInterface.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\HLA_FederateInterface.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\HLA_PostOffice.cpp" 4.9.2008::13:15:31
-	"DefaultComponent\\DefaultConfig\\HLA_PostOffice.h" 4.9.2008::13:15:31
-	"DefaultComponent\\DefaultConfig\\IO.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\IO.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\IO_Handler.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\IO_Handler.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Message.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Message.h" 4.9.2008::13:3:9
+	"DefaultComponent\\DefaultConfig\\HLA_FederateInterface.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\HLA_FederateInterface.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\HLA_PostOffice.cpp" 4.9.2008::13:15:32
+	"DefaultComponent\\DefaultConfig\\HLA_PostOffice.h" 4.9.2008::13:15:32
+	"DefaultComponent\\DefaultConfig\\IO.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\IO.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\IO_Handler.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\IO_Handler.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Message.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Message.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\Mutex.cpp" 4.2.2008::18:37:24
 	"DefaultComponent\\DefaultConfig\\Mutex.h" 4.2.2008::18:41:13
 	"DefaultComponent\\DefaultConfig\\MutexLock.cpp" 4.2.2008::18:41:17
 	"DefaultComponent\\DefaultConfig\\MutexLock.h" 4.2.2008::18:41:16
-	"DefaultComponent\\DefaultConfig\\OASIS_FederateInterface.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\OASIS_FederateInterface.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\PostOffice.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\PostOffice.h" 4.9.2008::13:3:8
+	"DefaultComponent\\DefaultConfig\\OASIS_FederateInterface.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\OASIS_FederateInterface.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\PostOffice.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\PostOffice.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\RTIAmbassador.cpp" 2.15.2008::18:3:18
 	"DefaultComponent\\DefaultConfig\\RTIAmbassador.h" 2.15.2008::18:3:18
 	"DefaultComponent\\DefaultConfig\\RTI_Ambassador.cpp" 2.15.2008::12:53:21
@@ -76,20 +76,20 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\RTIambassador.h" 2.15.2008::18:6:59
 	"DefaultComponent\\DefaultConfig\\ReverseEngineering.cpp" 4.9.2008::13:3:8
 	"DefaultComponent\\DefaultConfig\\ReverseEngineering.h" 4.9.2008::17:45:47
-	"DefaultComponent\\DefaultConfig\\RtiAmbassador.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\RtiAmbassador.h" 4.9.2008::13:3:8
+	"DefaultComponent\\DefaultConfig\\RtiAmbassador.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\RtiAmbassador.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\RtiAmbassadorObject.cpp" 2.21.2008::12:11:49
 	"DefaultComponent\\DefaultConfig\\RtiAmbassadorObject.h" 2.21.2008::12:11:49
-	"DefaultComponent\\DefaultConfig\\Serializer.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Serializer.h" 4.9.2008::13:3:9
-	"DefaultComponent\\DefaultConfig\\Sleep.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Sleep.h" 4.9.2008::13:3:9
+	"DefaultComponent\\DefaultConfig\\Serializer.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Serializer.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Sleep.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Sleep.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\TestTypes.cpp" 4.9.2008::16:39:4
 	"DefaultComponent\\DefaultConfig\\TestTypes.h" 4.9.2008::17:45:57
-	"DefaultComponent\\DefaultConfig\\Thread.cpp" 4.9.2008::13:3:9
-	"DefaultComponent\\DefaultConfig\\Thread.h" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Timer.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\Timer.h" 4.9.2008::13:3:8
+	"DefaultComponent\\DefaultConfig\\Thread.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Thread.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Timer.cpp" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\Timer.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\Timers.cpp" 4.8.2008::14:9:45
 	"DefaultComponent\\DefaultConfig\\Timers.h" 4.8.2008::14:9:45
 	"DefaultComponent\\DefaultConfig\\Utilities.cpp" 2.15.2008::20:50:47
@@ -141,7 +141,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"c:\\documents and settings\\rosskw1\\my documents\\svn-google\\hla_io\\io_project\\defaultcomponent\\defaultconfig\\framework.cpp" 2.20.2008::17:39:12
 	
 }
-- size = 36;
+- size = 30;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -188,15 +188,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
-	- _m2Class = "*";
-	- _filename = "";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "";
-	- _id = GUID d94eb1e8-3817-4e62-9b31-89cbe4f467a8;
-}
-- genTime = 4.9.2008::17:45:47;
-- hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
 	- _subsystem = "Framework::IO";
@@ -215,15 +206,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
-	- _m2Class = "*";
-	- _filename = "";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "";
-	- _id = GUID 95a7bf4f-43a1-4fed-a383-9115dab6cc7f;
-}
-- genTime = 4.9.2008::17:41:18;
-- hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Framework.sbs";
 	- _subsystem = "Framework";
@@ -233,15 +215,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
-	- _m2Class = "*";
-	- _filename = "";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "";
-	- _id = GUID 0ca5a4bc-3b14-4e91-8a0c-a39375eceea9;
-}
-- genTime = 4.9.2008::16:18:32;
-- hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "IO.sbs";
 	- _subsystem = "Framework";
@@ -249,7 +222,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "IO";
 	- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
 }
-- genTime = 4.9.2008::17:45:57;
+- genTime = 4.11.2008::11:49:47;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "Control.sbs";
@@ -286,15 +259,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _id = GUID dde46e90-5f22-43aa-9977-e8d01f7597e8;
 }
 - genTime = 4.9.2008::17:45:57;
-- hElement = { IHandle 
-	- _m2Class = "*";
-	- _filename = "";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "";
-	- _id = GUID 3e135d95-b1d5-4031-ae35-203c75bc352a;
-}
-- genTime = 4.9.2008::16:44:20;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -375,7 +339,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateIO_InputThread";
 	- _id = GUID 08d934c9-5a9e-474f-9c40-0e68cd987029;
 }
-- genTime = 4.9.2008::17:45:57;
+- genTime = 4.11.2008::11:49:22;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -386,15 +350,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.9.2008::17:45:57;
 - hElement = { IHandle 
-	- _m2Class = "*";
-	- _filename = "";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "";
-	- _id = GUID c40b43f7-58d4-463d-815b-0ad218b0e6ee;
-}
-- genTime = 4.9.2008::16:25:30;
-- hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "Framework.sbs";
 	- _subsystem = "";
@@ -402,7 +357,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Framework";
 	- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 }
-- genTime = 4.9.2008::17:45:57;
+- genTime = 4.11.2008::12:35:22;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";
@@ -430,15 +385,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _id = GUID 77f57fcd-d06d-4b55-ae17-83a20664b275;
 }
 - genTime = 4.9.2008::17:45:57;
-- hElement = { IHandle 
-	- _m2Class = "*";
-	- _filename = "";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "";
-	- _id = GUID 4238055a-4bad-4510-b8b0-b0a3ec43e619;
-}
-- genTime = 4.9.2008::16:31:57;
 - hElement = { IHandle 
 	- _m2Class = "ICodeGenConfigInfo";
 	- _filename = "DefaultComponent.cmp";
