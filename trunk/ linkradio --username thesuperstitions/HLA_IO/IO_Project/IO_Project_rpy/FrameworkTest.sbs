@@ -212,9 +212,6 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 						}
 					}
 					- _name = "FederateFrameworkType";
-					- Dependencies = { IRPYRawContainer 
-						- size = 0;
-					}
 					- Stereotypes = { IRPYRawContainer 
 						- size = 1;
 						- value = 
@@ -367,9 +364,6 @@ Configure_NTDS_Device(&(dd[0]));
 				{ IPrimitiveOperation 
 					- _id = GUID dba993ad-c4b3-4150-8923-2a3961bb365c;
 					- _name = "Configure_NTDS_Device";
-					- Dependencies = { IRPYRawContainer 
-						- size = 0;
-					}
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
 						- size = 1;
@@ -533,9 +527,6 @@ return(OK);
 			}
 			- _classModifier = Unspecified;
 		}
-	}
-	- Types = { IRPYRawContainer 
-		- size = 0;
 	}
 	- _configurationRelatedTime = 2.21.2008::12:20:29;
 }

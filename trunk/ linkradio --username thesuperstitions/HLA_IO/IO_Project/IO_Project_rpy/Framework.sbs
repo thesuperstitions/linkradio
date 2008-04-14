@@ -2000,6 +2000,8 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 
 
 
+
+
 ";
 				}
 			}

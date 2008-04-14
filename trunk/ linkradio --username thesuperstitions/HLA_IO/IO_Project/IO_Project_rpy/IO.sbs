@@ -131,7 +131,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID dafa1e7c-fb05-4f62-9adf-1098d2a3a2f0;
 		}
 	}
-	- weakCGTime = 4.9.2008::13:10:36;
+	- weakCGTime = 4.11.2008::11:48:20;
 	- strongCGTime = 4.1.2008::16:59:27;
 	- _defaultComposite = GUID b3558c13-0914-4592-a3eb-dbfbf70d98db;
 	- _eventsBaseID = -1;
@@ -2065,7 +2065,7 @@ Framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cas
 				}
 			}
 			- _lastID = 19;
-			- weakCGTime = 4.9.2008::13:10:36;
+			- weakCGTime = 4.11.2008::11:48:20;
 			- strongCGTime = 4.9.2008::12:20:20;
 			- Operations = { IRPYRawContainer 
 				- size = 6;
@@ -3800,8 +3800,8 @@ while (true)
 			- _myState = 8192;
 			- _name = "FederateIO_InputThread";
 			- _lastID = 1;
-			- weakCGTime = 4.9.2008::13:10:36;
-			- strongCGTime = 4.9.2008::12:20:20;
+			- weakCGTime = 4.11.2008::11:49:21;
+			- strongCGTime = 4.11.2008::11:48:20;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
 				- value = 
@@ -3889,8 +3889,8 @@ while (true)
 				- value = 
 				{ IAssociationEnd 
 					- _id = GUID da83f38b-9564-4b25-b07b-c2cde8125416;
-					- _myState = 10240;
-					- _name = "itsFederateIO_Handler_1";
+					- _myState = 8192;
+					- _name = "itsFederateIO_Handler";
 					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
