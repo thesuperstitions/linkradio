@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::FrameworkFederateAmbassador
-//!	Generated Date	: Tue, 1, Apr 2008  
+//!	Generated Date	: Mon, 14, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkFederateAmbassador.h
 *********************************************************************/
 

@@ -100,6 +100,8 @@ OBJS= \
   Sleep.obj \
   Thread.obj \
   Timer.obj \
+  ProducerThread.obj \
+  ConsumerThread.obj \
   FrameworkTester.obj \
   Framework.obj \
   IO.obj \
@@ -318,6 +320,18 @@ Timer.obj : Timer.cpp Timer.h    Sleep.h Thread.h
 
 
 
+ProducerThread.obj : ProducerThread.cpp ProducerThread.h    
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"ProducerThread.obj" "ProducerThread.cpp" 
+
+
+
+ConsumerThread.obj : ConsumerThread.cpp ConsumerThread.h    
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"ConsumerThread.obj" "ConsumerThread.cpp" 
+
+
+
 FrameworkTester.obj : FrameworkTester.cpp FrameworkTester.h    FrameworkTest.h FrameworkFederateAmbassador.h RtiAmbassador.h ExampleFederate.h TestTypes.h C_IO_Functions.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FrameworkTester.obj" "FrameworkTester.cpp" 
@@ -399,6 +413,8 @@ clean:
 	if exist Sleep.obj erase Sleep.obj
 	if exist Thread.obj erase Thread.obj
 	if exist Timer.obj erase Timer.obj
+	if exist ProducerThread.obj erase ProducerThread.obj
+	if exist ConsumerThread.obj erase ConsumerThread.obj
 	if exist FrameworkTester.obj erase FrameworkTester.obj
 	if exist Framework.obj erase Framework.obj
 	if exist IO.obj erase IO.obj

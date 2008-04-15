@@ -7,7 +7,6 @@
 
 #include <QDesktopWidget>
 #include <QTextStream>
-#include "Queue.h"
 #include "mainwindow.h"
 
 //****************************************************************************************************************************
@@ -41,7 +40,6 @@ MainWindow::MainWindow(QApplication* ThisApp)
   timeBeginPeriod(1);
 #endif
 
-  // Create the DataIF object and connect up the signals.
   }
   catch(...)
   {
@@ -57,11 +55,30 @@ void MainWindow::ProcessDataClicked(bool checked)
   {
     textEdit->append("DEBUG:MainWindow::ProcessDataClicked - User Clicked \"Start Program\" Button");
     pushButton->setText(QApplication::translate("MainWindow", "Stop", 0, QApplication::UnicodeUTF8));
+
+    queue          = new Queue();
+
+    consumerThread = new ConsumerThread(queue);
+    consumerThread->start();
+
+    producerThread = new ProducerThread(queue);
+    producerThread->start();
+
+
+    QObject::connect(queue, SIGNAL(OnLogText(QString)), this, SLOT(append(QString)));
   }
   else
   {
     textEdit->append("DEBUG:MainWindow::ProcessDataClicked - User Clicked \"Stop Processing\" Button");
     pushButton->setText(QApplication::translate("MainWindow", "Start", 0, QApplication::UnicodeUTF8));
+
+    consumerThread->ConsumerThread::Thread::stop();
+    delete consumerThread;
+
+    producerThread->stop();
+    delete producerThread;
+
+    delete queue;
   }
   }
   catch(...)

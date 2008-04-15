@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework
-//!	Generated Date	: Fri, 11, Apr 2008  
+//!	Generated Date	: Mon, 14, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\Framework.h
 *********************************************************************/
 
@@ -75,6 +75,7 @@ namespace Framework {
         CEC_NTDS_R48 = 2,
         CEC_NTDS_R49 = 3,
         SSDS_TCP_CEC = 4
+
 
 
 

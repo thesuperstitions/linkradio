@@ -7,6 +7,9 @@
 #include <QDir>
 
 #include "ui_QueueTest.h"
+#include "ProducerThread.h"
+#include "ConsumerThread.h"
+#include "Queue.h"
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
@@ -21,6 +24,10 @@ protected:
   QSettings*     AppSettings;
   QApplication*  TheApp;
   QDir*          Directory;
+  Queue*         queue;
+
+  ProducerThread* producerThread;
+  ConsumerThread* consumerThread;
 
 protected slots:
     void ProcessDataClicked(bool checked);

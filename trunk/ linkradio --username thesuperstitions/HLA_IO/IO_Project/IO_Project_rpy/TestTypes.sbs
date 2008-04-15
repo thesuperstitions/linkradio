@@ -11,7 +11,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 	- _id = GUID 9d3c6034-4b1d-4f0a-87ad-a34763347834;
 	- _myState = 8192;
 	- _name = "TestTypes";
-	- weakCGTime = 4.9.2008::17:45:45;
+	- weakCGTime = 4.14.2008::11:27:17;
 	- strongCGTime = 4.9.2008::16:38:59;
 	- _defaultComposite = GUID fd432f57-83fd-4ac3-a080-4323c5dff508;
 	- _eventsBaseID = -1;
@@ -22,7 +22,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID fd432f57-83fd-4ac3-a080-4323c5dff508;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 4.9.2008::17:45:45;
+			- weakCGTime = 4.14.2008::11:27:17;
 			- strongCGTime = 4.9.2008::16:38:59;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
@@ -73,7 +73,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
                 driver_type           :  4, /* VME, ANTARES, GET,     */
                 secondary_driver_type :  4, /* VME, ANTARES, GET,     */
                 init_mode             :  2; /* LOCAL, REMOTE, SATELLITE_INTERFACE, or TEST */
-} %s";
+} NIO_BD_CONFIG;";
 			- _kind = Language;
 		}
 		{ IType 

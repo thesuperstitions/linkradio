@@ -16,7 +16,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID 9d3c6034-4b1d-4f0a-87ad-a34763347834;
 		}
 	}
-	- weakCGTime = 4.9.2008::17:41:15;
+	- weakCGTime = 4.14.2008::11:27:17;
 	- strongCGTime = 4.9.2008::17:41:15;
 	- _defaultComposite = GUID d88a5a3a-9a4c-479f-9492-20cef995e889;
 	- _eventsBaseID = -1;
@@ -27,7 +27,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID d88a5a3a-9a4c-479f-9492-20cef995e889;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 4.9.2008::17:41:15;
+			- weakCGTime = 4.14.2008::11:27:17;
 			- strongCGTime = 4.9.2008::17:41:15;
 			- Attrs = { IRPYRawContainer 
 				- size = 2;
@@ -319,7 +319,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				- _id = GUID 962d8355-dfcd-40f5-bc95-3a0c6679ee3c;
 			}
 			- _lastID = 2;
-			- weakCGTime = 4.9.2008::17:41:15;
+			- weakCGTime = 4.14.2008::11:27:17;
 			- strongCGTime = 4.9.2008::17:14:34;
 			- Operations = { IRPYRawContainer 
 				- size = 2;

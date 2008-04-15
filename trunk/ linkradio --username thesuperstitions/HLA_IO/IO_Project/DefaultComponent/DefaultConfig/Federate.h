@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::Control::Federate
-//!	Generated Date	: Fri, 4, Apr 2008  
+//!	Generated Date	: Mon, 14, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\Federate.h
 *********************************************************************/
 

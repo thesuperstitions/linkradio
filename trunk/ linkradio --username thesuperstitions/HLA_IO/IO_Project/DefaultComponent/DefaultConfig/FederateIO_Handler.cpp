@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_Handler
-//!	Generated Date	: Wed, 9, Apr 2008  
+//!	Generated Date	: Mon, 14, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_Handler.cpp
 *********************************************************************/
 
@@ -244,7 +244,7 @@ namespace Framework {
         void FederateIO_Handler::_setItsFederateIO_InputThread(Framework::IO::FederateIO_InputThread* p_FederateIO_InputThread) {
             if(itsFederateIO_InputThread != NULL)
                 {
-                    itsFederateIO_InputThread->__setItsFederateIO_Handler_1(NULL);
+                    itsFederateIO_InputThread->__setItsFederateIO_Handler(NULL);
                 }
             __setItsFederateIO_InputThread(p_FederateIO_InputThread);
         }
@@ -252,7 +252,7 @@ namespace Framework {
         void FederateIO_Handler::setItsFederateIO_InputThread(Framework::IO::FederateIO_InputThread* p_FederateIO_InputThread) {
             if(p_FederateIO_InputThread != NULL)
                 {
-                    p_FederateIO_InputThread->_setItsFederateIO_Handler_1(this);
+                    p_FederateIO_InputThread->_setItsFederateIO_Handler(this);
                 }
             _setItsFederateIO_InputThread(p_FederateIO_InputThread);
         }
@@ -385,10 +385,10 @@ namespace Framework {
                 }
             if(itsFederateIO_InputThread != NULL)
                 {
-                    Framework::IO::FederateIO_Handler* p_FederateIO_Handler = itsFederateIO_InputThread->getItsFederateIO_Handler_1();
+                    Framework::IO::FederateIO_Handler* p_FederateIO_Handler = itsFederateIO_InputThread->getItsFederateIO_Handler();
                     if(p_FederateIO_Handler != NULL)
                         {
-                            itsFederateIO_InputThread->__setItsFederateIO_Handler_1(NULL);
+                            itsFederateIO_InputThread->__setItsFederateIO_Handler(NULL);
                         }
                     itsFederateIO_InputThread = NULL;
                 }

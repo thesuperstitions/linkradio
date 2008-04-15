@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: FrameworkTester
-//!	Generated Date	: Wed, 9, Apr 2008  
+//!	Generated Date	: Mon, 14, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkTester.cpp
 *********************************************************************/
 
