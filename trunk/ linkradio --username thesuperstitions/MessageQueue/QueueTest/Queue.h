@@ -18,22 +18,15 @@
 
 #include <ctime>
 
-#ifdef WIN32
-	#include <Windows.h>
-	struct timespec
-	{
-		time_t tv_sec; //< seconds
-		long   tv_nsec; //< nanoseconds
-	};
-#endif
-
         //## class Queue
-        class Queue
+  class Queue : public QObject
         {
           Q_OBJECT
   
           ////    Constructors and destructors    ////
           public :
+            Queue();
+
             //## operation Queue()
             virtual ~Queue();
 
@@ -41,7 +34,7 @@
           public :
             //## operation addMessage(FederateMessage*)
             virtual void addMessage(void* message);
-            virtual void* getMessage(unsigned int timeoutSecs, unsigned long int timeoutNanoSecs);
+            virtual void* getMessage(unsigned int timeoutSecs, unsigned long int timeoutMilliSecs);
 
 
           ////    Additional operations    ////
@@ -69,9 +62,10 @@
 
           ////    Attributes    ////
           protected :
-            boost::timed_mutex        myMutex;		//## attribute myMutex
-            //boost::condition_variable myCondition;
-            //bool                      myDataReady;
+            boost::timed_mutex  myMutex;		//## attribute myMutex
+            bool                exitFlag;
+
+            void LogMessage(QString Msg);
 
           ////    Relations and components    ////
           protected :

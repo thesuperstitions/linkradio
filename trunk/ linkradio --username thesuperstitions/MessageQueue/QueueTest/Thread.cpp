@@ -59,8 +59,11 @@ void Thread::start()
 void Thread::stop() 
 {
 
-	delete theThread;
-	theThread=0;
+  if (theThread != 0)
+  {
+	  delete theThread;
+	  theThread=0;
+  }
 	
 }
 

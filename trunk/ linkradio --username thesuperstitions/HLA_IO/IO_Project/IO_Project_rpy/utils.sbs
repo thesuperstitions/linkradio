@@ -37,12 +37,12 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 	}
 	- _name = "utils";
 	- _lastID = 3;
-	- weakCGTime = 4.14.2008::11:26:47;
+	- weakCGTime = 4.14.2008::11:32:2;
 	- strongCGTime = 4.3.2008::17:15:29;
 	- _defaultComposite = GUID 4393fd1b-4891-4ff5-9de8-20c8248afa9a;
 	- _eventsBaseID = -1;
 	- Classes = { IRPYRawContainer 
-		- size = 6;
+		- size = 4;
 		- value = 
 		{ IClass 
 			- _id = GUID 4393fd1b-4891-4ff5-9de8-20c8248afa9a;
@@ -1758,31 +1758,7 @@ Thread::start();
 			}
 			- _classModifier = Unspecified;
 		}
-		{ IClass 
-			- _id = GUID 4b2e0ea9-bad2-4379-9692-dd985a4c3964;
-			- _myState = 8192;
-			- _name = "ProducerThread";
-			- weakCGTime = 4.14.2008::11:26:29;
-			- strongCGTime = 4.14.2008::11:26:29;
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID 61b9f960-7308-4e1e-adaf-26f91a9fcf2c;
-			- _myState = 8192;
-			- _name = "ConsumerThread";
-			- weakCGTime = 4.14.2008::11:26:57;
-			- strongCGTime = 4.14.2008::11:26:57;
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- _classModifier = Unspecified;
-		}
 	}
-	- _configurationRelatedTime = 4.3.2008::17:15:2;
+	- _configurationRelatedTime = 4.14.2008::11:32:2;
 }
 

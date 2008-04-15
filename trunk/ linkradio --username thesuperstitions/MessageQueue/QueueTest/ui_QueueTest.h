@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'QueueTest.ui'
 **
-** Created: Mon Apr 14 13:21:25 2008
+** Created: Tue Apr 15 10:34:28 2008
 **      by: Qt User Interface Compiler version 4.3.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -40,6 +40,7 @@ public:
     pushButton = new QPushButton(centralwidget);
     pushButton->setObjectName(QString::fromUtf8("pushButton"));
     pushButton->setGeometry(QRect(556, 856, 75, 24));
+    pushButton->setCheckable(true);
     textEdit = new QTextEdit(centralwidget);
     textEdit->setObjectName(QString::fromUtf8("textEdit"));
     textEdit->setGeometry(QRect(0, 0, 1197, 845));

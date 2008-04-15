@@ -4,9 +4,12 @@
 //#include "boost/bind.hpp"
 //#include "boost/date_time/time_duration.hpp"
 #include "boost/thread.hpp"
+#include "boost/date_time/posix_time/posix_time.hpp"
+//#include "boost/date_time/time_duration.hpp"
 #include <boost/thread/xtime.hpp>
 #include <stdio.h>
 #include <time.h>
+#include "Sleep.h"
 
 //---------------------------------------------------------------------------
 
@@ -14,20 +17,37 @@
 
 //---------------------------------------------------------------------------
 
+
+        Queue::Queue() 
+        {
+          exitFlag = false;
+        }
 
         
-        Queue::~Queue() {
+        Queue::~Queue() 
+        {
+//            char msg[100];
+
+//            addMessage((void*)&msg);
+            exitFlag = true;
+
             cleanUpRelations();
         }
         
         void Queue::addMessage(void* message)
         {
             //#[ operation addMessage(void*)
+            QString s;
+
+            if (exitFlag == true)
+              return;
+
             try
             {
               myMutex.lock();
 
               this->addItsMessage(message);
+              //LogMessage(s.sprintf("Queue::addMessage - Message Added To Queue. Ptr=%p", message));
               myMutex.unlock();
             }
             catch (...)
@@ -38,58 +58,60 @@
             //#]
         }
 
-        void* Queue::getMessage(unsigned int timeoutSecs, unsigned long int timeoutNanoSecs)
+        void* Queue::getMessage(unsigned int timeoutSecs, unsigned long int timeoutMilliSecs)
         {
-          void* m_Ptr;
-          boost::condition c; 
-          boost::xtime xt;
-          boost::xtime_get(&xt,boost::TIME_UTC);
-          xt.sec += timeoutSecs;
-          xt.nsec += timeoutNanoSecs;
-          //boost::system_time xt = boost::get_system_time()+boost::posix_time::nanoseconds(timeoutNanoSecs);
+          QString s;
 
-//          boost::timed_mutex::scoped_lock lock(myMutex);
+          void* m_Ptr = NULL;
 
-//          boost::date_time::time_duration td(0, 0, timeoutSecs + nanoseconds(timeoutNanoSecs); 
-
-          boost::timed_mutex::scoped_timed_lock lock(myMutex, xt);
-          bool b = lock ? true : false;
-
-          if (b == true)
-          {
-            // Check to see if there's a Message in the list   
-            if (itsMessage.empty() != true)
-            {      
-              // Get the first message in the list.                                  
-              m_Ptr = *itsMessage.begin();  // Get the first Message in the list. 
-
-              // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
-              removeItsMessage(m_Ptr);   // Remove the just-sent Message from the list.
-                
-              // Send the message to the back to the application for delivery.  
-              return(m_Ptr);
-            } 
-            else
-              return(NULL); // The mutex unlocked but no message was in the queue.  Should NOT occur.
-          }
-          else
-          {
-            // mutex timed out
+          if (exitFlag == true)
             return(NULL);
+
+          try
+          {
+            boost::posix_time::time_duration td = boost::posix_time::seconds(timeoutSecs) + boost::posix_time::milliseconds(timeoutMilliSecs); //
+
+            if (myMutex.timed_lock(boost::get_system_time() + td) == true)
+            {
+              //LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Message Available."));
+              // Check to see if there's a Message in the list   
+              if (itsMessage.empty() != true)
+              {      
+                // Get the first message in the list.                                  
+                m_Ptr = *itsMessage.begin();  // Get the first Message in the list. 
+
+                // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
+                removeItsMessage(m_Ptr);   // Remove the just-sent Message from the list.
+
+                //LogMessage(s.sprintf("Queue::getMessage - Message Being Returned To Application.  Ptr=%p", m_Ptr));
+              } 
+            }
+            else
+            {
+              // mutex timed out
+              //LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Timeout."));
+            }
           }
+          catch (...)
+          {
+            //LogMessage(s.sprintf("Queue::getMessage - EXCEPTION"));
+          };
+
+          return(m_Ptr);
         }
 
-        QString* Queue::LogMessage(QString* Msg)
+        void Queue::LogMessage(QString Msg)
         {
-          QString s = *Msg;
+          QString s;
 
-          char        timedate[300];
           time_t      t;
           struct tm*  TS;
   
           t = time(NULL);
           TS = gmtime( &t );
-          Msg->sprintf("%02u:%02u:%02u %02u/%02u/%4u - %s", TS->tm_hour, TS->tm_min, TS->tm_sec, TS->tm_mon, TS->tm_mday, TS->tm_year+1900, s.c_string());
+          s.sprintf("%02u:%02u:%02u %02u/%02u/%4u - ", TS->tm_hour, TS->tm_min, TS->tm_sec, TS->tm_mon, TS->tm_mday, TS->tm_year+1900);
+          s += Msg + " : ";
+          this->OnLogText(Msg);
         }
 
         

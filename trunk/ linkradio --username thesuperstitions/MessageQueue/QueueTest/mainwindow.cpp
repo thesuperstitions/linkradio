@@ -8,10 +8,12 @@
 #include <QDesktopWidget>
 #include <QTextStream>
 #include "mainwindow.h"
+#include "Queue.h"
+#include "Sleep.h"
 
 //****************************************************************************************************************************
 
-MainWindow::MainWindow(QApplication* ThisApp)
+MainWindow::MainWindow(QApplication* ThisApp) : consumerThread(&queue), producerThread(&queue)
 {
   try
   {
@@ -33,7 +35,7 @@ MainWindow::MainWindow(QApplication* ThisApp)
 
   QObject::connect(pushButton, SIGNAL(clicked(bool)), this, SLOT(ProcessDataClicked(bool)));
 
-  textEdit->append("DEBUG:MainWindow::MainWindow - Link Radio DONE Initializing GUI");
+  textEdit->append("DEBUG:MainWindow::MainWindow - DONE Initializing GUI");
 
   // sets the minimum timer resolution, in milliseconds, for an application or device driver.
 #ifdef WIN32
@@ -56,34 +58,37 @@ void MainWindow::ProcessDataClicked(bool checked)
     textEdit->append("DEBUG:MainWindow::ProcessDataClicked - User Clicked \"Start Program\" Button");
     pushButton->setText(QApplication::translate("MainWindow", "Stop", 0, QApplication::UnicodeUTF8));
 
-    queue          = new Queue();
+//    queue          = new Queue();
 
-    consumerThread = new ConsumerThread(queue);
-    consumerThread->start();
+    //consumerThread = new ConsumerThread(&queue);
+    consumerThread.start();
 
-    producerThread = new ProducerThread(queue);
-    producerThread->start();
+    //producerThread = new ProducerThread(queue);
+    producerThread.start();
 
 
-    QObject::connect(queue, SIGNAL(OnLogText(QString)), this, SLOT(append(QString)));
+    QObject::connect(&queue, SIGNAL(OnLogText(QString)), textEdit, SLOT(append(QString)));
   }
   else
   {
     textEdit->append("DEBUG:MainWindow::ProcessDataClicked - User Clicked \"Stop Processing\" Button");
     pushButton->setText(QApplication::translate("MainWindow", "Start", 0, QApplication::UnicodeUTF8));
 
-    consumerThread->ConsumerThread::Thread::stop();
-    delete consumerThread;
+    consumerThread.stop();
 
-    producerThread->stop();
-    delete producerThread;
+    producerThread.stop();
 
-    delete queue;
+//    framework::utils::Sleep::sleep(1, 0);
+
+    //delete producerThread;
+
+//    delete queue;
+//    delete consumerThread;
   }
   }
   catch(...)
   {
-    textEdit->append("DEBUG:MainWindow::ProcessDataClicked - EXCEPTION");
+    //textEdit->append("DEBUG:MainWindow::ProcessDataClicked - EXCEPTION");
   }
 }
 

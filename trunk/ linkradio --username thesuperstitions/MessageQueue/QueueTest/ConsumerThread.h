@@ -30,14 +30,21 @@
 class ConsumerThread  : public Thread
 {
   ////    Constructors and destructors    ////
-  public :         
+  public :       
+    Queue* myQueue;
+
     //## auto_generated 
     ConsumerThread(Queue* queue);
             
     //## auto_generated 
     ~ConsumerThread();
 
+  	virtual void stop();
+
 	  virtual void threadOperation();
+
+  protected:
+    bool exitFlag;
 };
 
 

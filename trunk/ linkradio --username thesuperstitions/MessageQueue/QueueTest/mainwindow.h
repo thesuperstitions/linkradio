@@ -24,10 +24,10 @@ protected:
   QSettings*     AppSettings;
   QApplication*  TheApp;
   QDir*          Directory;
-  Queue*         queue;
+  Queue          queue;
 
-  ProducerThread* producerThread;
-  ConsumerThread* consumerThread;
+  ProducerThread  producerThread;
+  ConsumerThread  consumerThread;
 
 protected slots:
     void ProcessDataClicked(bool checked);

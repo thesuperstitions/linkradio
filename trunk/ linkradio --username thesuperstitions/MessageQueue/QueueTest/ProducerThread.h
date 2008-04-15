@@ -32,6 +32,7 @@ class ProducerThread  : public Thread
 {             
   ////    Constructors and destructors    ////
   public :
+    Queue* myQueue;
             
     //## auto_generated 
     ProducerThread(Queue* queue);
