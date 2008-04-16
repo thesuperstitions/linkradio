@@ -40,6 +40,13 @@ struct MessageStruct
   unsigned char MsgBody[30];
 };
 
+void ConsumerThread::start() 
+{
+  exitFlag = false;
+
+  Thread::start();	
+}
+
 void ConsumerThread::stop() 
 {
   exitFlag = true;

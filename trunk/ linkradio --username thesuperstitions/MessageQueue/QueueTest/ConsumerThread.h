@@ -39,6 +39,7 @@ class ConsumerThread  : public Thread
     //## auto_generated 
     ~ConsumerThread();
 
+    virtual void start();
   	virtual void stop();
 
 	  virtual void threadOperation();

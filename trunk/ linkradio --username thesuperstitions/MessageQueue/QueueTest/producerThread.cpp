@@ -23,10 +23,13 @@ const static int NANOSECONDS_PER_MILLISECOND=1000*1000;
 ProducerThread::ProducerThread(Queue* queue) 
 {
   myQueue = queue;
+  exitFlag = false;
 }
         
 ProducerThread::~ProducerThread() 
 {
+  exitFlag = true;
+  stop();
 }
 
 struct MessageStruct
@@ -35,21 +38,35 @@ struct MessageStruct
   unsigned char MsgBody[30];
 };
 
+void ProducerThread::start() 
+{
+  exitFlag = false;
+
+  Thread::start();	
+}
+
+void ProducerThread::stop() 
+{
+  exitFlag = true;
+
+  Thread::stop();	
+}
+
         
 void ProducerThread::threadOperation()
 {
   MessageStruct* msg;
   unsigned long msgCount = 0;
 
-//  while(true)
-//  {
+  while(exitFlag == false)
+  {
     msg = new MessageStruct;
     msg->MsgNumber = msgCount++;
 
-//    myQueue->addMessage((void*)msg);
+    myQueue->addMessage((void*)msg);
 
     framework::utils::Sleep::sleep(1, 0);
-//  };
+  };
 }
 
 /*********************************************************************

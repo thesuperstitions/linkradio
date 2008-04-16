@@ -41,6 +41,12 @@ class ProducerThread  : public Thread
     ~ProducerThread();
 
 	  virtual void threadOperation();
+
+    virtual void start();
+  	virtual void stop();
+
+  protected:
+    bool exitFlag;
 };
 
 

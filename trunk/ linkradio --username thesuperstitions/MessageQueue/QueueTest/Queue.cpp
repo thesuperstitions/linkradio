@@ -1,11 +1,8 @@
 //---------------------------------------------------------------------------
 
 #include "Queue.h"
-//#include "boost/bind.hpp"
-//#include "boost/date_time/time_duration.hpp"
 #include "boost/thread.hpp"
 #include "boost/date_time/posix_time/posix_time.hpp"
-//#include "boost/date_time/time_duration.hpp"
 #include <boost/thread/xtime.hpp>
 #include <stdio.h>
 #include <time.h>
@@ -26,10 +23,8 @@
         
         Queue::~Queue() 
         {
-//            char msg[100];
-
-//            addMessage((void*)&msg);
             exitFlag = true;
+            myMutex.unlock();  // Wake "getMessage".
 
             cleanUpRelations();
         }
@@ -44,15 +39,17 @@
 
             try
             {
-              myMutex.lock();
+              //boost::mutex::scoped_lock myDataAccessLock;
+              boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
 
               this->addItsMessage(message);
-              //LogMessage(s.sprintf("Queue::addMessage - Message Added To Queue. Ptr=%p", message));
-              myMutex.unlock();
+              myMutex.unlock();  // Wake "getMessage".
+
+              LogMessage(s.sprintf("Queue::addMessage - Message Added To Queue. Ptr=%p", message));
             }
             catch (...)
             {
-              myMutex.unlock();
+//              myMutex.unlock();
             };
 
             //#]
@@ -73,23 +70,28 @@
 
             if (myMutex.timed_lock(boost::get_system_time() + td) == true)
             {
-              //LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Message Available."));
-              // Check to see if there's a Message in the list   
-              if (itsMessage.empty() != true)
-              {      
-                // Get the first message in the list.                                  
-                m_Ptr = *itsMessage.begin();  // Get the first Message in the list. 
+              LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Message Available."));
 
-                // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
-                removeItsMessage(m_Ptr);   // Remove the just-sent Message from the list.
+              { // Start of scope
+                boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
 
-                //LogMessage(s.sprintf("Queue::getMessage - Message Being Returned To Application.  Ptr=%p", m_Ptr));
-              } 
+                // Check to see if there's a Message in the list   
+                if (itsMessage.empty() != true)
+                {      
+                  // Get the first message in the list.                                  
+                  m_Ptr = *itsMessage.begin();  // Get the first Message in the list. 
+  
+                  // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
+                  removeItsMessage(m_Ptr);   // Remove the just-sent Message from the list.
+
+                  LogMessage(s.sprintf("Queue::getMessage - Message Being Returned To Application.  Ptr=%p", m_Ptr));
+                }
+              } // End of Scope.
             }
             else
             {
               // mutex timed out
-              //LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Timeout."));
+              LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Timeout."));
             }
           }
           catch (...)

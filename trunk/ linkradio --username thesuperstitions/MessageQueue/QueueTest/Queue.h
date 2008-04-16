@@ -59,11 +59,12 @@
             //## auto_generated
             void cleanUpRelations();
 
-
           ////    Attributes    ////
           protected :
-            boost::timed_mutex  myMutex;		//## attribute myMutex
-            bool                exitFlag;
+
+            boost::timed_mutex        myMutex;		//## attribute myMutex
+            boost::mutex              myDataAccessMutex;
+            bool                      exitFlag;
 
             void LogMessage(QString Msg);
 
