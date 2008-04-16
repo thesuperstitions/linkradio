@@ -15,6 +15,12 @@
 //---------------------------------------------------------------------------
 
 
+struct MessageStruct
+{
+  unsigned long MsgNumber;
+  unsigned char MsgBody[30];
+};
+
         Queue::Queue() 
         {
           exitFlag = false;
@@ -39,16 +45,21 @@
 
             try
             {
-              //boost::mutex::scoped_lock myDataAccessLock;
-              boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
+              { // Start of Scope.
+                // Get the mutex just long enough to add the message to the queue.
+                boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
 
-              this->addItsMessage(message);
+//MessageStruct* msg = (MessageStruct*) message;
+//LogMessage(s.sprintf("Queue::addMessage - Message Added To Queue. Ptr=%p, MsgNumber=%u", message, msg->MsgNumber));
+
+                this->addItsMessage(message);
+              } // End of Scope.
+
               myMutex.unlock();  // Wake "getMessage".
-
-              LogMessage(s.sprintf("Queue::addMessage - Message Added To Queue. Ptr=%p", message));
             }
             catch (...)
             {
+              //LogMessage(s.sprintf("Queue::addMessage -EXCEPTION"));
 //              myMutex.unlock();
             };
 
@@ -70,7 +81,7 @@
 
             if (myMutex.timed_lock(boost::get_system_time() + td) == true)
             {
-              LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Message Available."));
+              //LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Message Available."));
 
               { // Start of scope
                 boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
@@ -83,15 +94,16 @@
   
                   // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
                   removeItsMessage(m_Ptr);   // Remove the just-sent Message from the list.
+//MessageStruct* msg = (MessageStruct*) m_Ptr;
 
-                  LogMessage(s.sprintf("Queue::getMessage - Message Being Returned To Application.  Ptr=%p", m_Ptr));
+                  //LogMessage(s.sprintf("Queue::getMessage - Message Being Returned To Application.  Ptr=%p, MsgNumber=%u", m_Ptr, msg->MsgNumber));
                 }
               } // End of Scope.
             }
             else
             {
               // mutex timed out
-              LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Timeout."));
+              //LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Timeout."));
             }
           }
           catch (...)
@@ -113,7 +125,7 @@
           TS = gmtime( &t );
           s.sprintf("%02u:%02u:%02u %02u/%02u/%4u - ", TS->tm_hour, TS->tm_min, TS->tm_sec, TS->tm_mon, TS->tm_mday, TS->tm_year+1900);
           s += Msg + " : ";
-          this->OnLogText(Msg);
+          this->OnLogText(s);
         }
 
         

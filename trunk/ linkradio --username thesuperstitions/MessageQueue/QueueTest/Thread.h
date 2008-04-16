@@ -68,9 +68,6 @@ protected:
 	 */
 	void yield();
 	
-	
-	
-private:
 
 	/**
 	 * Returns a refernce to the boost::thread object.
@@ -79,6 +76,9 @@ private:
 	 * for a subclass to have direct access to the thread.
 	 */
 	boost::thread& getThread() {return *theThread;}
+	
+	
+private:
 
 	
 	boost::thread* theThread;    //< Pointer to the actual thread object.

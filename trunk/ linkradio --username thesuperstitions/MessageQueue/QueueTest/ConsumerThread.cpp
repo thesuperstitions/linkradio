@@ -10,9 +10,6 @@
 
 #include "ConsumerThread.h"
 
-const static int MILLISECONDS_PER_SECOND=1000;
-const static int NANOSECONDS_PER_MILLISECOND=1000*1000;
-
 //----------------------------------------------------------------------------
 // ConsumerThread.cpp                                                                  
 //----------------------------------------------------------------------------
@@ -20,6 +17,12 @@ const static int NANOSECONDS_PER_MILLISECOND=1000*1000;
 //## package Framework::utils 
 
 //## class ConsumerThread 
+
+struct MessageStruct
+{
+  unsigned long MsgNumber;
+  unsigned char MsgBody[30];
+};
 
         
 ConsumerThread::ConsumerThread(Queue* queue)
@@ -33,12 +36,6 @@ ConsumerThread::~ConsumerThread()
   exitFlag = true;
   stop();
 }
-
-struct MessageStruct
-{
-  unsigned long MsgNumber;
-  unsigned char MsgBody[30];
-};
 
 void ConsumerThread::start() 
 {
@@ -56,15 +53,18 @@ void ConsumerThread::stop()
         
 void ConsumerThread::threadOperation()
 {
+  QString s;
   MessageStruct* msg;
   unsigned long msgCount = 0;
 
   while(exitFlag == false)
   {
-    msg = (MessageStruct*)myQueue->getMessage(0, 500);
+    msg = (MessageStruct*)myQueue->getMessage(0, 100);
     if (msg != NULL)
     {
       msgCount = msg->MsgNumber;
+      if ((msgCount % 100000) == 0)
+        myQueue->LogMessage(s.sprintf("ConsumerThread::threadOperation - MsgNumber=%u", msg->MsgNumber));
 
       delete msg;
     }

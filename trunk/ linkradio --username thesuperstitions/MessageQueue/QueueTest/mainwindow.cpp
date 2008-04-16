@@ -13,7 +13,7 @@
 
 //****************************************************************************************************************************
 
-MainWindow::MainWindow(QApplication* ThisApp) : consumerThread(&queue), producerThread(&queue)
+MainWindow::MainWindow(QApplication* ThisApp)/* : consumerThread(&queue), producerThread(&queue)*/
 {
   try
   {
@@ -60,11 +60,11 @@ void MainWindow::ProcessDataClicked(bool checked)
 
 //    queue          = new Queue();
 
-    //consumerThread = new ConsumerThread(&queue);
-    consumerThread.start();
+    consumerThread = new ConsumerThread(&queue);
+    consumerThread->start();
 
-    //producerThread = new ProducerThread(queue);
-    producerThread.start();
+    producerThread = new ProducerThread(&queue);
+    producerThread->start();
 
 
     QObject::connect(&queue, SIGNAL(OnLogText(QString)), textEdit, SLOT(append(QString)));
@@ -74,21 +74,22 @@ void MainWindow::ProcessDataClicked(bool checked)
     textEdit->append("DEBUG:MainWindow::ProcessDataClicked - User Clicked \"Stop Processing\" Button");
     pushButton->setText(QApplication::translate("MainWindow", "Start", 0, QApplication::UnicodeUTF8));
 
-    consumerThread.stop();
+    consumerThread->stop();
 
-    producerThread.stop();
+    producerThread->stop();
 
 //    framework::utils::Sleep::sleep(1, 0);
 
-    //delete producerThread;
+    delete producerThread;
 
 //    delete queue;
-//    delete consumerThread;
+    delete consumerThread;
+    QObject::disconnect(&queue, SIGNAL(OnLogText(QString)), textEdit, SLOT(append(QString)));
   }
   }
   catch(...)
   {
-    //textEdit->append("DEBUG:MainWindow::ProcessDataClicked - EXCEPTION");
+    textEdit->append("DEBUG:MainWindow::ProcessDataClicked - EXCEPTION");
   }
 }
 

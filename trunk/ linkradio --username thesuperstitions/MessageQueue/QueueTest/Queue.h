@@ -36,6 +36,8 @@
             virtual void addMessage(void* message);
             virtual void* getMessage(unsigned int timeoutSecs, unsigned long int timeoutMilliSecs);
 
+            void LogMessage(QString Msg);
+
 
           ////    Additional operations    ////
           public :
@@ -66,14 +68,13 @@
             boost::mutex              myDataAccessMutex;
             bool                      exitFlag;
 
-            void LogMessage(QString Msg);
-
           ////    Relations and components    ////
           protected :
             std::vector<void*> itsMessage;		//## link itsMessage
 
-          signals:
-            void OnLogText(QString);
+          public :
+            signals:
+              void OnLogText(QString);
         };
 
 

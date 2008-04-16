@@ -14,11 +14,19 @@
 const static int MILLISECONDS_PER_SECOND=1000;
 const static int NANOSECONDS_PER_MILLISECOND=1000*1000;
 
+static unsigned long msgCount = 0;
+
 //----------------------------------------------------------------------------
 // ProducerThread.cpp                                                                  
 //----------------------------------------------------------------------------
 
 //## class ProducerThread 
+
+struct MessageStruct
+{
+  unsigned long MsgNumber;
+  unsigned char MsgBody[30];
+};
 
 ProducerThread::ProducerThread(Queue* queue) 
 {
@@ -31,12 +39,6 @@ ProducerThread::~ProducerThread()
   exitFlag = true;
   stop();
 }
-
-struct MessageStruct
-{
-  unsigned long MsgNumber;
-  unsigned char MsgBody[30];
-};
 
 void ProducerThread::start() 
 {
@@ -56,7 +58,6 @@ void ProducerThread::stop()
 void ProducerThread::threadOperation()
 {
   MessageStruct* msg;
-  unsigned long msgCount = 0;
 
   while(exitFlag == false)
   {
@@ -65,7 +66,7 @@ void ProducerThread::threadOperation()
 
     myQueue->addMessage((void*)msg);
 
-    framework::utils::Sleep::sleep(1, 0);
+//    framework::utils::Sleep::sleep(0, 50*NANOSECONDS_PER_MILLISECOND);
   };
 }
 
