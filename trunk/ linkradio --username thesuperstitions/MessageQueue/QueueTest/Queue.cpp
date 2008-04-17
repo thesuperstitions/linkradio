@@ -6,6 +6,7 @@
 #include <boost/thread/xtime.hpp>
 #include <stdio.h>
 #include <time.h>
+#include <sys\timeb.h>
 #include "Sleep.h"
 
 //---------------------------------------------------------------------------
@@ -52,14 +53,14 @@ struct MessageStruct
 //MessageStruct* msg = (MessageStruct*) message;
 //LogMessage(s.sprintf("Queue::addMessage - Message Added To Queue. Ptr=%p, MsgNumber=%u", message, msg->MsgNumber));
 
-                this->addItsMessage(message);
+                myQueue.push_back(message);
               } // End of Scope.
 
               myMutex.unlock();  // Wake "getMessage".
             }
             catch (...)
             {
-              //LogMessage(s.sprintf("Queue::addMessage -EXCEPTION"));
+              LogMessage(s.sprintf("Queue::addMessage -EXCEPTION"));
 //              myMutex.unlock();
             };
 
@@ -87,13 +88,13 @@ struct MessageStruct
                 boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
 
                 // Check to see if there's a Message in the list   
-                if (itsMessage.empty() != true)
+                if (myQueue.empty() != true)
                 {      
                   // Get the first message in the list.                                  
-                  m_Ptr = *itsMessage.begin();  // Get the first Message in the list. 
+                  m_Ptr = myQueue.front();  // Get the first Message in the list. 
   
                   // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
-                  removeItsMessage(m_Ptr);   // Remove the just-sent Message from the list.
+                  myQueue.pop_front();   // Remove the just-sent Message from the list.
 //MessageStruct* msg = (MessageStruct*) m_Ptr;
 
                   //LogMessage(s.sprintf("Queue::getMessage - Message Being Returned To Application.  Ptr=%p, MsgNumber=%u", m_Ptr, msg->MsgNumber));
@@ -106,7 +107,7 @@ struct MessageStruct
               //LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Timeout."));
             }
           }
-          catch (...)
+          catch(...)
           {
             //LogMessage(s.sprintf("Queue::getMessage - EXCEPTION"));
           };
@@ -116,48 +117,30 @@ struct MessageStruct
 
         void Queue::LogMessage(QString Msg)
         {
-          QString s;
+          QString       s;
+          struct timeb  t;
+//          struct time_t tt;
+          struct tm*    TS;
+          int           Hours, Mins, Secs;
 
-          time_t      t;
-          struct tm*  TS;
+          // Grab the time in secs since 1/1/1970 GMT.
+//          tt = time(NULL);
+          ftime(&t);
+          Secs = t.time % 86400; // 86400 = Seconds/24 hours
+          Hours = Secs / 3600;
+          Secs -= Hours * 3600;
+          Mins = Secs / 60;
+          Secs -= Mins * 60;
   
-          t = time(NULL);
-          TS = gmtime( &t );
-          s.sprintf("%02u:%02u:%02u %02u/%02u/%4u - ", TS->tm_hour, TS->tm_min, TS->tm_sec, TS->tm_mon, TS->tm_mday, TS->tm_year+1900);
+          //TS = gmtime( &tt );
+          s.sprintf("%02u:%02u:%02u.%03u - ", Hours, Mins, Secs, t.millitm);
           s += Msg + " : ";
           this->OnLogText(s);
-        }
-
-        
-        
-        std::vector<void*>::const_iterator Queue::getItsMessage() const
-        {
-            std::vector<void*>::const_iterator iter;
-            iter = itsMessage.begin();
-            return iter;
-        }
-        
-        std::vector<void*>::const_iterator Queue::getItsMessageEnd() const {
-            return itsMessage.end();
-        }
-        
-        void Queue::addItsMessage(void* p_Message) {
-            itsMessage.push_back(p_Message);
-        }
-        
-        void Queue::removeItsMessage(void* p_Message) {
-            std::vector<void*>::iterator pos = std::find(itsMessage.begin(), itsMessage.end(),p_Message);
-            if (pos != itsMessage.end()) {
-            	itsMessage.erase(pos);
-            }
-        }
-        
-        void Queue::clearItsMessage() {
-            itsMessage.clear();
         }
         
         void Queue::cleanUpRelations()
         {
-                itsMessage.clear();
+          while (myQueue.empty() != true)
+            myQueue.pop_front();
         }
 

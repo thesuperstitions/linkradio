@@ -30,8 +30,8 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\FederateIO_HandlerOutputThread.h" 4.3.2008::16:23:59
 	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.cpp" 4.11.2008::11:49:22
 	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.h" 4.11.2008::11:49:22
-	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.cpp" 4.14.2008::11:27:19
-	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.h" 4.14.2008::11:27:19
+	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.cpp" 4.16.2008::15:40:38
+	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.h" 4.16.2008::15:40:38
 	"DefaultComponent\\DefaultConfig\\FederateIO_Thread.cpp" 4.3.2008::16:2:18
 	"DefaultComponent\\DefaultConfig\\FederateIO_Thread.h" 4.3.2008::15:59:7
 	"DefaultComponent\\DefaultConfig\\FederateInterface.cpp" 4.14.2008::11:27:19
@@ -145,7 +145,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"c:\\documents and settings\\rosskw1\\my documents\\svn-google\\hla_io\\io_project\\defaultcomponent\\defaultconfig\\framework.cpp" 2.20.2008::17:39:12
 	
 }
-- size = 32;
+- size = 30;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -226,7 +226,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "IO";
 	- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
 }
-- genTime = 4.14.2008::11:27:20;
+- genTime = 4.16.2008::15:41:55;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "Control.sbs";
@@ -300,15 +300,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.4.2008::13:8:46;
 - hElement = { IHandle 
-	- _m2Class = "IClass";
-	- _filename = "utils.sbs";
-	- _subsystem = "Framework::utils";
-	- _class = "";
-	- _name = "ProducerThread";
-	- _id = GUID 4b2e0ea9-bad2-4379-9692-dd985a4c3964;
-}
-- genTime = 4.14.2008::11:27:20;
-- hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "FrameworkTest.sbs";
 	- _subsystem = "";
@@ -363,15 +354,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.14.2008::11:27:20;
 - hElement = { IHandle 
-	- _m2Class = "IClass";
-	- _filename = "utils.sbs";
-	- _subsystem = "Framework::utils";
-	- _class = "";
-	- _name = "ConsumerThread";
-	- _id = GUID 61b9f960-7308-4e1e-adaf-26f91a9fcf2c;
-}
-- genTime = 4.14.2008::11:27:20;
-- hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "Framework.sbs";
 	- _subsystem = "";
@@ -397,7 +379,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateIO_OutputThread";
 	- _id = GUID c18affa8-09db-417f-b9d0-6123a5a8262e;
 }
-- genTime = 4.14.2008::11:27:20;
+- genTime = 4.16.2008::15:40:38;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "utils.sbs";

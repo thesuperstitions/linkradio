@@ -66,7 +66,10 @@ void ProducerThread::threadOperation()
 
     myQueue->addMessage((void*)msg);
 
-//    framework::utils::Sleep::sleep(0, 50*NANOSECONDS_PER_MILLISECOND);
+    yield();
+
+    //if ((msgCount % 10000) == 0)
+    //  framework::utils::Sleep::sleep(1, 0);
   };
 }
 

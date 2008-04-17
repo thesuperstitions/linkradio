@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'QueueTest.ui'
 **
-** Created: Tue Apr 15 10:34:28 2008
+** Created: Wed Apr 16 13:10:16 2008
 **      by: Qt User Interface Compiler version 4.3.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -34,7 +34,7 @@ public:
     {
     if (MainWindow->objectName().isEmpty())
         MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-    MainWindow->resize(1176, 936);
+    MainWindow->resize(1176, 920);
     centralwidget = new QWidget(MainWindow);
     centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
     pushButton = new QPushButton(centralwidget);
@@ -44,6 +44,7 @@ public:
     textEdit = new QTextEdit(centralwidget);
     textEdit->setObjectName(QString::fromUtf8("textEdit"));
     textEdit->setGeometry(QRect(0, 0, 1197, 845));
+    textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     MainWindow->setCentralWidget(centralwidget);
     menubar = new QMenuBar(MainWindow);
     menubar->setObjectName(QString::fromUtf8("menubar"));

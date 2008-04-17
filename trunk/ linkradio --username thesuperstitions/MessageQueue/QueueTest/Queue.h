@@ -38,24 +38,6 @@
 
             void LogMessage(QString Msg);
 
-
-          ////    Additional operations    ////
-          public :
-            //## auto_generated
-            std::vector<void*>::const_iterator getItsMessage() const;
-
-            //## auto_generated
-            std::vector<void*>::const_iterator getItsMessageEnd() const;
-
-            //## auto_generated
-            void addItsMessage(void* p_Message);
-
-            //## auto_generated
-            void removeItsMessage(void* p_Message);
-
-            //## auto_generated
-            void clearItsMessage();
-
           protected :
 
             //## auto_generated
@@ -70,7 +52,7 @@
 
           ////    Relations and components    ////
           protected :
-            std::vector<void*> itsMessage;		//## link itsMessage
+            std::list<void*> myQueue;
 
           public :
             signals:

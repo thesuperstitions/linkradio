@@ -58,8 +58,8 @@ File_7=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\Componentize
 File_8=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-APL_Gforge\LinkRadio\LinkRadio\KurtsServerCode\myserver.cpp',0,1,1,1,1,0,0
 
 [Modules]
-Module0=C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h
-Module1=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp
+Module0=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp
+Module1=C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h
 Module2=C:\Program Files\boost\boost_1_35_0\libs\date_time\test\posix_time\testmicrosec_time_clock.cpp
 Module3=C:\Program Files\boost\boost_1_35_0\libs\thread\example\xtime.cpp
 Module4=C:\Program Files\boost\boost_1_35_0\libs\thread\example\thread.cpp
@@ -72,14 +72,14 @@ Module10=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\
 Count=11
 EditWindowCount=1
 
-[C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
 [C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp]
 ModuleType=SourceModule
 FormState=3
+FormOnTop=0
+
+[C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h]
+ModuleType=SourceModule
+FormState=0
 FormOnTop=0
 
 [C:\Program Files\boost\boost_1_35_0\libs\date_time\test\posix_time\testmicrosec_time_clock.cpp]
@@ -127,7 +127,7 @@ ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\ProjectGroup1.bpg]
+[C:\Program Files\Borland\CBuilder4\Projects\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
@@ -160,7 +160,7 @@ BottomPanelSize=37
 BottomPanelClients=MessageView@EditWindow0
 BottomPanelData=000004000000000000000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
 ViewCount=16
-CurrentView=1
+CurrentView=0
 View0=0
 View1=1
 View2=2
@@ -217,8 +217,8 @@ Dockable=1
 
 [View0]
 Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp
-CursorX=43
-CursorY=16
+CursorX=17
+CursorY=8
 TopLine=1
 LeftCol=1
 

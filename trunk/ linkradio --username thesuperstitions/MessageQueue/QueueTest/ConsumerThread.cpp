@@ -63,7 +63,7 @@ void ConsumerThread::threadOperation()
     if (msg != NULL)
     {
       msgCount = msg->MsgNumber;
-      if ((msgCount % 100000) == 0)
+      if ((msgCount % 1000000) == 0)
         myQueue->LogMessage(s.sprintf("ConsumerThread::threadOperation - MsgNumber=%u", msg->MsgNumber));
 
       delete msg;

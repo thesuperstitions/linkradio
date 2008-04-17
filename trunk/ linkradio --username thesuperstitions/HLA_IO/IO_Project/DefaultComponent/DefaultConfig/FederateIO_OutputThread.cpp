@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_OutputThread
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 16, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_OutputThread.cpp
 *********************************************************************/
 
