@@ -62,9 +62,10 @@ void ProducerThread::threadOperation()
     msg = new MessageStruct;
     msg->MsgNumber = msgCount++;
 
-    myQueue->addMessage((void*)msg);
-
-    yield();
+    while (myQueue->addMessage((void*)msg) == false)
+    {
+      yield();
+    };
   };
 }
 

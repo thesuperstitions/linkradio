@@ -40,29 +40,58 @@ previousTime.millitm = 0;
             delete myQueue;
         }
         
-        void Queue::addMessage(void* message)
+        bool Queue::addMessage(void* message)
         {
-            QString s;
-
-            if (exitFlag == true)
-              return;
-
-            try
-            {
-              { // Start of Scope.
-                // Get the mutex just long enough to add the message to the queue.
-                boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
-
+          QString s;
+            
+          if (exitFlag == true)
+            return(false);
+  
+          try
+          {
+            { // Start of Scope.
+              // Get the mutex just long enough to add the message to the queue.
+              boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
+     
+              if (myQueue->full() != true)
+              {
+                //myQueue.push_back(message);
                 myQueue->push_back(message);
-              } // End of Scope.
 
-              myMutex.unlock();  // Wake "getMessage".
-            }
-            catch (...)
-            {
-              LogMessage(s.sprintf("Queue::addMessage -EXCEPTION"), 0);
-            };
+                myMutex.unlock();  // Wake "getMessage".
+
+                return(true); // Message was queued
+              }  // if (myQueue->full() != true)
+              else
+                return (false); // Message was NOT queued.
+            } // End of Scope.
+          }
+          catch (...)
+          {
+            LogMessage(s.sprintf("Queue::addMessage -EXCEPTION"), 0);
+          };
+          return(false);
         }
+
+        void* Queue::CheckForItemsInQueue(void)
+        { // Start of scope for the "scoped_lock" mutex.
+          void* m_Ptr = NULL;
+
+          boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
+
+          // Check to see if there's a Message in the list   
+          if (myQueue->empty() != true)
+          {      
+            // Get the first message in the list.                                  
+            m_Ptr = myQueue->front();  
+
+            // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
+            myQueue->pop_front();   // Remove the just-sent Message from the list.
+          }
+
+          return(m_Ptr);
+        } // End of Scope for the "scoped_lock" mutex.  This unlocks the timed mutex.
+        
 
         void* Queue::getMessage(unsigned int timeoutSecs, unsigned long int timeoutMicroSecs)
         {
@@ -76,6 +105,12 @@ previousTime.millitm = 0;
 
           try
           {
+            // Check to see if there's a message already waiting on the Queue.  If so, we just return it.
+            if ( (m_Ptr = CheckForItemsInQueue()) != NULL)
+              return(m_Ptr);
+
+            // There were no items in the Queue, so now we have to wait for either the queue to be unlocked or the timeout occurs.
+
             // Calculate the duration of the timeout.
             boost::posix_time::time_duration td = boost::posix_time::seconds(timeoutSecs) + boost::posix_time::microseconds(timeoutMicroSecs); //
 
@@ -83,30 +118,12 @@ previousTime.millitm = 0;
             // in the queue), or the timer expires.
             if (myMutex.timed_lock(boost::get_system_time() + td) == true)
             {
-              { // Start of scope for the "scoped_lock" mutex.
-                boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
-
-                // Check to see if there's a Message in the list   
-                if (myQueue->empty() != true)
-                {      
-                  // Get the first message in the list.                                  
-                  m_Ptr = myQueue->front();  
-  
-                  // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
-                  myQueue->pop_front();   // Remove the just-sent Message from the list.
-
-                  //LogMessage(s.sprintf("Queue::getMessage - Message Being Returned To Application.  Ptr=%p, MsgNumber=%u", m_Ptr, msg->MsgNumber));
-                }
-                else
-                {
-                  // This should never get hit...
-                }
-              } // End of Scope for the "scoped_lock" mutex.  This unlocks the timed mutex.
+              return( CheckForItemsInQueue() );
             }
             else
             {
               // mutex timed out
-              //LogMessage(s.sprintf("Queue::getMessage - Mutex Indicates Timeout."));
+              return(m_Ptr);
             }
           }
           catch(...)
@@ -150,7 +167,7 @@ previousTime.millitm = 0;
           }
   
           //TS = gmtime( &tt );
-          s.sprintf("%02u:%02u:%02u.%03u - Delta Time = %12.3f Secs, Iterations/Sec = %12.3f - ", Hours, Mins, Secs, t.millitm, deltaTime, iterationsPerSecond);
+          s.sprintf("%02u:%02u:%02u.%03u - Delta Time = %12.3f Secs, Iterations/Sec = %12.3f, , Current # Items In Queue = %u - ", Hours, Mins, Secs, t.millitm, deltaTime, iterationsPerSecond, this->myQueue->size());
           s += Msg + " : ";
           this->OnLogText(s);
         }

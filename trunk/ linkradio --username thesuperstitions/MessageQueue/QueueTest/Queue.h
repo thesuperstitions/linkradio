@@ -30,12 +30,13 @@
           ////    Operations    ////
           public :
             //## operation addMessage(FederateMessage*)
-            virtual void addMessage(void* message);
+            virtual bool addMessage(void* message);
             virtual void* getMessage(unsigned int timeoutSecs, unsigned long int timeoutMicroSecs);
 
             void LogMessage(QString Msg, double count);
 
           protected :
+            void* Queue::CheckForItemsInQueue(void);
 
           ////    Attributes    ////
           protected :
@@ -47,6 +48,7 @@
           ////    Relations and components    ////
           protected :
             boost::circular_buffer<void*>* myQueue;
+
 
           public :
             signals:
