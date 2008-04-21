@@ -14,15 +14,12 @@
 // ConsumerThread.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework::utils 
-
-//## class ConsumerThread 
-
 struct MessageStruct
 {
   unsigned long MsgNumber;
   unsigned char MsgBody[30];
 };
+
 
         
 ConsumerThread::ConsumerThread(Queue* queue)
@@ -47,6 +44,7 @@ void ConsumerThread::start()
 void ConsumerThread::stop() 
 {
   exitFlag = true;
+  this->Thread::join();
 
   Thread::stop();	
 }
@@ -56,15 +54,24 @@ void ConsumerThread::threadOperation()
   QString s;
   MessageStruct* msg;
   unsigned long msgCount = 0;
+  unsigned long prevMsgCount = 0;
 
   while(exitFlag == false)
   {
-    msg = (MessageStruct*)myQueue->getMessage(0, 100);
+    msg = (MessageStruct*)myQueue->getMessage(1, 0);
     if (msg != NULL)
     {
       msgCount = msg->MsgNumber;
+      if (msgCount != (prevMsgCount+1))
+      {
+        myQueue->LogMessage(s.sprintf("ConsumerThread::threadOperation - PROBLEM!!! - MsgNumber=%u, PreviousMsgNumber=%u", msgCount, prevMsgCount), msgCount);
+        return;
+      }
+
       if ((msgCount % 1000000) == 0)
-        myQueue->LogMessage(s.sprintf("ConsumerThread::threadOperation - MsgNumber=%u", msg->MsgNumber));
+        myQueue->LogMessage(s.sprintf("ConsumerThread::threadOperation - MsgNumber=%u", msgCount), msgCount);
+
+      prevMsgCount++;
 
       delete msg;
     }
@@ -72,6 +79,6 @@ void ConsumerThread::threadOperation()
 }
 
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\ConsumerThread.cpp
+	ConsumerThread.cpp
 *********************************************************************/
 

@@ -11,10 +11,7 @@
 #include "ProducerThread.h"
 #include "Sleep.h"
 
-const static int MILLISECONDS_PER_SECOND=1000;
-const static int NANOSECONDS_PER_MILLISECOND=1000*1000;
-
-static unsigned long msgCount = 0;
+static unsigned long msgCount = 1;
 
 //----------------------------------------------------------------------------
 // ProducerThread.cpp                                                                  
@@ -43,6 +40,7 @@ ProducerThread::~ProducerThread()
 void ProducerThread::start() 
 {
   exitFlag = false;
+  this->Thread::join();
 
   Thread::start();	
 }
@@ -67,9 +65,6 @@ void ProducerThread::threadOperation()
     myQueue->addMessage((void*)msg);
 
     yield();
-
-    //if ((msgCount % 10000) == 0)
-    //  framework::utils::Sleep::sleep(1, 0);
   };
 }
 

@@ -4,19 +4,16 @@
 
 //---------------------------------------------------------------------------
 
-#include <vector>
-#include <iterator>
-// link itsMessage 
-//#include "FederateMessage.h"
-// class FederateIO_HandlerOutputThread 
 #include <QString>
 #include <QObject>
 #include "Thread.h"
 #include "boost/thread/mutex.hpp"
-//#include "boost/thread/locks.hpp"
+#include <boost/circular_buffer.hpp>
 
 
 #include <ctime>
+
+#define MAX_QUEUE_SIZE 262144
 
         //## class Queue
   class Queue : public QObject
@@ -25,7 +22,7 @@
   
           ////    Constructors and destructors    ////
           public :
-            Queue();
+            Queue(unsigned long int numberOfItems = MAX_QUEUE_SIZE);
 
             //## operation Queue()
             virtual ~Queue();
@@ -34,14 +31,11 @@
           public :
             //## operation addMessage(FederateMessage*)
             virtual void addMessage(void* message);
-            virtual void* getMessage(unsigned int timeoutSecs, unsigned long int timeoutMilliSecs);
+            virtual void* getMessage(unsigned int timeoutSecs, unsigned long int timeoutMicroSecs);
 
-            void LogMessage(QString Msg);
+            void LogMessage(QString Msg, double count);
 
           protected :
-
-            //## auto_generated
-            void cleanUpRelations();
 
           ////    Attributes    ////
           protected :
@@ -52,7 +46,7 @@
 
           ////    Relations and components    ////
           protected :
-            std::list<void*> myQueue;
+            boost::circular_buffer<void*>* myQueue;
 
           public :
             signals:
