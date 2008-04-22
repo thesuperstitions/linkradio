@@ -74,8 +74,8 @@ EditWindowCount=1
 
 [C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp]
 ModuleType=SourceModule
-FormState=3
-FormOnTop=0
+FormState=1
+FormOnTop=1
 
 [C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h]
 ModuleType=SourceModule
@@ -215,8 +215,8 @@ Dockable=1
 
 [View0]
 Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp
-CursorX=17
-CursorY=8
+CursorX=34
+CursorY=14
 TopLine=1
 LeftCol=1
 
