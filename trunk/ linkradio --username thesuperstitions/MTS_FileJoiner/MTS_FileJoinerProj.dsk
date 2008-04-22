@@ -4,28 +4,28 @@ Visible=1
 State=2
 Left=0
 Top=0
-Width=1920
-Height=105
-MaxLeft=-1
-MaxTop=-1
-MaxWidth=1928
-MaxHeight=105
-ClientWidth=1920
+Width=1452
+Height=112
+MaxLeft=-4
+MaxTop=-4
+MaxWidth=1448
+MaxHeight=112
+ClientWidth=1440
 ClientHeight=78
 
 [ProjectManager]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=0
-Top=776
-Width=302
-Height=233
+Top=11
+Width=102
+Height=729
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=302
-ClientHeight=233
-TBDockHeight=753
+ClientWidth=102
+ClientHeight=729
+TBDockHeight=729
 LRDockWidth=302
 Dockable=1
 
@@ -35,16 +35,16 @@ Visible=1
 State=0
 Left=0
 Top=11
-Width=302
-Height=750
+Width=259
+Height=729
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=300
-ClientHeight=748
-TBDockHeight=503
+ClientWidth=257
+ClientHeight=727
+TBDockHeight=729
 LRDockWidth=302
 Dockable=1
-SplitPos=138
+SplitPos=131
 
 [Closed Files]
 File_0=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h',0,1,48,95,58,0,0
@@ -59,20 +59,22 @@ File_8=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\M
 File_9=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp',0,1,1,34,14,1,1
 
 [Modules]
-Module0=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
-Count=1
+Module0=C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
+Module1=C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoinerProj.bpr
+Count=2
 EditWindowCount=1
 
-[C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp]
+[C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp]
 ModuleType=SourceModule
 FormState=1
-FormOnTop=0
+FormOnTop=1
 
-[C:\Program Files\Borland\CBuilder4\Projects\ProjectGroup1.bpg]
+[C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoinerProj.bpr]
+ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoinerProj.bpr]
+[C:\Program Files\Borland\CBuilder4\Projects\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
@@ -83,23 +85,23 @@ ClassHierarchy=ClassHierarchy@EditWindow0
 Create=1
 Visible=1
 State=0
-Left=6
-Top=94
-Width=1305
-Height=1078
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=1297
-ClientHeight=1051
+Left=-3
+Top=103
+Width=1142
+Height=769
+MaxLeft=25
+MaxTop=81
+ClientWidth=1134
+ClientHeight=735
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F7265720000000000000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=0
+BottomPanelSize=124
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D657373616765566965770000000000000000000000000000000000FFFFFFFF
+BottomPanelData=000004000000000000000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
 ViewCount=2
-CurrentView=0
+CurrentView=1
 View0=0
 View1=1
 
@@ -111,14 +113,14 @@ FieldListHeigth=121
 Create=1
 Visible=0
 State=0
-Left=374
-Top=-33
+Left=0
+Top=11
 Width=170
-Height=388
+Height=669
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=170
-ClientHeight=388
+ClientHeight=669
 TBDockHeight=388
 LRDockWidth=170
 Dockable=1
@@ -126,32 +128,32 @@ ClassViewDisplayMode=0
 
 [MessageView@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=11
 Top=0
-Width=1286
+Width=1123
 Height=124
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1286
+ClientWidth=1123
 ClientHeight=124
 TBDockHeight=124
 LRDockWidth=443
 Dockable=1
 
 [View0]
-Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
+Module=C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoinerProj.cpp
 CursorX=1
-CursorY=38
-TopLine=31
+CursorY=1
+TopLine=1
 LeftCol=1
 
 [View1]
-Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.h
-CursorX=3
-CursorY=25
-TopLine=1
+Module=C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
+CursorX=1
+CursorY=55
+TopLine=41
 LeftCol=1
 
 [DockHosts]
@@ -159,22 +161,8 @@ DockHostCount=1
 
 [DockSite0]
 DockSiteType=0
-Create=1
-Visible=1
-State=0
-Left=428
-Top=44
-Width=310
-Height=1033
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=302
-ClientHeight=1009
-TBDockHeight=104
-LRDockWidth=201
-Dockable=1
 DockClients=PropertyInspector,ProjectManager
-DockSiteData=0000040000000000F103000000000000012E010000000000000100000000FD0200001100000050726F7065727479496E73706563746F720100000000F10300001200000050726F6A6563744D616E61676572466F726DFFFFFFFF
+DockSiteData=00000400010000001200000050726F6A6563744D616E61676572466F726D030100000000000000E4020000000000000100000000000000001100000050726F7065727479496E73706563746F72FFFFFFFF
 
 [Watches]
 Count=0

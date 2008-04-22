@@ -33,8 +33,10 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
   char              s[500];
   unsigned long int BytesRead = 0;
   unsigned char*    buffer = new unsigned char[SIZE_OF_BUFFER];
+  char              filename[500];
 
   BitBtn1->Enabled = false;
+  BitBtn2->Enabled = false;
 
   if (OpenDialog1->Execute())
   {
@@ -43,34 +45,39 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
       sprintf(s, "Opening Output File (%s)", OpenDialog2->FileName.c_str());
       Memo1->Lines->Add(s);
       Memo1->Lines->Add("");
+      Memo1->Repaint();
 
       FILE* outputFile = fopen(OpenDialog2->FileName.c_str(), "wb");
-
+      
       for (int I = 0; I < OpenDialog1->Files->Count; I ++)
       {
-        sprintf(s, "Opening .mts Video File Segment (%s)", OpenDialog1->Files->Strings[I].c_str());
+        strcpy(filename, OpenDialog1->Files->Strings[I].c_str());
+        sprintf(s, "Opening .mts Video File Segment (%s)", filename);
         Memo1->Lines->Add(s);
         Memo1->Lines->Add("");
+        Memo1->Repaint();
 
         FILE* stream = fopen(OpenDialog1->Files->Strings[I].c_str(), "rb");
         if (stream)
         {
-          while (!feof(stream))
+/*          while (!feof(stream))
           {
-            BytesRead = fread(buffer, SIZE_OF_BUFFER, 1, stream);
+            BytesRead = fread(buffer, 1, SIZE_OF_BUFFER, stream);
             if (BytesRead > 0)
             {
               fwrite(buffer, BytesRead, 1, outputFile);
 
-              sprintf(s, "Wrote %u Bytes To Output File (%s)", OpenDialog1->FileName.c_str());
+              sprintf(s, "Wrote %u Bytes To Output File (%s)", BytesRead, filename);
               Memo1->Lines->Add(s);
               Memo1->Lines->Add("");
+              Memo1->Repaint();
             }
           }
-          sprintf(s, "Closing .mts Video File Segment (%s)", OpenDialog1->Files->Strings[I].c_str());
+          sprintf(s, "Closing .mts Video File Segment (%s)", filename);
           Memo1->Lines->Add(s);
           Memo1->Lines->Add("");
-
+          Memo1->Repaint();
+*/
           fclose(stream);
         }
       } // for (int I = 0; I < OpenDialog1->Files->Count; I ++)
@@ -78,6 +85,14 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
       fclose(outputFile);
     }
   }
+  
   BitBtn1->Enabled = true;
+  BitBtn2->Enabled = true;
 }
 //---------------------------------------------------------------------------
+void __fastcall TForm1::BitBtn2Click(TObject *Sender)
+{
+  Close();  
+}
+//---------------------------------------------------------------------------
+

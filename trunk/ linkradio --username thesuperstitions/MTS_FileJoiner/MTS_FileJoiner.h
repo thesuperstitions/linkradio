@@ -19,7 +19,9 @@ __published:	// IDE-managed Components
   TBitBtn *BitBtn1;
   TMemo *Memo1;
   TOpenDialog *OpenDialog2;
+  TBitBtn *BitBtn2;
   void __fastcall BitBtn1Click(TObject *Sender);
+  void __fastcall BitBtn2Click(TObject *Sender);
 
 private:	// User declarations
   void TForm1::getInputFileList(void);
