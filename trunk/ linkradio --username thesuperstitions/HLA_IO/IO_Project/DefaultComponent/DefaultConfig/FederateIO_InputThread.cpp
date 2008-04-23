@@ -4,20 +4,11 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_InputThread
-//!	Generated Date	: Fri, 11, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_InputThread.cpp
 *********************************************************************/
 
 #include "FederateIO_InputThread.h"
-// dependency Control 
-#include "Control.h"
-// dependency Federate 
-#include "Federate.h"
-#include "FederateIO_Handler.h"
-// dependency PostOffice 
-#include "PostOffice.h"
-// dependency Sleep 
-#include "Sleep.h"
 
 //----------------------------------------------------------------------------
 // FederateIO_InputThread.cpp                                                                  
@@ -30,13 +21,10 @@
 namespace Framework {
     namespace IO {
         
-        
         FederateIO_InputThread::FederateIO_InputThread() {
-            itsFederateIO_Handler = NULL;
         }
         
         FederateIO_InputThread::~FederateIO_InputThread() {
-            cleanUpRelations();
         }
         
         void FederateIO_InputThread::threadOperation() {
@@ -79,46 +67,6 @@ namespace Framework {
             //              Framework::utils::Sleep::sleep(ts);
             };  
             //#]
-        }
-        
-        Framework::IO::FederateIO_Handler* FederateIO_InputThread::getItsFederateIO_Handler() const {
-            return itsFederateIO_Handler;
-        }
-        
-        void FederateIO_InputThread::__setItsFederateIO_Handler(Framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
-            itsFederateIO_Handler = p_FederateIO_Handler;
-        }
-        
-        void FederateIO_InputThread::_setItsFederateIO_Handler(Framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
-            if(itsFederateIO_Handler != NULL)
-                {
-                    itsFederateIO_Handler->__setItsFederateIO_InputThread(NULL);
-                }
-            __setItsFederateIO_Handler(p_FederateIO_Handler);
-        }
-        
-        void FederateIO_InputThread::setItsFederateIO_Handler(Framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
-            if(p_FederateIO_Handler != NULL)
-                {
-                    p_FederateIO_Handler->_setItsFederateIO_InputThread(this);
-                }
-            _setItsFederateIO_Handler(p_FederateIO_Handler);
-        }
-        
-        void FederateIO_InputThread::_clearItsFederateIO_Handler() {
-            itsFederateIO_Handler = NULL;
-        }
-        
-        void FederateIO_InputThread::cleanUpRelations() {
-            if(itsFederateIO_Handler != NULL)
-                {
-                    Framework::IO::FederateIO_InputThread* p_FederateIO_InputThread = itsFederateIO_Handler->getItsFederateIO_InputThread();
-                    if(p_FederateIO_InputThread != NULL)
-                        {
-                            itsFederateIO_Handler->__setItsFederateIO_InputThread(NULL);
-                        }
-                    itsFederateIO_Handler = NULL;
-                }
         }
         
     }

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_OutputThread
-//!	Generated Date	: Wed, 16, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_OutputThread.h
 *********************************************************************/
 
@@ -43,7 +43,6 @@ namespace Framework {
     } 
     
 namespace IO {
-    class FederateIO_Handler;
     class PostOffice;
     
 } 
@@ -92,12 +91,6 @@ namespace Framework {
         public :
             
             //## auto_generated 
-            FederateIO_Handler* getItsFederateIO_Handler() const;
-            
-            //## auto_generated 
-            void setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
-            
-            //## auto_generated 
             std::vector<FederateMessage*>::const_iterator getItsFederateMessage() const;
             
             //## auto_generated 
@@ -114,17 +107,6 @@ namespace Framework {
         
         
         ////    Framework operations    ////
-        public :
-            
-            //## auto_generated 
-            void __setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
-            
-            //## auto_generated 
-            void _setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
-            
-            //## auto_generated 
-            void _clearItsFederateIO_Handler();
-        
         protected :
             
             //## auto_generated 
@@ -139,9 +121,6 @@ namespace Framework {
         
         ////    Relations and components    ////
         protected :
-            
-            FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
-            
             
             std::vector<FederateMessage*> itsFederateMessage;		//## link itsFederateMessage 
             

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO
-//!	Generated Date	: Fri, 4, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\IO.h
 *********************************************************************/
 
@@ -35,8 +35,6 @@ namespace Framework {
         class C_IO_Functions;
         class FederateInterface;
         class FederateIO_Handler;
-        class FederateIO_InputThread;
-        class FederateIO_OutputThread;
         class FederateMessage;
         class HLA_FederateInterface;
         class HLA_PostOffice;

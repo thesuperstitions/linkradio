@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_OutputThread
-//!	Generated Date	: Wed, 16, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_OutputThread.cpp
 *********************************************************************/
 
@@ -13,8 +13,6 @@
 #include "Control.h"
 // dependency Federate 
 #include "Federate.h"
-// link itsFederateIO_Handler 
-#include "FederateIO_Handler.h"
 // dependency PostOffice 
 #include "PostOffice.h"
 // dependency Sleep 
@@ -36,7 +34,6 @@ namespace Framework {
         
         
         FederateIO_OutputThread::FederateIO_OutputThread() {
-            itsFederateIO_Handler = NULL;
         }
         
         FederateIO_OutputThread::~FederateIO_OutputThread() {
@@ -100,34 +97,6 @@ namespace Framework {
             //#]
         }
         
-        Framework::IO::FederateIO_Handler* FederateIO_OutputThread::getItsFederateIO_Handler() const {
-            return itsFederateIO_Handler;
-        }
-        
-        void FederateIO_OutputThread::__setItsFederateIO_Handler(Framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
-            itsFederateIO_Handler = p_FederateIO_Handler;
-        }
-        
-        void FederateIO_OutputThread::_setItsFederateIO_Handler(Framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
-            if(itsFederateIO_Handler != NULL)
-                {
-                    itsFederateIO_Handler->__setItsFederateIO_OutputThread(NULL);
-                }
-            __setItsFederateIO_Handler(p_FederateIO_Handler);
-        }
-        
-        void FederateIO_OutputThread::setItsFederateIO_Handler(Framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
-            if(p_FederateIO_Handler != NULL)
-                {
-                    p_FederateIO_Handler->_setItsFederateIO_OutputThread(this);
-                }
-            _setItsFederateIO_Handler(p_FederateIO_Handler);
-        }
-        
-        void FederateIO_OutputThread::_clearItsFederateIO_Handler() {
-            itsFederateIO_Handler = NULL;
-        }
-        
         std::vector<Framework::IO::FederateMessage*>::const_iterator FederateIO_OutputThread::getItsFederateMessage() const {
             std::vector<Framework::IO::FederateMessage*>::const_iterator iter;
             iter = itsFederateMessage.begin();
@@ -154,15 +123,6 @@ namespace Framework {
         }
         
         void FederateIO_OutputThread::cleanUpRelations() {
-            if(itsFederateIO_Handler != NULL)
-                {
-                    Framework::IO::FederateIO_OutputThread* p_FederateIO_OutputThread = itsFederateIO_Handler->getItsFederateIO_OutputThread();
-                    if(p_FederateIO_OutputThread != NULL)
-                        {
-                            itsFederateIO_Handler->__setItsFederateIO_OutputThread(NULL);
-                        }
-                    itsFederateIO_Handler = NULL;
-                }
             {
                 itsFederateMessage.clear();
             }

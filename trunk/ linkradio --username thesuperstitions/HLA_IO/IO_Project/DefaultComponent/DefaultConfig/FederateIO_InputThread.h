@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_InputThread
-//!	Generated Date	: Fri, 11, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_InputThread.h
 *********************************************************************/
 
@@ -22,33 +22,10 @@
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "IO.h"
-// class FederateIO_InputThread 
-#include "FederateIO_OutputThread.h"
 
 //----------------------------------------------------------------------------
 // FederateIO_InputThread.h                                                                  
 //----------------------------------------------------------------------------
-
-
-namespace Framework {
-    
-    namespace Control {
-        class Federate;
-        
-    } 
-    
-namespace IO {
-    class FederateIO_Handler;
-    class PostOffice;
-    
-} 
-
-namespace utils {
-    class Sleep;
-}
-
-}
-
 
 //## package Framework::IO 
 
@@ -60,7 +37,7 @@ namespace utils {
 namespace Framework {
     namespace IO {
         //## class FederateIO_InputThread 
-        class FederateIO_InputThread : public FederateIO_OutputThread {
+        class FederateIO_InputThread  {
         
         
         ////    Constructors and destructors    ////
@@ -78,41 +55,6 @@ namespace Framework {
             
             //## operation threadOperation() 
             void threadOperation();
-        
-        
-        ////    Additional operations    ////
-        public :
-            
-            //## auto_generated 
-            FederateIO_Handler* getItsFederateIO_Handler() const;
-            
-            //## auto_generated 
-            void setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
-        
-        
-        ////    Framework operations    ////
-        public :
-            
-            //## auto_generated 
-            void __setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
-            
-            //## auto_generated 
-            void _setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
-            
-            //## auto_generated 
-            void _clearItsFederateIO_Handler();
-        
-        protected :
-            
-            //## auto_generated 
-            void cleanUpRelations();
-        
-        
-        ////    Relations and components    ////
-        protected :
-            
-            FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
-            
         
         
         };

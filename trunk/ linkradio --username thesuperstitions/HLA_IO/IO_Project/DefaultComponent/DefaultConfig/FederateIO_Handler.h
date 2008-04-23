@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_Handler
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_Handler.h
 *********************************************************************/
 
@@ -31,8 +31,6 @@
 #include "FederateInterface.h"
 // class FederateIO_Handler 
 #include "IO_Handler.h"
-// class FederateIO_Handler 
-#include "Timer.h"
 
 //----------------------------------------------------------------------------
 // FederateIO_Handler.h                                                                  
@@ -55,7 +53,6 @@ namespace Control {
 
 namespace IO {
     class FederateIO_InputThread;
-    class FederateIO_OutputThread;
     class FederateMessage;
     class PostOffice;
     
@@ -63,11 +60,6 @@ namespace IO {
 
 namespace Control {
     class Serializer;
-    
-} 
-
-namespace utils {
-    class Sleep;
 }
 
 }
@@ -83,7 +75,7 @@ namespace utils {
 namespace Framework {
     namespace IO {
         //## class FederateIO_Handler 
-        class FederateIO_Handler : public IO_Handler, public utils::Timer {
+        class FederateIO_Handler : public IO_Handler {
         
         
         ////    Constructors and destructors    ////
@@ -158,12 +150,6 @@ namespace Framework {
             void setItsFederateIO_InputThread(FederateIO_InputThread* p_FederateIO_InputThread);
             
             //## auto_generated 
-            FederateIO_OutputThread* getItsFederateIO_OutputThread() const;
-            
-            //## auto_generated 
-            void setItsFederateIO_OutputThread(FederateIO_OutputThread* p_FederateIO_OutputThread);
-            
-            //## auto_generated 
             std::map<std::string, FederateInterface*>::const_iterator getItsFederateInterface() const;
             
             //## auto_generated 
@@ -219,15 +205,6 @@ namespace Framework {
             void _clearItsFederateIO_InputThread();
             
             //## auto_generated 
-            void __setItsFederateIO_OutputThread(FederateIO_OutputThread* p_FederateIO_OutputThread);
-            
-            //## auto_generated 
-            void _setItsFederateIO_OutputThread(FederateIO_OutputThread* p_FederateIO_OutputThread);
-            
-            //## auto_generated 
-            void _clearItsFederateIO_OutputThread();
-            
-            //## auto_generated 
             void _clearItsFederateInterface();
             
             //## auto_generated 
@@ -264,9 +241,6 @@ namespace Framework {
             
             
             FederateIO_InputThread* itsFederateIO_InputThread;		//## link itsFederateIO_InputThread 
-            
-            
-            FederateIO_OutputThread* itsFederateIO_OutputThread;		//## link itsFederateIO_OutputThread 
             
             
             std::map<std::string, FederateInterface*> itsFederateInterface;		//## link itsFederateInterface 

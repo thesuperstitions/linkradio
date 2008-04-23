@@ -1,7 +1,7 @@
 I-Logix-RPY-Archive version 8.0.9 * 893629
 
 - m_fileModifyTime = { IRPYRawContainer 
-	- size = 141;
+	- size = 143;
 	- value = "DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\Mutex.h" 4.2.2008::18:41:42
 	"DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\MutexLock.h" 4.3.2008::13:27:8
 	"DefaultComponent\\DefaultConfig\\BoostThreadWrappers\\Thread.cpp" 4.3.2008::13:56:26
@@ -9,7 +9,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\Buffer.cpp" 4.14.2008::11:27:19
 	"DefaultComponent\\DefaultConfig\\Buffer.h" 4.14.2008::11:27:19
 	"DefaultComponent\\DefaultConfig\\C_IO_Functions.cpp" 4.9.2008::13:3:10
-	"DefaultComponent\\DefaultConfig\\C_IO_Functions.h" 4.14.2008::11:27:19
+	"DefaultComponent\\DefaultConfig\\C_IO_Functions.h" 4.22.2008::19:1:28
 	"DefaultComponent\\DefaultConfig\\ConsumerThread.cpp" 4.14.2008::11:26:57
 	"DefaultComponent\\DefaultConfig\\ConsumerThread.h" 4.14.2008::11:26:57
 	"DefaultComponent\\DefaultConfig\\Control.cpp" 4.9.2008::13:3:10
@@ -24,14 +24,14 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\Federate.h" 4.14.2008::11:27:18
 	"DefaultComponent\\DefaultConfig\\FederateDataOutputThread.cpp" 4.3.2008::16:4:18
 	"DefaultComponent\\DefaultConfig\\FederateDataOutputThread.h" 4.3.2008::16:4:18
-	"DefaultComponent\\DefaultConfig\\FederateIO_Handler.cpp" 4.14.2008::11:27:19
-	"DefaultComponent\\DefaultConfig\\FederateIO_Handler.h" 4.14.2008::11:27:19
+	"DefaultComponent\\DefaultConfig\\FederateIO_Handler.cpp" 4.22.2008::18:56:24
+	"DefaultComponent\\DefaultConfig\\FederateIO_Handler.h" 4.22.2008::18:56:24
 	"DefaultComponent\\DefaultConfig\\FederateIO_HandlerOutputThread.cpp" 4.3.2008::16:23:59
 	"DefaultComponent\\DefaultConfig\\FederateIO_HandlerOutputThread.h" 4.3.2008::16:23:59
-	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.cpp" 4.11.2008::11:49:22
-	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.h" 4.11.2008::11:49:22
-	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.cpp" 4.16.2008::15:40:38
-	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.h" 4.16.2008::15:40:38
+	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.cpp" 4.22.2008::18:56:35
+	"DefaultComponent\\DefaultConfig\\FederateIO_InputThread.h" 4.22.2008::18:56:35
+	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.cpp" 4.22.2008::18:56:28
+	"DefaultComponent\\DefaultConfig\\FederateIO_OutputThread.h" 4.22.2008::18:56:28
 	"DefaultComponent\\DefaultConfig\\FederateIO_Thread.cpp" 4.3.2008::16:2:18
 	"DefaultComponent\\DefaultConfig\\FederateIO_Thread.h" 4.3.2008::15:59:7
 	"DefaultComponent\\DefaultConfig\\FederateInterface.cpp" 4.14.2008::11:27:19
@@ -56,8 +56,8 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\HLA_FederateInterface.h" 4.14.2008::11:27:19
 	"DefaultComponent\\DefaultConfig\\HLA_PostOffice.cpp" 4.14.2008::11:27:19
 	"DefaultComponent\\DefaultConfig\\HLA_PostOffice.h" 4.14.2008::11:27:19
-	"DefaultComponent\\DefaultConfig\\IO.cpp" 4.9.2008::13:3:10
-	"DefaultComponent\\DefaultConfig\\IO.h" 4.9.2008::13:3:10
+	"DefaultComponent\\DefaultConfig\\IO.cpp" 4.22.2008::18:56:39
+	"DefaultComponent\\DefaultConfig\\IO.h" 4.22.2008::18:56:39
 	"DefaultComponent\\DefaultConfig\\IO_Handler.cpp" 4.14.2008::11:27:19
 	"DefaultComponent\\DefaultConfig\\IO_Handler.h" 4.14.2008::11:27:19
 	"DefaultComponent\\DefaultConfig\\Message.cpp" 4.14.2008::11:27:19
@@ -72,14 +72,15 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\PostOffice.h" 4.14.2008::11:27:19
 	"DefaultComponent\\DefaultConfig\\ProducerThread.cpp" 4.14.2008::11:26:29
 	"DefaultComponent\\DefaultConfig\\ProducerThread.h" 4.14.2008::11:26:29
+	"DefaultComponent\\DefaultConfig\\Queue.h" 4.22.2008::19:0:3
 	"DefaultComponent\\DefaultConfig\\RTIAmbassador.cpp" 2.15.2008::18:3:18
 	"DefaultComponent\\DefaultConfig\\RTIAmbassador.h" 2.15.2008::18:3:18
 	"DefaultComponent\\DefaultConfig\\RTI_Ambassador.cpp" 2.15.2008::12:53:21
 	"DefaultComponent\\DefaultConfig\\RTI_Ambassador.h" 2.15.2008::13:27:19
 	"DefaultComponent\\DefaultConfig\\RTIambassador.cpp" 2.15.2008::18:6:59
 	"DefaultComponent\\DefaultConfig\\RTIambassador.h" 2.15.2008::18:6:59
-	"DefaultComponent\\DefaultConfig\\ReverseEngineering.cpp" 4.9.2008::13:3:8
-	"DefaultComponent\\DefaultConfig\\ReverseEngineering.h" 4.9.2008::17:45:47
+	"DefaultComponent\\DefaultConfig\\ReverseEngineering.cpp" 4.22.2008::19:0:45
+	"DefaultComponent\\DefaultConfig\\ReverseEngineering.h" 4.22.2008::19:1:26
 	"DefaultComponent\\DefaultConfig\\RtiAmbassador.cpp" 4.14.2008::11:27:19
 	"DefaultComponent\\DefaultConfig\\RtiAmbassador.h" 4.9.2008::13:3:10
 	"DefaultComponent\\DefaultConfig\\RtiAmbassadorObject.cpp" 2.21.2008::12:11:49
@@ -132,8 +133,9 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"DefaultComponent\\DefaultConfig\\mutex.h" 4.2.2008::18:3:47
 	"DefaultComponent\\DefaultConfig\\ntds_common\\ntdsTypes.h" 4.9.2008::16:44:18
 	"DefaultComponent\\DefaultConfig\\thread\\thread.h" 4.2.2008::13:18:51
-	"DefaultComponent\\DefaultConfig\\utils.cpp" 4.4.2008::13:8:46
-	"DefaultComponent\\DefaultConfig\\utils.h" 4.4.2008::13:8:46
+	"DefaultComponent\\DefaultConfig\\utils.cpp" 4.22.2008::19:0:22
+	"DefaultComponent\\DefaultConfig\\utils.h" 4.22.2008::19:0:22
+	"DefaultComponent\\DefaultConfig\\utils\\Queue.cpp" 4.22.2008::19:0:3
 	"DefaultComponent\\DefaultConfig\\utils\\Sleep.h" 4.3.2008::17:17:15
 	"DefaultComponent\\DefaultConfig\\utils\\Thread.h" 4.2.2008::13:3:21
 	"c:\\Documents and Settings\\rosskw1\\My Documents\\AssemblaSVN\\HLA_IO\\IO_Project\\DefaultComponent\\DefaultConfig\\Framework.h" 2.15.2008::22:0:41
@@ -145,7 +147,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"c:\\documents and settings\\rosskw1\\my documents\\svn-google\\hla_io\\io_project\\defaultcomponent\\defaultconfig\\framework.cpp" 2.20.2008::17:39:12
 	
 }
-- size = 30;
+- size = 32;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -172,7 +174,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "C_IO_Functions";
 	- _id = GUID e2ec2408-a6c3-40e6-b1fd-77ab8aa0dfb4;
 }
-- genTime = 4.14.2008::11:27:20;
+- genTime = 4.22.2008::19:1:28;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";
@@ -191,6 +193,15 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _id = GUID 91c58e0c-f1c9-4e25-a6ee-224e7449ba3f;
 }
 - genTime = 4.14.2008::11:27:20;
+- hElement = { IHandle 
+	- _m2Class = "ISubsystem";
+	- _filename = "ReverseEngineering.sbs";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "ReverseEngineering";
+	- _id = GUID d3a9e209-0b41-4445-83c9-c024676af51a;
+}
+- genTime = 4.22.2008::19:1:26;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -226,7 +237,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "IO";
 	- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
 }
-- genTime = 4.16.2008::15:41:55;
+- genTime = 4.22.2008::18:58:8;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "Control.sbs";
@@ -271,7 +282,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "FederateIO_Handler";
 	- _id = GUID cf4439a3-1222-47bd-9929-fed3599f6153;
 }
-- genTime = 4.14.2008::11:27:20;
+- genTime = 4.22.2008::18:56:24;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";
@@ -298,7 +309,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "utils";
 	- _id = GUID b6acb6f4-06ce-4ebf-ab9b-7a9fb813ea04;
 }
-- genTime = 4.4.2008::13:8:46;
+- genTime = 4.22.2008::19:0:24;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "FrameworkTest.sbs";
@@ -336,14 +347,23 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.14.2008::11:27:20;
 - hElement = { IHandle 
-	- _m2Class = "IClass";
-	- _filename = "IO.sbs";
-	- _subsystem = "Framework::IO";
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
 	- _class = "";
-	- _name = "FederateIO_InputThread";
+	- _name = "";
 	- _id = GUID 08d934c9-5a9e-474f-9c40-0e68cd987029;
 }
-- genTime = 4.14.2008::11:27:20;
+- genTime = 4.22.2008::18:56:35;
+- hElement = { IHandle 
+	- _m2Class = "IClass";
+	- _filename = "utils.sbs";
+	- _subsystem = "Framework::utils";
+	- _class = "";
+	- _name = "Queue";
+	- _id = GUID 9cda78ae-7ab6-4959-b02c-ebda90337266;
+}
+- genTime = 4.22.2008::19:0:3;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -372,14 +392,14 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.14.2008::11:27:20;
 - hElement = { IHandle 
-	- _m2Class = "IClass";
-	- _filename = "IO.sbs";
-	- _subsystem = "Framework::IO";
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
 	- _class = "";
-	- _name = "FederateIO_OutputThread";
+	- _name = "";
 	- _id = GUID c18affa8-09db-417f-b9d0-6123a5a8262e;
 }
-- genTime = 4.16.2008::15:40:38;
+- genTime = 4.22.2008::18:56:28;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "utils.sbs";

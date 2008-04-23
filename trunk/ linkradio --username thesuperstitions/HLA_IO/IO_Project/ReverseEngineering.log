@@ -1,7 +1,14 @@
 
-Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ntds_common\ntdsTypes.h'
+Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.cpp'
+Reverse Engineering include file 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h'
 Adding package 'ReverseEngineering' to project 'IO_Project'. ok.
-Analyzing struct 'device_node' from File: C:\Documents and Settings\rosskw1\My Documents\ntds_common\ntdsTypes.h, Line: 68
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h, Line: 10 #include boost/thread/mutex.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h, Line: 11 #include boost/circular_buffer.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h, Line: 14 #include ctime ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.cpp, Line: 21 #include boost/thread.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.cpp, Line: 22 #include boost/date_time/posix_time/posix_time.hpp ignored--file not found.
+Analyzing class 'Queue' from File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h, Line: 19
+Adding class 'Queue' to package 'ReverseEngineering'. ok.
 
 Reverse Engineering Done. See detailed report in the log file.
 

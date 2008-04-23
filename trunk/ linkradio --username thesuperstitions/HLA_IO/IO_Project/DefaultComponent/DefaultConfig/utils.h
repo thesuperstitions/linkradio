@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::utils
-//!	Generated Date	: Fri, 4, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\utils.h
 *********************************************************************/
 
@@ -31,8 +31,10 @@
 namespace Framework {
     
     namespace utils {
+        class Queue;
         class Sleep;
         class Thread;
+        class Timer;
     }
     
 }
@@ -59,8 +61,12 @@ namespace Framework {
             SSDS_TCP_CEC = 4
 
 
+
         };
         
+        
+        //## attribute MAX_QUEUE_SIZE 
+        #define MAX_QUEUE_SIZE 262144
         
         
     }

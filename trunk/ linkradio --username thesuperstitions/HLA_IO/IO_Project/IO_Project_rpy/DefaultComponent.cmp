@@ -41,7 +41,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		- _name = "Files";
 		- m_path = "";
 		- Elements = { IRPYRawContainer 
-			- size = 67;
+			- size = 68;
 			- value = 
 			{ IHandle 
 				- _m2Class = "";
@@ -249,9 +249,12 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			{ IHandle 
 				- _m2Class = "";
 			}
+			{ IHandle 
+				- _m2Class = "";
+			}
 		}
 		- Files = { IRPYRawContainer 
-			- size = 17;
+			- size = 18;
 			- value = 
 			{ IFolder 
 				- _id = GUID 6b222bf0-02a3-47e2-8f9a-9ccbee0ca1a9;
@@ -651,7 +654,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					- size = 0;
 				}
 				- Files = { IRPYRawContainer 
-					- size = 4;
+					- size = 5;
 					- value = 
 					{ IFolder 
 						- _id = GUID 93c47b59-3274-4a11-baba-ff1c3793dab0;
@@ -802,7 +805,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 						}
 					}
 					{ IFile 
-						- _id = GUID 77ac2e7c-c811-44b2-b499-84606b1d6f9a;
+						- _id = GUID d28420e6-b040-4295-a1b8-4187a419bef7;
 						- _myState = 8192;
 						- _properties = { IPropertyContainer 
 							- Subjects = { IRPYRawContainer 
@@ -844,6 +847,77 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 						- m_type = specFile;
 						- Fragments = { IRPYRawContainer 
 							- size = 0;
+						}
+					}
+					{ IFolder 
+						- _id = GUID 05392436-36b2-4c77-b1bf-989df60c9907;
+						- _myState = 8192;
+						- _name = "date_time";
+						- m_path = "";
+						- Elements = { IRPYRawContainer 
+							- size = 0;
+						}
+						- Files = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IFolder 
+								- _id = GUID 4205ce90-4295-4138-9a37-61f181327b06;
+								- _myState = 8192;
+								- _name = "posix_time";
+								- m_path = "";
+								- Elements = { IRPYRawContainer 
+									- size = 0;
+								}
+								- Files = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IFile 
+										- _id = GUID 612dd229-1be1-43ae-8f04-0904d0675bf2;
+										- _myState = 8192;
+										- _properties = { IPropertyContainer 
+											- Subjects = { IRPYRawContainer 
+												- size = 1;
+												- value = 
+												{ IPropertySubject 
+													- _Name = "CG";
+													- Metaclasses = { IRPYRawContainer 
+														- size = 1;
+														- value = 
+														{ IPropertyMetaclass 
+															- _Name = "File";
+															- Properties = { IRPYRawContainer 
+																- size = 3;
+																- value = 
+																{ IProperty 
+																	- _Name = "AddToMakefile";
+																	- _Value = "False";
+																	- _Type = Bool;
+																}
+																{ IProperty 
+																	- _Name = "Generate";
+																	- _Value = "False";
+																	- _Type = Bool;
+																}
+																{ IProperty 
+																	- _Name = "SpecExtension";
+																	- _Value = ".hpp";
+																	- _Type = String;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										- _name = "posix_time";
+										- m_path = "";
+										- m_type = specFile;
+										- Fragments = { IRPYRawContainer 
+											- size = 0;
+										}
+									}
+								}
+							}
 						}
 					}
 				}
@@ -1417,6 +1491,147 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					}
 				}
 			}
+			{ IFolder 
+				- _id = GUID 2403829a-2416-47fa-9a7f-8beeece1cc42;
+				- _myState = 8192;
+				- _name = "utils";
+				- m_path = "";
+				- Elements = { IRPYRawContainer 
+					- size = 0;
+				}
+				- Files = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IFile 
+						- _id = GUID 75d65bba-7144-4df3-8278-0e2ebe83a025;
+						- _myState = 8192;
+						- _name = "Queue";
+						- Dependencies = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IDependency 
+								- _id = GUID fdbaf961-4f03-4284-bd1d-8b3e8a6c396b;
+								- _myState = 2048;
+								- _properties = { IPropertyContainer 
+									- Subjects = { IRPYRawContainer 
+										- size = 1;
+										- value = 
+										{ IPropertySubject 
+											- _Name = "CG";
+											- Metaclasses = { IRPYRawContainer 
+												- size = 1;
+												- value = 
+												{ IPropertyMetaclass 
+													- _Name = "Dependency";
+													- Properties = { IRPYRawContainer 
+														- size = 1;
+														- value = 
+														{ IProperty 
+															- _Name = "UsageType";
+															- _Value = "Specification";
+															- _Type = Enum;
+															- _ExtraTypeInfo = "Specification,Implementation,Existence";
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								- _name = "thread";
+								- Stereotypes = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IHandle 
+										- _m2Class = "IStereotype";
+										- _filename = "PredefinedTypes.sbs";
+										- _subsystem = "PredefinedTypes";
+										- _class = "";
+										- _name = "Usage";
+										- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+									}
+								}
+								- _dependsOn = { INObjectHandle 
+									- _m2Class = "IFile";
+									- _id = GUID d28420e6-b040-4295-a1b8-4187a419bef7;
+								}
+							}
+							{ IDependency 
+								- _id = GUID fbb5d926-e75c-4dbf-b665-a2c63402d3fd;
+								- _myState = 2048;
+								- _properties = { IPropertyContainer 
+									- Subjects = { IRPYRawContainer 
+										- size = 1;
+										- value = 
+										{ IPropertySubject 
+											- _Name = "CG";
+											- Metaclasses = { IRPYRawContainer 
+												- size = 1;
+												- value = 
+												{ IPropertyMetaclass 
+													- _Name = "Dependency";
+													- Properties = { IRPYRawContainer 
+														- size = 1;
+														- value = 
+														{ IProperty 
+															- _Name = "UsageType";
+															- _Value = "Specification";
+															- _Type = Enum;
+															- _ExtraTypeInfo = "Specification,Implementation,Existence";
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								- _name = "posix_time";
+								- Stereotypes = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IHandle 
+										- _m2Class = "IStereotype";
+										- _filename = "PredefinedTypes.sbs";
+										- _subsystem = "PredefinedTypes";
+										- _class = "";
+										- _name = "Usage";
+										- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+									}
+								}
+								- _dependsOn = { INObjectHandle 
+									- _m2Class = "IFile";
+									- _id = GUID 612dd229-1be1-43ae-8f04-0904d0675bf2;
+								}
+							}
+						}
+						- m_path = "";
+						- m_type = implFile;
+						- Fragments = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IFileFragment 
+								- _id = GUID 38802beb-8064-47fc-aeb8-b6b137cf034f;
+								- _name = "Queue";
+								- m_type = implFragment;
+								- m_text = "";
+								- m_startRow = 29;
+								- m_startCol = 8;
+								- m_subject = { INObjectHandle 
+									- _m2Class = "IClass";
+									- _filename = "utils.sbs";
+									- _subsystem = "Framework::utils";
+									- _class = "";
+									- _name = "Queue";
+									- _id = GUID 9cda78ae-7ab6-4959-b02c-ebda90337266;
+								}
+								- Fragments = { IRPYRawContainer 
+									- size = 0;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	- m_configActive = { ICodeGenConfigInfoHandle 
@@ -1491,7 +1706,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 									- value = 
 									{ IProperty 
 										- _Name = "AnalyzeIncludeFiles";
-										- _Value = "OnlyFromSelected";
+										- _Value = "OnlyLogicalHeader";
 										- _Type = Enum;
 										- _ExtraTypeInfo = "IgnoreIncludes, OnlyLogicalHeader, OnlyFromSelected, AllIncludes";
 									}
@@ -1566,7 +1781,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 									- value = 
 									{ IProperty 
 										- _Name = "Files";
-										- _Value = "C:\\Documents and Settings\\rosskw1\\My Documents\\ntds_common\\ntdsTypes.h";
+										- _Value = "C:\\Documents and Settings\\rosskw1\\My Documents\\ComponentizedCombatSystemFramework\\framework\\utils\\Queue.cpp";
 										- _Type = String;
 									}
 								}
@@ -1740,7 +1955,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID 9d3c6034-4b1d-4f0a-87ad-a34763347834;
 		}
 	}
-	- weakCGTime = 4.9.2008::17:45:15;
-	- strongCGTime = 4.9.2008::17:45:15;
+	- weakCGTime = 4.22.2008::18:58:8;
+	- strongCGTime = 4.22.2008::18:58:8;
 }
 

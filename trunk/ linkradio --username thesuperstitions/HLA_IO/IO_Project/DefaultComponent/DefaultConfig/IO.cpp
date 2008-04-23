@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO
-//!	Generated Date	: Fri, 4, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\IO.cpp
 *********************************************************************/
 
@@ -14,8 +14,6 @@
 #include "C_IO_Functions.h"
 #include "FederateInterface.h"
 #include "FederateIO_Handler.h"
-#include "FederateIO_InputThread.h"
-#include "FederateIO_OutputThread.h"
 #include "FederateMessage.h"
 #include "HLA_FederateInterface.h"
 #include "HLA_PostOffice.h"

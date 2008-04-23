@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_Handler
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Tue, 22, Apr 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_Handler.cpp
 *********************************************************************/
 
@@ -20,14 +20,10 @@
 #include "C_IO_Functions.h"
 // link itsFederateIO_InputThread 
 #include "FederateIO_InputThread.h"
-// link itsFederateIO_OutputThread 
-#include "FederateIO_OutputThread.h"
 // operation passMessageToApplication(FederateMessage*) 
 #include "FederateMessage.h"
 // dependency PostOffice 
 #include "PostOffice.h"
-// dependency Sleep 
-#include "Sleep.h"
 
 //----------------------------------------------------------------------------
 // FederateIO_Handler.cpp                                                                  
@@ -44,7 +40,6 @@ namespace Framework {
         FederateIO_Handler::FederateIO_Handler(FederateFrameworkType frameworkType) : recvMessageActive(false) ,timerExpired(false) ,frameworkType(frameworkType) ,itsFederateInterface() {
             itsFederateMessage = NULL;
             itsFederateInterfaceFactory = NULL;
-            itsFederateIO_OutputThread = NULL;
             itsFederateIO_InputThread = NULL;
             itsFederate = NULL;
             //#[ operation FederateIO_Handler(FederateFrameworkType) 
@@ -66,7 +61,6 @@ namespace Framework {
         FederateIO_Handler::FederateIO_Handler() : recvMessageActive(false) ,timerExpired(false) ,itsFederateInterface() {
             itsFederate = NULL;
             itsFederateIO_InputThread = NULL;
-            itsFederateIO_OutputThread = NULL;
             itsFederateInterfaceFactory = NULL;
             itsFederateMessage = NULL;
         }
@@ -261,34 +255,6 @@ namespace Framework {
             itsFederateIO_InputThread = NULL;
         }
         
-        Framework::IO::FederateIO_OutputThread* FederateIO_Handler::getItsFederateIO_OutputThread() const {
-            return itsFederateIO_OutputThread;
-        }
-        
-        void FederateIO_Handler::__setItsFederateIO_OutputThread(Framework::IO::FederateIO_OutputThread* p_FederateIO_OutputThread) {
-            itsFederateIO_OutputThread = p_FederateIO_OutputThread;
-        }
-        
-        void FederateIO_Handler::_setItsFederateIO_OutputThread(Framework::IO::FederateIO_OutputThread* p_FederateIO_OutputThread) {
-            if(itsFederateIO_OutputThread != NULL)
-                {
-                    itsFederateIO_OutputThread->__setItsFederateIO_Handler(NULL);
-                }
-            __setItsFederateIO_OutputThread(p_FederateIO_OutputThread);
-        }
-        
-        void FederateIO_Handler::setItsFederateIO_OutputThread(Framework::IO::FederateIO_OutputThread* p_FederateIO_OutputThread) {
-            if(p_FederateIO_OutputThread != NULL)
-                {
-                    p_FederateIO_OutputThread->_setItsFederateIO_Handler(this);
-                }
-            _setItsFederateIO_OutputThread(p_FederateIO_OutputThread);
-        }
-        
-        void FederateIO_Handler::_clearItsFederateIO_OutputThread() {
-            itsFederateIO_OutputThread = NULL;
-        }
-        
         std::map<std::string, Framework::IO::FederateInterface*>::const_iterator FederateIO_Handler::getItsFederateInterface() const {
             std::map<std::string, Framework::IO::FederateInterface*>::const_iterator iter;
             iter = itsFederateInterface.begin();
@@ -391,15 +357,6 @@ namespace Framework {
                             itsFederateIO_InputThread->__setItsFederateIO_Handler(NULL);
                         }
                     itsFederateIO_InputThread = NULL;
-                }
-            if(itsFederateIO_OutputThread != NULL)
-                {
-                    Framework::IO::FederateIO_Handler* p_FederateIO_Handler = itsFederateIO_OutputThread->getItsFederateIO_Handler();
-                    if(p_FederateIO_Handler != NULL)
-                        {
-                            itsFederateIO_OutputThread->__setItsFederateIO_Handler(NULL);
-                        }
-                    itsFederateIO_OutputThread = NULL;
                 }
             {
                 std::map<std::string, Framework::IO::FederateInterface*>::const_iterator iter;
