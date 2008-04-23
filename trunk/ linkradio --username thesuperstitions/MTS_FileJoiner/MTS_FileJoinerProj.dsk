@@ -5,27 +5,27 @@ State=2
 Left=0
 Top=0
 Width=1452
-Height=105
-MaxLeft=0
-MaxTop=0
-MaxWidth=1928
-MaxHeight=105
-ClientWidth=1920
+Height=112
+MaxLeft=-4
+MaxTop=-4
+MaxWidth=1448
+MaxHeight=112
+ClientWidth=1440
 ClientHeight=78
 
 [ProjectManager]
 Create=1
-Visible=0
+Visible=1
 State=0
-Left=0
+Left=341
 Top=11
-Width=102
-Height=729
+Width=341
+Height=875
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=102
-ClientHeight=729
-TBDockHeight=729
+ClientWidth=341
+ClientHeight=875
+TBDockHeight=875
 LRDockWidth=302
 Dockable=1
 
@@ -35,16 +35,16 @@ Visible=1
 State=0
 Left=0
 Top=11
-Width=354
-Height=978
+Width=337
+Height=875
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=352
-ClientHeight=976
-TBDockHeight=729
+ClientWidth=335
+ClientHeight=873
+TBDockHeight=875
 LRDockWidth=302
 Dockable=1
-SplitPos=131
+SplitPos=104
 
 [Closed Files]
 File_0=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Sleep.h',0,1,48,95,58,0,0
@@ -59,11 +59,11 @@ File_8=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\M
 File_9=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp',0,1,1,34,14,1,1
 
 [Modules]
-Module0=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
+Module0=C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
 Count=1
 EditWindowCount=1
 
-[C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp]
+[C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
@@ -72,7 +72,7 @@ FormOnTop=0
 FormState=0
 FormOnTop=0
 
-[C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoinerProj.bpr]
+[C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoinerProj.bpr]
 FormState=0
 FormOnTop=0
 
@@ -83,27 +83,26 @@ ClassHierarchy=ClassHierarchy@EditWindow0
 Create=1
 Visible=1
 State=2
-Left=399
-Top=98
-Width=1305
-Height=753
+Left=6
+Top=136
+Width=979
+Height=564
 MaxLeft=-4
-MaxTop=101
-MaxWidth=1928
-MaxHeight=1075
-ClientWidth=1920
-ClientHeight=1048
+MaxTop=138
+MaxWidth=1448
+MaxHeight=732
+ClientWidth=1440
+ClientHeight=698
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F7265720000000000000000000000000000000000FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=139
+BottomPanelSize=52
 BottomPanelClients=MessageView@EditWindow0
 BottomPanelData=000004000000000000000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
-ViewCount=2
+ViewCount=1
 CurrentView=0
 View0=0
-View1=1
 
 [ClassHierarchy@EditWindow0]
 TreeWidth=185
@@ -113,14 +112,14 @@ FieldListHeigth=121
 Create=1
 Visible=0
 State=0
-Left=-19
-Top=-37
+Left=0
+Top=11
 Width=170
-Height=388
+Height=669
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=170
-ClientHeight=388
+ClientHeight=669
 TBDockHeight=388
 LRDockWidth=170
 Dockable=1
@@ -132,28 +131,21 @@ Visible=1
 State=0
 Left=11
 Top=0
-Width=1909
-Height=139
+Width=1429
+Height=52
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1909
-ClientHeight=139
-TBDockHeight=139
+ClientWidth=1429
+ClientHeight=52
+TBDockHeight=52
 LRDockWidth=443
 Dockable=1
 
 [View0]
-Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
-CursorX=3
-CursorY=46
-TopLine=28
-LeftCol=1
-
-[View1]
-Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.h
-CursorX=48
-CursorY=27
-TopLine=1
+Module=C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
+CursorX=132
+CursorY=109
+TopLine=103
 LeftCol=1
 
 [DockHosts]
@@ -164,19 +156,19 @@ DockSiteType=0
 Create=1
 Visible=1
 State=0
-Left=96
-Top=109
-Width=362
-Height=1013
+Left=48
+Top=50
+Width=690
+Height=912
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=354
-ClientHeight=989
+ClientWidth=682
+ClientHeight=886
 TBDockHeight=104
 LRDockWidth=201
 Dockable=1
 DockClients=ProjectManager,PropertyInspector
-DockSiteData=00000400010000001200000050726F6A6563744D616E61676572466F726D030100000000000000E4020000000000000100000000030100001100000050726F7065727479496E73706563746F72FFFFFFFF
+DockSiteData=0000040000000000AA020000000000000276030000000000000100000000550100001100000050726F7065727479496E73706563746F720100000000AA0200001200000050726F6A6563744D616E61676572466F726DFFFFFFFF
 
 [Watches]
 Count=0

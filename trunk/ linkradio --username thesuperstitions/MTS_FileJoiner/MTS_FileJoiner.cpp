@@ -12,7 +12,7 @@ TForm1 *Form1;
 
 //---------------------------------------------------------------------------
 
-#define SIZE_OF_BUFFER 1024*1024
+#define SIZE_OF_BUFFER 1024*1024*10
 
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -26,7 +26,7 @@ void TForm1::GetNextFileName(char* filename)
 {
   char s[500];
   
-  int count = OpenDialog1->Files->Count-1;
+  int count = OpenDialog1->Files->Count;
 
   int index = 0;
 
@@ -50,7 +50,7 @@ void TForm1::GetNextFileName(char* filename)
     }
   }
 
-  for (int I=0; I < count; I++)
+  for (int I=0; I < count-1; I++)
   {
     if (strcmp(OpenDialog1->Files->Strings[index].c_str(), OpenDialog1->Files->Strings[I+1].c_str()) > 0)
     {
@@ -81,6 +81,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
   char              filename[500];
   char              outputfilename[500];
   int               count;
+  double            totalBytesWritten = 0;
 
   BitBtn1->Enabled = false;
   BitBtn2->Enabled = false;
@@ -117,7 +118,9 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
             {
               fwrite(buffer, BytesRead, 1, outputFile);
 
-              sprintf(s, "Wrote %u Bytes To Output File (%s)", BytesRead, outputfilename);
+              totalBytesWritten += BytesRead;
+
+              sprintf(s, "Wrote %10.0f Bytes To Output File (%s)", totalBytesWritten, outputfilename);
               Memo1->Lines->Add(s);
               Memo1->Lines->Add("");
               Memo1->Repaint();
