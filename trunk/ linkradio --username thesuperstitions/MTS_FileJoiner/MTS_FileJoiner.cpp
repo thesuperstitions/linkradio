@@ -81,6 +81,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
   char              outputfilename[500];
   int               count;
   double            totalBytesWritten = 0;
+  unsigned int      Hours, Minutes;
 
   BitBtn1->Enabled = false;
   BitBtn2->Enabled = false;
@@ -113,6 +114,9 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
             BytesRead = fread(buffer, 1, SIZE_OF_BUFFER, stream);
             if (BytesRead > 0)
             {
+              sprintf(s, "Read  %u Bytes From  Input File (%s).", BytesRead, filename);
+              LogMessage(s);
+
               fwrite(buffer, BytesRead, 1, outputFile);
 
               totalBytesWritten += BytesRead;
@@ -136,7 +140,11 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
 
       ftime(&t2);
       TimeDelta = (((t2.time*1000)+t2.millitm) - ((t1.time*1000)+t1.millitm)) / 1000.0;
-      sprintf(s, "Total Elapsed Time To Concatenate Video Files = %8.3f Seconds",  TimeDelta);
+      Hours = TimeDelta/360;
+      TimeDelta -= (Hours*360);
+      Minutes = TimeDelta / 60;
+      TimeDelta -= (Minutes*60);
+      sprintf(s, "Total Elapsed Time To Concatenate Video Files = %02u:%02u:%06.3f",  Hours, Minutes, TimeDelta);
       LogMessage(s);
     }
   }
