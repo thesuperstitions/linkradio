@@ -16,6 +16,7 @@
 //---------------------------------------------------------------------------
 
 static struct timeb previousTime;
+unsigned long int   previousCount = 0;
 
 struct MessageStruct
 {
@@ -139,12 +140,13 @@ previousTime.millitm = 0;
         {
           QString       s;
           struct timeb  t;
-          struct tm*    TS;
           int           Hours, Mins, Secs;
-          double        deltaTime, iterationsPerSecond, secs, milliSecs;
+          unsigned long milliSecs, previousMilliSecs;
+          double        deltaTime, deltaSecs, iterationsPerSecond;
 
           ftime(&t);
-          Secs = t.time % 86400; // 86400 = Seconds/24 hours
+          milliSecs = (t.time * 1000) + t.millitm;
+          Secs = t.time % 86400; // 86400000 = Milli-Seconds/24 hours
           Hours = Secs / 3600;
           Secs -= Hours * 3600;
           Mins = Secs / 60;
@@ -154,20 +156,23 @@ previousTime.millitm = 0;
           {
             previousTime = t;
             deltaTime = 0.0;
+
             iterationsPerSecond = 0.0;
           }
           else
           {
-            secs = (t.time - previousTime.time);
-            secs *= 1000.0;
-            milliSecs = (t.millitm - previousTime.millitm);
-            secs += milliSecs;
-            deltaTime = secs / 1000.0;
-            iterationsPerSecond = count / deltaTime;
-          }
+            previousMilliSecs = (previousTime.time * 1000) + previousTime.millitm;
+            deltaTime = (milliSecs - previousMilliSecs) / 1000.0;
   
+            iterationsPerSecond = (count-previousCount) / deltaTime;
+          }          
+
+          previousTime = t;
+          previousCount = count;
+
           //TS = gmtime( &tt );
-          s.sprintf("%02u:%02u:%02u.%03u - Delta Time = %12.3f Secs, Iterations/Sec = %12.3f, , Current # Items In Queue = %u - ", Hours, Mins, Secs, t.millitm, deltaTime, iterationsPerSecond, this->myQueue->size());
+          s.sprintf("%02u:%02u:%02u.%03u - Delta Time = %12.3f Secs, Iterations/Sec = %12.3f, , Current # Items In Queue = %u - ", 
+            Hours, Mins, Secs, t.millitm, deltaTime, iterationsPerSecond, this->myQueue->size());
           s += Msg + " : ";
           this->OnLogText(s);
         }

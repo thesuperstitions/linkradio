@@ -35,15 +35,16 @@ USERDEFINES =
 SYSDEFINES = _RTLDLL;NO_STRICT;USEPACKAGES
 # ---------------------------------------------------------------------------
 CFLAG1 = -I"..\..\..\..\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner";$(BCB)\include;$(BCB)\include\vcl \
-  -Od -Hc -H=$(BCB)\lib\vcl40.csm -w -Ve -r- -a8 -k -y -v -vi- -c -b- -w-par \
-  -w-inl -Vx -tW -tWM -D$(SYSDEFINES);$(USERDEFINES)
+  -O2 -Hc -H=$(BCB)\lib\vcl40.csm -w -Ve -a8 -k- -vi -c -b- -w-par -w-inl -Vx -tW \
+  -tWM -D$(SYSDEFINES);$(USERDEFINES)
 PFLAGS = -U"..\..\..\..\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner";$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
   -I"..\..\..\..\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner";$(BCB)\include;$(BCB)\include\vcl \
-  -$YD -$W -$O- -v -JPHNE -M
+  -$Y- -$L- -$D- -v -JPHNE -M
 RFLAGS = -i"..\..\..\..\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner";$(BCB)\include;$(BCB)\include\vcl
-AFLAGS = /i$(BCB)\include /i$(BCB)\include\vcl /mx /w2 /zd
+AFLAGS = /i"..\..\..\..\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner" \
+  /i$(BCB)\include /i$(BCB)\include\vcl /mx /w2 /zn
 LFLAGS = -L"..\..\..\..\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner";$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
-  -aa -Tpe -x -Gn -v
+  -aa -Tpe -x -Gn
 # ---------------------------------------------------------------------------
 ALLOBJ = c0w32.obj Memmgr.Lib $(PACKAGES) sysinit.obj $(OBJFILES)
 ALLRES = $(RESFILES)

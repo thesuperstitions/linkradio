@@ -22,9 +22,11 @@ __published:	// IDE-managed Components
   TBitBtn *BitBtn2;
   void __fastcall BitBtn1Click(TObject *Sender);
   void __fastcall BitBtn2Click(TObject *Sender);
+  void __fastcall Panel2Resize(TObject *Sender);
 
 private:	// User declarations
-  void TForm1::GetNextFileName(char* filename);
+  void GetNextFileName(char* filename);
+  void LogMessage(char* Msg);
 
 public:		// User declarations
   __fastcall TForm1(TComponent* Owner);
