@@ -6,11 +6,11 @@ Left=0
 Top=28
 Width=1452
 Height=105
-MaxLeft=0
-MaxTop=45
-MaxWidth=1920
+MaxLeft=-1
+MaxTop=-1
+MaxWidth=1928
 MaxHeight=105
-ClientWidth=1912
+ClientWidth=1920
 ClientHeight=78
 
 [ProjectManager]
@@ -142,9 +142,9 @@ Dockable=1
 
 [View0]
 Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
-CursorX=26
-CursorY=158
-TopLine=145
+CursorX=76
+CursorY=123
+TopLine=100
 LeftCol=1
 
 [View1]

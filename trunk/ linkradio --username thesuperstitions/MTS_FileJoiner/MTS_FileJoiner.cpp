@@ -72,6 +72,9 @@ void TForm1::GetNextFileName(char* filename)
 void __fastcall TForm1::BitBtn1Click(TObject *Sender)
 {
   char              s[500];
+  struct timeb  t1;
+  struct timeb  t2;
+  double TimeDelta, BytesPerSec;
   unsigned long int BytesRead;
   unsigned char*    buffer = new unsigned char[SIZE_OF_BUFFER];
   char              filename[500];
@@ -94,6 +97,8 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
 
       count = OpenDialog1->Files->Count;
 
+      ftime(&t1);
+
       for (int I = 0; I < count; I ++)
       {
         GetNextFileName(&filename[0]);
@@ -111,11 +116,15 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
               fwrite(buffer, BytesRead, 1, outputFile);
 
               totalBytesWritten += BytesRead;
+              ftime(&t2);
+              TimeDelta = (((t2.time*1000)+t2.millitm) - ((t1.time*1000)+t1.millitm)) / 1000.0;
+              BytesPerSec = totalBytesWritten/TimeDelta;
 
-              sprintf(s, "Wrote %10.0f Bytes To Output File (%s)", totalBytesWritten, outputfilename);
+              sprintf(s, "Wrote %u Bytes To Output File (%s).  Total Bytes Written = %1.0f.  Bytes/Sec = %4.3f", BytesRead, outputfilename, totalBytesWritten, BytesPerSec);
               LogMessage(s);
             }
           }
+
           sprintf(s, "Closing .mts Video File Segment (%s)", filename);
           LogMessage(s);
 
@@ -124,16 +133,21 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
       } // for (int I = 0; I < OpenDialog1->Files->Count; I ++)
 
       fclose(outputFile);
+
+      ftime(&t2);
+      TimeDelta = (((t2.time*1000)+t2.millitm) - ((t1.time*1000)+t1.millitm)) / 1000.0;
+      sprintf(s, "Total Elapsed Time To Concatenate Video Files = %8.3f Seconds",  TimeDelta);
+      LogMessage(s);
     }
   }
-  
+
   BitBtn1->Enabled = true;
   BitBtn2->Enabled = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BitBtn2Click(TObject *Sender)
 {
-  Close();  
+  Close();
 }
 //---------------------------------------------------------------------------
 
@@ -147,37 +161,20 @@ void __fastcall TForm1::Panel2Resize(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-static struct timeb previousTime;
-
 void TForm1::LogMessage(char* Msg)
 {
   char          s[500];
   struct timeb  t;
   int           Hours, Mins, Secs;
-  unsigned long milliSecs, previousMilliSecs;
-  double        deltaTime;
 
   ftime(&t);
-  milliSecs = (t.time * 1000) + t.millitm;
-  Secs = milliSecs % 86400000; // 86400000 = Milli-Seconds/24 hours
+  Secs = t.time % 86400; // 86400 = Seconds/24 hours
   Hours = Secs / 3600;
   Secs -= Hours * 3600;
   Mins = Secs / 60;
   Secs -= Mins * 60;
 
-  if (previousTime.time == 0)
-  {
-    previousTime = t;
-    deltaTime = 0.0;
-  }
-  else
-  {
-    previousMilliSecs = (previousTime.time * 1000) + previousTime.millitm;
-    deltaTime = (milliSecs - previousMilliSecs) / 1000.0;
-  }
-
-  sprintf(s, "%02u:%02u:%02u.%03u - Delta Time = %8.3f Secs - %s : ",
-    Hours, Mins, Secs, t.millitm, deltaTime, Msg);
+  sprintf(s, "%02u:%02u:%02u.%03u - %s : ", Hours, Mins, Secs, t.millitm, Msg);
 
   Memo1->Lines->Add(s);
   Memo1->Lines->Add("");
