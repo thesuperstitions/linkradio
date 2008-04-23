@@ -155,7 +155,7 @@ void TForm1::LogMessage(char* Msg)
   struct timeb  t;
   int           Hours, Mins, Secs;
   unsigned long milliSecs, previousMilliSecs;
-  double        deltaTime, deltaSecs;
+  double        deltaTime;
 
   ftime(&t);
   milliSecs = (t.time * 1000) + t.millitm;
@@ -173,8 +173,7 @@ void TForm1::LogMessage(char* Msg)
   else
   {
     previousMilliSecs = (previousTime.time * 1000) + previousTime.millitm;
-    deltaSecs = (milliSecs - previousMilliSecs);
-    deltaTime = deltaSecs / 1000.0;
+    deltaTime = (milliSecs - previousMilliSecs) / 1000.0;
   }
 
   sprintf(s, "%02u:%02u:%02u.%03u - Delta Time = %8.3f Secs - %s : ",
