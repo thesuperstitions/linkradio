@@ -126,6 +126,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
 
               sprintf(s, "Wrote %u Bytes To Output File (%s).  Total Bytes Written = %1.0f.  Bytes/Sec = %4.3f", BytesRead, outputfilename, totalBytesWritten, BytesPerSec);
               LogMessage(s);
+//     Application->HandleMessage();
             }
           }
 
