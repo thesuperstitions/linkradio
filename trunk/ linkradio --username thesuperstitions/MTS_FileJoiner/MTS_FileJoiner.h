@@ -24,7 +24,7 @@ __published:	// IDE-managed Components
   void __fastcall BitBtn2Click(TObject *Sender);
 
 private:	// User declarations
-  void TForm1::getInputFileList(void);
+  void TForm1::GetNextFileName(char* filename);
 
 public:		// User declarations
   __fastcall TForm1(TComponent* Owner);
