@@ -147,7 +147,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"c:\\documents and settings\\rosskw1\\my documents\\svn-google\\hla_io\\io_project\\defaultcomponent\\defaultconfig\\framework.cpp" 2.20.2008::17:39:12
 	
 }
-- size = 32;
+- size = 29;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
@@ -194,15 +194,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.14.2008::11:27:20;
 - hElement = { IHandle 
-	- _m2Class = "ISubsystem";
-	- _filename = "ReverseEngineering.sbs";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "ReverseEngineering";
-	- _id = GUID d3a9e209-0b41-4445-83c9-c024676af51a;
-}
-- genTime = 4.22.2008::19:1:26;
-- hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "IO.sbs";
 	- _subsystem = "Framework::IO";
@@ -237,7 +228,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "IO";
 	- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
 }
-- genTime = 4.22.2008::18:58:8;
+- genTime = 4.28.2008::16:16:28;
 - hElement = { IHandle 
 	- _m2Class = "ISubsystem";
 	- _filename = "Control.sbs";
@@ -347,15 +338,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 }
 - genTime = 4.14.2008::11:27:20;
 - hElement = { IHandle 
-	- _m2Class = "*";
-	- _filename = "";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "";
-	- _id = GUID 08d934c9-5a9e-474f-9c40-0e68cd987029;
-}
-- genTime = 4.22.2008::18:56:35;
-- hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "utils.sbs";
 	- _subsystem = "Framework::utils";
@@ -381,7 +363,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Framework";
 	- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 }
-- genTime = 4.14.2008::11:27:20;
+- genTime = 4.28.2008::16:16:36;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";
@@ -391,15 +373,6 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
 }
 - genTime = 4.14.2008::11:27:20;
-- hElement = { IHandle 
-	- _m2Class = "*";
-	- _filename = "";
-	- _subsystem = "";
-	- _class = "";
-	- _name = "";
-	- _id = GUID c18affa8-09db-417f-b9d0-6123a5a8262e;
-}
-- genTime = 4.22.2008::18:56:28;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "utils.sbs";
