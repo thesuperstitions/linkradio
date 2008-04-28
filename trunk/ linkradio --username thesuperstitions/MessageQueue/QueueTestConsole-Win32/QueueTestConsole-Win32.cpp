@@ -7,9 +7,9 @@
 #include "ConsumerThread.h"
 #include "Queue.h"
 
-ProducerThread*  producerThread;
-ConsumerThread*  consumerThread;
-Queue*           queue;
+ProducerThread*    producerThread;
+ConsumerThread*    consumerThread;
+InterprocessQueue* queue;
 
 
 // Creates an instance of Queue, ProducerThread and ConsumerThread
@@ -17,30 +17,41 @@ Queue*           queue;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+
   char c[5];
 
   printf("Hit any key to START queing messages");
 
   fgets(c, 2, stdin);
 
-  queue = new Queue(1048576);
+  if (strcmp(argv[1], "server") == 0)
+  {
+    producerThread = new ProducerThread();
+    producerThread->start();
+  }
 
-  producerThread = new ProducerThread(queue);
-  producerThread->start();
+  if (strcmp(argv[1], "client") == 0)
+  {
+    consumerThread = new ConsumerThread();
+    consumerThread->start();
+  }
 
-  consumerThread = new ConsumerThread(queue);
-  consumerThread->start();
 
   printf("Hit any key to STOP  queing/de-queing messages\n\n");
 
   fgets(c, 2, stdin);
+  if (strcmp(argv[1], "server") == 0)
+  {
+    producerThread->stop();
+    delete producerThread;
+}
 
-  producerThread->stop();
+  if (strcmp(argv[1], "client") == 0)
+  {
+    consumerThread->stop();
+    delete consumerThread;
+  }
 
-  consumerThread->stop();
-
-  delete producerThread;
-  delete consumerThread;
   delete queue;
 
 	return 0;

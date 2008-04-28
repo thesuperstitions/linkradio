@@ -28,10 +28,10 @@ class ConsumerThread  : public Thread
 {
   ////    Constructors and destructors    ////
   public :       
-    Queue* myQueue;
+    InterprocessQueue* myQueue;
 
     //## auto_generated 
-    ConsumerThread(Queue* queue);
+    ConsumerThread(void);
             
     //## auto_generated 
     ~ConsumerThread();
@@ -41,7 +41,7 @@ class ConsumerThread  : public Thread
 
 	  virtual void threadOperation();
 
-    void LogMessage(char* Msg, double count);
+    //void LogMessage(char* Msg, double count);
 
   protected:
     bool exitFlag;

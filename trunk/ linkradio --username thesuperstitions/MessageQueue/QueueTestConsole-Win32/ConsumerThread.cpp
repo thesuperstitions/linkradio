@@ -29,9 +29,9 @@ struct MessageStruct
 static struct timeb previousTime;
 
         
-ConsumerThread::ConsumerThread(Queue* queue)
+ConsumerThread::ConsumerThread(void)
 {
-  myQueue = queue;
+  myQueue = new InterprocessQueue("MessageQueue", InterprocessQueue::IPQ_CLIENT);
   exitFlag = false;
   previousTime.time = 0;
   previousTime.millitm = 0;
@@ -61,6 +61,7 @@ void ConsumerThread::stop()
 void ConsumerThread::threadOperation()
 {
   char           s[500];
+  genericMessage gmsg;
   MessageStruct* msg;
   long  msgCount = 0;
   long  prevMsgCount = -1;
@@ -69,64 +70,68 @@ void ConsumerThread::threadOperation()
 
   while(exitFlag == false)
   {
-    msg = (MessageStruct*)myQueue->getMessage(1, 0);
-    if (msg != NULL)
+    msg = (MessageStruct*)myQueue->getMessage(&gmsg, 10, 500000);
+   //sprintf(s, "ConsumerThread::threadOperation - msg=%p\n", msg);
+   if (msg != NULL)
     {
       msgCount = msg->MsgNumber;
+
       if (msgCount != (prevMsgCount+1))
       {
         sprintf(s, "PROBLEM!!! - MsgNumber=%u, PreviousMsgNumber=%u\n", msgCount, prevMsgCount);
-        this->LogMessage(s, msgCount);
-        return;
+        myQueue->LogMessage(s, msgCount);
+        //return;
       }
 
       if ((msgCount % 1000000) == 0)
       {
-        sprintf(s, "Msg#=%u\n", msgCount);
-        LogMessage(s, msgCount);
+        sprintf(s, "Msg Number=%u\n\n", msgCount);
+        myQueue->LogMessage(s, msgCount);
       }
 
       prevMsgCount++;
 
       //delete msg;
     }
+   //else
+   //  printf("ConsumerThread::threadOperation - MsgPtr = NULL\n");
   };
 }
 
 
 
-        void ConsumerThread::LogMessage(char* Msg, double count)
-        {
-          struct timeb  t;
-          int           Hours, Mins, Secs;
-          double        deltaTime, iterationsPerSecond, secs, milliSecs;
+        //void ConsumerThread::LogMessage(char* Msg, double count)
+        //{
+        //  struct timeb  t;
+        //  int           Hours, Mins, Secs;
+        //  double        deltaTime, iterationsPerSecond, secs, milliSecs;
 
-          ftime(&t);
-          Secs = t.time % 86400; // 86400 = Seconds/24 hours
-          Hours = Secs / 3600;
-          Secs -= Hours * 3600;
-          Mins = Secs / 60;
-          Secs -= Mins * 60;
+        //  ftime(&t);
+        //  Secs = t.time % 86400; // 86400 = Seconds/24 hours
+        //  Hours = Secs / 3600;
+        //  Secs -= Hours * 3600;
+        //  Mins = Secs / 60;
+        //  Secs -= Mins * 60;
 
-          if (previousTime.time == 0)
-          {
-            previousTime = t;
-            deltaTime = 0.0;
-            iterationsPerSecond = 0.0;
-          }
-          else
-          {
-            secs = (t.time - previousTime.time);
-            secs *= 1000.0;
-            milliSecs = (t.millitm - previousTime.millitm);
-            secs += milliSecs;
-            deltaTime = secs / 1000.0;
-            iterationsPerSecond = count / deltaTime;
-          }
+        //  if (previousTime.time == 0)
+        //  {
+        //    previousTime = t;
+        //    deltaTime = 0.0;
+        //    iterationsPerSecond = 0.0;
+        //  }
+        //  else
+        //  {
+        //    secs = (t.time - previousTime.time);
+        //    secs *= 1000.0;
+        //    milliSecs = (t.millitm - previousTime.millitm);
+        //    secs += milliSecs;
+        //    deltaTime = secs / 1000.0;
+        //    iterationsPerSecond = count / deltaTime;
+        //  }
   
-          //TS = gmtime( &tt );
-          printf("%02u:%02u:%02u.%03u-DT=%7.3f S, Iter/Sec=%10.3f, QSize=%u--%s", Hours, Mins, Secs, t.millitm, deltaTime, iterationsPerSecond, this->myQueue->myQueue->size(), Msg);
-        }
+        //  //TS = gmtime( &tt );
+        //  printf("%02u:%02u:%02u.%03u-DT=%7.3f S, Iter/Sec=%10.3f : %s", Hours, Mins, Secs, t.millitm, deltaTime, iterationsPerSecond, Msg);
+        //}
 /*********************************************************************
 	ConsumerThread.cpp
 *********************************************************************/

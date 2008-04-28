@@ -11,7 +11,6 @@
 *********************************************************************/
 
 #include "ProducerThread.h"
-//#include "Sleep.h"
 
 #include "Sleep.h"
 
@@ -33,9 +32,9 @@ struct MessageStruct
 
 MessageStruct msg[MAX_MSG_COUNT];
 
-ProducerThread::ProducerThread(Queue* queue) 
+ProducerThread::ProducerThread(void) 
 {
-  myQueue = queue;
+  myQueue = new InterprocessQueue("MessageQueue", InterprocessQueue::IPQ_SERVER);
   exitFlag = false;
 }
         
@@ -65,17 +64,18 @@ void ProducerThread::threadOperation()
 {
   MessageStruct* msgPtr;
 
-  //framework::utils::Sleep::sleep(10, 0);
-
   while(exitFlag == false)
   {
     msgPtr = &(msg[msgCount % MAX_MSG_COUNT]);
     msgPtr->MsgNumber = msgCount++;
 
-    while (myQueue->addMessage((void*)msgPtr) == false)
+    //printf("Queued Message with Count=%u\n\n", msgPtr->MsgNumber);
+    while (myQueue->addMessage((unsigned char*)msgPtr, sizeof(MessageStruct)) == false)
     {
       yield();
     };
+
+    //framework::utils::Sleep::sleep(1,0);
   };
 }
 

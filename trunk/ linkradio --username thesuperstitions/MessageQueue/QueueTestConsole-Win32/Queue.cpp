@@ -19,18 +19,55 @@
 
 #include "Queue.h"
 #include "boost/thread.hpp"
+#include <boost/interprocess/shared_memory_object.hpp>
+#include <boost/interprocess/mapped_region.hpp>
+#include <boost/interprocess/sync/scoped_lock.hpp>
 #include "boost/date_time/posix_time/posix_time.hpp"
 
+using namespace boost::interprocess;
+
 //---------------------------------------------------------------------------
+
 
 //Constructor
 
 //---------------------------------------------------------------------------
-Queue::Queue(unsigned long int numberOfItems) 
+InterprocessQueue::InterprocessQueue(char* queueName, UserType uType)
 {
   exitFlag = false;
-  myMutex.unlock();
-  myQueue = new boost::circular_buffer<void*>(numberOfItems);
+  strcpy(QueueName, queueName);
+
+  //Erase previous shared memory
+  if (uType == IPQ_SERVER)
+    shared_memory_object::remove(queueName);
+
+  //Create a shared memory object.
+  shm = new shared_memory_object
+    (open_or_create               //open or create
+     ,queueName           //name
+     ,read_write   //read-write mode
+     );
+
+    //Set size
+    shm->truncate(sizeof(Shared_Memory_Queue));
+
+    //Map the whole shared memory in this process
+    region = new mapped_region
+      (*shm                       //What to map
+      ,read_write   //Map it as read-write
+      );
+
+    //Get the address of the mapped region
+    addr       = region->get_address();
+
+    //Construct the shared structure in memory
+    myQueue = new (addr) Shared_Memory_Queue();
+
+    myQueue->CurrentReadSlot = 0;
+    myQueue->CurrentWriteSlot = 0;
+    myQueue->NumberMessagesInQueue = 0;
+
+    myQueue->myMutex.unlock();
 }
 
 //---------------------------------------------------------------------------
@@ -39,11 +76,15 @@ Queue::Queue(unsigned long int numberOfItems)
 
 //---------------------------------------------------------------------------
 
-Queue::~Queue() 
+InterprocessQueue::~InterprocessQueue() 
 {
+  //Erase shared memory
+  shared_memory_object::remove(QueueName);
+  delete region;
+  delete shm;
+
   exitFlag = true;
-  myMutex.unlock();  // Wake "getMessage".
-  delete myQueue;
+  myQueue->myMutex.unlock();  // Wake "getMessage".
 }
 
 //---------------------------------------------------------------------------
@@ -55,8 +96,10 @@ Queue::~Queue()
 
 //---------------------------------------------------------------------------
         
-bool Queue::addMessage(void* message)
+bool InterprocessQueue::addMessage(unsigned char* message, unsigned int messageSizeInBytes)
 {
+  //char s[200];
+
   if (exitFlag == true)
     return(false);
   
@@ -64,19 +107,28 @@ bool Queue::addMessage(void* message)
   {
     { // Start of Scope.
       // Get the mutex just long enough to add the message to the queue.
-      boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
-    
-      if (myQueue->full() != true)
+      scoped_lock<interprocess_mutex> lock(myQueue->myDataAccessMutex); //This lock protects the queue itself.
+
+      if (myQueue->NumberMessagesInQueue == MAX_MESSAGES_IN_QUEUE)
       {
-        //myQueue.push_back(message);
-        myQueue->push_back(message);
+        //sprintf(s, "****ExceededQueuCapacity****\n\n");
+        //LogMessage(s, 0.0);
+        return(false);
+      }
+      memcpy(&(myQueue->messages[myQueue->CurrentWriteSlot]), message, messageSizeInBytes);
 
-        myMutex.unlock();  // Wake "getMessage".
+      myQueue->NumberMessagesInQueue++;
+      //myQueue->NumberMessagesInQueue %= MAX_MESSAGES_IN_QUEUE;
 
-        return(true); // Message was queued
-      }  // if (myQueue->full() != true)
-      else
-        return (false); // Message was NOT queued.
+      myQueue->CurrentWriteSlot++;
+      myQueue->CurrentWriteSlot %= MAX_MESSAGES_IN_QUEUE;
+    
+      //myQueue->CurrentWriteSlot %= MAX_MESSAGES_IN_QUEUE;
+
+      myQueue->myMutex.unlock();  // Wake "getMessage".
+//printf("Queued Message - Address=%p\n\n", &(myQueue->messages[myQueue->CurrentWriteSlot]));
+
+      return(true); // Message was queued
     } // End of Scope.
   }
   catch (...)
@@ -87,7 +139,7 @@ bool Queue::addMessage(void* message)
 
 //---------------------------------------------------------------------------
 
-// CheckForItemsInQueue
+// CheckForMessage
 
 // Waits on a mutex that protects access to the queue.  When mutex is received,
 // a check is made to see if there's at least one message in the queue.  If
@@ -95,23 +147,32 @@ bool Queue::addMessage(void* message)
 // oldest one) is taken off the queue and passed back to the caller.
 //---------------------------------------------------------------------------
 
-void* Queue::CheckForItemsInQueue(void)
+void* InterprocessQueue::CheckForMessage(genericMessage* msg)
 { // Start of scope for the "scoped_lock" mutex.
-  void* m_Ptr = NULL;
+  void* m_Ptr;
 
-  boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
+  //boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
+  scoped_lock<interprocess_mutex> myDataAccessLock(myQueue->myDataAccessMutex); //This lock protects the queue itself.
+
 
   // Check to see if there's a Message in the list   
-  if (myQueue->empty() != true)
+  if (myQueue->NumberMessagesInQueue > 0)
   {      
     // Get the first message in the list.                                  
-    m_Ptr = myQueue->front();  
+    m_Ptr = &(myQueue->messages[myQueue->CurrentReadSlot]);  
+    memcpy(msg, m_Ptr, sizeof(genericMessage));
 
     // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
-    myQueue->pop_front();   // Remove the just-sent Message from the list.
-  }
+    myQueue->NumberMessagesInQueue--; 
+    myQueue->CurrentReadSlot++;
+    
+    myQueue->CurrentReadSlot %= MAX_MESSAGES_IN_QUEUE;
+    //if (myQueue->CurrentReadSlot == MAX_MESSAGES_IN_QUEUE)// Remove the just-sent Message from the list.
+    //  myQueue->CurrentReadSlot= 0;
 
-  return(m_Ptr);
+    return(msg);
+  }
+  return(NULL);
 } // End of Scope for the "scoped_lock" mutex.  This unlocks the timed mutex.
 
 //---------------------------------------------------------------------------
@@ -125,9 +186,9 @@ void* Queue::CheckForItemsInQueue(void)
 // NULL pointer.
 //---------------------------------------------------------------------------
 
-void* Queue::getMessage(unsigned int timeoutSecs, unsigned long int timeoutMicroSecs)
+void* InterprocessQueue::getMessage(genericMessage* msg, unsigned int timeoutSecs, unsigned long int timeoutMicroSecs)
 {
-  void* m_Ptr = NULL;
+  void* m_Ptr;
 
   // Just in case this function gets invoked during shutdown.
   if (exitFlag == true)
@@ -136,7 +197,7 @@ void* Queue::getMessage(unsigned int timeoutSecs, unsigned long int timeoutMicro
   try
   {
     // Check to see if there's a message already waiting on the Queue.  If so, we just return it.
-    if ( (m_Ptr = CheckForItemsInQueue()) != NULL)
+    if ( (m_Ptr = CheckForMessage(msg)) != NULL)
       return(m_Ptr);
 
     // There were no items in the Queue, so now we have to wait for either the queue to be unlocked or the timeout occurs.
@@ -146,20 +207,57 @@ void* Queue::getMessage(unsigned int timeoutSecs, unsigned long int timeoutMicro
 
     // Block on the mutex until either a message is received in the queue (addMessage function unlocks the mutex after dropping a message
     // in the queue), or the timer expires.
-    if (myMutex.timed_lock(boost::get_system_time() + td) == true)
+    if (myQueue->myMutex.timed_lock(boost::get_system_time() + td) == true)
     {
-      return( CheckForItemsInQueue() );
+      return( CheckForMessage(msg) );
     }
     else
     {
       // mutex timed out
-      return(m_Ptr);
+      return(NULL);
     }
   }
   catch(...)
   {
   };
 
-  return(m_Ptr);
+  return(NULL);
 }
+
+
+static struct timeb previousTime;
+
+        void InterprocessQueue::LogMessage(char* Msg, double count)
+        {
+          struct timeb  t;
+          int           Hours, Mins, Secs;
+          double        deltaTime, iterationsPerSecond, secs, milliSecs;
+
+          ftime(&t);
+          Secs = t.time % 86400; // 86400 = Seconds/24 hours
+          Hours = Secs / 3600;
+          Secs -= Hours * 3600;
+          Mins = Secs / 60;
+          Secs -= Mins * 60;
+
+          if (previousTime.time == 0)
+          {
+            previousTime = t;
+            deltaTime = 0.0;
+            iterationsPerSecond = 0.0;
+          }
+          else
+          {
+            secs = (t.time - previousTime.time);
+            secs *= 1000.0;
+            milliSecs = (t.millitm - previousTime.millitm);
+            secs += milliSecs;
+            deltaTime = secs / 1000.0;
+            iterationsPerSecond = count / deltaTime;
+          }
+  
+          //TS = gmtime( &tt );
+          printf("%02u:%02u:%02u.%03u-DT=%7.3f S, Iter/Sec=%10.3f : %s", Hours, Mins, Secs, t.millitm, deltaTime, iterationsPerSecond, Msg);
+        }
+
 

@@ -29,10 +29,10 @@ class ProducerThread  : public Thread
 {             
   ////    Constructors and destructors    ////
   public :
-    Queue* myQueue;
+    InterprocessQueue* myQueue;
             
     //## auto_generated 
-    ProducerThread(Queue* queue);
+    ProducerThread(void);
             
     //## auto_generated 
     ~ProducerThread();
