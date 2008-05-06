@@ -1,11 +1,8 @@
 /*********************************************************************
-	Rhapsody	: 7.1 
 	Login		: rosskw1
-	Component	: DefaultComponent 
-	Configuration 	: DefaultConfig
-	Model Element	: Framework::utils::ProducerThread
-//!	Generated Date	: Mon, 14, Apr 2008  
-	File Path	: DefaultComponent\DefaultConfig\ProducerThread.h
+	Model Element	: ProducerThread
+  Generated Date	: Mon, 21, Apr 2008  
+	File Path	: ProducerThread.h
 *********************************************************************/
 
 
@@ -14,7 +11,7 @@
 #define ProducerThread_H 
 
 #include "Thread.h"
-#include "Queue.h"
+#include "InterprocessQueue.h"
 
 //----------------------------------------------------------------------------
 // ProducerThread.h                                                                  
@@ -32,10 +29,10 @@ class ProducerThread  : public Thread
 {             
   ////    Constructors and destructors    ////
   public :
-    Queue* myQueue;
+    InterprocessQueue* myQueue;
             
     //## auto_generated 
-    ProducerThread(Queue* queue);
+    ProducerThread(void);
             
     //## auto_generated 
     ~ProducerThread();

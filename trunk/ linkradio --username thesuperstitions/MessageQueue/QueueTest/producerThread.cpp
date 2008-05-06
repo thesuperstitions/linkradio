@@ -1,17 +1,22 @@
 /********************************************************************
-	Rhapsody	: 7.1 
 	Login		: rosskw1
-	Component	: DefaultComponent 
-	Configuration 	: DefaultConfig
-	Model Element	: Framework::utils::ProducerThread
-//!	Generated Date	: Mon, 14, Apr 2008  
-	File Path	: DefaultComponent\DefaultConfig\ProducerThread.cpp
+	Model Element	: ProducerThread
+	Generated Date	: Mon, 21, Apr 2008  
+	File Path	: ProducerThread.cpp
+
+  Description: This class is based upon the "Thread" class.  It
+  generates messages that get queued for consumption by the 
+  "consumerThread".
+
 *********************************************************************/
 
 #include "ProducerThread.h"
+
 #include "Sleep.h"
 
-static unsigned long msgCount = 1;
+static long msgCount = 0;
+
+//#define MAX_MSG_COUNT 1048576
 
 //----------------------------------------------------------------------------
 // ProducerThread.cpp                                                                  
@@ -21,20 +26,23 @@ static unsigned long msgCount = 1;
 
 struct MessageStruct
 {
-  unsigned long MsgNumber;
-  unsigned char MsgBody[30];
+  long          MsgNumber;
+  unsigned char MsgBody[96];
 };
 
-ProducerThread::ProducerThread(Queue* queue) 
+ProducerThread::ProducerThread(void) 
 {
-  myQueue = queue;
   exitFlag = false;
+
+  myQueue = new InterprocessQueue("MessageQueue", sizeof(MessageStruct), INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
 }
         
 ProducerThread::~ProducerThread() 
 {
   exitFlag = true;
   stop();
+
+  delete myQueue;
 }
 
 void ProducerThread::start() 
@@ -55,17 +63,37 @@ void ProducerThread::stop()
         
 void ProducerThread::threadOperation()
 {
-  MessageStruct* msg;
+  MessageStruct msg;
+  char          s[300];
+  unsigned int  slot = 0;
+  bool          timeoutFlag = true; // This forces a "Queue Synchronization" operation.
+
+//while(myQueue->SynchronizeQueueUsers() == false);
 
   while(exitFlag == false)
   {
-    msg = new MessageStruct;
-    msg->MsgNumber = msgCount++;
+    if (timeoutFlag == true)
+    {// The "getMessage" call timed-out.  We didn't get a message within our timeout limit.
+      // Go through the Queue synchonization procedure.  This mimics what might be done in
+      // a tactical system where a computer goes down and the interface protocol tries to 
+      // re-establish communications.
+      sprintf(s, "Synching To Queue Partner\n");
+      myQueue->LogMessage(s, msgCount);
+      while(myQueue->SynchronizeQueueUsers() == false)
+      {
+        if (exitFlag == true)
+          return;
+      }      
+      timeoutFlag = false;
+    }
 
-    while (myQueue->addMessage((void*)msg) == false)
-    {
-      yield();
-    };
+    msg.MsgNumber = msgCount++;
+    if (myQueue->timedAddMessage((unsigned char*)&msg, sizeof(MessageStruct), 0, 500000) == false)
+      timeoutFlag = true;
+    //else
+    //  framework::utils::Sleep::sleep(0, 250000000);
+    //while(myQueue->timedAddMessage((unsigned char*)&msg, sizeof(MessageStruct), 0, 500000) == false);
+    //framework::utils::Sleep::sleep(0, 500000000);
   };
 }
 
