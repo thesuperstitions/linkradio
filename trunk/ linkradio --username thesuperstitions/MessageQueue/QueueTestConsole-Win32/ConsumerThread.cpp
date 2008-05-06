@@ -92,7 +92,7 @@ void ConsumerThread::threadOperation()
       timeoutFlag = false;
     }
 
-    if (myQueue->getMessage((unsigned char*)&gmsg, 0, 500000) == true)
+    if (myQueue->timedGetMessage((unsigned char*)&gmsg, 0, 500000) == true)
     {
       msgCount = gmsg.MsgNumber;
 
