@@ -11,7 +11,7 @@
 #define ConsumerThread_H 
 
 #include "Thread.h"
-#include "Queue.h"
+#include "InterprocessQueue.h"
 
 //----------------------------------------------------------------------------
 // ConsumerThread.h                                                                  
