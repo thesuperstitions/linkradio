@@ -11,7 +11,7 @@
 #define ProducerThread_H 
 
 #include "Thread.h"
-#include "Queue.h"
+#include "InterprocessQueue.h"
 
 //----------------------------------------------------------------------------
 // ProducerThread.h                                                                  

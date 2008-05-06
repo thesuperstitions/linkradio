@@ -16,7 +16,7 @@
 
 static long msgCount = 0;
 
-#define MAX_MSG_COUNT 1048576
+//#define MAX_MSG_COUNT 1048576
 
 //----------------------------------------------------------------------------
 // ProducerThread.cpp                                                                  
@@ -30,18 +30,19 @@ struct MessageStruct
   unsigned char MsgBody[96];
 };
 
-MessageStruct msg[MAX_MSG_COUNT];
-
 ProducerThread::ProducerThread(void) 
 {
-  myQueue = new InterprocessQueue("MessageQueue", InterprocessQueue::IPQ_SERVER);
   exitFlag = false;
+
+  myQueue = new InterprocessQueue("MessageQueue", sizeof(MessageStruct), INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
 }
         
 ProducerThread::~ProducerThread() 
 {
   exitFlag = true;
   stop();
+
+  delete myQueue;
 }
 
 void ProducerThread::start() 
@@ -62,20 +63,37 @@ void ProducerThread::stop()
         
 void ProducerThread::threadOperation()
 {
-  MessageStruct* msgPtr;
+  MessageStruct msg;
+  char          s[300];
+  unsigned int  slot = 0;
+  bool          timeoutFlag = true; // This forces a "Queue Synchronization" operation.
+
+//while(myQueue->SynchronizeQueueUsers() == false);
 
   while(exitFlag == false)
   {
-    msgPtr = &(msg[msgCount % MAX_MSG_COUNT]);
-    msgPtr->MsgNumber = msgCount++;
+    if (timeoutFlag == true)
+    {// The "getMessage" call timed-out.  We didn't get a message within our timeout limit.
+      // Go through the Queue synchonization procedure.  This mimics what might be done in
+      // a tactical system where a computer goes down and the interface protocol tries to 
+      // re-establish communications.
+      sprintf(s, "Synching To Queue Partner\n");
+      myQueue->LogMessage(s, msgCount);
+      while(myQueue->SynchronizeQueueUsers() == false)
+      {
+        if (exitFlag == true)
+          return;
+      }      
+      timeoutFlag = false;
+    }
 
-    //printf("Queued Message with Count=%u\n\n", msgPtr->MsgNumber);
-    while (myQueue->addMessage((unsigned char*)msgPtr, sizeof(MessageStruct)) == false)
-    {
-      yield();
-    };
-
-    //framework::utils::Sleep::sleep(1,0);
+    msg.MsgNumber = msgCount++;
+    if (myQueue->timedAddMessage((unsigned char*)&msg, sizeof(MessageStruct), 0, 500000) == false)
+      timeoutFlag = true;
+    //else
+    //  framework::utils::Sleep::sleep(0, 250000000);
+    //while(myQueue->timedAddMessage((unsigned char*)&msg, sizeof(MessageStruct), 0, 500000) == false);
+    //framework::utils::Sleep::sleep(0, 500000000);
   };
 }
 

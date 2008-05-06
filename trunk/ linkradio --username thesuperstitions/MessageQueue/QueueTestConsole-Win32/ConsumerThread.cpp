@@ -31,14 +31,17 @@ static struct timeb previousTime;
         
 ConsumerThread::ConsumerThread(void)
 {
-  myQueue = new InterprocessQueue("MessageQueue", InterprocessQueue::IPQ_CLIENT);
   exitFlag = false;
   previousTime.time = 0;
   previousTime.millitm = 0;
+
+  myQueue = new InterprocessQueue("MessageQueue", sizeof(MessageStruct), INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
 }
         
 ConsumerThread::~ConsumerThread() 
 {
+//  delete myQueue;
+
   exitFlag = true;
   stop();
 }
@@ -53,6 +56,7 @@ void ConsumerThread::start()
 void ConsumerThread::stop() 
 {
   exitFlag = true;
+
   this->Thread::join();
 
   Thread::stop();	
@@ -61,40 +65,56 @@ void ConsumerThread::stop()
 void ConsumerThread::threadOperation()
 {
   char           s[500];
-  genericMessage gmsg;
-  MessageStruct* msg;
+  MessageStruct  gmsg;
+  bool           timeoutFlag = true; // This forces a "Queue Synchronization" operation.
+  //bool           result;
+  //MessageStruct* msg;
   long  msgCount = 0;
   long  prevMsgCount = -1;
 
-  //framework::utils::Sleep::sleep(0, 100);
+//while(myQueue->SynchronizeQueueUsers() == false);
 
   while(exitFlag == false)
   {
-    msg = (MessageStruct*)myQueue->getMessage(&gmsg, 10, 500000);
-   //sprintf(s, "ConsumerThread::threadOperation - msg=%p\n", msg);
-   if (msg != NULL)
+    if (timeoutFlag == true)
     {
-      msgCount = msg->MsgNumber;
+      // The "getMessage" call timed-out.  We didn't get a message within our timeout limit.
+      // Go through the Queue synchonization procedure.  This mimics what might be done in
+      // a tactical system where a computer goes down and the interface protocol tries to 
+      // re-establish communications.
+      sprintf(s, "Synching To Queue Partner\n");
+      myQueue->LogMessage(s, msgCount);
+      while(myQueue->SynchronizeQueueUsers() == false)
+      {
+        if (exitFlag == true)
+          return;
+      }
+      timeoutFlag = false;
+    }
+
+    if (myQueue->getMessage((unsigned char*)&gmsg, 0, 500000) == true)
+    {
+      msgCount = gmsg.MsgNumber;
 
       if (msgCount != (prevMsgCount+1))
       {
-        sprintf(s, "PROBLEM!!! - MsgNumber=%u, PreviousMsgNumber=%u\n", msgCount, prevMsgCount);
+        sprintf(s, "PROBLEM!!! - MsgNumber=%u, PrevMsgNum=%u\n", msgCount, prevMsgCount);
         myQueue->LogMessage(s, msgCount);
-        //return;
       }
 
-      if ((msgCount % 1000000) == 0)
+      if ((msgCount % 10000000) == 0)
       {
         sprintf(s, "Msg Number=%u\n\n", msgCount);
         myQueue->LogMessage(s, msgCount);
       }
-
-      prevMsgCount++;
-
-      //delete msg;
+      prevMsgCount = msgCount;
     }
-   //else
-   //  printf("ConsumerThread::threadOperation - MsgPtr = NULL\n");
+    else
+    {
+      sprintf(s, "TIMEOUT\n\n");
+      myQueue->LogMessage(s, msgCount);
+      timeoutFlag = true;
+    }
   };
 }
 

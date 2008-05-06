@@ -5,11 +5,11 @@
 
 #include "ProducerThread.h"
 #include "ConsumerThread.h"
-#include "Queue.h"
+#include "InterprocessQueue.h"
 
 ProducerThread*    producerThread;
 ConsumerThread*    consumerThread;
-InterprocessQueue* queue;
+//InterprocessQueue* queue;
 
 
 // Creates an instance of Queue, ProducerThread and ConsumerThread
@@ -52,7 +52,10 @@ int _tmain(int argc, _TCHAR* argv[])
     delete consumerThread;
   }
 
-  delete queue;
+//  delete queue;
+
+  printf("Hit any key to EXIT Program\n\n");
+  fgets(c, 2, stdin);
 
 	return 0;
 }

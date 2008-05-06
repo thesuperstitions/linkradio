@@ -128,10 +128,10 @@
 				RelativePath=".\ConsumerThread.cpp">
 			</File>
 			<File
-				RelativePath=".\producerThread.cpp">
+				RelativePath=".\InterprocessQueue.cpp">
 			</File>
 			<File
-				RelativePath=".\Queue.cpp">
+				RelativePath=".\producerThread.cpp">
 			</File>
 			<File
 				RelativePath=".\QueueTestConsole-Win32.cpp">
@@ -163,10 +163,10 @@
 				RelativePath=".\ConsumerThread.h">
 			</File>
 			<File
-				RelativePath=".\mainwindow.h">
+				RelativePath=".\InterprocessQueue.h">
 			</File>
 			<File
-				RelativePath=".\Queue.h">
+				RelativePath=".\mainwindow.h">
 			</File>
 			<File
 				RelativePath=".\Sleep.h">
