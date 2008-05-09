@@ -41,6 +41,7 @@ class ProducerThread  : public Thread
 
     virtual void start();
   	virtual void stop();
+		void LogMessage(char* Msg);
 
   protected:
     bool exitFlag;

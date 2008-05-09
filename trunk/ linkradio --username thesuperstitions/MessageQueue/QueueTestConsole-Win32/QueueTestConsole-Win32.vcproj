@@ -169,6 +169,9 @@
 				RelativePath=".\mainwindow.h">
 			</File>
 			<File
+				RelativePath=".\ProducerThread.h">
+			</File>
+			<File
 				RelativePath=".\Sleep.h">
 			</File>
 			<File

@@ -13,7 +13,6 @@
 // 
 //
 
-
 /**
  * Generic wrapper for a thread class.  This is an abstract class;
  * clients should subclass and implement threadOperation, which contains

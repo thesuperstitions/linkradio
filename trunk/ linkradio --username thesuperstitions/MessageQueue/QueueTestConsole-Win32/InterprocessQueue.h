@@ -12,11 +12,11 @@
 #define INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE     100000
 
 
-struct SharedMemoryQueueControlData   
+struct SharedMemoryQueueControlData
 {
-SharedMemoryQueueControlData(unsigned int numMsgs) : getMsgSemaphore(0), addMessageSemaphore(numMsgs) {}
+SharedMemoryQueueControlData(unsigned int numMsgs) : /*getMsgSemaphore(0),*/ addMessageSemaphore(numMsgs) {}
 
-  boost::interprocess::interprocess_semaphore getMsgSemaphore;		//## attribute getMsgSemaphore
+  boost::interprocess::interprocess_mutex getMsgSemaphore;		//## attribute getMsgSemaphore
   boost::interprocess::interprocess_semaphore addMessageSemaphore;
   boost::interprocess::interprocess_mutex myDataAccessMutex;
 
@@ -55,13 +55,14 @@ class InterprocessQueue
     unsigned long maxMsgs;
     unsigned long totalQueueSize;
     boost::interprocess::interprocess_semaphore QueueInitializationSemaphore;
+    bool getMessage(unsigned char* msg, bool semTookFlag);
 
     QueueState queueState;
 
     ////    Operations    ////
     public :
       //## operation addMessage(FederateMessage*)
-      virtual bool timedAddMessage(unsigned char* message, unsigned int messageSizeInBytes, unsigned int timeoutSecs, 
+      virtual bool timedAddMessage(unsigned char* message, unsigned int messageSizeInBytes, unsigned int timeoutSecs,
                                    unsigned long int timeoutMicroSecs);
       virtual bool timedGetMessage(unsigned char* msg, unsigned int timeoutSecs, unsigned long int timeoutMicroSecs);
       virtual bool SynchronizeQueueUsers(void);

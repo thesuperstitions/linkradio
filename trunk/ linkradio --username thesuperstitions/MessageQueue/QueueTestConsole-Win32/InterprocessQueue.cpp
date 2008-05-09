@@ -22,7 +22,7 @@
 #include "boost/date_time/posix_time/posix_time.hpp"
 #include <boost/interprocess/sync/scoped_lock.hpp>
 #include "boost/thread.hpp"
-#include <sys\timeb.h>
+#include <sys/timeb.h>
 
 
 using namespace boost::interprocess;
@@ -38,24 +38,34 @@ InterprocessQueue::InterprocessQueue(char* queueName, unsigned int maxMessageSiz
 exitFlag(false), queueState(QueueSynchronizing), QueueInitializationSemaphore(0), maxMsgSize(maxMessageSizeInBytes + sizeof(unsigned int)),
 maxMsgs(maxNumberOfMessages), totalQueueSize(maxMsgSize * maxMsgs)
 {
-  bool createFlag = false;
+  bool alreadyCreatedFlag = false;
+	char s[300];
 
   strcpy(QueueName, queueName);
 
   try
   {
     //Erase previous shared memory
-    shared_memory_object::remove(queueName);
+//    shared_memory_object::remove(queueName);
 
-    //Create a shared memory object.
-    shm1 = new shared_memory_object
-      (open_or_create //open or create
-       ,queueName     //name
-       ,read_write    //read-write mode
-       );
-
-    //Set size
-    shm1->truncate(totalQueueSize);
+    try
+    {
+      //Create a shared memory object.
+      shm1 = new shared_memory_object(open_only, queueName, read_write);
+      alreadyCreatedFlag = true;
+			sprintf(s, "Queue Open-Only Succeeded\n");
+			LogMessage(s, 0);
+		}
+    catch (...)
+    {
+      //Create a shared memory object.
+      shm1 = new shared_memory_object(create_only, queueName, read_write);
+  
+      //Set size
+      shm1->truncate(totalQueueSize);
+			sprintf(s, "Queue Create-Only Succeeded\n");
+			LogMessage(s, 0);
+		};
 
     //Map the whole shared memory in this process
     region1 = new mapped_region
@@ -72,17 +82,25 @@ maxMsgs(maxNumberOfMessages), totalQueueSize(maxMsgSize * maxMsgs)
 
     sprintf(ControlDataName, "%s%s", queueName, "ControlData");
     //Erase previous shared memory
-    shared_memory_object::remove(ControlDataName);
+    //shared_memory_object::remove(ControlDataName);
 
-    //Create a shared memory object.
-    shm2 = new shared_memory_object
-      (open_or_create //open or create
-       ,ControlDataName             //name
-       ,read_write    //read-write mode
-       );
-
-    //Set size
-    shm2->truncate(sizeof(SharedMemoryQueueControlData));
+    if (alreadyCreatedFlag == false)
+    {
+      //Create a shared memory object.
+      shm2 = new shared_memory_object(create_only, ControlDataName, read_write);
+			sprintf(s, "Queue Create-Only Succeeded\n");
+			LogMessage(s, 0);
+    
+      //Set size
+      shm2->truncate(sizeof(SharedMemoryQueueControlData));
+    }
+    else
+    {
+      //Create a shared memory object.
+      shm2 = new shared_memory_object(open_only, ControlDataName, read_write);
+			sprintf(s, "Queue Open-Only Succeeded\n");
+			LogMessage(s, 0);
+		}
 
     //Map the whole shared memory in this process
     region2 = new mapped_region
@@ -103,9 +121,9 @@ maxMsgs(maxNumberOfMessages), totalQueueSize(maxMsgSize * maxMsgs)
   }
   catch (...)
   {
-    //char s[300];
-    //sprintf(s, "InterprocessQueue-Server-EXCEPTION\n\n");
-    //LogMessage(s, 0);
+    ////char s[300];
+    ////sprintf(s, "InterprocessQueue-Server-EXCEPTION\n\n");
+    ////LogMessage(s, 0);
   };
 }
 
@@ -117,19 +135,30 @@ maxMsgs(maxNumberOfMessages), totalQueueSize(maxMsgSize * maxMsgs)
 
 InterprocessQueue::~InterprocessQueue() 
 {
-  //Erase shared memory
-  exitFlag = true;
-  myControlData->getMsgSemaphore.post();  // Wake "timedGetMessage".
-  myControlData->myDataAccessMutex.unlock();
-  myControlData->addMessageSemaphore.post();
+  try
+  {
+    // Erase shared memory
+    exitFlag = true;
+//    myControlData->getMsgSemaphore.post();  // Wake "timedGetMessage".
+    myControlData->getMsgSemaphore.unlock();  // Wake "timedGetMessage".
+    myControlData->myDataAccessMutex.unlock();
+    myControlData->addMessageSemaphore.post();
 
-  shared_memory_object::remove(QueueName);
-  delete region1;
-  delete shm1;
+    shared_memory_object::remove(QueueName);
+    delete region1;
+    delete shm1;
+    //Erase previous shared memory
+    shared_memory_object::remove(QueueName);
 
-  shared_memory_object::remove(ControlDataName);
-  delete region2;
-  delete shm2;
+    shared_memory_object::remove(ControlDataName);
+    delete region2;
+    delete shm2;
+    // Erase previous shared memory
+    shared_memory_object::remove(ControlDataName);
+  }
+  catch (...)
+  {
+  };
 }
 
 //**********************************************************************************************************************
@@ -190,13 +219,17 @@ bool InterprocessQueue::SynchronizeQueueUsers(void)
 
 InterprocessQueue::QueueState InterprocessQueue::getQueueState(void)
 {
-  QueueState qs;
+	bool sharedMemoryQueueState;
 
   { // Start of scope.
     scoped_lock<interprocess_mutex> lock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
-    qs = queueState;
+		sharedMemoryQueueState = myControlData->InterfaceStatus;
   } // End of scope.
-  return(qs);
+
+  if ((sharedMemoryQueueState == false) || (queueState == QueueSynchronizing) )
+		return(QueueSynchronizing);
+	else
+		return(QueueSynchronized);
 }
 
 //---------------------------------------------------------------------------
@@ -238,7 +271,8 @@ bool InterprocessQueue::timedAddMessage(unsigned char* message, unsigned int mes
 
       ++myControlData->CurrentWriteSlot %= maxMsgs;
 
-      myControlData->getMsgSemaphore.post();  // Wake "timedGetMessage".
+//      myControlData->getMsgSemaphore.post();  // Wake "timedGetMessage".
+      myControlData->getMsgSemaphore.unlock();  // Wake "timedGetMessage".
 
       return(true); // Message was queued
     } // End of Scope.
@@ -247,6 +281,39 @@ bool InterprocessQueue::timedAddMessage(unsigned char* message, unsigned int mes
   {
   };
   return(false);
+}
+
+bool InterprocessQueue::getMessage(unsigned char* msg, bool semTookFlag)
+{
+  // Just in case this function gets invoked during shutdown.
+  if (exitFlag == true)
+    return(false);
+
+  scoped_lock<interprocess_mutex> myDataAccessLock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
+
+  // Check to see if the the "Producer" has declared the interface "DOWN".  If so, we'll go back into "Synchronizing" state.
+  if (myControlData->InterfaceStatus == false)
+    return(false);
+
+
+  // Check to see if there's a Message in the list   
+  if (myControlData->NumberMessagesInQueue > 0)
+  {      
+    // Get the first message in the list.                                  
+    memcpy(msg, &(myQueue[(myControlData->CurrentReadSlot*maxMsgSize)+sizeof(unsigned int)]), 
+      *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize])));
+
+    // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
+    myControlData->NumberMessagesInQueue--; 
+    
+    ++myControlData->CurrentReadSlot %= maxMsgs;
+
+    myControlData->addMessageSemaphore.post();
+
+    return(true);
+  }
+  else
+    return(false);
 }
 
 //---------------------------------------------------------------------------
@@ -259,63 +326,113 @@ bool InterprocessQueue::timedAddMessage(unsigned char* message, unsigned int mes
 // queue within the timeout period, return the message.  If not, return a 
 // NULL pointer.
 //---------------------------------------------------------------------------
+//static  timeb         t, f;
 
 bool InterprocessQueue::timedGetMessage(unsigned char* msg, unsigned int timeoutSecs, unsigned long int timeoutMicroSecs)
 {
   // Just in case this function gets invoked during shutdown.
-  if (exitFlag == true)
-    return(false);
+  //if (exitFlag == true)
+  //  return(false);
+  bool          result;
+  unsigned long msgCount;
 
   try
   {
-    if (myControlData->getMsgSemaphore.timed_wait(boost::get_system_time() + boost::posix_time::seconds(timeoutSecs) + 
-        boost::posix_time::microseconds(timeoutMicroSecs)) == true)
+    if (getMessage(msg, false) == true)
     {
-      if (queueState == QueueSynchronizing)
-        return(false);
-
-      scoped_lock<interprocess_mutex> myDataAccessLock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
-
-      // Check to see if the the "Producer" has declared the interface "DOWN".  If so, we'll go back into "Synchronizing" state.
-      if (myControlData->InterfaceStatus == false)
-        return(false);
-
-
-      // Check to see if there's a Message in the list   
-      if (myControlData->NumberMessagesInQueue > 0)
-      {      
-        // Get the first message in the list.                                  
-        //unsigned int msgBytes = *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize]));
-
-        memcpy(msg, &(myQueue[(myControlData->CurrentReadSlot*maxMsgSize)+sizeof(unsigned int)]), 
-          *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize])));
-
-        // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
-        myControlData->NumberMessagesInQueue--; 
-    
-        //myControlData->CurrentReadSlot++;
-        ++myControlData->CurrentReadSlot %= maxMsgs;
-        myControlData->addMessageSemaphore.post();
-
-        return(true);
-      }
-      else
-        return(false);
+      //ftime(&t);
+      return(true);
     }
-    else
-      return(false);
+
+    do
+    {
+      result = myControlData->getMsgSemaphore.timed_lock(boost::get_system_time() + boost::posix_time::seconds(timeoutSecs) + 
+        boost::posix_time::microseconds(timeoutMicroSecs));
+
+      {
+        scoped_lock<interprocess_mutex> myDataAccessLock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
+        msgCount = myControlData->NumberMessagesInQueue;
+      }
+      //if (result == true)
+      //{
+      //  if (msgCount == 0)
+      //  {
+      //    //ftime(&f);
+      //    //printf("\n#1-result=true, msgCount=%u, DSecs=%u, Dms=%u", msgCount, f.time-t.time, f.millitm-t.millitm);
+      //  }
+      //}
+      //else
+      //{
+      //  //ftime(&f);
+      //  //printf("\n#1-result=false, msgCount=%u, DSecs=%u, Dms=%u", msgCount, f.time-t.time, f.millitm-t.millitm);
+      //}
+    } while ((result == true) && (msgCount == 0));
+    
+
+    if (result == true)
+    {
+      result = getMessage(msg, true);
+      //if (result == true)
+      //{
+      //  ftime(&t);
+      //  //printf("\n#2-result=true, msgCount=%u", msgCount);
+      //}
+      //else
+      //{
+      //  ftime(&f);
+      //  printf("\n#2-result=false, msgCount=%u, DSecs=%u, Dms=%u", msgCount, f.time-t.time, f.millitm-t.millitm);
+      //}
+      return(result);
+    }
+    //{
+
+      //if (queueState == QueueSynchronizing)
+      //  return(false);
+
+      //scoped_lock<interprocess_mutex> myDataAccessLock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
+
+      //// Check to see if the the "Producer" has declared the interface "DOWN".  If so, we'll go back into "Synchronizing" state.
+      //if (myControlData->InterfaceStatus == false)
+      //  return(false);
+
+
+      //// Check to see if there's a Message in the list   
+      //if (myControlData->NumberMessagesInQueue > 0)
+      //{      
+      //  // Get the first message in the list.                                  
+      //  //unsigned int msgBytes = *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize]));
+
+      //  memcpy(msg, &(myQueue[(myControlData->CurrentReadSlot*maxMsgSize)+sizeof(unsigned int)]), 
+      //    *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize])));
+
+      //  // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
+      //  myControlData->NumberMessagesInQueue--; 
+    
+      //  //myControlData->CurrentReadSlot++;
+      //  ++myControlData->CurrentReadSlot %= maxMsgs;
+      //  myControlData->addMessageSemaphore.post();
+
+      //  return(true);
+      //}
+      //else
+      //  return(false);
+    //}
+    //else
+    //  return(false);
   }
   catch(...)
   {
-    return(false);
+    //printf("\n#3-result=false, msgCount=%u, DSecs=%u, Dms=%u", msgCount, f.time-t.time, f.millitm-t.millitm);
+    //return(false);
   };
 
-  return(false);
+  //printf("\n#4-result=false, msgCount=%u, DSecs=%u, Dms=%u", msgCount, f.time-t.time, f.millitm-t.millitm);
+  //return(false);
 }
 
 
-static struct timeb previousTime;
-static double       previousCount;
+static timeb  previousTime;
+static double previousCount;
 
         void InterprocessQueue::LogMessage(char* Msg, double count)
         {

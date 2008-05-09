@@ -1,7 +1,7 @@
 // QueueTestConsole-Win32.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+//#include "stdafx.h"
 
 #include "ProducerThread.h"
 #include "ConsumerThread.h"
@@ -15,13 +15,12 @@ ConsumerThread*    consumerThread;
 // Creates an instance of Queue, ProducerThread and ConsumerThread
 // to test the performance of the Queue class.
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 
   char c[5];
 
   printf("Hit any key to START queing messages");
-
   fgets(c, 2, stdin);
 
   if (strcmp(argv[1], "server") == 0)
@@ -38,13 +37,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
   printf("Hit any key to STOP  queing/de-queing messages\n\n");
-
   fgets(c, 2, stdin);
+
   if (strcmp(argv[1], "server") == 0)
   {
-    producerThread->stop();
-    delete producerThread;
-}
+
+		producerThread->stop();
+
+		delete producerThread;
+	}
 
   if (strcmp(argv[1], "client") == 0)
   {
@@ -52,9 +53,7 @@ int _tmain(int argc, _TCHAR* argv[])
     delete consumerThread;
   }
 
-//  delete queue;
-
-  printf("Hit any key to EXIT Program\n\n");
+  printf("Hit any key to EXIT\n\n");
   fgets(c, 2, stdin);
 
 	return 0;
