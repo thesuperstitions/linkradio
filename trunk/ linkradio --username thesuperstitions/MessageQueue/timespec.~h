@@ -1,0 +1,20 @@
+//---------------------------------------------------------------------------
+#ifndef timespecH
+#define timespecH
+
+#include <sys/types.h>
+#include <time.h>
+//---------------------------------------------------------------------------
+
+    
+    //## type timespec 
+    struct timespec {
+        long tv_nsec;		//## attribute tv_nsec 
+        time_t tv_sec;		//## attribute tv_sec
+    };
+
+
+
+
+#endif
+ 
