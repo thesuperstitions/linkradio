@@ -9,7 +9,7 @@
 #include "ui_QueueTest.h"
 #include "ProducerThread.h"
 #include "ConsumerThread.h"
-#include "Queue.h"
+//#include "InterprocessQueue.h"
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
@@ -24,7 +24,7 @@ protected:
   QSettings*     AppSettings;
   QApplication*  TheApp;
   QDir*          Directory;
-  Queue          queue;
+  //Queue          queue;
 
   ProducerThread*  producerThread;
   ConsumerThread*  consumerThread;

@@ -8,7 +8,7 @@
 #include <QDesktopWidget>
 #include <QTextStream>
 #include "mainwindow.h"
-#include "Queue.h"
+#include "InterprocessQueue.h"
 #include "Sleep.h"
 
 //****************************************************************************************************************************
@@ -58,12 +58,10 @@ void MainWindow::ProcessDataClicked(bool checked)
     textEdit->append("DEBUG:MainWindow::ProcessDataClicked - User Clicked \"Start Program\" Button");
     pushButton->setText(QApplication::translate("MainWindow", "Stop", 0, QApplication::UnicodeUTF8));
 
-//    queue          = new Queue();
-
-    consumerThread = new ConsumerThread(&queue);
+    consumerThread = new ConsumerThread();
     consumerThread->start();
 
-    producerThread = new ProducerThread(&queue);
+    producerThread = new ProducerThread();
     producerThread->start();
 
 
@@ -82,7 +80,6 @@ void MainWindow::ProcessDataClicked(bool checked)
 
     delete producerThread;
 
-//    delete queue;
     delete consumerThread;
     QObject::disconnect(&queue, SIGNAL(OnLogText(QString)), textEdit, SLOT(append(QString)));
   }
