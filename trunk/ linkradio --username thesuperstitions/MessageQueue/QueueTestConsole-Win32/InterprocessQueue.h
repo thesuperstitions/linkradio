@@ -8,8 +8,8 @@
 #include <boost/interprocess/sync/interprocess_semaphore.hpp>
 #include <boost/interprocess/shared_memory_object.hpp>
 
-#define INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES 100
-#define INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE     100000
+#define INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES 1000
+#define INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE     1000
 
 
 struct SharedMemoryQueueControlData
