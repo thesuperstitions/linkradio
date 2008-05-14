@@ -92,7 +92,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 	}
 	- _lastID = 1;
-	- weakCGTime = 4.9.2008::13:10:36;
+	- weakCGTime = 5.12.2008::17:5:34;
 	- strongCGTime = 4.4.2008::16:0:1;
 	- _defaultComposite = GUID af3e0535-63f3-40be-97b9-0f6965d34524;
 	- _eventsBaseID = -1;
@@ -104,7 +104,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 1;
-			- weakCGTime = 4.9.2008::13:10:36;
+			- weakCGTime = 5.12.2008::17:5:34;
 			- strongCGTime = 4.4.2008::16:0:1;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -692,8 +692,8 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				}
 			}
 			- _lastID = 12;
-			- weakCGTime = 4.9.2008::13:10:36;
-			- strongCGTime = 4.4.2008::14:49:59;
+			- weakCGTime = 5.12.2008::17:6:43;
+			- strongCGTime = 5.12.2008::17:6:43;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
 				- value = 
@@ -865,7 +865,7 @@ setFederate(this);
 					- _navigability = Navigable;
 				}
 				{ IAssociationEnd 
-					- _id = GUID f1b6ed53-a725-4671-9da1-bba6b569c3d1;
+					- _id = GUID cc3c3047-c525-4d64-83da-4322d006ea1b;
 					- _myState = 10240;
 					- _name = "itsFederateIO_Handler";
 					- _multiplicity = "1";
@@ -883,7 +883,7 @@ setFederate(this);
 						- _subsystem = "Framework::IO";
 						- _class = "FederateIO_Handler";
 						- _name = "itsFederate";
-						- _id = GUID 73af12b2-c28f-4762-8156-8c63eeb60e9f;
+						- _id = GUID e2356925-d97d-4147-944b-181d1df31ded;
 					}
 					- _linkName = "";
 					- _linkType = Assoc;

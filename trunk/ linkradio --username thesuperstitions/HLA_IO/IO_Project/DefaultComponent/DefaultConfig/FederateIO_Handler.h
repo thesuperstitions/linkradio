@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_Handler
-//!	Generated Date	: Tue, 22, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_Handler.h
 *********************************************************************/
 
@@ -31,6 +31,8 @@
 #include "FederateInterface.h"
 // class FederateIO_Handler 
 #include "IO_Handler.h"
+// class FederateIO_Handler 
+#include "Thread.h"
 
 //----------------------------------------------------------------------------
 // FederateIO_Handler.h                                                                  
@@ -51,9 +53,12 @@ namespace Control {
     
 } 
 
+namespace utils {
+    class InterprocessQueue;
+    
+} 
+
 namespace IO {
-    class FederateIO_InputThread;
-    class FederateMessage;
     class PostOffice;
     
 } 
@@ -75,7 +80,7 @@ namespace Control {
 namespace Framework {
     namespace IO {
         //## class FederateIO_Handler 
-        class FederateIO_Handler : public IO_Handler {
+        class FederateIO_Handler : public IO_Handler, public utils::Thread {
         
         
         ////    Constructors and destructors    ////
@@ -87,31 +92,28 @@ namespace Framework {
             //## auto_generated 
             FederateIO_Handler();
             
-            //## auto_generated 
-            virtual ~FederateIO_Handler();
+            //## operation ~FederateIO_Handler() 
+            ~FederateIO_Handler();
         
         
         ////    Operations    ////
         public :
             
-            //## operation createFederateInterface(std::string) 
-            void createFederateInterface(std::string interfaceName);
+            //## operation createFederateInterface(std::string,unsigned long,unsigned long) 
+            FederateInterface* createFederateInterface(std::string interfaceName, unsigned long maxMessageSize, unsigned long maxMessages);
             
-            //## operation onTimerExpired() 
-            virtual void onTimerExpired();
-            
-            //## operation passMessageToApplication(FederateMessage*) 
-            bool passMessageToApplication(FederateMessage* federateMessage);
-            
-            //## operation recvMessage(int,unsigned long) 
-            virtual FederateMessage* recvMessage(int timeoutSeconds, unsigned long timeoutNanoseconds);
-            
-            //## operation sendMessage(std::string,char*,int) 
-            void sendMessage(std::string interfaceName, char* message, int messageSizeInBytes);
+            //## operation threadOperation() 
+            void threadOperation();
         
         
         ////    Additional operations    ////
         public :
+            
+            //## auto_generated 
+            bool getExitFlag() const;
+            
+            //## auto_generated 
+            void setExitFlag(bool p_exitFlag);
             
             //## auto_generated 
             FederateFrameworkType getFrameworkType() const;
@@ -126,28 +128,10 @@ namespace Framework {
             void setInterfaceType(Framework::InterfaceType p_interfaceType);
             
             //## auto_generated 
-            bool getRecvMessageActive() const;
-            
-            //## auto_generated 
-            void setRecvMessageActive(bool p_recvMessageActive);
-            
-            //## auto_generated 
-            bool getTimerExpired() const;
-            
-            //## auto_generated 
-            void setTimerExpired(bool p_timerExpired);
-            
-            //## auto_generated 
             Control::Federate* getItsFederate() const;
             
             //## auto_generated 
             void setItsFederate(Control::Federate* p_Federate);
-            
-            //## auto_generated 
-            FederateIO_InputThread* getItsFederateIO_InputThread() const;
-            
-            //## auto_generated 
-            void setItsFederateIO_InputThread(FederateIO_InputThread* p_FederateIO_InputThread);
             
             //## auto_generated 
             std::map<std::string, FederateInterface*>::const_iterator getItsFederateInterface() const;
@@ -177,10 +161,10 @@ namespace Framework {
             void setItsFederateInterfaceFactory(Control::FederateInterfaceFactory* p_FederateInterfaceFactory);
             
             //## auto_generated 
-            FederateMessage* getItsFederateMessage() const;
+            utils::InterprocessQueue* getItsInterprocessQueue() const;
             
             //## auto_generated 
-            void setItsFederateMessage(FederateMessage* p_FederateMessage);
+            void setItsInterprocessQueue(utils::InterprocessQueue* p_InterprocessQueue);
         
         
         ////    Framework operations    ////
@@ -196,15 +180,6 @@ namespace Framework {
             void _clearItsFederate();
             
             //## auto_generated 
-            void __setItsFederateIO_InputThread(FederateIO_InputThread* p_FederateIO_InputThread);
-            
-            //## auto_generated 
-            void _setItsFederateIO_InputThread(FederateIO_InputThread* p_FederateIO_InputThread);
-            
-            //## auto_generated 
-            void _clearItsFederateIO_InputThread();
-            
-            //## auto_generated 
             void _clearItsFederateInterface();
             
             //## auto_generated 
@@ -215,6 +190,15 @@ namespace Framework {
             
             //## auto_generated 
             void _removeItsFederateInterface(std::string key);
+            
+            //## auto_generated 
+            void __setItsInterprocessQueue(utils::InterprocessQueue* p_InterprocessQueue);
+            
+            //## auto_generated 
+            void _setItsInterprocessQueue(utils::InterprocessQueue* p_InterprocessQueue);
+            
+            //## auto_generated 
+            void _clearItsInterprocessQueue();
         
         protected :
             
@@ -225,13 +209,11 @@ namespace Framework {
         ////    Attributes    ////
         protected :
             
+            bool exitFlag;		//## attribute exitFlag 
+            
             FederateFrameworkType frameworkType;		//## attribute frameworkType 
             
             Framework::InterfaceType interfaceType;		//## attribute interfaceType 
-            
-            bool recvMessageActive;		//## attribute recvMessageActive 
-            
-            bool timerExpired;		//## attribute timerExpired 
             
         
         ////    Relations and components    ////
@@ -240,16 +222,13 @@ namespace Framework {
             Control::Federate* itsFederate;		//## link itsFederate 
             
             
-            FederateIO_InputThread* itsFederateIO_InputThread;		//## link itsFederateIO_InputThread 
-            
-            
             std::map<std::string, FederateInterface*> itsFederateInterface;		//## link itsFederateInterface 
             
             
             Control::FederateInterfaceFactory* itsFederateInterfaceFactory;		//## link itsFederateInterfaceFactory 
             
             
-            FederateMessage* itsFederateMessage;		//## link itsFederateMessage 
+            utils::InterprocessQueue* itsInterprocessQueue;		//## link itsInterprocessQueue 
             
         
         

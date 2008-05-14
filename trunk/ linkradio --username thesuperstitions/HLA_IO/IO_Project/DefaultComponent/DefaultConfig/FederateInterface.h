@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateInterface
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterface.h
 *********************************************************************/
 
@@ -22,6 +22,8 @@
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "IO.h"
+// class FederateInterface 
+#include "Thread.h"
 
 //----------------------------------------------------------------------------
 // FederateInterface.h                                                                  
@@ -32,8 +34,14 @@ namespace Framework {
     
     namespace IO {
         class FederateIO_Handler;
-    }
+        class FederateMessage;
+        
+    } 
     
+namespace utils {
+    class InterprocessQueue;
+}
+
 }
 
 
@@ -47,21 +55,37 @@ namespace Framework {
 namespace Framework {
     namespace IO {
         //## class FederateInterface 
-        class FederateInterface  {
+        class FederateInterface : public utils::Thread {
         
         
         ////    Constructors and destructors    ////
         public :
             
-            //## operation FederateInterface(std::string,Framework::InterfaceType) 
-            FederateInterface(std::string name, Framework::InterfaceType interfaceType);
+            //## operation FederateInterface(std::string,unsigned long,unsigned long) 
+            FederateInterface(std::string name, unsigned long maxMessageSize, unsigned long maxMessages);
             
-            //## auto_generated 
+            //## operation ~FederateInterface() 
             ~FederateInterface();
+        
+        
+        ////    Operations    ////
+        public :
+            
+            //## operation processFederateMessage(FederateMessage*) 
+            virtual bool processFederateMessage(FederateMessage* message);
+            
+            //## operation threadOperation() 
+            void threadOperation();
         
         
         ////    Additional operations    ////
         public :
+            
+            //## auto_generated 
+            bool getExitFlag() const;
+            
+            //## auto_generated 
+            void setExitFlag(bool p_exitFlag);
             
             //## auto_generated 
             std::string getInterfaceName() const;
@@ -70,16 +94,34 @@ namespace Framework {
             void setInterfaceName(std::string p_interfaceName);
             
             //## auto_generated 
-            Framework::InterfaceType getInterfaceType() const;
+            unsigned long getMaxMessageSize() const;
             
             //## auto_generated 
-            void setInterfaceType(Framework::InterfaceType p_interfaceType);
+            void setMaxMessageSize(unsigned long p_maxMessageSize);
+            
+            //## auto_generated 
+            unsigned long getMaxMessages() const;
+            
+            //## auto_generated 
+            void setMaxMessages(unsigned long p_maxMessages);
+            
+            //## auto_generated 
+            utils::InterprocessQueue* getInputQueue() const;
+            
+            //## auto_generated 
+            void setInputQueue(utils::InterprocessQueue* p_InterprocessQueue);
             
             //## auto_generated 
             FederateIO_Handler* getItsFederateIO_Handler() const;
             
             //## auto_generated 
             void setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
+            
+            //## auto_generated 
+            utils::InterprocessQueue* getOutputQueue() const;
+            
+            //## auto_generated 
+            void setOutputQueue(utils::InterprocessQueue* p_InterprocessQueue);
         
         
         ////    Framework operations    ////
@@ -103,15 +145,25 @@ namespace Framework {
         ////    Attributes    ////
         protected :
             
+            bool exitFlag;		//## attribute exitFlag 
+            
             std::string interfaceName;		//## attribute interfaceName 
             
-            Framework::InterfaceType interfaceType;		//## attribute interfaceType 
+            unsigned long maxMessageSize;		//## attribute maxMessageSize 
+            
+            unsigned long maxMessages;		//## attribute maxMessages 
             
         
         ////    Relations and components    ////
         protected :
             
+            utils::InterprocessQueue* inputQueue;		//## link inputQueue 
+            
+            
             FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
+            
+            
+            utils::InterprocessQueue* outputQueue;		//## link outputQueue 
             
         
         

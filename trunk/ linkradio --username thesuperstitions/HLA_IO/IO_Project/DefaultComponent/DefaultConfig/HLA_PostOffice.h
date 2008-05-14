@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::HLA_PostOffice
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.h
 *********************************************************************/
 
@@ -51,7 +51,6 @@ namespace Control {
 
 namespace IO {
     class FederateInterface;
-    class FederateIO_InputThread;
     class FederateMessage;
     
 } 

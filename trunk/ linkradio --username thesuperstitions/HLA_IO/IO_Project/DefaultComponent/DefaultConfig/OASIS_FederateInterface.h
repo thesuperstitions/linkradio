@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::OASIS_FederateInterface
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.h
 *********************************************************************/
 
@@ -34,8 +34,13 @@ namespace Framework {
     
     namespace IO {
         class FederateIO_Handler;
-    }
+        
+    } 
     
+namespace utils {
+    class InterprocessQueue;
+}
+
 }
 
 

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Framework.h
 *********************************************************************/
 
@@ -85,6 +85,27 @@ namespace Framework {
 
     };
     
+    //## type SharedMemoryQueueControlData 
+    struct SharedMemoryQueueControlData {
+        // ## attribute getMsgSemaphore
+        boost::interprocess::interprocess_semaphore getMsgSemaphore;		//## attribute getMsgSemaphore 
+        boost::interprocess::interprocess_semaphore addMessageSemaphore;		//## attribute addMessageSemaphore 
+        boost::interprocess::interprocess_mutex myDataAccessMutex;		//## attribute myDataAccessMutex 
+        unsigned int NumberMessagesInQueue;		//## attribute NumberMessagesInQueue 
+        unsigned int CurrentReadSlot;		//## attribute CurrentReadSlot 
+        unsigned int CurrentWriteSlot;		//## attribute CurrentWriteSlot 
+        unsigned long UniqueValue;		//## attribute UniqueValue 
+        bool InterfaceStatus;		//## attribute InterfaceStatus 
+    };
+    
+    //## type IO_InterfaceInformationType 
+    struct IO_InterfaceInformationType {
+        std::string interfaceName;		//## attribute interfaceName 
+        unsigned long maxMessageSize;		//## attribute maxMessageSize 
+        long maxMessages;		//## attribute maxMessages 
+        void * federateInterfacePtr;		//## attribute federateInterfacePtr 
+    };
+    
     
     // Convert narrow string to wide string
     //## operation DtToString(const std::wstring &) 
@@ -140,6 +161,12 @@ namespace Framework {
     
     //## operation getTheRtiAmbassador() 
     rti1516::RTIambassador* getTheRtiAmbassador();
+    
+    //## attribute INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE 
+    #define INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE 20
+    
+    //## attribute INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES 
+    #define INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES 100
     
     
 }

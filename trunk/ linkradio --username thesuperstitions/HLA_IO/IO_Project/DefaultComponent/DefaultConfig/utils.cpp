@@ -4,12 +4,12 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::utils
-//!	Generated Date	: Tue, 22, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\utils.cpp
 *********************************************************************/
 
 #include "utils.h"
-#include "Queue.h"
+#include "InterprocessQueue.h"
 #include "Sleep.h"
 #include "Thread.h"
 #include "Timer.h"
@@ -28,7 +28,6 @@ namespace Framework {
 
 namespace Framework {
     namespace utils {
-        
         
         
     }

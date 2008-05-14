@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework
-//!	Generated Date	: Fri, 4, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Framework.cpp
 *********************************************************************/
 
@@ -46,6 +46,7 @@ namespace Framework {
         return(NULL);
         //#]
     }
+    
     
 }
 

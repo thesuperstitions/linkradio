@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::utils::Timer
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Timer.h
 *********************************************************************/
 
@@ -21,6 +21,7 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
+#include "utils.h"
 // class Timer 
 #include "Thread.h"
 

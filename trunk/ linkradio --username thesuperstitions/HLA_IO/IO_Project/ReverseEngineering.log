@@ -1,14 +1,21 @@
 
-Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.cpp'
-Reverse Engineering include file 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h'
+Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp'
+Reverse Engineering include file 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h'
 Adding package 'ReverseEngineering' to project 'IO_Project'. ok.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h, Line: 10 #include boost/thread/mutex.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h, Line: 11 #include boost/circular_buffer.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h, Line: 14 #include ctime ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.cpp, Line: 21 #include boost/thread.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.cpp, Line: 22 #include boost/date_time/posix_time/posix_time.hpp ignored--file not found.
-Analyzing class 'Queue' from File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Queue.h, Line: 19
-Adding class 'Queue' to package 'ReverseEngineering'. ok.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 9 #include sys/mman.h ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 16 #include boost/interprocess/sync/interprocess_mutex.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 17 #include boost/interprocess/sync/interprocess_semaphore.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 18 #include boost/interprocess/shared_memory_object.hpp ignored--file not found.
+Analyzing struct 'SharedMemoryQueueControlData' from File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 24
+Adding package 'namespace_univ' to package 'ReverseEngineering'. ok.
+Adding package 'interprocess' to package 'namespace_univ'. ok.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 21 #include boost/interprocess/mapped_region.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 22 #include boost/date_time/posix_time/posix_time.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 23 #include boost/interprocess/sync/scoped_lock.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 24 #include boost/thread.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 25 #include sys/timeb.h ignored--file not found.
+Analyzing class 'InterprocessQueue' from File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 44
+Adding class 'InterprocessQueue' to package 'ReverseEngineering'. ok.
 
 Reverse Engineering Done. See detailed report in the log file.
 

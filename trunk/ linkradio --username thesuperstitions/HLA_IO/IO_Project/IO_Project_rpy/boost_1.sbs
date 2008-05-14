@@ -1,15 +1,34 @@
 I-Logix-RPY-Archive version 8.0.9 C++ 893629
 { ISubsystem 
-	- _id = GUID 82fc2323-d113-4f70-b0ff-95e0da775717;
+	- _id = GUID 5f8a27f7-316e-41a4-81da-d140b34944e4;
 	- _myState = 8192;
 	- _properties = { IPropertyContainer 
 		- Subjects = { IRPYRawContainer 
-			- size = 1;
+			- size = 2;
 			- value = 
+			{ IPropertySubject 
+				- _Name = "CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Package";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "UseAsExternal";
+								- _Value = "True";
+								- _Type = Bool;
+							}
+						}
+					}
+				}
+			}
 			{ IPropertySubject 
 				- _Name = "CPP_CG";
 				- Metaclasses = { IRPYRawContainer 
-					- size = 1;
+					- size = 2;
 					- value = 
 					{ IPropertyMetaclass 
 						- _Name = "Package";
@@ -23,61 +42,60 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 							}
 						}
 					}
-				}
-			}
-		}
-	}
-	- _name = "boost";
-	- weakCGTime = 4.2.2008::12:29:3;
-	- strongCGTime = 4.2.2008::12:29:3;
-	- _defaultComposite = GUID bf33d691-a2d0-49da-9c90-b7944f998823;
-	- _eventsBaseID = -1;
-	- Classes = { IRPYRawContainer 
-		- size = 2;
-		- value = 
-		{ IClass 
-			- _id = GUID bf33d691-a2d0-49da-9c90-b7944f998823;
-			- _myState = 40960;
-			- _name = "TopLevel";
-			- weakCGTime = 12.31.1969::19:0:0;
-			- strongCGTime = 12.31.1969::19:0:0;
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID 843703f7-aa3a-4c00-9403-59b4e3d5c075;
-			- _myState = 8192;
-			- _properties = { IPropertyContainer 
-				- Subjects = { IRPYRawContainer 
-					- size = 1;
-					- value = 
-					{ IPropertySubject 
-						- _Name = "CG";
-						- Metaclasses = { IRPYRawContainer 
-							- size = 1;
+					{ IPropertyMetaclass 
+						- _Name = "Type";
+						- Properties = { IRPYRawContainer 
+							- size = 4;
 							- value = 
-							{ IPropertyMetaclass 
-								- _Name = "Class";
-								- Properties = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IProperty 
-										- _Name = "UseAsExternal";
-										- _Value = "True";
-										- _Type = Bool;
-									}
-								}
+							{ IProperty 
+								- _Name = "In";
+								- _Value = "$type";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "InOut";
+								- _Value = "$type";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "Out";
+								- _Value = "$type";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "ReturnType";
+								- _Value = "$type";
+								- _Type = String;
 							}
 						}
 					}
 				}
 			}
-			- _name = "thread";
-			- weakCGTime = 12.31.1969::19:0:0;
-			- strongCGTime = 12.31.1969::19:0:0;
+		}
+	}
+	- _name = "boost";
+	- Declaratives = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ ISubsystem 
+			- fileName = "interprocess_1";
+			- _id = GUID e9612ebf-53fa-421b-afa2-cc689312ede8;
+			- _name = "interprocess";
+		}
+	}
+	- weakCGTime = 5.12.2008::15:42:37;
+	- strongCGTime = 5.12.2008::15:42:37;
+	- _defaultComposite = GUID abbd8491-c48b-4207-b994-1d63d254dcaf;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID abbd8491-c48b-4207-b994-1d63d254dcaf;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- weakCGTime = 5.12.2008::15:42:37;
+			- strongCGTime = 5.12.2008::15:42:37;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
@@ -85,6 +103,6 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _classModifier = Unspecified;
 		}
 	}
-	- _configurationRelatedTime = 12.31.1969::19:0:0;
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
 }
 

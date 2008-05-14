@@ -4,13 +4,17 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateInterface
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterface.cpp
 *********************************************************************/
 
 #include "FederateInterface.h"
 // link itsFederateIO_Handler 
 #include "FederateIO_Handler.h"
+// operation processFederateMessage(FederateMessage*) 
+#include "FederateMessage.h"
+// link inputQueue 
+#include "InterprocessQueue.h"
 
 //----------------------------------------------------------------------------
 // FederateInterface.cpp                                                                  
@@ -24,16 +28,103 @@ namespace Framework {
     namespace IO {
         
         
-        FederateInterface::FederateInterface(std::string name, Framework::InterfaceType interfaceType) : interfaceName(name), interfaceType(interfaceType) {
+        FederateInterface::FederateInterface(std::string name, unsigned long maxMessageSize, unsigned long maxMessages) : exitFlag(false) ,interfaceName(name), maxMessageSize(maxMessageSize), maxMessages(maxMessages) {
+            outputQueue = NULL;
             itsFederateIO_Handler = NULL;
-            //#[ operation FederateInterface(std::string,Framework::InterfaceType) 
+            inputQueue = NULL;
+            //#[ operation FederateInterface(std::string,unsigned long,unsigned long) 
             
+            setInputQueue(new InterprocessQueue(name+"-Input", maxMessageSize, maxMessages));
+            setOutputQueue(new InterprocessQueue(name+"-Output", maxMessageSize, maxMessages));
+            
+            Thread::start();
             
             //#]
         }
         
         FederateInterface::~FederateInterface() {
+            //#[ operation ~FederateInterface() 
+                        
+            exitFlag = true;
+            
+            this->Thread::join();
+            
+            Thread::stop();
+            
+            delete getitsFederateMessage();
+            setitsFederateMessage(NULL);
+            delete getOutputQueue;  
+            setOutputQueue(NULL);
+            
+            //#]
             cleanUpRelations();
+        }
+        
+        bool FederateInterface::processFederateMessage(FederateMessage* message) {
+            //#[ operation processFederateMessage(FederateMessage*) 
+            
+            // This thread handles a message from a publisher that is to be sent to subscribers.              
+            Buffer* bPtr;
+            
+              
+            if (inputQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
+            {
+              // Wait for process on other end of queue to be ready.
+              if (inputQueue->SynchronizeQueueUsers() == false)   
+              {  // The subscriber isn't ready to receive from the queue.
+                delete message;
+                return(false);
+              }
+            }  
+            
+            // Send the message to the subscriber.
+            bPtr = message->getMessage()->getBuffer();
+            inputQueue()->timedAddMessage(bPtr->byteArray, bPtr->sizeOfByteArray, 1, 0);
+            return (inputQueue->timedAddMessage(((unsigned char*)bPtr->byteArray), bPtr->sizeOfByteArray, 1, 0) );
+            
+            //#]
+        }
+        
+        void FederateInterface::threadOperation() {
+            //#[ operation threadOperation() 
+            
+            // This thread handles a message from a publisher that is to be sent to subscribers.              
+            unsigned char    message[INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES];    
+            unsigned long    messageSizeInBytes;
+            FederateMessage* fmPtr = (FederateMessage*)&message;  
+            Buffer*          bPtr;
+              
+            while (exitFlag != true)
+            {  
+              if (outputQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
+              {
+                // Wait for process on other end of queue to be ready.
+                while (outputQueue->SynchronizeQueueUsers() == false);
+              }  
+              else
+              {
+                if (inputQueue->timedGetMessage((unsigned char*)&message, messageSizeInBytes, 1, 0) == true )
+                {    
+            // todo  
+            // Change Interprocess queue to return the # of bytes in the message.
+                  // Create a FederateMessage instance and populate it.
+                  FederateMessage* fm_Ptr = new FederateMessage( this, &message, messageSizeInBytes );    
+                
+                  // Send the message to the Post Office for delivery.
+                  Framework::Control::getFederate()->getThePostOffice()->sendMessage( fm_Ptr);
+                }   
+              }
+            };
+                     
+            //#]
+        }
+        
+        bool FederateInterface::getExitFlag() const {
+            return exitFlag;
+        }
+        
+        void FederateInterface::setExitFlag(bool p_exitFlag) {
+            exitFlag = p_exitFlag;
         }
         
         std::string FederateInterface::getInterfaceName() const {
@@ -44,12 +135,28 @@ namespace Framework {
             interfaceName = p_interfaceName;
         }
         
-        Framework::InterfaceType FederateInterface::getInterfaceType() const {
-            return interfaceType;
+        unsigned long FederateInterface::getMaxMessageSize() const {
+            return maxMessageSize;
         }
         
-        void FederateInterface::setInterfaceType(Framework::InterfaceType p_interfaceType) {
-            interfaceType = p_interfaceType;
+        void FederateInterface::setMaxMessageSize(unsigned long p_maxMessageSize) {
+            maxMessageSize = p_maxMessageSize;
+        }
+        
+        unsigned long FederateInterface::getMaxMessages() const {
+            return maxMessages;
+        }
+        
+        void FederateInterface::setMaxMessages(unsigned long p_maxMessages) {
+            maxMessages = p_maxMessages;
+        }
+        
+        Framework::utils::InterprocessQueue* FederateInterface::getInputQueue() const {
+            return inputQueue;
+        }
+        
+        void FederateInterface::setInputQueue(Framework::utils::InterprocessQueue* p_InterprocessQueue) {
+            inputQueue = p_InterprocessQueue;
         }
         
         Framework::IO::FederateIO_Handler* FederateInterface::getItsFederateIO_Handler() const {
@@ -80,7 +187,19 @@ namespace Framework {
             itsFederateIO_Handler = NULL;
         }
         
+        Framework::utils::InterprocessQueue* FederateInterface::getOutputQueue() const {
+            return outputQueue;
+        }
+        
+        void FederateInterface::setOutputQueue(Framework::utils::InterprocessQueue* p_InterprocessQueue) {
+            outputQueue = p_InterprocessQueue;
+        }
+        
         void FederateInterface::cleanUpRelations() {
+            if(inputQueue != NULL)
+                {
+                    inputQueue = NULL;
+                }
             if(itsFederateIO_Handler != NULL)
                 {
                     Framework::IO::FederateIO_Handler* current = itsFederateIO_Handler;
@@ -89,6 +208,10 @@ namespace Framework {
                             current->_removeItsFederateInterface(interfaceName);
                         }
                     itsFederateIO_Handler = NULL;
+                }
+            if(outputQueue != NULL)
+                {
+                    outputQueue = NULL;
                 }
         }
         

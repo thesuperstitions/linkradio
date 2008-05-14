@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: FrameworkTester
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkTester.cpp
 *********************************************************************/
 
@@ -13,8 +13,6 @@
 #include "ExampleFederate.h"
 // dependency FederateFrameworkType 
 #include "Framework.h"
-// dependency C_IO_Functions 
-#include "C_IO_Functions.h"
 
 //----------------------------------------------------------------------------
 // FrameworkTester.cpp                                                                  
@@ -60,14 +58,14 @@ FrameworkTester::~FrameworkTester() {
 int FrameworkTester::Configure_NTDS_Device(DEVICE_DATA * devices_ptr) {
     //#[ operation Configure_NTDS_Device(DEVICE_DATA *) 
     
-    char s[100];
+    //    char s[100];
                 
     while (devices_ptr != NULL)
     {
-      sprintf(s, "%s%u", devices_ptr->name_string, interfaceCount++);
-      std::string myString = s;                               
+    //      sprintf(s, "%s%u", devices_ptr->name_string, interfaceCount++);
+    //      std::string myString = s;                               
       
-      Framework::IO::C_IO_Functions::createInterface(myString);    
+      Framework::IO::C_IO_Functions::Configure_NTDS_Device(devices_ptr);    
       
       devices_ptr++;
     };  

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: FrameworkTester
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkTester.h
 *********************************************************************/
 
@@ -24,10 +24,10 @@
 #include "FrameworkTest.h"
 // dependency FrameworkFederateAmbassador 
 #include "FrameworkFederateAmbassador.h"
+// dependency C_IO_Functions 
+#include "C_IO_Functions.h"
 // dependency RtiAmbassador 
 #include "RtiAmbassador.h"
-// dependency TestTypes 
-#include "TestTypes.h"
 
 //----------------------------------------------------------------------------
 // FrameworkTester.h                                                                  
@@ -36,15 +36,10 @@
 
 namespace Framework {
     
-    namespace IO {
-        class C_IO_Functions;
-        
-    } 
+    namespace Control {
+        class ExampleFederate;
+    }
     
-namespace Control {
-    class ExampleFederate;
-}
-
 }
 
 

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::utils::Queue
-//!	Generated Date	: Tue, 22, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Queue.h
 *********************************************************************/
 
@@ -21,6 +21,7 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
+#include "utils.h"
 
 //----------------------------------------------------------------------------
 // Queue.h                                                                  

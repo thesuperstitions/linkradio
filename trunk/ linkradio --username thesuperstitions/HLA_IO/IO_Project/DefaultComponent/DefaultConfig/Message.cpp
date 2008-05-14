@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::Message
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Message.cpp
 *********************************************************************/
 
@@ -46,6 +46,14 @@ namespace Framework {
         
         Message::~Message() {
             cleanUpRelations();
+        }
+        
+        std::string Message::getFederateInterfaceEnetAddress() const {
+            return federateInterfaceEnetAddress;
+        }
+        
+        void Message::setFederateInterfaceEnetAddress(std::string p_federateInterfaceEnetAddress) {
+            federateInterfaceEnetAddress = p_federateInterfaceEnetAddress;
         }
         
         unsigned long Message::getInstanceNumber() const {

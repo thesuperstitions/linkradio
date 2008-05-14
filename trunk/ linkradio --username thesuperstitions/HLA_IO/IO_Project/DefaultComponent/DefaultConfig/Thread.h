@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::utils::Thread
-//!	Generated Date	: Thu, 3, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Thread.h
 *********************************************************************/
 
@@ -21,6 +21,7 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
+#include "utils.h"
 #include "boost/thread.hpp"
 #include "boost/bind.hpp"
 

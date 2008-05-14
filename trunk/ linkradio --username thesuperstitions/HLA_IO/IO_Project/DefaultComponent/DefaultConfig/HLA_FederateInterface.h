@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::HLA_FederateInterface
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Tue, 13, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_FederateInterface.h
 *********************************************************************/
 
@@ -35,8 +35,13 @@ namespace Framework {
     namespace IO {
         class FederateIO_Handler;
         class HLA_PostOffice;
-    }
+        
+    } 
     
+namespace utils {
+    class InterprocessQueue;
+}
+
 }
 
 
@@ -59,7 +64,7 @@ namespace Framework {
             //## operation HLA_FederateInterface(std::string,Framework::InterfaceType) 
             HLA_FederateInterface(std::string name, Framework::InterfaceType interfaceType);
             
-            //## auto_generated 
+            //## operation ~HLA_FederateInterface() 
             ~HLA_FederateInterface();
         
         

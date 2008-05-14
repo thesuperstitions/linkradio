@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::HLA_PostOffice
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.cpp
 *********************************************************************/
 
@@ -16,8 +16,6 @@
 #include "Buffer.h"
 // operation announcePublication(FederateInterface*) 
 #include "FederateInterface.h"
-// dependency FederateIO_InputThread 
-#include "FederateIO_InputThread.h"
 // operation sendMessage(FederateMessage*) 
 #include "FederateMessage.h"
 
@@ -99,7 +97,7 @@ namespace Framework {
             //this->addTheMessage(reinterpret_cast<Framework::IO::Message*>(msg));
             
             // Send the Interaction Parameter to the FederateInterface (HLA_FederateInterface in this case).
-            hfi_ptr->getItsFederateIO_Handler()->getItsFederateIO_InputThread()->addFederateMessage(msg);
+            //todo            hfi_ptr->getItsFederateIO_Handler()->getItsFederateIO_InputThread()->addFederateMessage(msg);
             //#]
         }
         

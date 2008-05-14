@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::Message
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Message.h
 *********************************************************************/
 
@@ -67,6 +67,12 @@ namespace Framework {
         public :
             
             //## auto_generated 
+            std::string getFederateInterfaceEnetAddress() const;
+            
+            //## auto_generated 
+            void setFederateInterfaceEnetAddress(std::string p_federateInterfaceEnetAddress);
+            
+            //## auto_generated 
             unsigned long getInstanceNumber() const;
             
             //## auto_generated 
@@ -105,6 +111,8 @@ namespace Framework {
         
         ////    Attributes    ////
         protected :
+            
+            std::string federateInterfaceEnetAddress;		//## attribute federateInterfaceEnetAddress 
             
             unsigned long instanceNumber;		//## attribute instanceNumber 
             

@@ -1,7 +1,7 @@
 I-Logix-RPY-Archive version 8.0.9 * 893629
 
 - filesTable = { IRPYRawContainer 
-	- size = 14;
+	- size = 15;
 	- value = "IO_Project.rpy" ""
 	"IO_Project_rpy\\Control.sbs" "Framework::Control"
 	"IO_Project_rpy\\DefaultComponent.cmp" "DefaultComponent"
@@ -11,9 +11,10 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	"IO_Project_rpy\\IOClassDiagram.omd" "Framework::IO::IOClassDiagram"
 	"IO_Project_rpy\\Model1.omd" "Model1"
 	"IO_Project_rpy\\TestDiagram.omd" "FrameworkTest::TestDiagram"
-	"IO_Project_rpy\\TestTypes.sbs" "FrameworkTest::TestTypes"
 	"IO_Project_rpy\\Time.sbs" "Framework::Time"
 	"IO_Project_rpy\\Use_Case_42.2.msc" "Framework::IO::Use_Case_42.2"
+	"IO_Project_rpy\\boost_1.sbs" "boost"
+	"IO_Project_rpy\\interprocess_1.sbs" "boost::interprocess"
 	"IO_Project_rpy\\utils.sbs" "Framework::utils"
 	"Projects.rpl" ""
 	

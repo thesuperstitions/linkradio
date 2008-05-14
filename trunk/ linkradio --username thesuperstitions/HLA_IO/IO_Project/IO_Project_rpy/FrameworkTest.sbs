@@ -5,19 +5,15 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 	- _name = "FrameworkTest";
 	- _lastID = 4;
 	- Declaratives = { IRPYRawContainer 
-		- size = 2;
+		- size = 1;
 		- value = 
 		{ IDiagram 
 			- fileName = "TestDiagram";
 			- _id = GUID 962d8355-dfcd-40f5-bc95-3a0c6679ee3c;
 		}
-		{ ISubsystem 
-			- fileName = "TestTypes";
-			- _id = GUID 9d3c6034-4b1d-4f0a-87ad-a34763347834;
-		}
 	}
-	- weakCGTime = 4.14.2008::11:27:17;
-	- strongCGTime = 4.9.2008::17:41:15;
+	- weakCGTime = 5.12.2008::17:55:25;
+	- strongCGTime = 5.12.2008::17:55:25;
 	- _defaultComposite = GUID d88a5a3a-9a4c-479f-9492-20cef995e889;
 	- _eventsBaseID = -1;
 	- Classes = { IRPYRawContainer 
@@ -27,8 +23,8 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID d88a5a3a-9a4c-479f-9492-20cef995e889;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 4.14.2008::11:27:17;
-			- strongCGTime = 4.9.2008::17:41:15;
+			- weakCGTime = 5.12.2008::17:55:25;
+			- strongCGTime = 5.12.2008::17:55:25;
 			- Attrs = { IRPYRawContainer 
 				- size = 2;
 				- value = 
@@ -128,9 +124,34 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		{ IClass 
 			- _id = GUID 91c58e0c-f1c9-4e25-a6ee-224e7449ba3f;
 			- _myState = 8192;
+			- _properties = { IPropertyContainer 
+				- Subjects = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertySubject 
+						- _Name = "CPP_CG";
+						- Metaclasses = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertyMetaclass 
+								- _Name = "Class";
+								- Properties = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IProperty 
+										- _Name = "SpecIncludes";
+										- _Value = "";
+										- _Type = String;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 			- _name = "FrameworkTester";
 			- Dependencies = { IRPYRawContainer 
-				- size = 5;
+				- size = 4;
 				- value = 
 				{ IDependency 
 					- _id = GUID 80c72dbd-cf6b-4d85-9ede-f12b1fdbe075;
@@ -234,31 +255,6 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					}
 				}
 				{ IDependency 
-					- _id = GUID 019c8f6a-64b8-4a98-b5ce-5eed25685e8a;
-					- _myState = 2048;
-					- _name = "TestTypes";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "PredefinedTypes.sbs";
-							- _subsystem = "PredefinedTypes";
-							- _class = "";
-							- _name = "Usage";
-							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
-						}
-					}
-					- _dependsOn = { INObjectHandle 
-						- _m2Class = "ISubsystem";
-						- _filename = "TestTypes.sbs";
-						- _subsystem = "FrameworkTest";
-						- _class = "";
-						- _name = "TestTypes";
-						- _id = GUID 9d3c6034-4b1d-4f0a-87ad-a34763347834;
-					}
-				}
-				{ IDependency 
 					- _id = GUID 7921d0f1-29f4-4821-a1ae-8614323a4c51;
 					- _myState = 2048;
 					- _properties = { IPropertyContainer 
@@ -277,7 +273,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 											- value = 
 											{ IProperty 
 												- _Name = "UsageType";
-												- _Value = "Implementation";
+												- _Value = "Specification";
 												- _Type = Enum;
 												- _ExtraTypeInfo = "Specification,Implementation,Existence";
 											}
@@ -319,8 +315,8 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				- _id = GUID 962d8355-dfcd-40f5-bc95-3a0c6679ee3c;
 			}
 			- _lastID = 2;
-			- weakCGTime = 4.14.2008::11:27:17;
-			- strongCGTime = 4.9.2008::17:14:34;
+			- weakCGTime = 5.12.2008::17:55:25;
+			- strongCGTime = 5.12.2008::17:55:25;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
 				- value = 
@@ -398,14 +394,14 @@ Configure_NTDS_Device(&(dd[0]));
 					- _constant = 0;
 					- _itsBody = { IBody 
 						- _bodyData = "
-char s[100];
+//    char s[100];
             
 while (devices_ptr != NULL)
 {
-  sprintf(s, \"%s%u\", devices_ptr->name_string, interfaceCount++);
-  std::string myString = s;                               
+//      sprintf(s, \"%s%u\", devices_ptr->name_string, interfaceCount++);
+//      std::string myString = s;                               
   
-  Framework::IO::C_IO_Functions::createInterface(myString);    
+  Framework::IO::C_IO_Functions::Configure_NTDS_Device(devices_ptr);    
   
   devices_ptr++;
 };  
@@ -528,6 +524,6 @@ return(OK);
 			- _classModifier = Unspecified;
 		}
 	}
-	- _configurationRelatedTime = 2.21.2008::12:20:29;
+	- _configurationRelatedTime = 5.12.2008::14:34:44;
 }
 

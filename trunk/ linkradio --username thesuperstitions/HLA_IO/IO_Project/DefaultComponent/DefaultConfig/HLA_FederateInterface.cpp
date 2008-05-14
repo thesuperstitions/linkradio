@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::HLA_FederateInterface
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Tue, 13, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_FederateInterface.cpp
 *********************************************************************/
 
@@ -12,6 +12,7 @@
 #include "FederateIO_Handler.h"
 // link theHLA_PostOffice 
 #include "HLA_PostOffice.h"
+#include "InterprocessQueue.h"
 
 //----------------------------------------------------------------------------
 // HLA_FederateInterface.cpp                                                                  
@@ -32,6 +33,11 @@ namespace Framework {
         }
         
         HLA_FederateInterface::~HLA_FederateInterface() {
+            //#[ operation ~HLA_FederateInterface() 
+            
+            delete controlQueue;
+            
+            //#]
             cleanUpRelations();
         }
         

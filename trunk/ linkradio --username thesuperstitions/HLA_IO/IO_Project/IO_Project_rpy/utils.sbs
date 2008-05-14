@@ -22,12 +22,17 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					{ IPropertyMetaclass 
 						- _Name = "Package";
 						- Properties = { IRPYRawContainer 
-							- size = 1;
+							- size = 2;
 							- value = 
 							{ IProperty 
 								- _Name = "DefineNameSpace";
 								- _Value = "True";
 								- _Type = Bool;
+							}
+							{ IProperty 
+								- _Name = "SpecIncludes";
+								- _Value = "<boost/interprocess/sync/interprocess_semaphore.hpp>";
+								- _Type = String;
 							}
 						}
 					}
@@ -36,9 +41,9 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 	}
 	- _name = "utils";
-	- _lastID = 3;
-	- weakCGTime = 4.22.2008::19:0:18;
-	- strongCGTime = 4.22.2008::19:0:18;
+	- _lastID = 4;
+	- weakCGTime = 5.13.2008::15:4:7;
+	- strongCGTime = 5.12.2008::13:39:13;
 	- _defaultComposite = GUID 4393fd1b-4891-4ff5-9de8-20c8248afa9a;
 	- _eventsBaseID = -1;
 	- Classes = { IRPYRawContainer 
@@ -48,55 +53,8 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID 4393fd1b-4891-4ff5-9de8-20c8248afa9a;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 4.22.2008::19:0:18;
-			- strongCGTime = 4.22.2008::19:0:18;
-			- Attrs = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IAttribute 
-					- _id = GUID 646331b9-5b23-494e-b0ef-2db6e0843cc1;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Attribute";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "ConstantVariableAsDefine";
-												- _Value = "True";
-												- _Type = Bool;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "MAX_QUEUE_SIZE";
-					- _defaultValue = "262144";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypes.sbs";
-						- _subsystem = "PredefinedTypes";
-						- _class = "";
-						- _name = "RhpString";
-						- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 1;
-				}
-			}
+			- weakCGTime = 5.12.2008::17:54:39;
+			- strongCGTime = 5.12.2008::13:39:13;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
@@ -822,7 +780,7 @@ sleep(request, interposition_safe);";
 / right now it does boost threads.";
 			}
 			- _lastID = 2;
-			- weakCGTime = 4.9.2008::13:10:37;
+			- weakCGTime = 5.12.2008::17:0:1;
 			- strongCGTime = 4.3.2008::17:16:49;
 			- Operations = { IRPYRawContainer 
 				- size = 11;
@@ -1806,27 +1764,388 @@ Thread::start();
 			- _classModifier = Unspecified;
 		}
 		{ IClass 
-			- _id = GUID 9cda78ae-7ab6-4959-b02c-ebda90337266;
+			- _id = GUID 9e91004b-dbf1-41b9-9d0d-6cd63915269d;
 			- _myState = 8192;
-			- _name = "Queue";
-			- weakCGTime = 4.22.2008::19:0:3;
-			- strongCGTime = 4.22.2008::19:0:3;
-			- Operations = { IRPYRawContainer 
-				- size = 5;
+			- _properties = { IPropertyContainer 
+				- Subjects = { IRPYRawContainer 
+					- size = 2;
+					- value = 
+					{ IPropertySubject 
+						- _Name = "CG";
+						- Metaclasses = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IPropertyMetaclass 
+								- _Name = "Class";
+								- Properties = { IRPYRawContainer 
+									- size = 3;
+									- value = 
+									{ IProperty 
+										- _Name = "AttributesAutoArrange";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "GenerateImplicitConstructors";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "InitCleanUpRelations";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+								}
+							}
+							{ IPropertyMetaclass 
+								- _Name = "Relation";
+								- Properties = { IRPYRawContainer 
+									- size = 16;
+									- value = 
+									{ IProperty 
+										- _Name = "AddComponentHelpersGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "AddGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "AddHelpersGenerate";
+										- _Value = "FromModifier";
+										- _Type = Enum;
+										- _ExtraTypeInfo = "True,False,FromModifier";
+									}
+									{ IProperty 
+										- _Name = "ClearGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "ClearHelpersGenerate";
+										- _Value = "FromModifier";
+										- _Type = Enum;
+										- _ExtraTypeInfo = "True,False,FromModifier";
+									}
+									{ IProperty 
+										- _Name = "CreateComponentGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "DeleteComponentGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "FindGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "GetEndGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "GetGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "RemoveComponentHelpersGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "RemoveGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "RemoveHelpersGenerate";
+										- _Value = "False";
+										- _Type = Enum;
+										- _ExtraTypeInfo = "True,False,FromModifier";
+									}
+									{ IProperty 
+										- _Name = "SetComponentHelpersGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "SetGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "SetHelpersGenerate";
+										- _Value = "FromModifier";
+										- _Type = Enum;
+										- _ExtraTypeInfo = "True,False,FromModifier";
+									}
+								}
+							}
+						}
+					}
+					{ IPropertySubject 
+						- _Name = "CPP_CG";
+						- Metaclasses = { IRPYRawContainer 
+							- size = 3;
+							- value = 
+							{ IPropertyMetaclass 
+								- _Name = "Attribute";
+								- Properties = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IProperty 
+										- _Name = "AccessorGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "MutatorGenerate";
+										- _Value = "False";
+										- _Type = Enum;
+										- _ExtraTypeInfo = "Smart, Always, Never";
+									}
+								}
+							}
+							{ IPropertyMetaclass 
+								- _Name = "Class";
+								- Properties = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IProperty 
+										- _Name = "GenerateDestructor";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+								}
+							}
+							{ IPropertyMetaclass 
+								- _Name = "Relation";
+								- Properties = { IRPYRawContainer 
+									- size = 3;
+									- value = 
+									{ IProperty 
+										- _Name = "GetAtGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "GetKeyGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+									{ IProperty 
+										- _Name = "RemoveKeyGenerate";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			- _name = "InterprocessQueue";
+			- Dependencies = { IRPYRawContainer 
+				- size = 1;
 				- value = 
+				{ IDependency 
+					- _id = GUID 2908d283-8c9d-49ae-b80c-bb9885f5c42f;
+					- _myState = 2048;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Dependency";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "UsageType";
+												- _Value = "Implementation";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Specification,Implementation,Existence";
+											}
+										}
+									}
+								}
+							}
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Dependency";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "UseNameSpace";
+												- _Value = "True";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "interprocess";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "Usage";
+							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "ISubsystem";
+						- _filename = "interprocess_1.sbs";
+						- _subsystem = "boost";
+						- _class = "";
+						- _name = "interprocess";
+						- _id = GUID e9612ebf-53fa-421b-afa2-cc689312ede8;
+					}
+				}
+			}
+			- Declaratives = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IType 
+					- _id = GUID a8fb343e-f6bc-43a2-8108-81e5e62daf84;
+					- _myState = 8192;
+					- _name = "QueueState";
+					- Literals = { IRPYRawContainer 
+						- size = 2;
+						- value = 
+						{ IEnumerationLiteral 
+							- _id = GUID 6b731a63-239a-4f2f-8751-c7defe81dd4b;
+							- _name = "QueueSynchronizing";
+							- _value = "0";
+						}
+						{ IEnumerationLiteral 
+							- _id = GUID 7801b920-38a5-4ee6-82ec-36d8451e3ca0;
+							- _name = "QueueSynchronized";
+							- _value = "1
+
+
+
+
+
+
+";
+						}
+					}
+					- _kind = Enumeration;
+				}
+			}
+			- weakCGTime = 5.13.2008::15:11:12;
+			- strongCGTime = 5.13.2008::15:4:7;
+			- Operations = { IRPYRawContainer 
+				- size = 7;
+				- value = 
+				{ IDestructor 
+					- _id = GUID 60d4f2c5-889b-45a0-b18c-d96636a88e24;
+					- _description = { IDescription 
+						- _text = "## operation Queue()";
+					}
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "";
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "try
+{
+  exitFlag = true;
+  myControlData->getMsgSemaphore.post();  // Wake \"timedGetMessage\".
+  myControlData->myDataAccessMutex.unlock();
+  myControlData->addMessageSemaphore.post();
+
+  shared_memory_object::remove(QueueName);
+  delete region1;
+  delete shm1;
+
+  shared_memory_object::remove(ControlDataName);
+  delete region2;
+  delete shm2;
+
+  //Erase shared memory
+	shared_memory_object::remove(QueueName);
+	shared_memory_object::remove(ControlDataName);
+}
+catch (...)
+{
+};";
+					}
+				}
 				{ IConstructor 
-					- _id = GUID e0c7943b-4196-4094-b1c9-46126c3eec99;
+					- _id = GUID 42c04686-d34c-491f-b7ef-cf2d2ab116d3;
 					- _description = { IDescription 
 						- _text = "---------------------------------------------------------------------------";
 					}
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 1;
+						- size = 3;
 						- value = 
 						{ IArgument 
-							- _id = GUID 4934df2a-e24e-4f32-b86b-89492cdb547c;
-							- _name = "numberOfItems";
-							- _defaultValue = "MAX_QUEUE_SIZE";
+							- _id = GUID 487a12ff-2263-41f3-a79c-2463293b081f;
+							- _name = "queueName";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 64c57266-e4e7-4760-982c-f23e840ca255;
+								- _myState = 8192;
+								- _declaration = "std::string";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 2bcc3dd0-0080-4802-8123-3946ae9d168d;
+							- _name = "maxMessageSizeInBytes";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned int";
+								- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 35fa86a4-17c5-41e5-9d56-a46564e1ccb0;
+							- _name = "maxNumberOfMessages";
+							- _defaultValue = "";
 							- _typeOf = { IHandle 
 								- _m2Class = "IType";
 								- _filename = "PredefinedTypesC++.sbs";
@@ -1849,122 +2168,124 @@ Thread::start();
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "exitFlag = false;
-myMutex.unlock();
-myQueue = new boost::circular_buffer<void*>(numberOfItems);";
+						- _bodyData = "bool alreadyCreatedFlag = false;
+
+strcpy(QueueName, queueName);
+
+try
+{
+  try
+  {
+    //Create a shared memory object.
+    shm1 = new shared_memory_object(open_only, queueName, read_write);
+    alreadyCreatedFlag = true;
+	}
+  catch (...)
+  {
+    //Create a shared memory object.
+    shm1 = new shared_memory_object(create_only, queueName, read_write);
+
+    //Set size
+    shm1->truncate(totalQueueSize);
+	};
+
+  //Map the whole shared memory in this process
+  region1 = new mapped_region
+    (*shm1                       //What to map
+    ,read_write   //Map it as read-write
+    );
+
+  //Get the address of the mapped region
+  addr1       = region1->get_address();
+
+  //Construct the shared structure in memory
+  myQueue = new (addr1) unsigned char[totalQueueSize];
+
+
+  sprintf(ControlDataName, \"%s%s\", queueName, \"ControlData\");
+  //Erase previous shared memory
+  //shared_memory_object::remove(ControlDataName);
+
+  if (alreadyCreatedFlag == false)
+  {
+    //Create a shared memory object.
+    shm2 = new shared_memory_object(create_only, ControlDataName, read_write);
+
+    //Set size
+    shm2->truncate(sizeof(SharedMemoryQueueControlData));
+  }
+  else
+  {
+    //Create a shared memory object.
+    shm2 = new shared_memory_object(open_only, ControlDataName, read_write);
+	}
+
+  //Map the whole shared memory in this process
+  region2 = new mapped_region
+    (*shm2                       //What to map
+    ,read_write   //Map it as read-write
+    );
+
+  //Get the address of the mapped region
+  addr2       = region2->get_address();
+
+  //Construct the shared structure in memory
+  myControlData = new (addr2) SharedMemoryQueueControlData(maxNumberOfMessages);
+
+  myControlData->CurrentReadSlot = 0;
+  myControlData->CurrentWriteSlot = 0;
+  myControlData->NumberMessagesInQueue = 0;
+  myControlData->InterfaceStatus = false;
+}
+catch (...)
+{
+};";
 					}
-					- _initializer = "";
-				}
-				{ IDestructor 
-					- _id = GUID bc8bd379-c23e-46eb-ac09-33b6fcf63b0a;
-					- _description = { IDescription 
-						- _text = "## operation Queue()";
-					}
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 0;
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "";
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "exitFlag = true;
-myMutex.unlock();  // Wake \"getMessage\".
-delete myQueue;";
-					}
+					- _initializer = "
+exitFlag(false), queueState(QueueSynchronizing), QueueInitializationSemaphore(0), maxMsgSize(maxMessageSizeInBytes + sizeof(unsigned int)),
+maxMsgs(maxNumberOfMessages), totalQueueSize(maxMsgSize * maxMsgs)
+";
 				}
 				{ IPrimitiveOperation 
-					- _id = GUID bc3dbdcd-215b-4c0d-8ca6-8802258a20b2;
-					- _name = "addMessage";
+					- _id = GUID 77231054-b6ef-4b1b-ab8e-6107a07566fe;
+					- _name = "timedAddMessage";
 					- _description = { IDescription 
 						- _text = "## operation addMessage(FederateMessage*)";
 					}
 					- _virtual = 1;
 					- Args = { IRPYRawContainer 
-						- size = 1;
+						- size = 4;
 						- value = 
 						{ IArgument 
-							- _id = GUID b7b01883-9283-4246-9a25-d678c5d7a689;
+							- _id = GUID bc869547-dd80-40ca-8425-0f0cd0248931;
 							- _name = "message";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 6ce0d5a7-7bd6-4ef7-8950-10bbbe7ff1a3;
+								- _myState = 8192;
+								- _declaration = "unsigned char *";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 8ddd5e56-3830-4301-8238-6d77b9e4ab5c;
+							- _name = "messageSizeInBytes";
 							- _defaultValue = "";
 							- _typeOf = { IHandle 
 								- _m2Class = "IType";
 								- _filename = "PredefinedTypesC++.sbs";
 								- _subsystem = "PredefinedTypesCpp";
 								- _class = "";
-								- _name = "void *";
-								- _id = GUID 68975846-a809-4f2e-9f11-00ad6073974c;
+								- _name = "unsigned int";
+								- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
 						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "bool";
-						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "if (exitFlag == true)
-  return(false);
-
-try
-{
-  { // Start of Scope.
-    // Get the mutex just long enough to add the message to the queue.
-    boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
-  
-    if (myQueue->full() != true)
-    {
-      //myQueue.push_back(message);
-      myQueue->push_back(message);
-
-      myMutex.unlock();  // Wake \"getMessage\".
-
-      return(true); // Message was queued
-    }  // if (myQueue->full() != true)
-    else
-      return (false); // Message was NOT queued.
-  } // End of Scope.
-}
-catch (...)
-{
-};
-return(false);";
-					}
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 0cfd5189-e63f-4602-b6f5-062378fe0924;
-					- _name = "getMessage";
-					- _description = { IDescription 
-						- _text = "Immediately check to see if the thread should exit.  Check to see if there
-is a message in the queue and, if so, return it to the user.  If not, wait
-up to the user-defined timeout.  If a message becomes available in the
-queue within the timeout period, return the message.  If not, return a 
-NULL pointer.
----------------------------------------------------------------------------";
-					}
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
 						{ IArgument 
-							- _id = GUID f67ced7e-c4c0-403c-9a4b-e2b47ba93254;
+							- _id = GUID c6c84f06-1cf5-4ea1-8a89-1bca5d0afaa6;
 							- _name = "timeoutSecs";
 							- _defaultValue = "";
 							- _typeOf = { IHandle 
@@ -1979,7 +2300,7 @@ NULL pointer.
 							- _argumentDirection = In;
 						}
 						{ IArgument 
-							- _id = GUID c98a311c-c6a6-4a81-8a99-70110fd1c7bf;
+							- _id = GUID a3bed0cd-a821-4f6d-9a07-5ecdeaa361c6;
 							- _name = "timeoutMicroSecs";
 							- _defaultValue = "";
 							- _typeOf = { IHandle 
@@ -1999,8 +2320,8 @@ NULL pointer.
 						- _filename = "PredefinedTypesC++.sbs";
 						- _subsystem = "PredefinedTypesCpp";
 						- _class = "";
-						- _name = "void *";
-						- _id = GUID 68975846-a809-4f2e-9f11-00ad6073974c;
+						- _name = "bool";
+						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
 					}
 					- _abstract = 0;
 					- _final = 0;
@@ -2009,53 +2330,184 @@ NULL pointer.
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "void* m_Ptr = NULL;
+						- _bodyData = "{ // Start of Scope.
+// Get the mutex just long enough to add the message to the queue.
+	scoped_lock<interprocess_mutex> lock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
 
-// Just in case this function gets invoked during shutdown.
-if (exitFlag == true)
-  return(NULL);
+// Just in case this function gets invoked during shutdown or is synchronizing or the other side takes the interface down.
+if ((exitFlag == true) || (queueState == QueueSynchronizing) || (myControlData->InterfaceStatus == false) )
+  return(false);
+} // End of Scope.
 
 try
 {
-  // Check to see if there's a message already waiting on the Queue.  If so, we just return it.
-  if ( (m_Ptr = CheckForItemsInQueue()) != NULL)
-    return(m_Ptr);
+	// Wait for the specified amount of time for a message to come into the queue.
+if(myControlData->addMessageSemaphore.timed_wait(boost::get_system_time() + boost::posix_time::seconds(timeoutSecs) +
+boost::posix_time::microseconds(timeoutMicroSecs)) == false)
+  return(false);
 
-  // There were no items in the Queue, so now we have to wait for either the queue to be unlocked or the timeout occurs.
+{ // Start of Scope.
+  // Get the mutex just long enough to add the message to the queue.
+  scoped_lock<interprocess_mutex> lock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
 
-  // Calculate the duration of the timeout.
-  boost::posix_time::time_duration td = boost::posix_time::seconds(timeoutSecs) + boost::posix_time::microseconds(timeoutMicroSecs); //
+  if (myControlData->NumberMessagesInQueue >= maxMsgs)
+    return(false);
 
-  // Block on the mutex until either a message is received in the queue (addMessage function unlocks the mutex after dropping a message
-  // in the queue), or the timer expires.
-  if (myMutex.timed_lock(boost::get_system_time() + td) == true)
-  {
-    return( CheckForItemsInQueue() );
-  }
-  else
-  {
-    // mutex timed out
-    return(m_Ptr);
-  }
+  unsigned char* ptr = &(myQueue[myControlData->CurrentWriteSlot*maxMsgSize]);
+  ((unsigned int*)ptr)[0] = messageSizeInBytes; // Put the # of Message-bytes at front of message.
+
+  ptr += sizeof(unsigned int);  // Set the pointer past the byte-count, to the message portion of the buffer.
+
+  memcpy(ptr, message, messageSizeInBytes);
+
+  myControlData->NumberMessagesInQueue++;
+
+  ++myControlData->CurrentWriteSlot %= maxMsgs;
+
+  myControlData->getMsgSemaphore.post();  // Wake \"timedGetMessage\".
+
+  return(true); // Message was queued
+} // End of Scope.
 }
-catch(...)
+catch (...)
 {
+	return(false);
 };
-
-return(m_Ptr);";
+return(false);";
 					}
 				}
 				{ IPrimitiveOperation 
-					- _id = GUID fb78ffab-ba6a-4119-aa8b-98192dc4bdda;
-					- _name = "CheckForItemsInQueue";
+					- _id = GUID ad2546a1-ce85-49ed-ab3f-d9ba39a9d434;
+					- _name = "timedGetMessage";
 					- _description = { IDescription 
-						- _text = "Waits on a mutex that protects access to the queue.  When mutex is received,
-a check is made to see if there's at least one message in the queue.  If
-not, a NULL pointer is returned.  If not empty, the first message (the 
-oldest one) is taken off the queue and passed back to the caller.
+						- _text = "Immediately check to see if the thread should exit.  Check to see if there
+is a message in the queue and, if so, return it to the user.  If not, wait
+up to the user-defined timeout.  If a message becomes available in the
+queue within the timeout period, return value = \"true\".  If not, return
+value = \"false\".
 ---------------------------------------------------------------------------";
 					}
-					- _virtual = 0;
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 3;
+						- value = 
+						{ IArgument 
+							- _id = GUID 6633c712-289d-4308-b1ae-28c9957f04ed;
+							- _name = "msg";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID e8c683ec-662e-46aa-bad9-74c3010c2e62;
+								- _myState = 8192;
+								- _declaration = "unsigned char *";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID edc72a52-d3be-4cc6-b807-a9d40cdab1d9;
+							- _name = "timeoutSecs";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned int";
+								- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 8e94a0d6-c0d4-4afb-b6a7-ebeac8bc5057;
+							- _name = "timeoutMicroSecs";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "bool";
+						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "// Just in case this function gets invoked during shutdown.
+if (exitFlag == true)
+  return(false);
+
+try
+{
+	// Wait on a semaphore that indicates that there is room in the queue for another message.
+  if (myControlData->getMsgSemaphore.timed_wait(boost::get_system_time() + boost::posix_time::seconds(timeoutSecs) +
+      boost::posix_time::microseconds(timeoutMicroSecs)) == true)
+  {
+		//This lock protects the queue itself.
+    scoped_lock<interprocess_mutex> myDataAccessLock(myControlData->myDataAccessMutex);
+
+    // Check to see if the the \"Producer\" has declared the interface \"DOWN\".  If so, we'll go back into
+		// \"Synchronizing\" state.
+    if (myControlData->InterfaceStatus == false)
+      return(false);
+
+    // Copy the message into the from the queue into the user's buffer.
+    memcpy(msg, &(myQueue[(myControlData->CurrentReadSlot*maxMsgSize)+sizeof(unsigned int)]),
+      *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize])));
+
+    myControlData->NumberMessagesInQueue--; // Decrement # messages in the queue.
+
+      ++myControlData->CurrentReadSlot %= maxMsgs; // Move pointer to next message in the queue.
+      myControlData->addMessageSemaphore.post();   // Indicate that there's now room in the queue for another message.
+
+      return(true);
+  }
+  else
+    return(false);
+}
+catch(...)
+{
+  return(false);
+};
+
+return(false);";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID dc2d3782-4c4c-4669-af88-50adcec47507;
+					- _name = "SynchronizeQueueUsers";
+					- _description = { IDescription 
+						- _text = "**********************************************************************************************************************
+
+ Name: SynchronizeQueueUsers
+
+ Purpose: This method writes a unique value that's generated using the lower bits of what's returned from \"ftime\",
+          into a location in shared memory.  It then checks periodically to see if that value has changed, which
+          indicates that the other user has written its unique value in the same shared memory location.  Once
+          there's a difference, the Queue is marked as synchronized and the original unique value is written back
+          to the shared memory location to ensure that the other user detects a different value than they last
+          wrote to the location.
+
+**********************************************************************************************************************";
+					}
+					- _virtual = 1;
 					- Args = { IRPYRawContainer 
 						- size = 0;
 					}
@@ -2064,93 +2516,214 @@ oldest one) is taken off the queue and passed back to the caller.
 						- _filename = "PredefinedTypesC++.sbs";
 						- _subsystem = "PredefinedTypesCpp";
 						- _class = "";
-						- _name = "void *";
-						- _id = GUID 68975846-a809-4f2e-9f11-00ad6073974c;
+						- _name = "bool";
+						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
 					}
 					- _abstract = 0;
 					- _final = 0;
 					- _concurrency = Sequential;
-					- _protection = iProtected;
+					- _protection = iPublic;
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "// Start of scope for the \"scoped_lock\" mutex.
- void* m_Ptr = NULL;
+						- _bodyData = "unsigned long uniqueValue, newValue;
+timeb t;
 
- boost::mutex::scoped_lock myDataAccessLock(myDataAccessMutex); //This lock protects the queue itself.
+queueState = QueueSynchronizing;
+ftime(&t);
+srand(t.millitm);
 
- // Check to see if there's a Message in the list   
- if (myQueue->empty() != true)
- {      
-   // Get the first message in the list.                                  
-   m_Ptr = myQueue->front();  
+if (exitFlag == true)
+  return(false);
 
-   // Remove the message from the list now so that the mutex can be unlocked prior to sending.  
-   myQueue->pop_front();   // Remove the just-sent Message from the list.
- }
+{ // Start of scope.
+  scoped_lock<interprocess_mutex> lock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
+  myControlData->InterfaceStatus = false; // Declare interface \"DOWN\" so other side knows.
+  uniqueValue = myControlData->UniqueValue = (((unsigned long)rand()) * 1000) % 10000;
+} // End of scope.
 
- return(m_Ptr);";
+QueueInitializationSemaphore.timed_wait(boost::get_system_time() + boost::posix_time::seconds(0) +
+  boost::posix_time::microseconds(uniqueValue));
+
+{ // Start of scope.
+  scoped_lock<interprocess_mutex> lock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
+  newValue = myControlData->UniqueValue;
+} // End of scope.
+
+if (newValue != uniqueValue)
+{
+  { // Start of scope.
+    scoped_lock<interprocess_mutex> lock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
+
+    // Now change the shared memory location to force the other process that this process is ready.
+    myControlData->UniqueValue = (((unsigned long)rand()) * 1000) % 1000000;
+    myControlData->InterfaceStatus = true; // Declare interface \"UP\" so other side knows.
+  } // End of scope.
+
+  queueState = QueueSynchronized;
+  return(true);
+}
+
+return(false);";
 					}
 				}
-			}
-			- Attrs = { IRPYRawContainer 
-				- size = 4;
-				- value = 
-				{ IAttribute 
-					- _id = GUID ca180673-adc6-4612-bb9d-8aacfb9469bb;
-					- _name = "myMutex";
+				{ IPrimitiveOperation 
+					- _id = GUID a7a694ac-9a52-4b05-ab80-975548f06314;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Inline";
+												- _Value = "in_declaration";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "none,in_header,in_source,in_declaration";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "getQueueState";
 					- _description = { IDescription 
-						- _text = "## attribute myMutex";
+						- _text = "**********************************************************************************************************************
+
+ Name: getQueueState
+
+ Purpose: Determines if either itself or the \"Queue Partner\" has taken the interface down.
+          Returns \"QueueState\".
+
+          QueueSynchronizing = Queue interface is down.
+
+          QueueSynchronized = Queue interface is operational.
+
+**********************************************************************************************************************";
 					}
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 35c33961-6415-40c8-868a-5a06062c2635;
-						- _myState = 8192;
-						- _declaration = "boost::timed_mutex";
-						- _kind = Language;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
 					}
-					- _isOrdered = 0;
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID a8fb343e-f6bc-43a2-8108-81e5e62daf84;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
 					- _protection = iPublic;
 					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 10a2f7c6-4760-4f53-9939-0f99c0117a0b;
-					- _name = "myDataAccessMutex";
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID bb158754-ecff-45e3-8153-aa08486a330e;
-						- _myState = 8192;
-						- _declaration = "boost::mutex";
-						- _kind = Language;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "//        QueueState qs;
+bool       sharedMemoryQueueState;
+
+{ // Start of scope.
+  scoped_lock<interprocess_mutex> lock(myControlData->myDataAccessMutex); //This lock protects the queue itself.
+	sharedMemoryQueueState = myControlData->InterfaceStatus;
+} // End of scope.
+
+if ((sharedMemoryQueueState == false) || (queueState == QueueSynchronizing) )
+	return(QueueSynchronizing);
+else
+	return(QueueSynchronized);";
 					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
 				}
-				{ IAttribute 
-					- _id = GUID 3d3fa34b-7425-429e-af52-70055cbb6126;
-					- _name = "exitFlag";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
+				{ IPrimitiveOperation 
+					- _id = GUID e9f0e7a8-2f2d-4386-9d04-e0c1df3f4154;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Generate";
+												- _Value = "Specification";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Full, Specification, None";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "LogMessage";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 2;
+						- value = 
+						{ IArgument 
+							- _id = GUID 15723630-62bd-400a-af22-71c2845e7851;
+							- _name = "Msg";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID b835e797-e5e3-4a9f-9b57-ff6d3c505043;
+							- _name = "count";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "double";
+								- _id = GUID 02ef7294-6849-47b9-9fb2-cfb87b56d2ad;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
 						- _m2Class = "IType";
 						- _filename = "PredefinedTypesC++.sbs";
 						- _subsystem = "PredefinedTypesCpp";
 						- _class = "";
-						- _name = "bool";
-						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
 					}
-					- _isOrdered = 0;
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
 					- _protection = iPublic;
 					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
+					- _constant = 0;
 				}
+			}
+			- Attrs = { IRPYRawContainer 
+				- size = 16;
+				- value = 
 				{ IAttribute 
-					- _id = GUID 049fd828-bc87-47dc-bea9-5a37a6054860;
+					- _id = GUID 70406d7c-d6f6-41b5-9358-ec2b74cbb7c5;
 					- _properties = { IPropertyContainer 
 						- Subjects = { IRPYRawContainer 
 							- size = 1;
@@ -2167,7 +2740,352 @@ oldest one) is taken off the queue and passed back to the caller.
 											- value = 
 											{ IProperty 
 												- _Name = "Visibility";
-												- _Value = "public";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "QueueName";
+					- _description = { IDescription 
+						- _text = "unsigned long CurrentMessageSlot;";
+					}
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 933f5931-8a6b-4248-9d8e-13baa7ebdc4b;
+						- _myState = 8192;
+						- _declaration = "char %s[100] ";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 21e6a98d-7c04-4fb8-be80-0519c674d6a2;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "ControlDataName";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 4f0736f5-7b9d-4364-99ab-644003550ead;
+						- _myState = 8192;
+						- _declaration = "char %s[150] ";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID d1a8435d-d536-4397-b7d2-9b4e604d6722;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "maxMsgSize";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned long";
+						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 30c5fff6-125b-4d7e-b204-ab583be18826;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "maxMsgs";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned long";
+						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 350164f2-2d39-4353-9086-f83b3f8601d3;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "totalQueueSize";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned long";
+						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID bf8de981-d5bd-45cf-bcc4-ba88302a5c86;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "QueueInitializationSemaphore";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID f9a93aaa-4a95-40a9-b60f-b93413c59bf3;
+						- _myState = 8192;
+						- _declaration = "boost::interprocess::interprocess_semaphore";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID dfdc3172-bbb5-4bdd-99f6-2559977fe390;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "queueState";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID a8fb343e-f6bc-43a2-8108-81e5e62daf84;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 161e856b-6d73-435e-b53b-6af7c296a458;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "exitFlag";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "bool";
+						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
+					}
+					- _isOrdered = 0;
+					- _protection = iProtected;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 38c70d4f-eaed-4ac1-a01a-9d8cd0f9631f;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
 												- _Type = Enum;
 												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
 											}
@@ -2180,10 +3098,308 @@ oldest one) is taken off the queue and passed back to the caller.
 					- _name = "myQueue";
 					- _defaultValue = "";
 					- myTypeOf = { IType 
-						- _id = GUID 951c5319-c18b-4e64-aeb0-40e8cf4d402f;
+						- _id = GUID 53edde17-837e-436d-b217-aafc600a20d5;
 						- _myState = 8192;
-						- _declaration = "boost::circular_buffer<void*> *";
+						- _declaration = "unsigned char *";
 						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID e96f1c8c-3f69-4fd2-9b89-0f0763b168f2;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "shm1";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID c5e3e11e-fa26-440c-8ad1-b1f5a0d86f27;
+						- _myState = 8192;
+						- _declaration = "shared_memory_object *";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 48790048-cf23-4d7e-8e8f-bcde994777fe;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "region1";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 854943ee-88a8-4d18-9232-e56ebe9463af;
+						- _myState = 8192;
+						- _declaration = "mapped_region *";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 1b881476-7b98-4772-b2b9-9e0d4782d4c2;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "addr1";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void *";
+						- _id = GUID 68975846-a809-4f2e-9f11-00ad6073974c;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID ecc7a3d8-058c-45ab-8888-f2ad90616c46;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "myControlData";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 1f6941e0-c845-4ee1-8203-c212de236437;
+						- _myState = 8192;
+						- _declaration = "SharedMemoryQueueControlData *";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 5c0f30bd-3844-4b1b-837c-3b450853d896;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "shm2";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID f0727be6-13bd-4794-93b0-e0b283cf99b1;
+						- _myState = 8192;
+						- _declaration = "shared_memory_object *";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 877449b9-ec0b-40a2-81aa-ea229282738d;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "region2";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 46d47c6d-8d3c-4602-9ab8-e5a46b141ade;
+						- _myState = 8192;
+						- _declaration = "mapped_region *";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 237ffea5-108f-475c-801b-95e612fbc334;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Visibility";
+												- _Value = "fromAttribute";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "private,protected,public,fromAttribute";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "addr2";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void *";
+						- _id = GUID 68975846-a809-4f2e-9f11-00ad6073974c;
 					}
 					- _isOrdered = 0;
 					- _protection = iPublic;
@@ -2195,6 +3411,35 @@ oldest one) is taken off the queue and passed back to the caller.
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 888ae592-9977-4c99-8dfc-919f647b752e;
+					- _myState = 10240;
+					- _name = "itsFederateIO_Handler";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "IO.sbs";
+						- _subsystem = "Framework::IO";
+						- _class = "";
+						- _name = "FederateIO_Handler";
+						- _id = GUID cf4439a3-1222-47bd-9929-fed3599f6153;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _filename = "IO.sbs";
+						- _subsystem = "Framework::IO";
+						- _class = "FederateIO_Handler";
+						- _name = "itsInterprocessQueue";
+						- _id = GUID d71320e0-dbfe-4ffd-b06b-24f635b315ce;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
 			}
 			- _classModifier = Unspecified;
 		}
@@ -2236,12 +3481,14 @@ oldest one) is taken off the queue and passed back to the caller.
 
 
 
+
+
 ";
 				}
 			}
 			- _kind = Enumeration;
 		}
 	}
-	- _configurationRelatedTime = 4.14.2008::11:32:2;
+	- _configurationRelatedTime = 5.12.2008::14:9:16;
 }
 

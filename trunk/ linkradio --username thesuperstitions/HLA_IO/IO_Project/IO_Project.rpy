@@ -45,7 +45,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 	}
 	- Subsystems = { IRPYRawContainer 
-		- size = 2;
+		- size = 3;
 		- value = 
 		{ ISubsystem 
 			- fileName = "Framework";
@@ -54,6 +54,11 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		{ ISubsystem 
 			- fileName = "FrameworkTest";
 			- _id = GUID 915edaf7-df19-4281-9d22-aec45244fbf3;
+		}
+		{ ISubsystem 
+			- fileName = "boost_1";
+			- _id = GUID 5f8a27f7-316e-41a4-81da-d140b34944e4;
+			- _name = "boost";
 		}
 	}
 	- Diagrams = { IRPYRawContainer 

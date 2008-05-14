@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: ReverseEngineering
-//!	Generated Date	: Tue, 22, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\ReverseEngineering.h
 *********************************************************************/
 
@@ -21,10 +21,15 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
+#include "boost/interprocess/shared_memory_object.hpp"
+#include "boost/interprocess/sync/interprocess_mutex.hpp"
+#include "boost/interprocess/sync/interprocess_semaphore.hpp"
 
 //----------------------------------------------------------------------------
 // ReverseEngineering.h                                                                  
 //----------------------------------------------------------------------------
+
+class InterprocessQueue;
 
 //## package ReverseEngineering 
 
@@ -33,17 +38,25 @@
 #pragma warning(disable: 4786)
 #endif
 
-//#[ type NTDS_TEST_MSGS 
-typedef struct
-  {
-    unsigned int time;
-    unsigned int test;
-    unsigned int user1;
-    unsigned int user2;
+//## type SharedMemoryQueueControlData 
+struct SharedMemoryQueueControlData {
+    unsigned int CurrentReadSlot;		//## attribute CurrentReadSlot 
+    unsigned int CurrentWriteSlot;		//## attribute CurrentWriteSlot 
+    bool InterfaceStatus;		//## attribute InterfaceStatus 
+    unsigned int NumberMessagesInQueue;		//## attribute NumberMessagesInQueue 
+    unsigned long UniqueValue;		//## attribute UniqueValue 
+    boost::interprocess::interprocess_semaphore addMessageSemaphore;		//## attribute addMessageSemaphore 
+    // ## attribute getMsgSemaphore
+    boost::interprocess::interprocess_semaphore getMsgSemaphore;		//## attribute getMsgSemaphore 
+    boost::interprocess::interprocess_mutex myDataAccessMutex;		//## attribute myDataAccessMutex 
+};
 
-  } NTDS_TEST_MSGS;
-//#]
 
+//## attribute INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE 
+#define INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE 20
+
+//## attribute INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES 
+#define INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES 100
 
 
 

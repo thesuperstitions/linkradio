@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::utils
-//!	Generated Date	: Tue, 22, Apr 2008  
+//!	Generated Date	: Mon, 12, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\utils.h
 *********************************************************************/
 
@@ -22,6 +22,7 @@
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "Framework.h"
+#include <boost/interprocess/sync/interprocess_semaphore.hpp>
 
 //----------------------------------------------------------------------------
 // utils.h                                                                  
@@ -31,7 +32,7 @@
 namespace Framework {
     
     namespace utils {
-        class Queue;
+        class InterprocessQueue;
         class Sleep;
         class Thread;
         class Timer;
@@ -62,11 +63,11 @@ namespace Framework {
 
 
 
+
+
+
         };
         
-        
-        //## attribute MAX_QUEUE_SIZE 
-        #define MAX_QUEUE_SIZE 262144
         
         
     }

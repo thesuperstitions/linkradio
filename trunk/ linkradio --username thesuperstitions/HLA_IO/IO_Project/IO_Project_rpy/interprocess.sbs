@@ -1,0 +1,61 @@
+I-Logix-RPY-Archive version 8.0.9 C++ 893629
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "boost.sbs";
+		- _subsystem = "ReverseEngineering";
+		- _class = "";
+		- _name = "boost";
+		- _id = GUID f9cf3e5c-1e4c-478a-9213-f82301fd810c;
+	}
+	- _id = GUID f656a555-0061-41e3-a226-b2a83a458543;
+	- _myState = 8192;
+	- _properties = { IPropertyContainer 
+		- Subjects = { IRPYRawContainer 
+			- size = 1;
+			- value = 
+			{ IPropertySubject 
+				- _Name = "CPP_CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Package";
+						- Properties = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IProperty 
+								- _Name = "DefineNameSpace";
+								- _Value = "True";
+								- _Type = Bool;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	- _name = "interprocess";
+	- weakCGTime = 12.31.1969::19:0:0;
+	- strongCGTime = 12.31.1969::19:0:0;
+	- _defaultComposite = GUID 3446bc58-1f76-46e2-90ee-3c515d1421ed;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID 3446bc58-1f76-46e2-90ee-3c515d1421ed;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 12.31.1969::19:0:0;
+}
+
