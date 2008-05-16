@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::HLA_FederateInterface
-//!	Generated Date	: Tue, 13, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_FederateInterface.h
 *********************************************************************/
 
@@ -22,6 +22,8 @@
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "IO.h"
+// operation HLA_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
+#include "Framework.h"
 // class HLA_FederateInterface 
 #include "FederateInterface.h"
 
@@ -61,8 +63,8 @@ namespace Framework {
         ////    Constructors and destructors    ////
         public :
             
-            //## operation HLA_FederateInterface(std::string,Framework::InterfaceType) 
-            HLA_FederateInterface(std::string name, Framework::InterfaceType interfaceType);
+            //## operation HLA_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
+            HLA_FederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType);
             
             //## operation ~HLA_FederateInterface() 
             ~HLA_FederateInterface();

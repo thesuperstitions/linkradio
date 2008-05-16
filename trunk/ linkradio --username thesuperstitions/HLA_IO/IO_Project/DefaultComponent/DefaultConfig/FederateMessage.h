@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateMessage
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateMessage.h
 *********************************************************************/
 
@@ -33,7 +33,6 @@
 namespace Framework {
     
     namespace IO {
-        class Buffer;
         class FederateInterface;
     }
     
@@ -59,8 +58,8 @@ namespace Framework {
             //## operation FederateMessage(Framework::IO::FederateInterface*,const rti1516::ParameterHandleValueMap &) 
             FederateMessage(Framework::IO::FederateInterface* interface, const rti1516::ParameterHandleValueMap & parameters);
             
-            //## operation FederateMessage(Framework::IO::FederateInterface *,char*,unsigned long) 
-            FederateMessage(Framework::IO::FederateInterface * interface, char* message, unsigned long messageSizeInBytes);
+            //## operation FederateMessage(Framework::IO::FederateInterface *,unsigned char*,unsigned int) 
+            FederateMessage(Framework::IO::FederateInterface * interface, unsigned char* message, unsigned int messageSizeInBytes);
             
             //## auto_generated 
             FederateMessage();

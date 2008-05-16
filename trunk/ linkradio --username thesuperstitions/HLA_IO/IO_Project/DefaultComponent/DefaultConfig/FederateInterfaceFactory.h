@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::Control::FederateInterfaceFactory
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterfaceFactory.h
 *********************************************************************/
 
@@ -71,8 +71,8 @@ namespace Framework {
         ////    Operations    ////
         public :
             
-            //## operation createFederateInterface(std::string,Framework::InterfaceType) 
-            Framework::IO::FederateInterface* createFederateInterface(std::string name, Framework::InterfaceType interfaceType);
+            //## operation createFederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
+            Framework::IO::FederateInterface* createFederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType);
         
         
         ////    Additional operations    ////

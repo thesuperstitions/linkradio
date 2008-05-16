@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateInterface
-//!	Generated Date	: Wed, 14, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterface.h
 *********************************************************************/
 
@@ -22,6 +22,8 @@
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "IO.h"
+// operation FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
+#include "Framework.h"
 // class FederateInterface 
 #include "Thread.h"
 
@@ -61,8 +63,8 @@ namespace Framework {
         ////    Constructors and destructors    ////
         public :
             
-            //## operation FederateInterface(std::string,unsigned long,unsigned long) 
-            FederateInterface(std::string name, unsigned long maxMessageSize, unsigned long maxMessages);
+            //## operation FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
+            FederateInterface(int interfaceID, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType = FederateInterfaceTypeUnselected);
             
             //## operation ~FederateInterface() 
             ~FederateInterface();
@@ -88,6 +90,12 @@ namespace Framework {
             void setExitFlag(bool p_exitFlag);
             
             //## auto_generated 
+            int getInterfaceID() const;
+            
+            //## auto_generated 
+            void setInterfaceID(int p_interfaceID);
+            
+            //## auto_generated 
             std::string getInterfaceName() const;
             
             //## auto_generated 
@@ -106,10 +114,10 @@ namespace Framework {
             void setMaxMessages(unsigned long p_maxMessages);
             
             //## auto_generated 
-            utils::InterprocessQueue* getInputQueue() const;
+            static Framework::utils::InterprocessQueue* getSubscribeQueue();
             
             //## auto_generated 
-            void setInputQueue(utils::InterprocessQueue* p_InterprocessQueue);
+            static void setSubscribeQueue(Framework::utils::InterprocessQueue* p_subscribeQueue);
             
             //## auto_generated 
             FederateIO_Handler* getItsFederateIO_Handler() const;
@@ -118,10 +126,16 @@ namespace Framework {
             void setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
             
             //## auto_generated 
-            utils::InterprocessQueue* getOutputQueue() const;
+            utils::InterprocessQueue* getPublisherQueue() const;
             
             //## auto_generated 
-            void setOutputQueue(utils::InterprocessQueue* p_InterprocessQueue);
+            void setPublisherQueue(utils::InterprocessQueue* p_InterprocessQueue);
+            
+            //## auto_generated 
+            utils::InterprocessQueue* getSubscriberQueue() const;
+            
+            //## auto_generated 
+            void setSubscriberQueue(utils::InterprocessQueue* p_InterprocessQueue);
         
         
         ////    Framework operations    ////
@@ -147,23 +161,27 @@ namespace Framework {
             
             bool exitFlag;		//## attribute exitFlag 
             
+            int interfaceID;		//## attribute interfaceID 
+            
             std::string interfaceName;		//## attribute interfaceName 
             
             unsigned long maxMessageSize;		//## attribute maxMessageSize 
             
             unsigned long maxMessages;		//## attribute maxMessages 
             
+            static Framework::utils::InterprocessQueue* subscribeQueue;		//## attribute subscribeQueue 
+            
         
         ////    Relations and components    ////
         protected :
             
-            utils::InterprocessQueue* inputQueue;		//## link inputQueue 
-            
-            
             FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
             
             
-            utils::InterprocessQueue* outputQueue;		//## link outputQueue 
+            utils::InterprocessQueue* publisherQueue;		//## link publisherQueue 
+            
+            
+            utils::InterprocessQueue* subscriberQueue;		//## link subscriberQueue 
             
         
         

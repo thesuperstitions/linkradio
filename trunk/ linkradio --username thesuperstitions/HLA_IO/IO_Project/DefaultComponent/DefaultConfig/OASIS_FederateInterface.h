@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::OASIS_FederateInterface
-//!	Generated Date	: Mon, 12, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.h
 *********************************************************************/
 
@@ -22,6 +22,8 @@
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "IO.h"
+// operation OASIS_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
+#include "Framework.h"
 // class OASIS_FederateInterface 
 #include "FederateInterface.h"
 
@@ -60,8 +62,8 @@ namespace Framework {
         ////    Constructors and destructors    ////
         public :
             
-            //## operation OASIS_FederateInterface(std::string,Framework::InterfaceType) 
-            OASIS_FederateInterface(std::string name, Framework::InterfaceType interfaceType);
+            //## operation OASIS_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
+            OASIS_FederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType);
             
             //## auto_generated 
             ~OASIS_FederateInterface();

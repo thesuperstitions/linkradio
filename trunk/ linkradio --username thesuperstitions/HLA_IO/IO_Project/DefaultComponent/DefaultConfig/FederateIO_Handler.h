@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateIO_Handler
-//!	Generated Date	: Wed, 14, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_Handler.h
 *********************************************************************/
 
@@ -31,8 +31,6 @@
 #include "FederateInterface.h"
 // class FederateIO_Handler 
 #include "IO_Handler.h"
-// class FederateIO_Handler 
-#include "Thread.h"
 
 //----------------------------------------------------------------------------
 // FederateIO_Handler.h                                                                  
@@ -50,11 +48,6 @@ namespace Framework {
 namespace Control {
     class Federate;
     class FederateInterfaceFactory;
-    
-} 
-
-namespace utils {
-    class InterprocessQueue;
     
 } 
 
@@ -80,7 +73,7 @@ namespace Control {
 namespace Framework {
     namespace IO {
         //## class FederateIO_Handler 
-        class FederateIO_Handler : public IO_Handler, public utils::Thread {
+        class FederateIO_Handler : public IO_Handler {
         
         
         ////    Constructors and destructors    ////
@@ -99,21 +92,12 @@ namespace Framework {
         ////    Operations    ////
         public :
             
-            //## operation createFederateInterface(std::string,unsigned long,unsigned long) 
-            FederateInterface* createFederateInterface(std::string interfaceName, unsigned long maxMessageSize, unsigned long maxMessages);
-            
-            //## operation threadOperation() 
-            void threadOperation();
+            //## operation createFederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
+            FederateInterface* createFederateInterface(int interfaceID, std::string interfaceName, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType);
         
         
         ////    Additional operations    ////
         public :
-            
-            //## auto_generated 
-            bool getExitFlag() const;
-            
-            //## auto_generated 
-            void setExitFlag(bool p_exitFlag);
             
             //## auto_generated 
             FederateFrameworkType getFrameworkType() const;
@@ -134,10 +118,10 @@ namespace Framework {
             void setItsFederate(Control::Federate* p_Federate);
             
             //## auto_generated 
-            std::map<std::string, FederateInterface*>::const_iterator getItsFederateInterface() const;
+            std::map<int, FederateInterface*>::const_iterator getItsFederateInterface() const;
             
             //## auto_generated 
-            std::map<std::string, FederateInterface*>::const_iterator getItsFederateInterfaceEnd() const;
+            std::map<int, FederateInterface*>::const_iterator getItsFederateInterfaceEnd() const;
             
             //## auto_generated 
             void clearItsFederateInterface();
@@ -146,25 +130,19 @@ namespace Framework {
             void removeItsFederateInterface(FederateInterface* p_FederateInterface);
             
             //## auto_generated 
-            FederateInterface* getItsFederateInterface(std::string key) const;
+            FederateInterface* getItsFederateInterface(int key) const;
             
             //## auto_generated 
-            void addItsFederateInterface(std::string key, FederateInterface* p_FederateInterface);
+            void addItsFederateInterface(int key, FederateInterface* p_FederateInterface);
             
             //## auto_generated 
-            void removeItsFederateInterface(std::string key);
+            void removeItsFederateInterface(int key);
             
             //## auto_generated 
             Control::FederateInterfaceFactory* getItsFederateInterfaceFactory() const;
             
             //## auto_generated 
             void setItsFederateInterfaceFactory(Control::FederateInterfaceFactory* p_FederateInterfaceFactory);
-            
-            //## auto_generated 
-            utils::InterprocessQueue* getItsInterprocessQueue() const;
-            
-            //## auto_generated 
-            void setItsInterprocessQueue(utils::InterprocessQueue* p_InterprocessQueue);
         
         
         ////    Framework operations    ////
@@ -186,19 +164,10 @@ namespace Framework {
             void _removeItsFederateInterface(FederateInterface* p_FederateInterface);
             
             //## auto_generated 
-            void _addItsFederateInterface(std::string key, FederateInterface* p_FederateInterface);
+            void _addItsFederateInterface(int key, FederateInterface* p_FederateInterface);
             
             //## auto_generated 
-            void _removeItsFederateInterface(std::string key);
-            
-            //## auto_generated 
-            void __setItsInterprocessQueue(utils::InterprocessQueue* p_InterprocessQueue);
-            
-            //## auto_generated 
-            void _setItsInterprocessQueue(utils::InterprocessQueue* p_InterprocessQueue);
-            
-            //## auto_generated 
-            void _clearItsInterprocessQueue();
+            void _removeItsFederateInterface(int key);
         
         protected :
             
@@ -208,8 +177,6 @@ namespace Framework {
         
         ////    Attributes    ////
         protected :
-            
-            bool exitFlag;		//## attribute exitFlag 
             
             FederateFrameworkType frameworkType;		//## attribute frameworkType 
             
@@ -222,13 +189,10 @@ namespace Framework {
             Control::Federate* itsFederate;		//## link itsFederate 
             
             
-            std::map<std::string, FederateInterface*> itsFederateInterface;		//## link itsFederateInterface 
+            std::map<int, FederateInterface*> itsFederateInterface;		//## link itsFederateInterface 
             
             
             Control::FederateInterfaceFactory* itsFederateInterfaceFactory;		//## link itsFederateInterfaceFactory 
-            
-            
-            utils::InterprocessQueue* itsInterprocessQueue;		//## link itsInterprocessQueue 
             
         
         

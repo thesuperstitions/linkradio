@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::OASIS_FederateInterface
-//!	Generated Date	: Mon, 12, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.cpp
 *********************************************************************/
 
@@ -23,8 +23,8 @@
 namespace Framework {
     namespace IO {
         
-        OASIS_FederateInterface::OASIS_FederateInterface(std::string name, Framework::InterfaceType interfaceType) : FederateInterface(name, interfaceType) {
-            //#[ operation OASIS_FederateInterface(std::string,Framework::InterfaceType) 
+        OASIS_FederateInterface::OASIS_FederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType) : FederateInterface(name, interfaceType) {
+            //#[ operation OASIS_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
             //#]
         }
         

@@ -4,13 +4,11 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::Buffer
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Buffer.cpp
 *********************************************************************/
 
 #include "Buffer.h"
-// link itsMessage 
-#include "Message.h"
 
 //----------------------------------------------------------------------------
 // Buffer.cpp                                                                  
@@ -25,13 +23,11 @@ namespace Framework {
         
         
         Buffer::Buffer(char* byteArray, unsigned long sizeOfByteArray) : byteArray(byteArray), sizeOfByteArray(sizeOfByteArray) {
-            itsMessage = NULL;
             //#[ operation Buffer(char*,unsigned long) 
             //#]
         }
         
         Buffer::Buffer() {
-            itsMessage = NULL;
         }
         
         Buffer::~Buffer() {
@@ -40,7 +36,6 @@ namespace Framework {
             byteArray = NULL; 
             sizeOfByteArray = 0;
             //#]
-            cleanUpRelations();
         }
         
         char* Buffer::getByteArray() const {
@@ -49,54 +44,6 @@ namespace Framework {
         
         void Buffer::setByteArray(char* p_byteArray) {
             byteArray = p_byteArray;
-        }
-        
-        unsigned long Buffer::getSizeOfByteArray() const {
-            return sizeOfByteArray;
-        }
-        
-        void Buffer::setSizeOfByteArray(unsigned long p_sizeOfByteArray) {
-            sizeOfByteArray = p_sizeOfByteArray;
-        }
-        
-        Framework::IO::Message* Buffer::getItsMessage() const {
-            return itsMessage;
-        }
-        
-        void Buffer::__setItsMessage(Framework::IO::Message* p_Message) {
-            itsMessage = p_Message;
-        }
-        
-        void Buffer::_setItsMessage(Framework::IO::Message* p_Message) {
-            if(itsMessage != NULL)
-                {
-                    itsMessage->__setItsBuffer(NULL);
-                }
-            __setItsMessage(p_Message);
-        }
-        
-        void Buffer::setItsMessage(Framework::IO::Message* p_Message) {
-            if(p_Message != NULL)
-                {
-                    p_Message->_setItsBuffer(this);
-                }
-            _setItsMessage(p_Message);
-        }
-        
-        void Buffer::_clearItsMessage() {
-            itsMessage = NULL;
-        }
-        
-        void Buffer::cleanUpRelations() {
-            if(itsMessage != NULL)
-                {
-                    Framework::IO::Buffer* p_Buffer = itsMessage->getItsBuffer();
-                    if(p_Buffer != NULL)
-                        {
-                            itsMessage->__setItsBuffer(NULL);
-                        }
-                    itsMessage = NULL;
-                }
         }
         
     }

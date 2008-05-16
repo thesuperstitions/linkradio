@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateInterface
-//!	Generated Date	: Wed, 14, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterface.cpp
 *********************************************************************/
 
@@ -13,7 +13,7 @@
 #include "FederateIO_Handler.h"
 // operation processFederateMessage(FederateMessage*) 
 #include "FederateMessage.h"
-// link inputQueue 
+// link publisherQueue 
 #include "InterprocessQueue.h"
 
 //----------------------------------------------------------------------------
@@ -27,18 +27,29 @@
 namespace Framework {
     namespace IO {
         
+        // Static class member attribute
+        Framework::utils::InterprocessQueue* FederateInterface::subscribeQueue;
         
-        FederateInterface::FederateInterface(std::string name, unsigned long maxMessageSize, unsigned long maxMessages) : exitFlag(false) ,interfaceName(name), maxMessageSize(maxMessageSize), maxMessages(maxMessages) {
-            outputQueue = NULL;
+        FederateInterface::FederateInterface(int interfaceID, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType) : exitFlag(false) ,interfaceID(interfaceID), interfaceName(name), maxMessageSize(maxMessageSize), maxMessages(maxMessages) {
+            subscriberQueue = NULL;
+            publisherQueue = NULL;
             itsFederateIO_Handler = NULL;
-            inputQueue = NULL;
-            //#[ operation FederateInterface(std::string,unsigned long,unsigned long) 
+            //#[ operation FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
             
-            setInputQueue(new InterprocessQueue(name+"-Input", maxMessageSize, maxMessages));
-            setOutputQueue(new InterprocessQueue(name+"-Output", maxMessageSize, maxMessages));
-            
-            Thread::start();
-            
+            switch (federateInterfaceType)
+            {
+              case FederateInterfaceTypePublisher: 
+                setPublisherQueue(new InterprocessQueue(name, maxMessageSize, maxMessages)); 
+              break;
+              
+              case FederateInterfaceTypeSubscriber:
+                setSubscriberQueue(new InterprocessQueue(name, maxMessageSize, maxMessages)); 
+                Thread::start();
+              break;
+              
+              default:
+            };
+                    
             //#]
         }
         
@@ -51,10 +62,17 @@ namespace Framework {
             
             Thread::stop();
             
-            delete getitsFederateMessage();
-            setitsFederateMessage(NULL);
-            delete getOutputQueue;  
-            setOutputQueue(NULL);
+            if (publisherQueue != NULL)
+            {
+              delete publisherQueue;  
+              publisherQueue(NULL);
+            }
+            
+            if (subscriberQueue != NULL)
+            {
+              delete subscriberQueue;  
+              subscriberQueue(NULL);
+            }
             
             //#]
             cleanUpRelations();
@@ -67,12 +85,11 @@ namespace Framework {
             Buffer* bPtr;
             
               
-            if (inputQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
+            if (subscriberQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
             {
               // Wait for process on other end of queue to be ready.
-              if (inputQueue->SynchronizeQueueUsers() == false)   
+              if (subscriberQueue->SynchronizeQueueUsers() == false)   
               {  // The subscriber isn't ready to receive from the queue.
-                delete message;
                 return(false);
               }
             }  
@@ -103,15 +120,14 @@ namespace Framework {
               }  
               else
               {
-                if (inputQueue->timedGetMessage((unsigned char*)&message, messageSizeInBytes, 1, 0) == true )
+                if (inputQueue->timedGetMessage((unsigned char*)&message, &messageSizeInBytes, 1, 0) == true )
                 {    
-            // todo  
-            // Change Interprocess queue to return the # of bytes in the message.
                   // Create a FederateMessage instance and populate it.
-                  FederateMessage* fm_Ptr = new FederateMessage( this, &message, messageSizeInBytes );    
+            //                  FederateMessage* fm_Ptr = new FederateMessage( this, &message, messageSizeInBytes );    
                 
                   // Send the message to the Post Office for delivery.
-                  Framework::Control::getFederate()->getThePostOffice()->sendMessage( fm_Ptr);
+            //                  Framework::Control::getFederate()->getThePostOffice()->sendMessage( fm_Ptr);
+                  Framework::Control::getFederate()->getThePostOffice()->sendMessage( &message, messageSizeInBytes);
                 }   
               }
             };
@@ -125,6 +141,14 @@ namespace Framework {
         
         void FederateInterface::setExitFlag(bool p_exitFlag) {
             exitFlag = p_exitFlag;
+        }
+        
+        int FederateInterface::getInterfaceID() const {
+            return interfaceID;
+        }
+        
+        void FederateInterface::setInterfaceID(int p_interfaceID) {
+            interfaceID = p_interfaceID;
         }
         
         std::string FederateInterface::getInterfaceName() const {
@@ -151,12 +175,12 @@ namespace Framework {
             maxMessages = p_maxMessages;
         }
         
-        Framework::utils::InterprocessQueue* FederateInterface::getInputQueue() const {
-            return inputQueue;
+        Framework::utils::InterprocessQueue* FederateInterface::getSubscribeQueue() {
+            return subscribeQueue;
         }
         
-        void FederateInterface::setInputQueue(Framework::utils::InterprocessQueue* p_InterprocessQueue) {
-            inputQueue = p_InterprocessQueue;
+        void FederateInterface::setSubscribeQueue(Framework::utils::InterprocessQueue* p_subscribeQueue) {
+            subscribeQueue = p_subscribeQueue;
         }
         
         Framework::IO::FederateIO_Handler* FederateInterface::getItsFederateIO_Handler() const {
@@ -178,7 +202,7 @@ namespace Framework {
         void FederateInterface::setItsFederateIO_Handler(Framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
             if(p_FederateIO_Handler != NULL)
                 {
-                    p_FederateIO_Handler->_addItsFederateInterface(getInterfaceName(), this);
+                    p_FederateIO_Handler->_addItsFederateInterface(getInterfaceID(), this);
                 }
             _setItsFederateIO_Handler(p_FederateIO_Handler);
         }
@@ -187,31 +211,39 @@ namespace Framework {
             itsFederateIO_Handler = NULL;
         }
         
-        Framework::utils::InterprocessQueue* FederateInterface::getOutputQueue() const {
-            return outputQueue;
+        Framework::utils::InterprocessQueue* FederateInterface::getPublisherQueue() const {
+            return publisherQueue;
         }
         
-        void FederateInterface::setOutputQueue(Framework::utils::InterprocessQueue* p_InterprocessQueue) {
-            outputQueue = p_InterprocessQueue;
+        void FederateInterface::setPublisherQueue(Framework::utils::InterprocessQueue* p_InterprocessQueue) {
+            publisherQueue = p_InterprocessQueue;
+        }
+        
+        Framework::utils::InterprocessQueue* FederateInterface::getSubscriberQueue() const {
+            return subscriberQueue;
+        }
+        
+        void FederateInterface::setSubscriberQueue(Framework::utils::InterprocessQueue* p_InterprocessQueue) {
+            subscriberQueue = p_InterprocessQueue;
         }
         
         void FederateInterface::cleanUpRelations() {
-            if(inputQueue != NULL)
-                {
-                    inputQueue = NULL;
-                }
             if(itsFederateIO_Handler != NULL)
                 {
                     Framework::IO::FederateIO_Handler* current = itsFederateIO_Handler;
                     if(current != NULL)
                         {
-                            current->_removeItsFederateInterface(interfaceName);
+                            current->_removeItsFederateInterface(interfaceID);
                         }
                     itsFederateIO_Handler = NULL;
                 }
-            if(outputQueue != NULL)
+            if(publisherQueue != NULL)
                 {
-                    outputQueue = NULL;
+                    publisherQueue = NULL;
+                }
+            if(subscriberQueue != NULL)
+                {
+                    subscriberQueue = NULL;
                 }
         }
         

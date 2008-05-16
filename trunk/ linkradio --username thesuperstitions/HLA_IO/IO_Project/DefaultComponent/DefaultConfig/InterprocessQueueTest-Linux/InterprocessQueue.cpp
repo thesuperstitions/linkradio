@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::utils::InterprocessQueue
-//!	Generated Date	: Tue, 13, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\InterprocessQueueTest-Linux\InterprocessQueue.cpp
 *********************************************************************/
 
@@ -21,6 +21,8 @@
 #include "InterprocessQueue.h"
 // dependency interprocess 
 #include <interprocess.h>
+// link itsC_IO_Functions 
+#include "C_IO_Functions.h"
 // link itsFederateIO_Handler 
 #include "FederateIO_Handler.h"
 
@@ -41,6 +43,7 @@ namespace Framework {
         maxMsgs(maxNumberOfMessages), totalQueueSize(maxMsgSize * maxMsgs)
          {
             itsFederateIO_Handler = NULL;
+            itsC_IO_Functions = NULL;
             //#[ operation InterprocessQueue(std::string,unsigned int,unsigned long) 
             bool alreadyCreatedFlag = false;
             
@@ -237,8 +240,8 @@ namespace Framework {
             //#]
         }
         
-        bool InterprocessQueue::timedGetMessage(unsigned char * msg, unsigned int timeoutSecs, unsigned long timeoutMicroSecs) {
-            //#[ operation timedGetMessage(unsigned char *,unsigned int,unsigned long) 
+        bool InterprocessQueue::timedGetMessage(unsigned char * msg, unsigned int* messageSizeInBytes, unsigned int timeoutSecs, unsigned long timeoutMicroSecs) {
+            //#[ operation timedGetMessage(unsigned char *,unsigned int*,unsigned int,unsigned long) 
             // Just in case this function gets invoked during shutdown.
             if (exitFlag == true)
               return(false);
@@ -251,22 +254,22 @@ namespace Framework {
               {
             		//This lock protects the queue itself.
                 scoped_lock<interprocess_mutex> myDataAccessLock(myControlData->myDataAccessMutex);
-            
+                                     
                 // Check to see if the the "Producer" has declared the interface "DOWN".  If so, we'll go back into
             		// "Synchronizing" state.
                 if (myControlData->InterfaceStatus == false)
                   return(false);
             
                 // Copy the message into the from the queue into the user's buffer.
-                memcpy(msg, &(myQueue[(myControlData->CurrentReadSlot*maxMsgSize)+sizeof(unsigned int)]),
-                  *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize])));
+                *messageSizeInBytes = *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize]))
+                memcpy(msg, &(myQueue[(myControlData->CurrentReadSlot*maxMsgSize)+sizeof(unsigned int)]), *messageSizeInBytes);
             
                 myControlData->NumberMessagesInQueue--; // Decrement # messages in the queue.
             
-                  ++myControlData->CurrentReadSlot %= maxMsgs; // Move pointer to next message in the queue.
-                  myControlData->addMessageSemaphore.post();   // Indicate that there's now room in the queue for another message.
+                ++myControlData->CurrentReadSlot %= maxMsgs; // Move pointer to next message in the queue.
+                myControlData->addMessageSemaphore.post();   // Indicate that there's now room in the queue for another message.
             
-                  return(true);
+                return(true);
               }
               else
                 return(false);

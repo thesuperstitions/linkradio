@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::Control::FederateInterfaceFactory
-//!	Generated Date	: Thu, 27, Mar 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterfaceFactory.cpp
 *********************************************************************/
 
@@ -42,17 +42,15 @@ namespace Framework {
             cleanUpRelations();
         }
         
-        Framework::IO::FederateInterface* FederateInterfaceFactory::createFederateInterface(std::string name, Framework::InterfaceType interfaceType) {
-            //#[ operation createFederateInterface(std::string,Framework::InterfaceType) 
-            // Based upon some later-to-be-identified configuration value, the factory creates
-            // the appropriate FederateInterface.
+        Framework::IO::FederateInterface* FederateInterfaceFactory::createFederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType) {
+            //#[ operation createFederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
             switch(fedFrameworkType)
             {
               case HLA_FederateFrameworkType:
-                return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::HLA_FederateInterface(name, interfaceType) ) );
+                return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::HLA_FederateInterface(interfaceID, name, interfaceType) ) );
               
               case OASIS_FederateFrameworkType:
-                return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::OASIS_FederateInterface(name, interfaceType) ) );
+                return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::OASIS_FederateInterface(interfaceID, name, interfaceType) ) );
             };  
             
             return(NULL);          

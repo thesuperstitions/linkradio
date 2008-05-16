@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::HLA_PostOffice
-//!	Generated Date	: Mon, 12, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.h
 *********************************************************************/
 
@@ -112,6 +112,9 @@ namespace Framework {
             
             //## operation sendMessage(FederateMessage*) 
             void sendMessage(FederateMessage* message);
+            
+            //## operation sendMessage(char*,HLA_FederateInterface*) 
+            void sendMessage(char* message, HLA_FederateInterface* hlaFederateInterface);
             
             //## operation unsubscribe(FederateInterface*) 
             void unsubscribe(FederateInterface* interface);

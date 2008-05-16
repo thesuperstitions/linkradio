@@ -64,7 +64,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 	}
 	- _name = "Framework";
-	- _lastID = 16;
+	- _lastID = 18;
 	- Declaratives = { IRPYRawContainer 
 		- size = 4;
 		- value = 
@@ -85,7 +85,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID b6acb6f4-06ce-4ebf-ab9b-7a9fb813ea04;
 		}
 	}
-	- weakCGTime = 5.14.2008::13:25:27;
+	- weakCGTime = 5.15.2008::16:25:21;
 	- strongCGTime = 5.12.2008::17:56:27;
 	- _defaultComposite = GUID f087b006-c4f9-4606-927d-0806f058af46;
 	- _eventsBaseID = -1;
@@ -97,7 +97,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 18;
-			- weakCGTime = 5.12.2008::17:56:27;
+			- weakCGTime = 5.14.2008::13:25:27;
 			- strongCGTime = 5.12.2008::17:56:27;
 			- Operations = { IRPYRawContainer 
 				- size = 6;
@@ -1939,7 +1939,7 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 		}
 	}
 	- Types = { IRPYRawContainer 
-		- size = 8;
+		- size = 7;
 		- value = 
 		{ IType 
 			- _id = GUID bd892c23-ade2-4df0-814c-2b73918c0673;
@@ -2098,286 +2098,30 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 			- _kind = Enumeration;
 		}
 		{ IType 
-			- _id = GUID 7d765c02-c715-40e1-9b14-8521772a1027;
+			- _id = GUID bdd0325d-88cc-4ebf-8fa1-d23d02bf07cb;
 			- _myState = 8192;
-			- _properties = { IPropertyContainer 
-				- Subjects = { IRPYRawContainer 
-					- size = 1;
-					- value = 
-					{ IPropertySubject 
-						- _Name = "CG";
-						- Metaclasses = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertyMetaclass 
-								- _Name = "Class";
-								- Properties = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IProperty 
-										- _Name = "AttributesAutoArrange";
-										- _Value = "False";
-										- _Type = Bool;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			- _name = "SharedMemoryQueueControlData";
-			- Attrs = { IRPYRawContainer 
-				- size = 8;
+			- _name = "FederateInterfaceType";
+			- _lastID = 3;
+			- Literals = { IRPYRawContainer 
+				- size = 3;
 				- value = 
-				{ IAttribute 
-					- _id = GUID f1c1b485-93df-4450-be2f-a42a094377d2;
-					- _name = "getMsgSemaphore";
-					- _description = { IDescription 
-						- _text = "## attribute getMsgSemaphore";
-					}
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 46d4f0ba-ecaf-4abb-a72b-510a509145f4;
-						- _myState = 8192;
-						- _declaration = "boost::interprocess::interprocess_semaphore";
-						- _kind = Language;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
+				{ IEnumerationLiteral 
+					- _id = GUID 17a6884a-f483-4bec-9f61-4b6f62901d28;
+					- _name = "FederateInterfaceTypeUnselected";
+					- _value = "0";
 				}
-				{ IAttribute 
-					- _id = GUID b1d87742-80b4-4878-971c-c2dc23016e9c;
-					- _name = "addMessageSemaphore";
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 18c2ff35-a207-4817-9839-3bb144228a02;
-						- _myState = 8192;
-						- _declaration = "boost::interprocess::interprocess_semaphore";
-						- _kind = Language;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
+				{ IEnumerationLiteral 
+					- _id = GUID e36f5061-5dc2-4fd5-9e9f-2179680b5256;
+					- _name = "FederateInterfaceTypePublisher";
+					- _value = "1";
 				}
-				{ IAttribute 
-					- _id = GUID 06860fa7-8104-4f34-9953-81f57433586c;
-					- _name = "myDataAccessMutex";
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 2cc3ff85-9fed-48c1-9069-4345ee0660b0;
-						- _myState = 8192;
-						- _declaration = "boost::interprocess::interprocess_mutex";
-						- _kind = Language;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 61e9bc91-9d0d-40f1-9e6e-9bcc9f3497f0;
-					- _name = "NumberMessagesInQueue";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "unsigned int";
-						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 15b1a270-010b-4959-bb76-92cf3cdc0cdf;
-					- _name = "CurrentReadSlot";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "unsigned int";
-						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID eb75e39e-6aee-413a-9405-c1f239d141d3;
-					- _name = "CurrentWriteSlot";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "unsigned int";
-						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 56934c9b-be34-41c6-b8ec-25a8387a9aee;
-					- _name = "UniqueValue";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "unsigned long";
-						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 5f650418-dffe-437b-a021-089ec9a4416e;
-					- _name = "InterfaceStatus";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "bool";
-						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
+				{ IEnumerationLiteral 
+					- _id = GUID 95c74dd9-0eb6-4286-b2a9-36fb1f587ad5;
+					- _name = "FederateInterfaceTypeSubscriber";
+					- _value = "2";
 				}
 			}
-			- _kind = Structure;
-		}
-		{ IType 
-			- _id = GUID 483cb8f3-20f3-45dc-9ccd-7fc337fdc9a9;
-			- _myState = 8192;
-			- _properties = { IPropertyContainer 
-				- Subjects = { IRPYRawContainer 
-					- size = 1;
-					- value = 
-					{ IPropertySubject 
-						- _Name = "CG";
-						- Metaclasses = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertyMetaclass 
-								- _Name = "Class";
-								- Properties = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IProperty 
-										- _Name = "AttributesAutoArrange";
-										- _Value = "False";
-										- _Type = Bool;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			- _name = "IO_InterfaceInformationType";
-			- _lastID = 9;
-			- Attrs = { IRPYRawContainer 
-				- size = 4;
-				- value = 
-				{ IAttribute 
-					- _id = GUID c074baef-1d35-4fb8-95c5-d3185b5434af;
-					- _name = "interfaceName";
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 7edf7bfd-a634-40b8-9572-18b9615efa0b;
-						- _myState = 8192;
-						- _declaration = "std::string";
-						- _kind = Language;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 15e2450a-9a25-46f6-920d-013348722858;
-					- _name = "maxMessageSize";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "unsigned long";
-						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 3c9d997b-db2b-4948-a0d2-351cd7ca79e2;
-					- _name = "maxMessages";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "long";
-						- _id = GUID 8d6ece2f-4774-4e46-a346-b71b55717d33;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 57ebe64a-0b3a-48d3-bc5d-a6a8c5285607;
-					- _name = "federateInterfacePtr";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void *";
-						- _id = GUID 68975846-a809-4f2e-9f11-00ad6073974c;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-			}
-			- _kind = Structure;
+			- _kind = Enumeration;
 		}
 	}
 	- _configurationRelatedTime = 5.12.2008::14:8:25;

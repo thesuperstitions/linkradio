@@ -1267,72 +1267,11 @@ switch (federateType)
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
 			- _lastID = 3;
-			- weakCGTime = 4.9.2008::13:10:36;
+			- weakCGTime = 5.15.2008::16:1:0;
 			- strongCGTime = 3.26.2008::16:35:25;
 			- Operations = { IRPYRawContainer 
-				- size = 2;
+				- size = 3;
 				- value = 
-				{ IPrimitiveOperation 
-					- _id = GUID e0c1a489-0cb8-4a01-a0ee-1e244f080b2f;
-					- _name = "createFederateInterface";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
-						{ IArgument 
-							- _id = GUID 1084fe1a-7c1c-4193-af55-a61337f30611;
-							- _name = "name";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 132b478d-6dee-4948-bfc2-8ee2136eb3e1;
-								- _myState = 8192;
-								- _declaration = "std::string";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID edd045ac-9905-4e3b-8d9c-338966253e7a;
-							- _name = "interfaceType";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 764d8a6f-c7d9-4ffb-8289-682c61ac891e;
-								- _myState = 8192;
-								- _declaration = "Framework::InterfaceType";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- myReturnType = { IType 
-						- _id = GUID d89b97cb-56f1-4210-a04c-9f6fe9d1b2c3;
-						- _myState = 8192;
-						- _declaration = "Framework::IO::FederateInterface*";
-						- _kind = Language;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "// Based upon some later-to-be-identified configuration value, the factory creates
-// the appropriate FederateInterface.
-switch(fedFrameworkType)
-{
-  case HLA_FederateFrameworkType:
-    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::HLA_FederateInterface(name, interfaceType) ) );
-  
-  case OASIS_FederateFrameworkType:
-    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::OASIS_FederateInterface(name, interfaceType) ) );
-};  
-
-return(NULL);          ";
-					}
-				}
 				{ IConstructor 
 					- _id = GUID 70427cf7-ca09-440f-bd0e-d80f99d666c2;
 					- _virtual = 0;
@@ -1365,6 +1304,165 @@ return(NULL);          ";
 					- _static = 0;
 					- _constant = 0;
 					- _initializer = "";
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID e0c1a489-0cb8-4a01-a0ee-1e244f080b2f;
+					- _name = "createFederateInterface";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 4;
+						- value = 
+						{ IArgument 
+							- _id = GUID 387df54b-46de-4bff-8ee9-738a7c08fd7c;
+							- _name = "interfaceID";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 1084fe1a-7c1c-4193-af55-a61337f30611;
+							- _name = "name";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 132b478d-6dee-4948-bfc2-8ee2136eb3e1;
+								- _myState = 8192;
+								- _declaration = "std::string";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID edd045ac-9905-4e3b-8d9c-338966253e7a;
+							- _name = "interfaceType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 764d8a6f-c7d9-4ffb-8289-682c61ac891e;
+								- _myState = 8192;
+								- _declaration = "Framework::InterfaceType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID a70ef9c3-9501-40d9-9d47-2acc5004f4b3;
+							- _name = "federateInterfaceType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID fc6817a3-4bc4-4e3e-a594-67dc5c991662;
+								- _myState = 8192;
+								- _declaration = "FederateInterfaceType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- myReturnType = { IType 
+						- _id = GUID d89b97cb-56f1-4210-a04c-9f6fe9d1b2c3;
+						- _myState = 8192;
+						- _declaration = "Framework::IO::FederateInterface*";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "switch(fedFrameworkType)
+{
+  case HLA_FederateFrameworkType:
+    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::HLA_FederateInterface(name, interfaceType) ) );
+  
+  case OASIS_FederateFrameworkType:
+    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::OASIS_FederateInterface(name, interfaceType) ) );
+};  
+
+return(NULL);          ";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 3e1fd031-38ec-426e-902a-83d0390a483c;
+					- _name = "createFederateInterface";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 3;
+						- value = 
+						{ IArgument 
+							- _id = GUID 1a08a7cb-d3a1-42bb-8a50-63de57d6a535;
+							- _name = "name";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID c1ee114d-fefb-45b3-afc8-d829eea053c9;
+								- _myState = 8192;
+								- _declaration = "std::string";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID b925f88d-692e-4c46-a278-1d550f2ea6e7;
+							- _name = "interfaceType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 0f652774-2e95-4ef6-b157-09153df8ea2a;
+								- _myState = 8192;
+								- _declaration = "Framework::InterfaceType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 5459d079-6d03-4394-afaa-c68ca29224b7;
+							- _name = "federateInterfaceType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 5f82b68a-dcc6-455d-9818-fffe0fb5640e;
+								- _myState = 8192;
+								- _declaration = "FederateInterfaceType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- myReturnType = { IType 
+						- _id = GUID 55aa6b34-fc7c-4b41-b631-da88495c5bc5;
+						- _myState = 8192;
+						- _declaration = "Framework::IO::FederateInterface * ";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "switch(fedFrameworkType)
+{
+  case HLA_FederateFrameworkType:
+    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::HLA_FederateInterface(interfaceID, name, interfaceType) ) );
+  
+  case OASIS_FederateFrameworkType:
+    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::OASIS_FederateInterface(interfaceID, name, interfaceType) ) );
+};  
+
+return(NULL);          ";
+					}
 				}
 			}
 			- Attrs = { IRPYRawContainer 

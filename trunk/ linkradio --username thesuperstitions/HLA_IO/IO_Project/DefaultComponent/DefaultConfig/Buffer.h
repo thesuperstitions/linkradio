@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::Buffer
-//!	Generated Date	: Mon, 14, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Buffer.h
 *********************************************************************/
 
@@ -71,36 +71,6 @@ namespace Framework {
             
             //## auto_generated 
             void setByteArray(char* p_byteArray);
-            
-            //## auto_generated 
-            unsigned long getSizeOfByteArray() const;
-            
-            //## auto_generated 
-            void setSizeOfByteArray(unsigned long p_sizeOfByteArray);
-            
-            //## auto_generated 
-            Message* getItsMessage() const;
-            
-            //## auto_generated 
-            void setItsMessage(Message* p_Message);
-        
-        
-        ////    Framework operations    ////
-        public :
-            
-            //## auto_generated 
-            void __setItsMessage(Message* p_Message);
-            
-            //## auto_generated 
-            void _setItsMessage(Message* p_Message);
-            
-            //## auto_generated 
-            void _clearItsMessage();
-        
-        protected :
-            
-            //## auto_generated 
-            void cleanUpRelations();
         
         
         ////    Attributes    ////
@@ -108,15 +78,6 @@ namespace Framework {
             
             char* byteArray;		//## attribute byteArray 
             
-            unsigned long sizeOfByteArray;		//## attribute sizeOfByteArray 
-            
-        
-        ////    Relations and components    ////
-        protected :
-            
-            Message* itsMessage;		//## link itsMessage 
-            
-        
         
         };
     }

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::HLA_FederateInterface
-//!	Generated Date	: Tue, 13, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_FederateInterface.cpp
 *********************************************************************/
 
@@ -26,9 +26,9 @@ namespace Framework {
     namespace IO {
         
         
-        HLA_FederateInterface::HLA_FederateInterface(std::string name, Framework::InterfaceType interfaceType) : isInteractionClassHandleSet(false) ,FederateInterface(name, interfaceType) {
+        HLA_FederateInterface::HLA_FederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType) : isInteractionClassHandleSet(false) ,FederateInterface(name, interfaceType) {
             theHLA_PostOffice = NULL;
-            //#[ operation HLA_FederateInterface(std::string,Framework::InterfaceType) 
+            //#[ operation HLA_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
             //#]
         }
         

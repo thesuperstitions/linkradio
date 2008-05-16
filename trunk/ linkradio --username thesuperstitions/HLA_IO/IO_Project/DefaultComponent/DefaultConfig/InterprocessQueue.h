@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::utils::InterprocessQueue
-//!	Generated Date	: Tue, 13, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\InterprocessQueue.h
 *********************************************************************/
 
@@ -33,6 +33,7 @@
 namespace Framework {
     
     namespace IO {
+        class C_IO_Functions;
         class FederateIO_Handler;
     }
     
@@ -55,6 +56,8 @@ namespace Framework {
             enum QueueState {
                 QueueSynchronizing = 0,
                 QueueSynchronized = 1
+
+
 
 
 
@@ -141,8 +144,8 @@ namespace Framework {
             // queue within the timeout period, return value = "true".  If not, return
             // value = "false".
             // ---------------------------------------------------------------------------
-            //## operation timedGetMessage(unsigned char *,unsigned int,unsigned long) 
-            virtual bool timedGetMessage(unsigned char * msg, unsigned int timeoutSecs, unsigned long timeoutMicroSecs);
+            //## operation timedGetMessage(unsigned char *,unsigned int*,unsigned int,unsigned long) 
+            virtual bool timedGetMessage(unsigned char * msg, unsigned int* messageSizeInBytes, unsigned int timeoutSecs, unsigned long timeoutMicroSecs);
         
         
         ////    Attributes    ////
@@ -186,6 +189,9 @@ namespace Framework {
         
         ////    Relations and components    ////
         protected :
+            
+            IO::C_IO_Functions* itsC_IO_Functions;		//## link itsC_IO_Functions 
+            
             
             IO::FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
             

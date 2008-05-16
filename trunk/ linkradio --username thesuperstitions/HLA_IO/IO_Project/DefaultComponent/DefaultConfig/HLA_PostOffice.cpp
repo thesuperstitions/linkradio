@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::HLA_PostOffice
-//!	Generated Date	: Mon, 12, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.cpp
 *********************************************************************/
 
@@ -117,12 +117,29 @@ namespace Framework {
             
             if (RealTimeMode() == true)
             {  
-              getTheFrameworkFederateAmbassador()->sendRO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getItsBuffer()->getByteArray());
+              getTheFrameworkFederateAmbassador()->sendRO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getmsgPtr());
             }
             else // Discrete Mode.
             {
-              getTheFrameworkFederateAmbassador()->sendTSO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getItsBuffer()->getByteArray());
+              getTheFrameworkFederateAmbassador()->sendTSO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getmsgPtr());
             }
+            //#]
+        }
+        
+        void HLA_PostOffice::sendMessage(char* message, HLA_FederateInterface* hlaFederateInterface) {
+            //#[ operation sendMessage(char*,HLA_FederateInterface*) 
+            
+            HLA_FederateInterface* HLA_Interface = reinterpret_cast<HLA_FederateInterface*>(message->getFederateInterface());
+            
+            if (RealTimeMode() == true)
+            {  
+              getTheFrameworkFederateAmbassador()->sendRO(hlaFederateInterfacee->getInteractionClassHandle(), hlaFederateInterface->getParamHandle(), ((char*)hlaFederateInterface->getInterfaceName().c_str()), message);
+            }
+            else // Discrete Mode.
+            {
+              getTheFrameworkFederateAmbassador()->sendTSO(hlaFederateInterfacee->getInteractionClassHandle(), hlaFederateInterfacee->getParamHandle(), ((char*)hlaFederateInterfacee->getInterfaceName().c_str()), message);
+            }
+            
             //#]
         }
         

@@ -27,16 +27,6 @@
 // Message.h                                                                  
 //----------------------------------------------------------------------------
 
-
-namespace Framework {
-    
-    namespace IO {
-        class Buffer;
-    }
-    
-}
-
-
 //## package Framework::IO 
 
 #ifdef _MSC_VER
@@ -53,8 +43,8 @@ namespace Framework {
         ////    Constructors and destructors    ////
         public :
             
-            //## operation Message(char*,unsigned long) 
-            Message(char* message, unsigned long messageSizeInBytes);
+            //## operation Message(unsigned char*,unsigned long) 
+            Message(unsigned char* message, unsigned long messageSizeInBytes);
             
             //## auto_generated 
             Message();
@@ -67,64 +57,33 @@ namespace Framework {
         public :
             
             //## auto_generated 
-            std::string getFederateInterfaceEnetAddress() const;
-            
-            //## auto_generated 
-            void setFederateInterfaceEnetAddress(std::string p_federateInterfaceEnetAddress);
-            
-            //## auto_generated 
-            unsigned long getInstanceNumber() const;
-            
-            //## auto_generated 
-            void setInstanceNumber(unsigned long p_instanceNumber);
-            
-            //## auto_generated 
             static unsigned long getMessageCount();
             
             //## auto_generated 
             static void setMessageCount(unsigned long p_messageCount);
             
             //## auto_generated 
-            Buffer* getItsBuffer() const;
+            unsigned char* getMessagePtr() const;
             
             //## auto_generated 
-            void setItsBuffer(Buffer* p_Buffer);
-        
-        
-        ////    Framework operations    ////
-        public :
+            void setMessagePtr(unsigned char* p_messagePtr);
             
             //## auto_generated 
-            void __setItsBuffer(Buffer* p_Buffer);
+            unsigned long getSizeOfMessageInBytes() const;
             
             //## auto_generated 
-            void _setItsBuffer(Buffer* p_Buffer);
-            
-            //## auto_generated 
-            void _clearItsBuffer();
-        
-        protected :
-            
-            //## auto_generated 
-            void cleanUpRelations();
+            void setSizeOfMessageInBytes(unsigned long p_sizeOfMessageInBytes);
         
         
         ////    Attributes    ////
         protected :
             
-            std::string federateInterfaceEnetAddress;		//## attribute federateInterfaceEnetAddress 
-            
-            unsigned long instanceNumber;		//## attribute instanceNumber 
-            
             static unsigned long messageCount;		//## attribute messageCount 
             
-        
-        ////    Relations and components    ////
-        protected :
+            unsigned char* messagePtr;		//## attribute messagePtr 
             
-            Buffer* itsBuffer;		//## link itsBuffer 
+            unsigned long sizeOfMessageInBytes;		//## attribute sizeOfMessageInBytes 
             
-        
         
         };
     }

@@ -131,7 +131,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID dafa1e7c-fb05-4f62-9adf-1098d2a3a2f0;
 		}
 	}
-	- weakCGTime = 5.14.2008::13:40:19;
+	- weakCGTime = 5.15.2008::13:1:37;
 	- strongCGTime = 4.1.2008::16:59:27;
 	- _defaultComposite = GUID b3558c13-0914-4592-a3eb-dbfbf70d98db;
 	- _eventsBaseID = -1;
@@ -143,7 +143,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 6;
-			- weakCGTime = 5.13.2008::11:53:5;
+			- weakCGTime = 5.14.2008::17:5:23;
 			- strongCGTime = 4.1.2008::16:59:27;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -238,81 +238,12 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				}
 			}
 			- _name = "FederateInterface";
-			- _lastID = 16;
-			- weakCGTime = 5.14.2008::13:40:19;
-			- strongCGTime = 5.14.2008::12:6:55;
+			- _lastID = 17;
+			- weakCGTime = 5.15.2008::16:21:35;
+			- strongCGTime = 5.15.2008::16:21:35;
 			- Operations = { IRPYRawContainer 
 				- size = 4;
 				- value = 
-				{ IConstructor 
-					- _id = GUID d811d751-0e50-4c7d-8ba7-d9ad2dd3c646;
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 3;
-						- value = 
-						{ IArgument 
-							- _id = GUID 85e5cbc9-5e06-4fd8-9634-e0ffd7c2a764;
-							- _name = "name";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 4ad584c1-ca4a-42b2-9650-6c7baddb317d;
-								- _myState = 8192;
-								- _declaration = "std::string";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID b038b508-6a59-4951-b88e-88935e61284a;
-							- _name = "maxMessageSize";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "unsigned long";
-								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID e4028187-1403-44c7-a551-43b57c29eac7;
-							- _name = "maxMessages";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "unsigned long";
-								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "";
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "
-setInputQueue(new InterprocessQueue(name+\"-Input\", maxMessageSize, maxMessages));
-setOutputQueue(new InterprocessQueue(name+\"-Output\", maxMessageSize, maxMessages));
-
-Thread::start();
-";
-					}
-					- _initializer = "interfaceName(name), maxMessageSize(maxMessageSize), maxMessages(maxMessages)";
-				}
 				{ IDestructor 
 					- _id = GUID 77e65df7-8bb6-433e-a9a9-e0a0689aa4e0;
 					- _virtual = 0;
@@ -341,10 +272,17 @@ this->Thread::join();
 
 Thread::stop();
 
-delete getitsFederateMessage();
-setitsFederateMessage(NULL);
-delete getOutputQueue;  
-setOutputQueue(NULL);
+if (publisherQueue != NULL)
+{
+  delete publisherQueue;  
+  publisherQueue(NULL);
+}
+
+if (subscriberQueue != NULL)
+{
+  delete subscriberQueue;  
+  subscriberQueue(NULL);
+}
 ";
 					}
 				}
@@ -389,12 +327,11 @@ setOutputQueue(NULL);
 Buffer* bPtr;
 
   
-if (inputQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
+if (subscriberQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
 {
   // Wait for process on other end of queue to be ready.
-  if (inputQueue->SynchronizeQueueUsers() == false)   
+  if (subscriberQueue->SynchronizeQueueUsers() == false)   
   {  // The subscriber isn't ready to receive from the queue.
-    delete message;
     return(false);
   }
 }  
@@ -444,24 +381,129 @@ while (exitFlag != true)
   }  
   else
   {
-    if (inputQueue->timedGetMessage((unsigned char*)&message, messageSizeInBytes, 1, 0) == true )
+    if (inputQueue->timedGetMessage((unsigned char*)&message, &messageSizeInBytes, 1, 0) == true )
     {    
-// todo  
-// Change Interprocess queue to return the # of bytes in the message.
       // Create a FederateMessage instance and populate it.
-      FederateMessage* fm_Ptr = new FederateMessage( this, &message, messageSizeInBytes );    
+//                  FederateMessage* fm_Ptr = new FederateMessage( this, &message, messageSizeInBytes );    
     
       // Send the message to the Post Office for delivery.
-      Framework::Control::getFederate()->getThePostOffice()->sendMessage( fm_Ptr);
+//                  Framework::Control::getFederate()->getThePostOffice()->sendMessage( fm_Ptr);
+      Framework::Control::getFederate()->getThePostOffice()->sendMessage( &message, messageSizeInBytes);
     }   
   }
 };
          ";
 					}
 				}
+				{ IConstructor 
+					- _id = GUID d811d751-0e50-4c7d-8ba7-d9ad2dd3c646;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 5;
+						- value = 
+						{ IArgument 
+							- _id = GUID faf68978-1c27-4b8d-aa51-ace7282ef960;
+							- _name = "interfaceID";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 85e5cbc9-5e06-4fd8-9634-e0ffd7c2a764;
+							- _name = "name";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 4ad584c1-ca4a-42b2-9650-6c7baddb317d;
+								- _myState = 8192;
+								- _declaration = "std::string";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID b038b508-6a59-4951-b88e-88935e61284a;
+							- _name = "maxMessageSize";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID e4028187-1403-44c7-a551-43b57c29eac7;
+							- _name = "maxMessages";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 2fc466e1-1c7b-41b6-bf22-a2cc809fc1bc;
+							- _name = "federateInterfaceType";
+							- _defaultValue = "FederateInterfaceTypeUnselected";
+							- myTypeOf = { IType 
+								- _id = GUID e0854f22-5eda-460d-af8e-ea65396e230c;
+								- _myState = 8192;
+								- _declaration = "FederateInterfaceType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "";
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "
+switch (federateInterfaceType)
+{
+  case FederateInterfaceTypePublisher: 
+    setPublisherQueue(new InterprocessQueue(name, maxMessageSize, maxMessages)); 
+  break;
+  
+  case FederateInterfaceTypeSubscriber:
+    setSubscriberQueue(new InterprocessQueue(name, maxMessageSize, maxMessages)); 
+    Thread::start();
+  break;
+  
+  default:
+};
+        ";
+					}
+					- _initializer = "interfaceID(interfaceID), interfaceName(name), maxMessageSize(maxMessageSize), maxMessages(maxMessages)";
+				}
 			}
 			- Attrs = { IRPYRawContainer 
-				- size = 4;
+				- size = 6;
 				- value = 
 				{ IAttribute 
 					- _id = GUID b8c2acb8-4c72-4497-8e1f-4ae5b56def70;
@@ -565,6 +607,41 @@ while (exitFlag != true)
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
+				{ IAttribute 
+					- _id = GUID b7aedcbb-5c31-4f64-ba0e-e80c438bac27;
+					- _name = "interfaceID";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "int";
+						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID b59511b3-35b0-4700-be33-49f495b8955a;
+					- _name = "subscribeQueue";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 3cd2b359-5ec5-404d-9be2-655f8f44ce05;
+						- _myState = 8192;
+						- _declaration = "Framework::utils::InterprocessQueue*";
+						- _kind = Language;
+					}
+					- _multiplicity = "100";
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 1;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
 			}
 			- Inheritances = { IRPYRawContainer 
 				- size = 1;
@@ -610,7 +687,7 @@ while (exitFlag != true)
 				{ IAssociationEnd 
 					- _id = GUID 73a40df0-e084-4bcd-b7c6-1c24ba8ff188;
 					- _myState = 8192;
-					- _name = "inputQueue";
+					- _name = "subscriberQueue";
 					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
@@ -630,7 +707,7 @@ while (exitFlag != true)
 				{ IAssociationEnd 
 					- _id = GUID 8427cbde-1aaf-4c57-bff3-0decddb71307;
 					- _myState = 8192;
-					- _name = "outputQueue";
+					- _name = "publisherQueue";
 					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
@@ -655,7 +732,7 @@ while (exitFlag != true)
 			- _myState = 8192;
 			- _name = "FederateMessage";
 			- _lastID = 6;
-			- weakCGTime = 4.9.2008::13:10:36;
+			- weakCGTime = 5.14.2008::17:10:46;
 			- strongCGTime = 4.1.2008::17:59:30;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -724,16 +801,14 @@ while (exitFlag != true)
 							- _argumentDirection = In;
 						}
 						{ IArgument 
-							- _id = GUID d6c01410-c4ec-4847-bbf2-8ee8d2b79460;
+							- _id = GUID de4703ac-cc6d-4e9a-a8e3-6053a1a31178;
 							- _name = "message";
 							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "char*";
-								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							- myTypeOf = { IType 
+								- _id = GUID 491f381d-d674-40a2-bee2-090d1d19f79a;
+								- _myState = 8192;
+								- _declaration = "unsigned char*";
+								- _kind = Language;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -747,8 +822,8 @@ while (exitFlag != true)
 								- _filename = "PredefinedTypesC++.sbs";
 								- _subsystem = "PredefinedTypesCpp";
 								- _class = "";
-								- _name = "unsigned long";
-								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+								- _name = "unsigned int";
+								- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -935,9 +1010,9 @@ while (exitFlag != true)
 			- _id = GUID 859c4e60-1747-44a5-9491-2868fc48dd51;
 			- _myState = 8192;
 			- _name = "Message";
-			- _lastID = 3;
-			- weakCGTime = 5.14.2008::11:51:42;
-			- strongCGTime = 5.14.2008::11:51:42;
+			- _lastID = 4;
+			- weakCGTime = 5.14.2008::17:17:8;
+			- strongCGTime = 5.14.2008::17:12:22;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
 				- value = 
@@ -948,16 +1023,14 @@ while (exitFlag != true)
 						- size = 2;
 						- value = 
 						{ IArgument 
-							- _id = GUID eac5766d-ac11-4318-b9b9-79aeb1f9e75e;
+							- _id = GUID fd2beccf-61d6-4949-9683-118137122821;
 							- _name = "message";
 							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "char*";
-								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							- myTypeOf = { IType 
+								- _id = GUID e08fd242-4a50-4aed-b429-d2a94beeb864;
+								- _myState = 8192;
+								- _declaration = "unsigned char*";
+								- _kind = Language;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -997,7 +1070,7 @@ setItsBuffer(new Buffer(message, messageSizeInBytes));
 getItsBuffer()->setItsMessage(this); 
 ";
 					}
-					- _initializer = "";
+					- _initializer = "messagePtr(message), sizeOfMessageInBytes(SizeInBytes), messageCount++";
 				}
 			}
 			- Attrs = { IRPYRawContainer 
@@ -1022,8 +1095,8 @@ getItsBuffer()->setItsMessage(this);
 					- _isConstant = 0;
 				}
 				{ IAttribute 
-					- _id = GUID 5c2f9ec6-1fba-47a4-93ca-3e34bd702f80;
-					- _name = "instanceNumber";
+					- _id = GUID 8bf57380-ece1-4e1c-b164-c731255107c7;
+					- _name = "sizeOfMessageInBytes";
 					- _defaultValue = "";
 					- _typeOf = { IHandle 
 						- _m2Class = "IType";
@@ -1040,13 +1113,13 @@ getItsBuffer()->setItsMessage(this);
 					- _isConstant = 0;
 				}
 				{ IAttribute 
-					- _id = GUID efae0b49-5465-4031-8a34-47d976a52da2;
-					- _name = "federateInterfaceEnetAddress";
+					- _id = GUID 118c77bb-9e46-41c4-8b90-a95f33120e5f;
+					- _name = "messagePtr";
 					- _defaultValue = "";
 					- myTypeOf = { IType 
-						- _id = GUID 5a7fcf54-f133-4807-9517-343fe7567206;
+						- _id = GUID 57b45af5-b8bb-4618-8cc5-5c9435016690;
 						- _myState = 8192;
-						- _declaration = "std::string";
+						- _declaration = "unsigned char*";
 						- _kind = Language;
 					}
 					- _isOrdered = 0;
@@ -1059,27 +1132,6 @@ getItsBuffer()->setItsMessage(this);
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
-			}
-			- Associations = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IAssociationEnd 
-					- _id = GUID 1a3ca904-60e1-40eb-b19e-df4b860bc6af;
-					- _myState = 10240;
-					- _name = "itsBuffer";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 404bed6e-6063-4893-babb-668204371250;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _id = GUID 50cbe72f-32b3-49b2-970d-9a29794b6467;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
 			}
 			- _classModifier = Unspecified;
 		}
@@ -1546,11 +1598,11 @@ getItsBuffer()->setItsMessage(this);
 			- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
 			- _myState = 8192;
 			- _name = "HLA_PostOffice";
-			- _lastID = 9;
-			- weakCGTime = 4.22.2008::18:56:39;
-			- strongCGTime = 4.9.2008::13:15:30;
+			- _lastID = 10;
+			- weakCGTime = 5.15.2008::17:43:55;
+			- strongCGTime = 5.15.2008::17:41:16;
 			- Operations = { IRPYRawContainer 
-				- size = 9;
+				- size = 10;
 				- value = 
 				{ IPrimitiveOperation 
 					- _id = GUID 954e8386-11a6-4732-92b3-322ea46ed165;
@@ -1672,11 +1724,11 @@ getFrameworkFederateAmbassador()->subscribeInteractionClass(static_cast<HLA_Fede
 
 if (RealTimeMode() == true)
 {  
-  getTheFrameworkFederateAmbassador()->sendRO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getItsBuffer()->getByteArray());
+  getTheFrameworkFederateAmbassador()->sendRO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getmsgPtr());
 }
 else // Discrete Mode.
 {
-  getTheFrameworkFederateAmbassador()->sendTSO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getItsBuffer()->getByteArray());
+  getTheFrameworkFederateAmbassador()->sendTSO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getmsgPtr());
 }";
 					}
 				}
@@ -2024,6 +2076,71 @@ Framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cas
 					}
 					- _initializer = "";
 				}
+				{ IPrimitiveOperation 
+					- _id = GUID e7f9f5a5-e13d-4470-9dee-42eba41f00ff;
+					- _name = "sendMessage";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 2;
+						- value = 
+						{ IArgument 
+							- _id = GUID 77421200-9fe5-459f-8c9a-404675157eee;
+							- _name = "message";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 8d4fdd2c-2d80-4a83-8c82-41e5ba9222f2;
+							- _name = "hlaFederateInterface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 9b6a0e10-4b11-4319-879b-df5e4829354b;
+								- _myState = 8192;
+								- _declaration = "HLA_FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "
+HLA_FederateInterface* HLA_Interface = reinterpret_cast<HLA_FederateInterface*>(message->getFederateInterface());
+
+if (RealTimeMode() == true)
+{  
+  getTheFrameworkFederateAmbassador()->sendRO(hlaFederateInterfacee->getInteractionClassHandle(), hlaFederateInterface->getParamHandle(), ((char*)hlaFederateInterface->getInterfaceName().c_str()), message);
+}
+else // Discrete Mode.
+{
+  getTheFrameworkFederateAmbassador()->sendTSO(hlaFederateInterfacee->getInteractionClassHandle(), hlaFederateInterfacee->getParamHandle(), ((char*)hlaFederateInterfacee->getInterfaceName().c_str()), message);
+}
+";
+					}
+				}
 			}
 			- Inheritances = { IRPYRawContainer 
 				- size = 1;
@@ -2292,18 +2409,33 @@ Framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cas
 				}
 			}
 			- _lastID = 21;
-			- weakCGTime = 5.14.2008::12:0:43;
+			- weakCGTime = 5.15.2008::16:6:34;
 			- strongCGTime = 5.13.2008::16:10:8;
 			- Operations = { IRPYRawContainer 
-				- size = 4;
+				- size = 3;
 				- value = 
 				{ IPrimitiveOperation 
 					- _id = GUID 86daf55a-c599-4518-a20f-b87e3ce8c036;
 					- _name = "createFederateInterface";
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 3;
+						- size = 5;
 						- value = 
+						{ IArgument 
+							- _id = GUID 0eae8616-b888-44f8-b75a-338bd2497a72;
+							- _name = "interfaceID";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
 						{ IArgument 
 							- _id = GUID 0d8329a4-4dff-48ad-b0d1-9ead70b0d6f5;
 							- _name = "interfaceName";
@@ -2347,6 +2479,19 @@ Framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cas
 							- _isOrdered = 0;
 							- _argumentDirection = In;
 						}
+						{ IArgument 
+							- _id = GUID 4e2f654e-45cb-4fa2-9e83-a68bec6b244c;
+							- _name = "federateInterfaceType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 01f3b165-a5e1-44e5-b3e3-4c6f07684292;
+								- _myState = 8192;
+								- _declaration = "FederateInterfaceType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
 					}
 					- myReturnType = { IType 
 						- _id = GUID 548e423d-cf5d-4ec3-8ad1-857494a2a52b;
@@ -2363,17 +2508,25 @@ Framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cas
 					- _itsBody = { IBody 
 						- _bodyData = "  
 // Create a FederateInterface by calling the factory.
-Framework::IO::FederateInterface* FI_Ptr = getItsFederateInterfaceFactory()->createFederateInterface(interfaceName, maxMessageSize, maxMessages);
+Framework::IO::FederateInterface* FI_Ptr = getItsFederateInterfaceFactory()->createFederateInterface(
+  interfaceID, interfaceName, maxMessageSize, maxMessages, federateInterfaceType);
             
 // Map the Federate interface to its name.
 addItsFederateInterface(interfaceName, FI_Ptr);   
-
-// Set the Federate Interface' link to the this FederateIO_Handler.
-//            FI_Ptr->setItsFederateIO_Handler(this);
-
-getItsFederate()->getThePostOffice()->announcePublication( FI_Ptr );   
+           
+switch (federateInterfaceType)
+{
+  case FederateInterfaceTypePublisher: 
+    getItsFederate()->getThePostOffice()->announcePublication( FI_Ptr );   
+  break;
+  
+  case FederateInterfaceTypeSubscriber:
+    getItsFederate()->getThePostOffice()->announceSubscription( FI_Ptr ); 
+  break;
+  
+  default:
+};
  
-getItsFederate()->getThePostOffice()->announceSubscription( FI_Ptr ); 
 
 return(FI_Ptr); 
 ";
@@ -2411,61 +2564,9 @@ return(FI_Ptr);
 					- _itsBody = { IBody 
 						- _bodyData = "
 setItsFederateInterfaceFactory( new Framework::Control::FederateInterfaceFactory(frameworkType) );  
-
-setItsInterprocessQueue(new Framework::utils::InterprocessQueue(\"FederatIO_Handler-Control\");
-
-Thread::start();
 ";
 					}
 					- _initializer = "frameworkType(frameworkType)";
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 1c5c937d-7caa-408a-8a98-c0605ae82764;
-					- _name = "threadOperation";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 0;
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "  
-IO_InterfaceInformationType  info;  
-unsigned char                message[INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES];
-
-  
-while (exitFlag != true)
-{  
-  if (controlQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
-  {
-    // Wait for process on other end of queue to be ready.
-    while(myQueue->SynchronizeQueueUsers() == false);
-  }  
-  else
-  {
-    if (controlQueue->timedGetMessage((unsigned char*)&info, 1, 0) == true )
-    { 
-      info.federateInterface = createFederateInterface(info.interfaceName, info.maxMessageSize, info.maxMessages);  
-                                                                                            
-      // Send a response with the pointer to the new Federate Interface in it.                 
-      controlQueue->timedAddMessage((unsigned char*)&info, sizeof(IO_InterfaceInformationType), 1, 0)                                                                                                   
-    }   
-  }
-};
-         ";
-					}
 				}
 				{ IDestructor 
 					- _id = GUID c9509cb7-3727-478d-9b09-a335369be4d8;
@@ -2489,23 +2590,14 @@ while (exitFlag != true)
 					- _constant = 0;
 					- _itsBody = { IBody 
 						- _bodyData = "
-exitFlag = true;
-
-this->Thread::join();
-
-Thread::stop();   
-
 delete getItsFederateInterfaceFactory();  
 setItsFederateInterfaceFactory(NULL);
-
-delete getItsInterprocessQueue();
-setItsInterprocessQueue(NULL);
 ";
 					}
 				}
 			}
 			- Attrs = { IRPYRawContainer 
-				- size = 3;
+				- size = 2;
 				- value = 
 				{ IAttribute 
 					- _id = GUID 934f71df-dee6-4ea3-810d-71accb9d2d05;
@@ -2539,27 +2631,9 @@ setItsInterprocessQueue(NULL);
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
-				{ IAttribute 
-					- _id = GUID 4afdc18d-5d72-4c9c-b9a1-b1aa35d170e6;
-					- _name = "exitFlag";
-					- _defaultValue = "false";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "bool";
-						- _id = GUID e6c263cc-4bc5-4a11-b32d-02148c93add0;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
 			}
 			- Inheritances = { IRPYRawContainer 
-				- size = 2;
+				- size = 1;
 				- value = 
 				{ IGeneralization 
 					- _id = GUID 9d237b0d-01db-4652-8c64-7104ef52c36d;
@@ -2570,33 +2644,20 @@ setItsInterprocessQueue(NULL);
 					- _inheritanceType = iPublic;
 					- _isVirtual = 0;
 				}
-				{ IGeneralization 
-					- _id = GUID e872fe03-b754-4b9e-b0c2-e11481e50183;
-					- _dependsOn = { INObjectHandle 
-						- _m2Class = "IClass";
-						- _filename = "utils.sbs";
-						- _subsystem = "Framework::utils";
-						- _class = "";
-						- _name = "Thread";
-						- _id = GUID 7c9c9e29-d0f9-42a0-a78f-f9d105a531e6;
-					}
-					- _inheritanceType = iPublic;
-					- _isVirtual = 0;
-				}
 			}
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
 			}
 			- Associations = { IRPYRawContainer 
-				- size = 4;
+				- size = 3;
 				- value = 
 				{ IAssociationEnd 
 					- _id = GUID 8c40885a-c01d-4e39-bc10-a30b992d4f84;
 					- _myState = 8192;
 					- _name = "itsFederateInterface";
 					- _multiplicity = "0..*";
-					- _qualifier = "interfaceName";
+					- _qualifier = "interfaceID";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
 						- _id = GUID 1993cc7d-a0e3-4f31-a771-97a1d245afb2;
@@ -2654,31 +2715,6 @@ setItsInterprocessQueue(NULL);
 					- _linkType = Assoc;
 					- _navigability = Navigable;
 				}
-				{ IAssociationEnd 
-					- _id = GUID d71320e0-dbfe-4ffd-b06b-24f635b315ce;
-					- _myState = 10240;
-					- _name = "itsInterprocessQueue";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "utils.sbs";
-						- _subsystem = "Framework::utils";
-						- _class = "";
-						- _name = "InterprocessQueue";
-						- _id = GUID 9e91004b-dbf1-41b9-9d0d-6cd63915269d;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _filename = "utils.sbs";
-						- _subsystem = "Framework::utils";
-						- _class = "InterprocessQueue";
-						- _name = "itsFederateIO_Handler";
-						- _id = GUID 888ae592-9977-4c99-8dfc-919f647b752e;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
 			}
 			- _classModifier = Unspecified;
 		}
@@ -2720,7 +2756,7 @@ setItsInterprocessQueue(NULL);
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
 			- _lastID = 3;
-			- weakCGTime = 5.13.2008::16:6:28;
+			- weakCGTime = 5.15.2008::14:49:12;
 			- strongCGTime = 5.13.2008::16:6:28;
 			- Operations = { IRPYRawContainer 
 				- size = 3;
@@ -2729,7 +2765,7 @@ setItsInterprocessQueue(NULL);
 					- _id = GUID 34e05f2e-3afb-44e9-b817-80669da27ff7;
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 2;
+						- size = 3;
 						- value = 
 						{ IArgument 
 							- _id = GUID 7e1853fe-b7b3-41ca-b56c-42c9a8b7ef17;
@@ -2752,6 +2788,19 @@ setItsInterprocessQueue(NULL);
 								- _id = GUID 84d3dcb7-91c6-4cc5-912d-1d4e58d9c4c4;
 								- _myState = 8192;
 								- _declaration = "Framework::InterfaceType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 59711930-1883-46d6-afd4-96b284591054;
+							- _name = "federateInterfaceType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 4005705b-cf5c-45f7-be4f-5e8dcd8eaac8;
+								- _myState = 8192;
+								- _declaration = "FederateInterfaceType";
 								- _kind = Language;
 							}
 							- _isOrdered = 0;
@@ -3080,7 +3129,7 @@ delete controlQueue;
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
-			- weakCGTime = 4.9.2008::13:10:36;
+			- weakCGTime = 5.15.2008::14:49:35;
 			- strongCGTime = 4.1.2008::16:44:21;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -3089,7 +3138,7 @@ delete controlQueue;
 					- _id = GUID 359a065d-370e-4831-8428-f648023bbc12;
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 2;
+						- size = 3;
 						- value = 
 						{ IArgument 
 							- _id = GUID 6c646525-14a5-4cb6-9047-2990c8399cca;
@@ -3112,6 +3161,19 @@ delete controlQueue;
 								- _id = GUID 2afea8f5-0bfa-4ce0-8ce1-6a239e65eef6;
 								- _myState = 8192;
 								- _declaration = "Framework::InterfaceType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID bb7af762-9a1d-4eb7-b0ca-cbff865bf156;
+							- _name = "federateInterfaceType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID a3ed8a8b-1d47-40d3-9a8c-6d535b4bf972;
+								- _myState = 8192;
+								- _declaration = "FederateInterfaceType";
 								- _kind = Language;
 							}
 							- _isOrdered = 0;
@@ -3205,7 +3267,7 @@ delete controlQueue;
 				}
 			}
 			- _lastID = 3;
-			- weakCGTime = 4.9.2008::13:10:36;
+			- weakCGTime = 5.14.2008::17:9:12;
 			- strongCGTime = 3.13.2008::15:20:48;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -3289,7 +3351,7 @@ sizeOfByteArray = 0;";
 				}
 			}
 			- Attrs = { IRPYRawContainer 
-				- size = 2;
+				- size = 1;
 				- value = 
 				{ IAttribute 
 					- _id = GUID 7aa3c4ed-a519-4f09-b148-88ca18c2f6ef;
@@ -3309,49 +3371,10 @@ sizeOfByteArray = 0;";
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
-				{ IAttribute 
-					- _id = GUID 8bf57380-ece1-4e1c-b164-c731255107c7;
-					- _name = "sizeOfByteArray";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "unsigned long";
-						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
 			}
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
-			}
-			- Associations = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IAssociationEnd 
-					- _id = GUID 50cbe72f-32b3-49b2-970d-9a29794b6467;
-					- _myState = 10240;
-					- _name = "itsMessage";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 859c4e60-1747-44a5-9491-2868fc48dd51;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _id = GUID 1a3ca904-60e1-40eb-b19e-df4b860bc6af;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
 			}
 			- _classModifier = Unspecified;
 		}
@@ -3444,11 +3467,11 @@ sizeOfByteArray = 0;";
 					}
 				}
 			}
-			- _lastID = 11;
-			- weakCGTime = 5.14.2008::13:10:35;
-			- strongCGTime = 5.14.2008::13:10:35;
+			- _lastID = 15;
+			- weakCGTime = 5.15.2008::17:27:38;
+			- strongCGTime = 5.15.2008::17:27:16;
 			- Operations = { IRPYRawContainer 
-				- size = 4;
+				- size = 6;
 				- value = 
 				{ IPrimitiveOperation 
 					- _id = GUID 4692b860-90b0-4e53-8bb3-f2e5e406b717;
@@ -3530,8 +3553,22 @@ sizeOfByteArray = 0;";
 					- _constant = 0;
 					- _itsBody = { IBody 
 						- _bodyData = "
-Federate
-return(Framework::CEC_Msg_Type_1);";
+unsigned int  sizeInBytes;  
+
+ std::string queueName.sprintf(\"%s-%s-%u-%u-%u\", &(device_list_ptr->name_string[0]), &(device_ptr->enet_address[0], 
+   device_ptr->enet_port, device_ptr->device_id, device_ptr->port);   
+
+if( (InterprocessQueue* ipq = getItsInterprocessQueue(queueName.c_str()) ) != NULL)
+{ 
+  if ipq->timedGetMessage(((unsigned char*)buffer_ptr->io_pkt.address), &sizeInBytes, 10, 0) == true )
+  {   
+    // De-serialize the message data.  
+    // message = Framework::IO::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
+    return(OK);
+  } 
+}
+return(CHANNEL_READINESS_ERR);
+";
 					}
 				}
 				{ IPrimitiveOperation 
@@ -3571,47 +3608,17 @@ return(Framework::CEC_Msg_Type_1);";
 					- _constant = 0;
 					- _itsBody = { IBody 
 						- _bodyData = "
- IO_InterfaceInformationType  info;
+ IO_InterfaceInformationType  info; 
+ unsigned int                 sizeInBytes;  
  
- std::string s.sprintf(\"%s-%s-%u-%u-%u\", &(device_list_ptr->name_string[0]), &(device_ptr->enet_address[0], 
-   device_ptr->enet_port, device_ptr->device_id, device_ptr->port);    
-   
- Framework::Control::Federate* fp = Framework::Control::getFederate();
+ // Todo Config file must contain the device enet port and its publish and subscribe interface names.
+ //      These names are used to set up the interprocess queues for sending and receiving messages. 
  
- Framework::IO::FederateIO_Handler* fio = fp->getItsFederateIO_Handler();
- 
- federateInterfacePtrs[federateInterfaceCount] = fio->createFederateInterface(s, sizeof(NTDS_OUTPUT_MSGS), MAX_OUT_QUE_ENTRIES); 
- 
- federateInterfaceNames[federateInterfaceCount] = s;    
- federateInterfaceEnetAddresss[federateInterfaceCount] = device_ptr->enet_address; 
- federateInterfaceEnetPort[federateInterfaceCount] = device_ptr->enet_port;
+ int index = findDevice(device_ptr->enet_port);
+    
 
-             
-// Build a \"createFederateInterface\" message and send it to the Federate I/O Handler.
-info.operation = framework::InterfaceOperationType::CreateInterface;
-info.interfaceName = s;
-info.maxMessageSize = INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES;
-info.maxMessages = INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE;     
-info.federateInterfacePtr = NULL;      
-info.uniqueHandle = (void*)this;      
-info.messageSizeInBytes = 0;
-info.timeoutSecs = 0; 
-info.timeoutMicrosecs = 0;
-
-if (controlQueue->getQueueState() == InterprocessQueue::QueueSynchronized) 
-{ 
-  // Send message with arbitrary 10 Sec timeout.
-  if (controlQueue->timedAddMessage((unsigned char*)&info, sizeof(IO_InterfaceInformationType), 10, 0) == true) 
-  {
-    if (controlQueue->timedGetMessage((unsigned char*)&info, 10, 0) == true )
-    { // Save the FederateInterface pointer with the rest of this interface' data.  
-      federateInterfacePtr[federateInterfaceCount] = info.federateInterfacePtr
-
-      InputQueue = new Framework::utils::InterprocessQueue(s + \"-Input\"); 
-      OutputQueue = new Framework::utils::InterprocessQueue(s + \"-Output\"); 
-    }
-  }              
-}
+addItsInterprocessQueue( (subscribeQueue = new Framework::utils::InterprocessQueue(subscribeQueueNames[index])) ); 
+addItsInterprocessQueue( (publishQueue = new Framework::utils::InterprocessQueue(publishQueueNames[index])) ); 
               
 federateInterfaceCount++;
  ";
@@ -3633,18 +3640,113 @@ federateInterfaceCount++;
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "
-controlQueue = new Framework::utils::InterprocessQueue(\"FederatIO_Handler-Control\");  
+						- _bodyData = "//#[ operation C_IO_Functions() 
 
-// Wait until other partner of the queue is ready.            
-while (controlQueue->SynchronizeQueueUsers() == false);   
-";
+std::ifstream input_stream(\"FederationConfigurationFile.cfg\");
+if ( input_stream.is_open() )
+{  
+  int deviceIndex = 0;
+  while (!input_stream.eof())
+  { 
+    inStream >> enetPorts[deviceIndex] >> deviceIDs >> subscribeQueueNames[deviceIndex] >> publishQueueNames[deviceIndex];  
+    deviceIndex++;
+  };
+}
+// proceed with processing";
 					}
 					- _initializer = "";
 				}
 				{ IPrimitiveOperation 
 					- _id = GUID ac8cd26b-7def-409c-b821-0c4eb27563bf;
 					- _name = "Send_NTDS_Mesg";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 3;
+						- value = 
+						{ IArgument 
+							- _id = GUID 91ade238-c19d-47e3-82c4-fd9f7ab22259;
+							- _name = "device";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID de8ccb0a-7fb6-4d1f-8921-c40be72fef23;
+							- _name = "buffer_ptr";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 3ad228d2-b686-4160-920b-5ef8777271c7;
+								- _myState = 8192;
+								- _declaration = "NTDS_OUTPUT_MSGS*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 1bd4d8df-f782-4e35-9b1e-ac097ed6e96d;
+							- _name = "priority";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "
+unsigned int  sizeInBytes;
+
+ std::string queueName.sprintf(\"%s-%s-%u-%u-%u\", &(device_list_ptr->name_string[0]), &(device_ptr->enet_address[0], 
+   device_ptr->enet_port, device_ptr->device_id, device_ptr->port);   
+
+if( (InterprocessQueue* ipq = getItsInterprocessQueue(queueName.c_str()) ) != NULL)
+{ 
+  // Serialize the message data.  
+  // message = Framework::IO::serializer( message);
+
+  if (ipq->timeAddMessage(((unsigned char*)buffer_ptr->io_pkt.address), buffer_ptr->io_pkt.req_size, 10, 0) == true )
+  {   
+    // De-serialize the message data.  
+    // message = Framework::IO::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
+    return(OK);
+  } 
+}
+return(CHANNEL_READINESS_ERR);
+
+";
+					}
+				}
+				{ IDestructor 
+					- _id = GUID 90bd24b0-e827-4e4d-a13f-09e89ce6658f;
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
 						- size = 0;
@@ -3663,16 +3765,56 @@ while (controlQueue->SynchronizeQueueUsers() == false);
 					- _protection = iPublic;
 					- _static = 0;
 					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 04694db3-6484-4e9e-b85b-8c9484ad1612;
+					- _name = "findDeviceIndex";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 526262a9-292b-4c73-bca0-8986d26a1ba5;
+							- _name = "inputEnetPort";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "int";
+						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "
-  // Serialize the message data.  
-  // message = Framework::IO::serializer( getMessageType( message ), message);
-";
+						- _bodyData = "for (i=0; i < MAX_FEDERATE_INTERFACE_DEVICES; i++)
+{
+  if (enetPorts[i] == inputEnetPort)
+    return(i);
+}
+return(-1);";
 					}
 				}
 			}
 			- Attrs = { IRPYRawContainer 
-				- size = 8;
+				- size = 9;
 				- value = 
 				{ IAttribute 
 					- _id = GUID d2b1c79a-b56e-4bf1-a76f-c4d6da214b48;
@@ -3905,22 +4047,6 @@ while (controlQueue->SynchronizeQueueUsers() == false);
 					- _isConstant = 0;
 				}
 				{ IAttribute 
-					- _id = GUID ffb3449f-26f0-457e-8ef1-206af74ba0da;
-					- _name = "controlQueue";
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID b7157422-2301-4a27-a7f2-a672121d6366;
-						- _myState = 8192;
-						- _declaration = "Framework::utils::InterprocessQueue*";
-						- _kind = Language;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
 					- _id = GUID be4e60c1-f169-4548-8d51-332a98ca5ad4;
 					- _name = "federateInterfacePtr";
 					- _defaultValue = "";
@@ -3941,7 +4067,7 @@ while (controlQueue->SynchronizeQueueUsers() == false);
 				}
 				{ IAttribute 
 					- _id = GUID a21c6b51-fd82-4110-aab1-064998a4c0b2;
-					- _name = "inputQueue";
+					- _name = "publishQueue";
 					- _defaultValue = "";
 					- myTypeOf = { IType 
 						- _id = GUID 9237e713-d186-4d40-9fa0-1b244891966e;
@@ -3957,19 +4083,59 @@ while (controlQueue->SynchronizeQueueUsers() == false);
 					- _isConstant = 0;
 				}
 				{ IAttribute 
-					- _id = GUID b59511b3-35b0-4700-be33-49f495b8955a;
-					- _name = "outputQueue";
+					- _id = GUID 2cf9d90e-8add-4f87-abe5-97d8e9f02328;
+					- _name = "subscribeQueueNames";
 					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 3cd2b359-5ec5-404d-9be2-655f8f44ce05;
-						- _myState = 8192;
-						- _declaration = "Framework::utils::InterprocessQueue*";
-						- _kind = Language;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "char*";
+						- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
 					}
 					- _multiplicity = "100";
 					- _isOrdered = 0;
 					- _protection = iPublic;
-					- _static = 1;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 2ea93b30-5d75-4934-9dcf-242f4d1af30c;
+					- _name = "publishQueueNames";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "char*";
+						- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+					}
+					- _multiplicity = "100";
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 0f4d24d8-7bd2-4ea9-9dec-733648087091;
+					- _name = "deviceIDs";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "int";
+						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+					}
+					- _multiplicity = "100";
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
@@ -3979,7 +4145,34 @@ while (controlQueue->SynchronizeQueueUsers() == false);
 				- _m2Class = "";
 			}
 			- Associations = { IRPYRawContainer 
-				- size = 0;
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID c97333d3-7ace-4b42-aeaa-5bd7ad748b19;
+					- _myState = 10240;
+					- _name = "itsInterprocessQueue";
+					- _multiplicity = "0..*";
+					- _qualifier = "QueueName";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "utils.sbs";
+						- _subsystem = "Framework::utils";
+						- _class = "";
+						- _name = "InterprocessQueue";
+						- _id = GUID 9e91004b-dbf1-41b9-9d0d-6cd63915269d;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _filename = "utils.sbs";
+						- _subsystem = "Framework::utils";
+						- _class = "InterprocessQueue";
+						- _name = "itsC_IO_Functions";
+						- _id = GUID 731c346b-7487-4025-a5e8-77382e0fd627;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
 			}
 			- _classModifier = Unspecified;
 		}

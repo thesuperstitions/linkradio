@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework
-//!	Generated Date	: Wed, 14, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Framework.h
 *********************************************************************/
 
@@ -85,25 +85,11 @@ namespace Framework {
 
     };
     
-    //## type SharedMemoryQueueControlData 
-    struct SharedMemoryQueueControlData {
-        // ## attribute getMsgSemaphore
-        boost::interprocess::interprocess_semaphore getMsgSemaphore;		//## attribute getMsgSemaphore 
-        boost::interprocess::interprocess_semaphore addMessageSemaphore;		//## attribute addMessageSemaphore 
-        boost::interprocess::interprocess_mutex myDataAccessMutex;		//## attribute myDataAccessMutex 
-        unsigned int NumberMessagesInQueue;		//## attribute NumberMessagesInQueue 
-        unsigned int CurrentReadSlot;		//## attribute CurrentReadSlot 
-        unsigned int CurrentWriteSlot;		//## attribute CurrentWriteSlot 
-        unsigned long UniqueValue;		//## attribute UniqueValue 
-        bool InterfaceStatus;		//## attribute InterfaceStatus 
-    };
-    
-    //## type IO_InterfaceInformationType 
-    struct IO_InterfaceInformationType {
-        std::string interfaceName;		//## attribute interfaceName 
-        unsigned long maxMessageSize;		//## attribute maxMessageSize 
-        long maxMessages;		//## attribute maxMessages 
-        void * federateInterfacePtr;		//## attribute federateInterfacePtr 
+    //## type FederateInterfaceType 
+    enum FederateInterfaceType {
+        FederateInterfaceTypeUnselected = 0,
+        FederateInterfaceTypePublisher = 1,
+        FederateInterfaceTypeSubscriber = 2
     };
     
     

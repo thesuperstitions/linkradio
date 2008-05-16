@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::C_IO_Functions
-//!	Generated Date	: Wed, 14, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\C_IO_Functions.cpp
 *********************************************************************/
 
@@ -30,67 +30,45 @@ namespace Framework {
         void * C_IO_Functions::federateInterfacePtr[100];
         // Static class member attribute
         FederateInterface* C_IO_Functions::federateInterfacePtrs( NULL );
-        // Static class member attribute
-        Framework::utils::InterprocessQueue* C_IO_Functions::outputQueue;
         
-        C_IO_Functions::C_IO_Functions() : federateInterfaceCount(0) ,federateInterfaceNames("") {
+        C_IO_Functions::C_IO_Functions() : federateInterfaceCount(0) ,federateInterfaceNames("") ,itsInterprocessQueue() {
+            //#[ operation C_IO_Functions() 
             //#[ operation C_IO_Functions() 
             
-            controlQueue = new Framework::utils::InterprocessQueue("FederatIO_Handler-Control");  
-            
-            // Wait until other partner of the queue is ready.            
-            while (controlQueue->SynchronizeQueueUsers() == false);   
-            
+            std::ifstream input_stream("FederationConfigurationFile.cfg");
+            if ( input_stream.is_open() )
+            {  
+              int deviceIndex = 0;
+              while (!input_stream.eof())
+              { 
+                inStream >> enetPorts[deviceIndex] >> deviceIDs >> subscribeQueueNames[deviceIndex] >> publishQueueNames[deviceIndex];  
+                deviceIndex++;
+              };
+            }
+            // proceed with processing
             //#]
         }
         
         C_IO_Functions::~C_IO_Functions() {
+            //#[ operation ~C_IO_Functions() 
+            //#]
+            cleanUpRelations();
         }
         
         void C_IO_Functions::Configure_NTDS_Device(DEVICE_DATA* device_list_ptr) {
             //#[ operation Configure_NTDS_Device(DEVICE_DATA*) 
             
-             IO_InterfaceInformationType  info;
+             IO_InterfaceInformationType  info; 
+             unsigned int                 sizeInBytes;  
              
-             std::string s.sprintf("%s-%s-%u-%u-%u", &(device_list_ptr->name_string[0]), &(device_ptr->enet_address[0], 
-               device_ptr->enet_port, device_ptr->device_id, device_ptr->port);    
-               
-             Framework::Control::Federate* fp = Framework::Control::getFederate();
+             // Todo Config file must contain the device enet port and its publish and subscribe interface names.
+             //      These names are used to set up the interprocess queues for sending and receiving messages. 
              
-             Framework::IO::FederateIO_Handler* fio = fp->getItsFederateIO_Handler();
-             
-             federateInterfacePtrs[federateInterfaceCount] = fio->createFederateInterface(s, sizeof(NTDS_OUTPUT_MSGS), MAX_OUT_QUE_ENTRIES); 
-             
-             federateInterfaceNames[federateInterfaceCount] = s;    
-             federateInterfaceEnetAddresss[federateInterfaceCount] = device_ptr->enet_address; 
-             federateInterfaceEnetPort[federateInterfaceCount] = device_ptr->enet_port;
+             int index = findDevice(device_ptr->enet_port);
+                
             
-                         
-            // Build a "createFederateInterface" message and send it to the Federate I/O Handler.
-            info.operation = framework::InterfaceOperationType::CreateInterface;
-            info.interfaceName = s;
-            info.maxMessageSize = INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES;
-            info.maxMessages = INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE;     
-            info.federateInterfacePtr = NULL;      
-            info.uniqueHandle = (void*)this;      
-            info.messageSizeInBytes = 0;
-            info.timeoutSecs = 0; 
-            info.timeoutMicrosecs = 0;
-            
-            if (controlQueue->getQueueState() == InterprocessQueue::QueueSynchronized) 
-            { 
-              // Send message with arbitrary 10 Sec timeout.
-              if (controlQueue->timedAddMessage((unsigned char*)&info, sizeof(IO_InterfaceInformationType), 10, 0) == true) 
-              {
-                if (controlQueue->timedGetMessage((unsigned char*)&info, 10, 0) == true )
-                { // Save the FederateInterface pointer with the rest of this interface' data.  
-                  federateInterfacePtr[federateInterfaceCount] = info.federateInterfacePtr
-            
-                  InputQueue = new Framework::utils::InterprocessQueue(s + "-Input"); 
-                  OutputQueue = new Framework::utils::InterprocessQueue(s + "-Output"); 
-                }
-              }              
-            }
+            addItsInterprocessQueue( (subscribeQueue = new Framework::utils::InterprocessQueue(subscribeQueueNames[index])) ); 
+            addItsInterprocessQueue( (publishQueue = new Framework::utils::InterprocessQueue(publishQueueNames[index])) ); 
                           
             federateInterfaceCount++;
              
@@ -100,26 +78,68 @@ namespace Framework {
         int C_IO_Functions::Recv_NTDS_Mesg(int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS* buffer_ptr, int timeout) {
             //#[ operation Recv_NTDS_Mesg(int,NTDS_QUE_ID,NTDS_INPUT_MSGS*,int) 
             
-            Federate
-            return(Framework::CEC_Msg_Type_1);
+            unsigned int  sizeInBytes;  
+            
+             std::string queueName.sprintf("%s-%s-%u-%u-%u", &(device_list_ptr->name_string[0]), &(device_ptr->enet_address[0], 
+               device_ptr->enet_port, device_ptr->device_id, device_ptr->port);   
+            
+            if( (InterprocessQueue* ipq = getItsInterprocessQueue(queueName.c_str()) ) != NULL)
+            { 
+              if ipq->timedGetMessage(((unsigned char*)buffer_ptr->io_pkt.address), &sizeInBytes, 10, 0) == true )
+              {   
+                // De-serialize the message data.  
+                // message = Framework::IO::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
+                return(OK);
+              } 
+            }
+            return(CHANNEL_READINESS_ERR);
+            
             //#]
         }
         
-        void C_IO_Functions::Send_NTDS_Mesg() {
-            //#[ operation Send_NTDS_Mesg() 
+        void C_IO_Functions::Send_NTDS_Mesg(int device, NTDS_OUTPUT_MSGS* buffer_ptr, int priority) {
+            //#[ operation Send_NTDS_Mesg(int,NTDS_OUTPUT_MSGS*,int) 
             
+            unsigned int  sizeInBytes;
+            
+             std::string queueName.sprintf("%s-%s-%u-%u-%u", &(device_list_ptr->name_string[0]), &(device_ptr->enet_address[0], 
+               device_ptr->enet_port, device_ptr->device_id, device_ptr->port);   
+            
+            if( (InterprocessQueue* ipq = getItsInterprocessQueue(queueName.c_str()) ) != NULL)
+            { 
               // Serialize the message data.  
-              // message = Framework::IO::serializer( getMessageType( message ), message);
+              // message = Framework::IO::serializer( message);
+            
+              if (ipq->timeAddMessage(((unsigned char*)buffer_ptr->io_pkt.address), buffer_ptr->io_pkt.req_size, 10, 0) == true )
+              {   
+                // De-serialize the message data.  
+                // message = Framework::IO::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
+                return(OK);
+              } 
+            }
+            return(CHANNEL_READINESS_ERR);
+            
             
             //#]
         }
         
-        Framework::utils::InterprocessQueue* C_IO_Functions::getControlQueue() const {
-            return controlQueue;
+        int C_IO_Functions::findDeviceIndex(int inputEnetPort) {
+            //#[ operation findDeviceIndex(int) 
+            for (i=0; i < MAX_FEDERATE_INTERFACE_DEVICES; i++)
+            {
+              if (enetPorts[i] == inputEnetPort)
+                return(i);
+            }
+            return(-1);
+            //#]
         }
         
-        void C_IO_Functions::setControlQueue(Framework::utils::InterprocessQueue* p_controlQueue) {
-            controlQueue = p_controlQueue;
+        int C_IO_Functions::getDeviceIDs(int i1) const {
+            return deviceIDs[i1];
+        }
+        
+        void C_IO_Functions::setDeviceIDs(int i1, int p_deviceIDs) {
+            deviceIDs[i1] = p_deviceIDs;
         }
         
         int C_IO_Functions::getFederateInterfaceCount() const {
@@ -162,20 +182,111 @@ namespace Framework {
             federateInterfacePtrs = p_federateInterfacePtrs;
         }
         
-        Framework::utils::InterprocessQueue* C_IO_Functions::getInputQueue() const {
-            return inputQueue;
+        Framework::utils::InterprocessQueue* C_IO_Functions::getPublishQueue() const {
+            return publishQueue;
         }
         
-        void C_IO_Functions::setInputQueue(Framework::utils::InterprocessQueue* p_inputQueue) {
-            inputQueue = p_inputQueue;
+        void C_IO_Functions::setPublishQueue(Framework::utils::InterprocessQueue* p_publishQueue) {
+            publishQueue = p_publishQueue;
         }
         
-        Framework::utils::InterprocessQueue* C_IO_Functions::getOutputQueue() {
-            return outputQueue;
+        char* C_IO_Functions::getPublishQueueNames(int i1) const {
+            return publishQueueNames[i1];
         }
         
-        void C_IO_Functions::setOutputQueue(Framework::utils::InterprocessQueue* p_outputQueue) {
-            outputQueue = p_outputQueue;
+        void C_IO_Functions::setPublishQueueNames(int i1, char* p_publishQueueNames) {
+            publishQueueNames[i1] = p_publishQueueNames;
+        }
+        
+        char* C_IO_Functions::getSubscribeQueueNames(int i1) const {
+            return subscribeQueueNames[i1];
+        }
+        
+        void C_IO_Functions::setSubscribeQueueNames(int i1, char* p_subscribeQueueNames) {
+            subscribeQueueNames[i1] = p_subscribeQueueNames;
+        }
+        
+        C_IO_Functions::std::map<char getItsInterprocessQueue[100] , Framework::utils::InterprocessQueue*>::const_iterator() const {
+            std::map<char %s[100] , Framework::utils::InterprocessQueue*>::const_iterator iter;
+            iter = itsInterprocessQueue.begin();
+            return iter;
+        }
+        
+        C_IO_Functions::std::map<char getItsInterprocessQueueEnd[100] , Framework::utils::InterprocessQueue*>::const_iterator() const {
+            return itsInterprocessQueue.end();
+        }
+        
+        void C_IO_Functions::_clearItsInterprocessQueue() {
+            itsInterprocessQueue.clear();
+        }
+        
+        void C_IO_Functions::clearItsInterprocessQueue() {
+            std::map<char %s[100] , Framework::utils::InterprocessQueue*>::const_iterator iter;
+            iter = itsInterprocessQueue.begin();
+            while (iter != itsInterprocessQueue.end()){
+                iter++;
+            }
+            _clearItsInterprocessQueue();
+        }
+        
+        void C_IO_Functions::_removeItsInterprocessQueue(Framework::utils::InterprocessQueue* p_InterprocessQueue) {
+            std::map<char %s[100] , Framework::utils::InterprocessQueue*>::iterator pos = std::find_if(itsInterprocessQueue.begin(), itsInterprocessQueue.end(),OMValueCompare<const char %s[100] ,Framework::utils::InterprocessQueue*>(p_InterprocessQueue));
+            if (pos != itsInterprocessQueue.end()) {
+            	itsInterprocessQueue.erase(pos);
+            }
+        }
+        
+        void C_IO_Functions::removeItsInterprocessQueue(Framework::utils::InterprocessQueue* p_InterprocessQueue) {
+            if(p_InterprocessQueue != NULL)
+                {
+                    p_InterprocessQueue->__setItsC_IO_Functions(NULL);
+                }
+            _removeItsInterprocessQueue(p_InterprocessQueue);
+        }
+        
+        Framework::utils::InterprocessQueue* C_IO_Functions::getItsInterprocessQueue(char key[100] ) const {
+            return (itsInterprocessQueue.find(key) != itsInterprocessQueue.end() ? (*itsInterprocessQueue.find(key)).second : NULL);
+        }
+        
+        void C_IO_Functions::_addItsInterprocessQueue(char key[100] , Framework::utils::InterprocessQueue* p_InterprocessQueue) {
+            itsInterprocessQueue.insert(std::map<char %s[100] , Framework::utils::InterprocessQueue*>::value_type(key, p_InterprocessQueue));
+        }
+        
+        void C_IO_Functions::addItsInterprocessQueue(char key[100] , Framework::utils::InterprocessQueue* p_InterprocessQueue) {
+            if(p_InterprocessQueue != NULL)
+                {
+                    p_InterprocessQueue->_setItsC_IO_Functions(this);
+                }
+            _addItsInterprocessQueue(key, p_InterprocessQueue);
+        }
+        
+        void C_IO_Functions::_removeItsInterprocessQueue(char key[100] ) {
+            itsInterprocessQueue.erase(key);
+        }
+        
+        void C_IO_Functions::removeItsInterprocessQueue(char key[100] ) {
+            Framework::utils::InterprocessQueue* p_InterprocessQueue = getItsInterprocessQueue(key);
+            if(p_InterprocessQueue != NULL)
+                {
+                    p_InterprocessQueue->_setItsC_IO_Functions(NULL);
+                }
+            _removeItsInterprocessQueue(key);
+        }
+        
+        void C_IO_Functions::cleanUpRelations() {
+            {
+                std::map<char %s[100] , Framework::utils::InterprocessQueue*>::const_iterator iter;
+                iter = itsInterprocessQueue.begin();
+                while (iter != itsInterprocessQueue.end()){
+                    Framework::IO::C_IO_Functions* p_C_IO_Functions = ((*iter).second)->getItsC_IO_Functions();
+                    if(p_C_IO_Functions != NULL)
+                        {
+                            ((*iter).second)->__setItsC_IO_Functions(NULL);
+                        }
+                    iter++;
+                }
+                itsInterprocessQueue.clear();
+            }
         }
         
     }

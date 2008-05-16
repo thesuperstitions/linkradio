@@ -42,7 +42,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 	}
 	- _name = "utils";
 	- _lastID = 4;
-	- weakCGTime = 5.13.2008::15:4:7;
+	- weakCGTime = 5.15.2008::13:1:37;
 	- strongCGTime = 5.12.2008::13:39:13;
 	- _defaultComposite = GUID 4393fd1b-4891-4ff5-9de8-20c8248afa9a;
 	- _eventsBaseID = -1;
@@ -53,7 +53,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID 4393fd1b-4891-4ff5-9de8-20c8248afa9a;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 5.12.2008::17:54:39;
+			- weakCGTime = 5.14.2008::16:8:43;
 			- strongCGTime = 5.12.2008::13:39:13;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
@@ -2051,14 +2051,16 @@ Thread::start();
 
 
 
+
+
 ";
 						}
 					}
 					- _kind = Enumeration;
 				}
 			}
-			- weakCGTime = 5.13.2008::15:11:12;
-			- strongCGTime = 5.13.2008::15:4:7;
+			- weakCGTime = 5.15.2008::13:10:2;
+			- strongCGTime = 5.15.2008::13:9:3;
 			- Operations = { IRPYRawContainer 
 				- size = 7;
 				- value = 
@@ -2389,7 +2391,7 @@ value = \"false\".
 					}
 					- _virtual = 1;
 					- Args = { IRPYRawContainer 
-						- size = 3;
+						- size = 4;
 						- value = 
 						{ IArgument 
 							- _id = GUID 6633c712-289d-4308-b1ae-28c9957f04ed;
@@ -2399,6 +2401,19 @@ value = \"false\".
 								- _id = GUID e8c683ec-662e-46aa-bad9-74c3010c2e62;
 								- _myState = 8192;
 								- _declaration = "unsigned char *";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID f36ad575-df98-4ec6-8e3c-fe9877a59adf;
+							- _name = "messageSizeInBytes";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 96a5d085-a7d6-495e-bf4d-2a2fa26e3d15;
+								- _myState = 8192;
+								- _declaration = "unsigned int*";
 								- _kind = Language;
 							}
 							- _isOrdered = 0;
@@ -2462,22 +2477,22 @@ try
   {
 		//This lock protects the queue itself.
     scoped_lock<interprocess_mutex> myDataAccessLock(myControlData->myDataAccessMutex);
-
+                         
     // Check to see if the the \"Producer\" has declared the interface \"DOWN\".  If so, we'll go back into
 		// \"Synchronizing\" state.
     if (myControlData->InterfaceStatus == false)
       return(false);
 
     // Copy the message into the from the queue into the user's buffer.
-    memcpy(msg, &(myQueue[(myControlData->CurrentReadSlot*maxMsgSize)+sizeof(unsigned int)]),
-      *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize])));
+    *messageSizeInBytes = *((unsigned int*)&(myQueue[myControlData->CurrentReadSlot*maxMsgSize]))
+    memcpy(msg, &(myQueue[(myControlData->CurrentReadSlot*maxMsgSize)+sizeof(unsigned int)]), *messageSizeInBytes);
 
     myControlData->NumberMessagesInQueue--; // Decrement # messages in the queue.
 
-      ++myControlData->CurrentReadSlot %= maxMsgs; // Move pointer to next message in the queue.
-      myControlData->addMessageSemaphore.post();   // Indicate that there's now room in the queue for another message.
+    ++myControlData->CurrentReadSlot %= maxMsgs; // Move pointer to next message in the queue.
+    myControlData->addMessageSemaphore.post();   // Indicate that there's now room in the queue for another message.
 
-      return(true);
+    return(true);
   }
   else
     return(false);
@@ -3413,7 +3428,7 @@ else
 				- _m2Class = "";
 			}
 			- Associations = { IRPYRawContainer 
-				- size = 1;
+				- size = 2;
 				- value = 
 				{ IAssociationEnd 
 					- _id = GUID 888ae592-9977-4c99-8dfc-919f647b752e;
@@ -3429,12 +3444,32 @@ else
 						- _id = GUID cf4439a3-1222-47bd-9929-fed3599f6153;
 					}
 					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 731c346b-7487-4025-a5e8-77382e0fd627;
+					- _myState = 10240;
+					- _name = "itsC_IO_Functions";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "IO.sbs";
+						- _subsystem = "Framework::IO";
+						- _class = "";
+						- _name = "C_IO_Functions";
+						- _id = GUID e2ec2408-a6c3-40e6-b1fd-77ab8aa0dfb4;
+					}
+					- _inverse = { IHandle 
 						- _m2Class = "IAssociationEnd";
 						- _filename = "IO.sbs";
 						- _subsystem = "Framework::IO";
-						- _class = "FederateIO_Handler";
+						- _class = "C_IO_Functions";
 						- _name = "itsInterprocessQueue";
-						- _id = GUID d71320e0-dbfe-4ffd-b06b-24f635b315ce;
+						- _id = GUID c97333d3-7ace-4b42-aeaa-5bd7ad748b19;
 					}
 					- _linkName = "";
 					- _linkType = Assoc;

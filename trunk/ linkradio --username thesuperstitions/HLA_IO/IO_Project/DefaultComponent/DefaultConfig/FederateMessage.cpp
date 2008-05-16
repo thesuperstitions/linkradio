@@ -4,12 +4,11 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::FederateMessage
-//!	Generated Date	: Tue, 1, Apr 2008  
+//!	Generated Date	: Wed, 14, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateMessage.cpp
 *********************************************************************/
 
 #include "FederateMessage.h"
-#include "Buffer.h"
 // attribute federateInterface 
 #include "FederateInterface.h"
 
@@ -30,8 +29,8 @@ namespace Framework {
             //#]
         }
         
-        FederateMessage::FederateMessage(Framework::IO::FederateInterface * interface, char* message, unsigned long messageSizeInBytes) : Message(message, messageSizeInBytes), federateInterface(interface) {
-            //#[ operation FederateMessage(Framework::IO::FederateInterface *,char*,unsigned long) 
+        FederateMessage::FederateMessage(Framework::IO::FederateInterface * interface, unsigned char* message, unsigned int messageSizeInBytes) : Message(message, messageSizeInBytes), federateInterface(interface) {
+            //#[ operation FederateMessage(Framework::IO::FederateInterface *,unsigned char*,unsigned int) 
                          
             //#]
         }

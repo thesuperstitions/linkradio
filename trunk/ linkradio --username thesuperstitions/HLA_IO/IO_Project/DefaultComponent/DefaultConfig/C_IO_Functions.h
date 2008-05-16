@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: Framework::IO::C_IO_Functions
-//!	Generated Date	: Wed, 14, May 2008  
+//!	Generated Date	: Thu, 15, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\C_IO_Functions.h
 *********************************************************************/
 
@@ -22,6 +22,11 @@
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "IO.h"
+#include <map>
+#include <iterator>
+#include <oxf/OMValueCompare.h>
+// link itsInterprocessQueue 
+#include "InterprocessQueue.h"
 #include "ntdsTypes.h"
 
 //----------------------------------------------------------------------------
@@ -62,7 +67,7 @@ namespace Framework {
             //## operation C_IO_Functions() 
             C_IO_Functions();
             
-            //## auto_generated 
+            //## operation ~C_IO_Functions() 
             ~C_IO_Functions();
         
         
@@ -75,18 +80,21 @@ namespace Framework {
             //## operation Recv_NTDS_Mesg(int,NTDS_QUE_ID,NTDS_INPUT_MSGS*,int) 
             static int Recv_NTDS_Mesg(int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS* buffer_ptr, int timeout);
             
-            //## operation Send_NTDS_Mesg() 
-            void Send_NTDS_Mesg();
+            //## operation Send_NTDS_Mesg(int,NTDS_OUTPUT_MSGS*,int) 
+            void Send_NTDS_Mesg(int device, NTDS_OUTPUT_MSGS* buffer_ptr, int priority);
+            
+            //## operation findDeviceIndex(int) 
+            int findDeviceIndex(int inputEnetPort);
         
         
         ////    Additional operations    ////
         public :
             
             //## auto_generated 
-            Framework::utils::InterprocessQueue* getControlQueue() const;
+            int getDeviceIDs(int i1) const;
             
             //## auto_generated 
-            void setControlQueue(Framework::utils::InterprocessQueue* p_controlQueue);
+            void setDeviceIDs(int i1, int p_deviceIDs);
             
             //## auto_generated 
             int getFederateInterfaceEnetPort() const;
@@ -113,16 +121,43 @@ namespace Framework {
             static virtual void setFederateInterfacePtrs(FederateInterface* p_federateInterfacePtrs);
             
             //## auto_generated 
-            Framework::utils::InterprocessQueue* getInputQueue() const;
+            Framework::utils::InterprocessQueue* getPublishQueue() const;
             
             //## auto_generated 
-            void setInputQueue(Framework::utils::InterprocessQueue* p_inputQueue);
+            void setPublishQueue(Framework::utils::InterprocessQueue* p_publishQueue);
             
             //## auto_generated 
-            static Framework::utils::InterprocessQueue* getOutputQueue();
+            char* getPublishQueueNames(int i1) const;
             
             //## auto_generated 
-            static void setOutputQueue(Framework::utils::InterprocessQueue* p_outputQueue);
+            void setPublishQueueNames(int i1, char* p_publishQueueNames);
+            
+            //## auto_generated 
+            char* getSubscribeQueueNames(int i1) const;
+            
+            //## auto_generated 
+            void setSubscribeQueueNames(int i1, char* p_subscribeQueueNames);
+            
+            //## auto_generated 
+            std::map<char getItsInterprocessQueue[100] , utils::InterprocessQueue*>::const_iterator() const;
+            
+            //## auto_generated 
+            std::map<char getItsInterprocessQueueEnd[100] , utils::InterprocessQueue*>::const_iterator() const;
+            
+            //## auto_generated 
+            void clearItsInterprocessQueue();
+            
+            //## auto_generated 
+            void removeItsInterprocessQueue(utils::InterprocessQueue* p_InterprocessQueue);
+            
+            //## auto_generated 
+            utils::InterprocessQueue* getItsInterprocessQueue(char key[100] ) const;
+            
+            //## auto_generated 
+            void addItsInterprocessQueue(char key[100] , utils::InterprocessQueue* p_InterprocessQueue);
+            
+            //## auto_generated 
+            void removeItsInterprocessQueue(char key[100] );
         
         protected :
             
@@ -133,10 +168,31 @@ namespace Framework {
             void setFederateInterfaceCount(int p_federateInterfaceCount);
         
         
+        ////    Framework operations    ////
+        public :
+            
+            //## auto_generated 
+            void _clearItsInterprocessQueue();
+            
+            //## auto_generated 
+            void _removeItsInterprocessQueue(utils::InterprocessQueue* p_InterprocessQueue);
+            
+            //## auto_generated 
+            void _addItsInterprocessQueue(char key[100] , utils::InterprocessQueue* p_InterprocessQueue);
+            
+            //## auto_generated 
+            void _removeItsInterprocessQueue(char key[100] );
+        
+        protected :
+            
+            //## auto_generated 
+            void cleanUpRelations();
+        
+        
         ////    Attributes    ////
         protected :
             
-            Framework::utils::InterprocessQueue* controlQueue;		//## attribute controlQueue 
+            int deviceIDs[100];		//## attribute deviceIDs 
             
             int federateInterfaceCount;		//## attribute federateInterfaceCount 
             
@@ -148,10 +204,19 @@ namespace Framework {
             
             static FederateInterface* federateInterfacePtrs;		//## attribute federateInterfacePtrs 
             
-            Framework::utils::InterprocessQueue* inputQueue;		//## attribute inputQueue 
+            Framework::utils::InterprocessQueue* publishQueue;		//## attribute publishQueue 
             
-            static Framework::utils::InterprocessQueue* outputQueue;		//## attribute outputQueue 
+            char* publishQueueNames[100];		//## attribute publishQueueNames 
             
+            char* subscribeQueueNames[100];		//## attribute subscribeQueueNames 
+            
+        
+        ////    Relations and components    ////
+        protected :
+            
+            std::map<char itsInterprocessQueue[100] , utils::InterprocessQueue*>;		//## link itsInterprocessQueue 
+            
+        
         
         };
     }
