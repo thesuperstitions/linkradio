@@ -1,16 +1,14 @@
 [Main Window]
 Create=1
 Visible=1
-State=2
-Left=0
-Top=28
-Width=1440
-Height=112
-MaxLeft=-4
-MaxTop=-4
-MaxWidth=1448
-MaxHeight=112
-ClientWidth=1440
+State=0
+Left=-12
+Top=-3
+Width=1935
+Height=105
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1927
 ClientHeight=78
 
 [ProjectManager]
@@ -20,12 +18,12 @@ State=0
 Left=341
 Top=11
 Width=341
-Height=875
+Height=877
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=341
-ClientHeight=875
-TBDockHeight=875
+ClientHeight=877
+TBDockHeight=877
 LRDockWidth=302
 Dockable=1
 
@@ -36,12 +34,12 @@ State=0
 Left=0
 Top=11
 Width=337
-Height=875
+Height=877
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=335
-ClientHeight=873
-TBDockHeight=875
+ClientHeight=875
+TBDockHeight=877
 LRDockWidth=302
 Dockable=1
 SplitPos=104
@@ -59,35 +57,24 @@ File_8=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\M
 File_9=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest.cpp',0,1,1,34,14,1,1
 
 [Modules]
-<<<<<<< .mine
-Module0=C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Rpc.h
-Module1=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
-Count=2
-=======
-Module0=C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
+Module0=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
 Count=1
->>>>>>> .r86
 EditWindowCount=1
 
-<<<<<<< .mine
-[C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Rpc.h]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
 [C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp]
-=======
-[C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp]
->>>>>>> .r86
 ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[C:\Program Files\Borland\CBuilder4\Projects\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
-[C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\ProjectGroup1.bpg]
+[C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoinerProj.bpr]
 FormState=0
 FormOnTop=0
 
-[C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoinerProj.bpr]
+[C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Rpc.h]
 FormState=0
 FormOnTop=0
 
@@ -98,14 +85,14 @@ ClassHierarchy=ClassHierarchy@EditWindow0
 Create=1
 Visible=1
 State=0
-Left=308
-Top=105
-Width=1130
-Height=761
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=1122
-ClientHeight=727
+Left=0
+Top=103
+Width=1925
+Height=925
+MaxLeft=-4
+MaxTop=97
+ClientWidth=1917
+ClientHeight=898
 LeftPanelSize=0
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=00000400010000000C000000436F64654578706C6F7265720000000000000000000000000000000000FFFFFFFF
@@ -113,15 +100,10 @@ RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
 BottomPanelData=00000400010000000B0000004D657373616765566965770000000000000000000000000000000000FFFFFFFF
-<<<<<<< .mine
-ViewCount=3
+ViewCount=2
 CurrentView=1
-=======
-ViewCount=1
-CurrentView=0
->>>>>>> .r86
 View0=0
-View2=2
+View1=1
 
 [ClassHierarchy@EditWindow0]
 TreeWidth=185
@@ -161,29 +143,19 @@ LRDockWidth=443
 Dockable=1
 
 [View0]
-Module=C:\Documents and Settings\Ken\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
-CursorX=3
-CursorY=129
-TopLine=103
-LeftCol=1
-
-<<<<<<< .mine
-[View1]
-Module=C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Rpc.h
-CursorX=1
-CursorY=1
-TopLine=1
-LeftCol=1
-
-[View2]
 Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.h
 CursorX=28
 CursorY=29
 TopLine=1
 LeftCol=1
 
-=======
->>>>>>> .r86
+[View1]
+Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
+CursorX=173
+CursorY=90
+TopLine=87
+LeftCol=1
+
 [DockHosts]
 DockHostCount=1
 
@@ -199,12 +171,12 @@ Height=912
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=682
-ClientHeight=886
+ClientHeight=888
 TBDockHeight=104
 LRDockWidth=201
 Dockable=1
 DockClients=PropertyInspector,ProjectManager
-DockSiteData=0000040000000000AA020000000000000276030000000000000100000000550100001100000050726F7065727479496E73706563746F720100000000AA0200001200000050726F6A6563744D616E61676572466F726DFFFFFFFF
+DockSiteData=0000040000000000AA020000000000000278030000000000000100000000550100001100000050726F7065727479496E73706563746F720100000000AA0200001200000050726F6A6563744D616E61676572466F726DFFFFFFFF
 
 [Watches]
 Count=0
