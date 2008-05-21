@@ -10,9 +10,9 @@
 # 5) corrects the code which separates bracket found on a data line.
 # 6) moved PUBLIC data over one tab space.
 
-open(OUTPUT, ">/tmp/output");
-
 foreach $file (@ARGV) {
+
+open(OUTPUT, ">/tmp/$file");
 
    $in = 0;
    $out = 0;
