@@ -12,7 +12,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID 962d8355-dfcd-40f5-bc95-3a0c6679ee3c;
 		}
 	}
-	- weakCGTime = 5.12.2008::17:55:25;
+	- weakCGTime = 5.21.2008::16:5:17;
 	- strongCGTime = 5.12.2008::17:55:25;
 	- _defaultComposite = GUID d88a5a3a-9a4c-479f-9492-20cef995e889;
 	- _eventsBaseID = -1;
@@ -23,7 +23,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID d88a5a3a-9a4c-479f-9492-20cef995e889;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 5.12.2008::17:55:25;
+			- weakCGTime = 5.21.2008::16:5:17;
 			- strongCGTime = 5.12.2008::17:55:25;
 			- Attrs = { IRPYRawContainer 
 				- size = 2;
@@ -151,7 +151,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			}
 			- _name = "FrameworkTester";
 			- Dependencies = { IRPYRawContainer 
-				- size = 4;
+				- size = 3;
 				- value = 
 				{ IDependency 
 					- _id = GUID 80c72dbd-cf6b-4d85-9ede-f12b1fdbe075;
@@ -171,36 +171,11 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					}
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
-						- _filename = "Framework.sbs";
-						- _subsystem = "Framework";
+						- _filename = "framework.sbs";
+						- _subsystem = "framework";
 						- _class = "";
 						- _name = "FrameworkFederateAmbassador";
 						- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
-					}
-				}
-				{ IDependency 
-					- _id = GUID 12801057-d1f8-42c2-ad36-16266f79b96b;
-					- _myState = 2048;
-					- _name = "RtiAmbassador";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "PredefinedTypes.sbs";
-							- _subsystem = "PredefinedTypes";
-							- _class = "";
-							- _name = "Usage";
-							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
-						}
-					}
-					- _dependsOn = { INObjectHandle 
-						- _m2Class = "IClass";
-						- _filename = "Framework.sbs";
-						- _subsystem = "Framework";
-						- _class = "";
-						- _name = "RtiAmbassador";
-						- _id = GUID a94d4c4c-554b-4761-8754-07e6b5d9d57b;
 					}
 				}
 				{ IDependency 
@@ -247,8 +222,8 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					}
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IType";
-						- _filename = "Framework.sbs";
-						- _subsystem = "Framework";
+						- _filename = "framework.sbs";
+						- _subsystem = "framework";
 						- _class = "";
 						- _name = "FederateFrameworkType";
 						- _id = GUID 6b2281aa-cebf-438f-8f30-70fecf43f565;
@@ -299,7 +274,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "C_IO_Functions";
 						- _id = GUID e2ec2408-a6c3-40e6-b1fd-77ab8aa0dfb4;
@@ -315,7 +290,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				- _id = GUID 962d8355-dfcd-40f5-bc95-3a0c6679ee3c;
 			}
 			- _lastID = 2;
-			- weakCGTime = 5.12.2008::17:55:25;
+			- weakCGTime = 5.21.2008::16:5:17;
 			- strongCGTime = 5.12.2008::17:55:25;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -339,14 +314,14 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 						- _bodyData = "
 DEVICE_DATA dd[2];
 
-if ( (theFrameworkFederateAmbassador = new Framework::FrameworkFederateAmbassador()) != NULL) 
+if ( (theFrameworkFederateAmbassador = new framework::FrameworkFederateAmbassador()) != NULL) 
 {
-  theRtiAmbassador = new Framework::RtiAmbassador(theFrameworkFederateAmbassador);
+  theRtiAmbassador = new framework::RtiAmbassador(theFrameworkFederateAmbassador);
 }
 
-Federate_1 = new Framework::Control::ExampleFederate(Framework::HLA_FederateFrameworkType, Framework::CEC_FederateType, getTheFrameworkFederateAmbassador());   
+Federate_1 = new framework::Control::ExampleFederate(framework::HLA_FederateFrameworkType, framework::CEC_FederateType, getTheFrameworkFederateAmbassador());   
 
-Federate_2 = new Framework::Control::ExampleFederate(Framework::HLA_FederateFrameworkType, Framework::SSDS_FederateType, getTheFrameworkFederateAmbassador());   
+Federate_2 = new framework::Control::ExampleFederate(framework::HLA_FederateFrameworkType, framework::SSDS_FederateType, getTheFrameworkFederateAmbassador());   
 
 
 
@@ -401,7 +376,7 @@ while (devices_ptr != NULL)
 //      sprintf(s, \"%s%u\", devices_ptr->name_string, interfaceCount++);
 //      std::string myString = s;                               
   
-  Framework::IO::C_IO_Functions::Configure_NTDS_Device(devices_ptr);    
+  framework::IO::C_IO_Functions::Configure_NTDS_Device(devices_ptr);    
   
   devices_ptr++;
 };  
@@ -438,7 +413,7 @@ return(OK);
 				- _m2Class = "";
 			}
 			- Associations = { IRPYRawContainer 
-				- size = 4;
+				- size = 3;
 				- value = 
 				{ IAssociationEnd 
 					- _id = GUID e39273a9-1259-4dc3-a173-a2352242f732;
@@ -447,31 +422,11 @@ return(OK);
 					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
-						- _filename = "Framework.sbs";
-						- _subsystem = "Framework";
+						- _filename = "framework.sbs";
+						- _subsystem = "framework";
 						- _class = "";
 						- _name = "FrameworkFederateAmbassador";
 						- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-				{ IAssociationEnd 
-					- _id = GUID 51e9aa79-e3ac-4259-a052-248805d6651f;
-					- _myState = 8192;
-					- _name = "theRtiAmbassador";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "Framework.sbs";
-						- _subsystem = "Framework";
-						- _class = "";
-						- _name = "RtiAmbassador";
-						- _id = GUID a94d4c4c-554b-4761-8754-07e6b5d9d57b;
 					}
 					- _inverse = { IHandle 
 						- _m2Class = "";
@@ -488,9 +443,9 @@ return(OK);
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
 						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
+						- _subsystem = "framework::Control";
 						- _class = "";
-						- _name = "ExampleFederate";
+						- _name = "HlaCecFederate";
 						- _id = GUID 8e2edf7d-ae8e-425a-bc47-e064bfe396d9;
 					}
 					- _inverse = { IHandle 
@@ -508,9 +463,9 @@ return(OK);
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
 						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
+						- _subsystem = "framework::Control";
 						- _class = "";
-						- _name = "ExampleFederate";
+						- _name = "HlaCecFederate";
 						- _id = GUID 8e2edf7d-ae8e-425a-bc47-e064bfe396d9;
 					}
 					- _inverse = { IHandle 

@@ -63,8 +63,37 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			}
 		}
 	}
-	- _name = "Framework";
-	- _lastID = 18;
+	- _name = "framework";
+	- Dependencies = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IDependency 
+			- _id = GUID 315e7991-2312-4c0f-aebc-0b425d4c4501;
+			- _myState = 2048;
+			- _name = "utils";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "PredefinedTypes.sbs";
+					- _subsystem = "PredefinedTypes";
+					- _class = "";
+					- _name = "Usage";
+					- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+				}
+			}
+			- _dependsOn = { INObjectHandle 
+				- _m2Class = "ISubsystem";
+				- _filename = "utils.sbs";
+				- _subsystem = "framework";
+				- _class = "";
+				- _name = "utils";
+				- _id = GUID 1b3e2106-db59-403a-9f8b-f55ef783853c;
+			}
+		}
+	}
+	- _lastID = 19;
 	- Declaratives = { IRPYRawContainer 
 		- size = 4;
 		- value = 
@@ -82,23 +111,23 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 		{ ISubsystem 
 			- fileName = "utils";
-			- _id = GUID b6acb6f4-06ce-4ebf-ab9b-7a9fb813ea04;
+			- _id = GUID 1b3e2106-db59-403a-9f8b-f55ef783853c;
 		}
 	}
-	- weakCGTime = 5.15.2008::16:25:21;
-	- strongCGTime = 5.12.2008::17:56:27;
+	- weakCGTime = 5.21.2008::16:5:17;
+	- strongCGTime = 5.21.2008::12:35:19;
 	- _defaultComposite = GUID f087b006-c4f9-4606-927d-0806f058af46;
 	- _eventsBaseID = -1;
 	- Classes = { IRPYRawContainer 
-		- size = 3;
+		- size = 2;
 		- value = 
 		{ IClass 
 			- _id = GUID f087b006-c4f9-4606-927d-0806f058af46;
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 18;
-			- weakCGTime = 5.14.2008::13:25:27;
-			- strongCGTime = 5.12.2008::17:56:27;
+			- weakCGTime = 5.21.2008::16:5:17;
+			- strongCGTime = 5.21.2008::12:35:19;
 			- Operations = { IRPYRawContainer 
 				- size = 6;
 				- value = 
@@ -391,7 +420,7 @@ return temp;";
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "return(NULL);";
+						- _bodyData = "return(&rtiAmbassador);";
 					}
 				}
 				{ IPrimitiveOperation 
@@ -414,7 +443,7 @@ return temp;";
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "return(NULL);";
+						- _bodyData = "return(&frameworkFederateAmbassador);";
 					}
 				}
 				{ IPrimitiveOperation 
@@ -537,6 +566,23 @@ return temp;";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
 			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IPart 
+					- _id = GUID 19a17779-c6c6-4ff4-b74a-2ea185466306;
+					- _myState = 8192;
+					- _name = "frameworkFederateAmbassador";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+			}
 			- _classModifier = Unspecified;
 		}
 		{ IClass 
@@ -576,10 +622,10 @@ return temp;";
 			}
 			- _name = "FrameworkFederateAmbassador";
 			- _lastID = 7;
-			- weakCGTime = 4.9.2008::13:10:36;
+			- weakCGTime = 5.21.2008::16:5:17;
 			- strongCGTime = 3.25.2008::13:32:19;
 			- Operations = { IRPYRawContainer 
-				- size = 12;
+				- size = 13;
 				- value = 
 				{ IPrimitiveOperation 
 					- _id = GUID efcf74ca-1ed1-41b1-a77d-e3c8bd32bebf;
@@ -826,7 +872,7 @@ return temp;";
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "Framework::getTheRtiAmbassador()->subscribeInteractionClass(interactionClassHandle);";
+						- _bodyData = "framework::getTheRtiAmbassador()->subscribeInteractionClass(interactionClassHandle);";
 					}
 				}
 				{ IPrimitiveOperation 
@@ -863,7 +909,7 @@ return temp;";
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "return( Framework::getTheRtiAmbassador()->getInteractionClassHandle(interactionName) );";
+						- _bodyData = "return( framework::getTheRtiAmbassador()->getInteractionClassHandle(interactionName) );";
 					}
 				}
 				{ IPrimitiveOperation 
@@ -921,7 +967,7 @@ return temp;";
 					- _name = "sendRO";
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 4;
+						- size = 5;
 						- value = 
 						{ IArgument 
 							- _id = GUID 08035e79-b5cb-4337-9497-824e466c97ea;
@@ -979,6 +1025,21 @@ return temp;";
 							- _isOrdered = 0;
 							- _argumentDirection = In;
 						}
+						{ IArgument 
+							- _id = GUID b9fe433d-5b53-4fc2-b47e-2fdeeb13f0ca;
+							- _name = "messageSizeInBytes";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
 					}
 					- _returnType = { IHandle 
 						- _m2Class = "IType";
@@ -1000,9 +1061,9 @@ rti1516::ParameterHandleValueMap map;
 rti1516::VariableLengthData tagData( interactionName, sizeof(interactionName)+1 );
 
 
-map[parameterHandle] = rti1516::VariableLengthData(&messageToSend, sizeof(messageToSend));
+map[parameterHandle] = rti1516::VariableLengthData(&messageToSend, messageSizeInBytes);
                       
-Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, tagData);
+framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, tagData);
                       ";
 					}
 				}
@@ -1011,7 +1072,7 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 					- _name = "sendTSO";
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 4;
+						- size = 5;
 						- value = 
 						{ IArgument 
 							- _id = GUID 8aba3ba6-1a75-4f10-8522-4161a9e9d9f4;
@@ -1065,6 +1126,21 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 								- _class = "";
 								- _name = "char*";
 								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 6b61a0fa-219c-4c31-ad24-0eaa2bb48a76;
+							- _name = "messageSizeInBytes";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -1801,95 +1877,11 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 						- _bodyData = "getItsHLA_PostOffice()->receiveInteraction(theInteraction, theParameterValues, theUserSuppliedTag, sentOrder, theType);";
 					}
 				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- Associations = { IRPYRawContainer 
-				- size = 2;
-				- value = 
-				{ IAssociationEnd 
-					- _id = GUID 60f9c4ba-1f12-4412-927d-ece61029ace6;
-					- _myState = 10240;
-					- _name = "itsHLA_PostOffice";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
-						- _class = "";
-						- _name = "HLA_PostOffice";
-						- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
-						- _class = "HLA_PostOffice";
-						- _name = "theFrameworkFederateAmbassador";
-						- _id = GUID 8c11aba0-994b-411b-90a1-c918385cf369;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-				{ IAssociationEnd 
-					- _id = GUID 039afa0a-b0e6-4dbf-b9d7-19e730720594;
-					- _myState = 10240;
-					- _name = "itsRtiAmbassador";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID a94d4c4c-554b-4761-8754-07e6b5d9d57b;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _id = GUID e8af1f8b-c7a7-4105-a8eb-bcbc6ebbc2a9;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID a94d4c4c-554b-4761-8754-07e6b5d9d57b;
-			- _myState = 8192;
-			- _name = "RtiAmbassador";
-			- _theMainDiagram = { IHandle 
-				- _m2Class = "IDiagram";
-				- _filename = "IOClassDiagram.omd";
-				- _subsystem = "Framework::IO";
-				- _class = "";
-				- _name = "IOClassDiagram";
-				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
-			}
-			- weakCGTime = 4.9.2008::13:10:36;
-			- strongCGTime = 2.20.2008::15:5:22;
-			- Operations = { IRPYRawContainer 
-				- size = 1;
-				- value = 
 				{ IConstructor 
-					- _id = GUID cdcf9df2-6e4e-42b5-a782-648946c86257;
+					- _id = GUID d19ba1b0-7325-471b-913f-028ee93b140b;
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID c62a3808-40d5-436a-8299-c41112477521;
-							- _name = "frameworkFederateAmbassador";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 65c7d789-7736-4a79-97e3-546e561bd4ec;
-								- _myState = 8192;
-								- _declaration = "FrameworkFederateAmbassador*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
+						- size = 0;
 					}
 					- _returnType = { IHandle 
 						- _m2Class = "";
@@ -1900,13 +1892,6 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 					- _protection = iPublic;
 					- _static = 0;
 					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "if (frameworkFederateAmbassador != NULL)
-{
-	setItsFrameworkFederateAmbassador(frameworkFederateAmbassador);  
-	frameworkFederateAmbassador->setItsRtiAmbassador(this); 
-}";
-					}
 					- _initializer = "";
 				}
 			}
@@ -1918,17 +1903,25 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 				- size = 1;
 				- value = 
 				{ IAssociationEnd 
-					- _id = GUID e8af1f8b-c7a7-4105-a8eb-bcbc6ebbc2a9;
+					- _id = GUID 60f9c4ba-1f12-4412-927d-ece61029ace6;
 					- _myState = 10240;
-					- _name = "itsFrameworkFederateAmbassador";
+					- _name = "itsHLA_PostOffice";
 					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
-						- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
+						- _filename = "IO.sbs";
+						- _subsystem = "framework::IO";
+						- _class = "";
+						- _name = "HLA_PostOffice";
+						- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
 					}
 					- _inverse = { IHandle 
 						- _m2Class = "IAssociationEnd";
-						- _id = GUID 039afa0a-b0e6-4dbf-b9d7-19e730720594;
+						- _filename = "IO.sbs";
+						- _subsystem = "framework::IO";
+						- _class = "HLA_PostOffice";
+						- _name = "theFrameworkFederateAmbassador";
+						- _id = GUID 8c11aba0-994b-411b-90a1-c918385cf369;
 					}
 					- _linkName = "";
 					- _linkType = Assoc;
@@ -2092,6 +2085,21 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ";
 				}
 			}
@@ -2118,12 +2126,27 @@ Framework::getTheRtiAmbassador()->sendInteraction( interactionClassHandle, map, 
 				{ IEnumerationLiteral 
 					- _id = GUID 95c74dd9-0eb6-4286-b2a9-36fb1f587ad5;
 					- _name = "FederateInterfaceTypeSubscriber";
-					- _value = "2";
+					- _value = "2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+";
 				}
 			}
 			- _kind = Enumeration;
 		}
 	}
-	- _configurationRelatedTime = 5.12.2008::14:8:25;
+	- _configurationRelatedTime = 5.21.2008::16:5:17;
 }
 

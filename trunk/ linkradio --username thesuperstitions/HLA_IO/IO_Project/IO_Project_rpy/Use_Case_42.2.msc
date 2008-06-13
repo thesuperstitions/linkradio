@@ -3,7 +3,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 	- _ownerHandle = { IHandle 
 		- _m2Class = "ISubsystem";
 		- _filename = "IO.sbs";
-		- _subsystem = "Framework";
+		- _subsystem = "framework";
 		- _class = "";
 		- _name = "IO";
 		- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
@@ -258,7 +258,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 	}
 	- _name = "Use_Case_42.2";
-	- _lastModifiedTime = "2.15.2008::18:15:35";
+	- _lastModifiedTime = "5.21.2008::13:13:33";
 	- _graphicChart = { CGIMscChart 
 		- vLadderMargin = 20;
 		- m_usingActivationBar = 0;
@@ -362,7 +362,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			}
 			- m_pParent = GUID 5f80a862-7b4a-4700-81e4-d3299045bc62;
 			- m_name = { CGIText 
-				- m_str = "federateA:ExampleFederate";
+				- m_str = "federateA:HlaCecFederate";
 				- m_style = "Arial" 10 0 0 0 1 ;
 				- m_color = { IColor 
 					- m_fgColor = 0;
@@ -501,7 +501,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 	- _defaultSubsystem = { IHandle 
 		- _m2Class = "ISubsystem";
 		- _filename = "IO.sbs";
-		- _subsystem = "Framework";
+		- _subsystem = "framework";
 		- _class = "";
 		- _name = "IO";
 		- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
@@ -518,9 +518,9 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				- m_pBase = { IHandle 
 					- _m2Class = "IClass";
 					- _filename = "Control.sbs";
-					- _subsystem = "Framework::Control";
+					- _subsystem = "framework::Control";
 					- _class = "";
-					- _name = "ExampleFederate";
+					- _name = "HlaCecFederate";
 					- _id = GUID 8e2edf7d-ae8e-425a-bc47-e064bfe396d9;
 				}
 				- m_instance = { IHandle 
@@ -534,7 +534,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				- m_pBase = { IHandle 
 					- _m2Class = "IClass";
 					- _filename = "IO.sbs";
-					- _subsystem = "Framework::IO";
+					- _subsystem = "framework::IO";
 					- _class = "";
 					- _name = "HLA_PostOffice";
 					- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
@@ -549,8 +549,8 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				- m_eRoleType = CLASS;
 				- m_pBase = { IHandle 
 					- _m2Class = "IClass";
-					- _filename = "Framework.sbs";
-					- _subsystem = "Framework";
+					- _filename = "framework.sbs";
+					- _subsystem = "framework";
 					- _class = "";
 					- _name = "FrameworkFederateAmbassador";
 					- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;

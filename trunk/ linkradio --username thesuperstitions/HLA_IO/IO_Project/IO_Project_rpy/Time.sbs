@@ -2,10 +2,10 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 { ISubsystem 
 	- _ownerHandle = { IHandle 
 		- _m2Class = "ISubsystem";
-		- _filename = "Framework.sbs";
+		- _filename = "framework.sbs";
 		- _subsystem = "";
 		- _class = "";
-		- _name = "Framework";
+		- _name = "framework";
 		- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 	}
 	- _id = GUID f62ff23a-c0b5-4597-bba0-efbb7e3a8b36;

@@ -2,10 +2,10 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 { ISubsystem 
 	- _ownerHandle = { IHandle 
 		- _m2Class = "ISubsystem";
-		- _filename = "Framework.sbs";
+		- _filename = "framework.sbs";
 		- _subsystem = "";
 		- _class = "";
-		- _name = "Framework";
+		- _name = "framework";
 		- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 	}
 	- _id = GUID 4d9e2ad4-1c34-4722-ab87-77f5f75a8cab;
@@ -84,7 +84,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _dependsOn = { INObjectHandle 
 				- _m2Class = "IClass";
 				- _filename = "IO.sbs";
-				- _subsystem = "Framework::IO";
+				- _subsystem = "framework::IO";
 				- _class = "";
 				- _name = "PostOffice";
 				- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
@@ -92,7 +92,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		}
 	}
 	- _lastID = 1;
-	- weakCGTime = 5.12.2008::17:5:34;
+	- weakCGTime = 5.21.2008::13:13:33;
 	- strongCGTime = 4.4.2008::16:0:1;
 	- _defaultComposite = GUID af3e0535-63f3-40be-97b9-0f6965d34524;
 	- _eventsBaseID = -1;
@@ -104,7 +104,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 1;
-			- weakCGTime = 5.12.2008::17:5:34;
+			- weakCGTime = 5.21.2008::13:13:33;
 			- strongCGTime = 4.4.2008::16:0:1;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -117,9 +117,9 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 						- size = 0;
 					}
 					- myReturnType = { IType 
-						- _id = GUID 4894ca65-7e41-472d-92ae-235839682519;
+						- _id = GUID 3b5a5e57-a4dc-480e-8780-a47d2b393269;
 						- _myState = 8192;
-						- _declaration = "Framework::Control::Federate*";
+						- _declaration = "framework::Control::Federate*";
 						- _kind = Language;
 					}
 					- _abstract = 0;
@@ -140,13 +140,13 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 						- size = 1;
 						- value = 
 						{ IArgument 
-							- _id = GUID 1a13fd07-b800-4ab1-b33b-cddbeeadf528;
+							- _id = GUID 62fa10f2-ee1f-4d47-a08e-ae3738985da7;
 							- _name = "federate";
 							- _defaultValue = "";
 							- myTypeOf = { IType 
-								- _id = GUID 743dc274-7dde-47da-b897-cc8b0bad0942;
+								- _id = GUID 17972bcf-9739-4936-8c1b-1e48e0e580c0;
 								- _myState = 8192;
-								- _declaration = "Framework::Control::Federate*";
+								- _declaration = "framework::Control::Federate*";
 								- _kind = Language;
 							}
 							- _isOrdered = 0;
@@ -180,9 +180,9 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					- _name = "theFederate";
 					- _defaultValue = "";
 					- myTypeOf = { IType 
-						- _id = GUID a29cbaed-ba94-48ea-93be-cdc4de82bfa7;
+						- _id = GUID 5b10cf71-e272-4bf9-a20b-41329997549b;
 						- _myState = 8192;
-						- _declaration = "Framework::Control::Federate*";
+						- _declaration = "framework::Control::Federate*";
 						- _kind = Language;
 					}
 					- _isOrdered = 0;
@@ -249,7 +249,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "ISubsystem";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework";
+						- _subsystem = "framework";
 						- _class = "";
 						- _name = "IO";
 						- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
@@ -262,14 +262,14 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				{ IHandle 
 					- _m2Class = "IStereotype";
 					- _filename = "IO.sbs";
-					- _subsystem = "Framework::IO";
+					- _subsystem = "framework::IO";
 					- _class = "";
 					- _name = "generated";
 					- _id = GUID 0b20e721-525c-4e70-8325-7a1e5e15ddce;
 				}
 			}
 			- _lastID = 4;
-			- weakCGTime = 4.9.2008::13:10:36;
+			- weakCGTime = 5.20.2008::12:14:43;
 			- strongCGTime = 2.15.2008::13:4:26;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -308,14 +308,16 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 						- size = 1;
 						- value = 
 						{ IArgument 
-							- _id = GUID 657ae847-c814-484a-990c-4ecdca169dfa;
+							- _id = GUID d884f503-af3a-403d-86c3-c4271a97565a;
 							- _name = "buffer";
 							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 6300121a-00a8-44cc-9f64-c21d94afd154;
-								- _myState = 8192;
-								- _declaration = "const Framework::IO::Buffer &";
-								- _kind = Language;
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -373,14 +375,16 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 						- size = 1;
 						- value = 
 						{ IArgument 
-							- _id = GUID 9e5a6552-fe35-4d46-a548-013522cb5e53;
+							- _id = GUID dd69cc6b-df9e-49b4-b35e-17863cb3c186;
 							- _name = "buffer";
 							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID be19c77e-c84c-4fda-bb61-75fd36261269;
-								- _myState = 8192;
-								- _declaration = "const Framework::IO::Buffer &";
-								- _kind = Language;
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -408,35 +412,6 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
-			}
-			- Associations = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IAssociationEnd 
-					- _id = GUID efb4e3d7-7414-4268-ba5b-1c268c26e633;
-					- _myState = 10240;
-					- _name = "itsIO_Handler";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
-						- _class = "";
-						- _name = "IO_Handler";
-						- _id = GUID 7a29fc07-139c-43be-98cd-d5747865cb5f;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
-						- _class = "IO_Handler";
-						- _name = "itsSerializer";
-						- _id = GUID ed80e6bc-2e62-4e2b-bead-e17c25090b3f;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
 			}
 			- _classModifier = Unspecified;
 		}
@@ -509,8 +484,8 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					}
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IType";
-						- _filename = "Framework.sbs";
-						- _subsystem = "Framework";
+						- _filename = "framework.sbs";
+						- _subsystem = "framework";
 						- _class = "";
 						- _name = "FederateFrameworkType";
 						- _id = GUID 6b2281aa-cebf-438f-8f30-70fecf43f565;
@@ -608,7 +583,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "HLA_PostOffice";
 						- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
@@ -659,7 +634,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "PostOffice";
 						- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
@@ -684,7 +659,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "FederateIO_Handler";
 						- _id = GUID cf4439a3-1222-47bd-9929-fed3599f6153;
@@ -759,12 +734,12 @@ setFederateFrameworkType(fedFrameworkType);
 setFederateType(fedType);      
 
 // Create the FederateIO_Handler
-setItsFederateIO_Handler(new Framework::IO::FederateIO_Handler(fedFrameworkType)); 
+setItsFederateIO_Handler(new framework::IO::FederateIO_Handler(fedFrameworkType)); 
 
 switch(fedFrameworkType)
 {
   case HLA_FederateFrameworkType :  
-    setThePostOffice( static_cast<Framework::IO::PostOffice*>(new Framework::IO::HLA_PostOffice(frameworkFederateAmbassador)) );  
+    setThePostOffice( static_cast<framework::IO::PostOffice*>(new framework::IO::HLA_PostOffice(frameworkFederateAmbassador)) );  
   	break;
     
   case OASIS_FederateFrameworkType :    
@@ -847,7 +822,7 @@ setFederate(this);
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "PostOffice";
 						- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
@@ -855,7 +830,7 @@ setFederate(this);
 					- _inverse = { IHandle 
 						- _m2Class = "IAssociationEnd";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "PostOffice";
 						- _name = "theFederate";
 						- _id = GUID f61970c5-f17c-4724-b031-003e93bde471;
@@ -872,7 +847,7 @@ setFederate(this);
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "FederateIO_Handler";
 						- _id = GUID cf4439a3-1222-47bd-9929-fed3599f6153;
@@ -880,7 +855,7 @@ setFederate(this);
 					- _inverse = { IHandle 
 						- _m2Class = "IAssociationEnd";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "FederateIO_Handler";
 						- _name = "itsFederate";
 						- _id = GUID e2356925-d97d-4147-944b-181d1df31ded;
@@ -920,10 +895,10 @@ setFederate(this);
 					}
 				}
 			}
-			- _name = "ExampleFederate";
+			- _name = "HlaCecFederate";
 			- _lastID = 3;
-			- weakCGTime = 4.9.2008::13:10:36;
-			- strongCGTime = 3.27.2008::14:42:14;
+			- weakCGTime = 5.21.2008::13:13:33;
+			- strongCGTime = 5.21.2008::13:13:33;
 			- Operations = { IRPYRawContainer 
 				- size = 4;
 				- value = 
@@ -931,47 +906,7 @@ setFederate(this);
 					- _id = GUID aba228e7-afd5-4b79-9230-84f0876dca48;
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 3;
-						- value = 
-						{ IArgument 
-							- _id = GUID f484a776-8b98-492b-a11a-4889f2bacdf4;
-							- _name = "fedFrameworkType";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 8bfe6100-a706-4a90-9888-e443d831330a;
-								- _myState = 8192;
-								- _declaration = "FederateFrameworkType";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 5edb10b7-5661-4fee-bcf3-67b7dccc9e6c;
-							- _name = "fedType";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID e6121164-2f1a-4a81-88a9-0afdedfb7ff7;
-								- _myState = 8192;
-								- _declaration = "FederateType";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID adc518fc-3508-41a0-8b1b-b10d7a934a0e;
-							- _name = "frameworkFederateAmbassador";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 980a1067-4f91-493a-9dc0-216986d3b2ca;
-								- _myState = 8192;
-								- _declaration = "FrameworkFederateAmbassador*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
+						- size = 0;
 					}
 					- _returnType = { IHandle 
 						- _m2Class = "";
@@ -985,7 +920,7 @@ setFederate(this);
 					- _itsBody = { IBody 
 						- _bodyData = "";
 					}
-					- _initializer = "Federate(fedFrameworkType, fedType, frameworkFederateAmbassador)";
+					- _initializer = "Federate(HLA_FederateFrameworkType, CEC_FederateType, getFrameworkFederateAmbassador())";
 				}
 				{ IPrimitiveOperation 
 					- _id = GUID 5795f10a-2d9a-4719-99c2-0a3a861f3442;
@@ -1149,7 +1084,7 @@ switch (federateType)
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "HLA_FederateInterface";
 						- _id = GUID dde46e90-5f22-43aa-9977-e8d01f7597e8;
@@ -1200,7 +1135,7 @@ switch (federateType)
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "OASIS_FederateInterface";
 						- _id = GUID 12d4e50c-e8ec-4fa7-a815-0064e91ff122;
@@ -1251,7 +1186,7 @@ switch (federateType)
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "FederateInterface";
 						- _id = GUID 1993cc7d-a0e3-4f31-a771-97a1d245afb2;
@@ -1261,16 +1196,16 @@ switch (federateType)
 			- _theMainDiagram = { IHandle 
 				- _m2Class = "IDiagram";
 				- _filename = "IOClassDiagram.omd";
-				- _subsystem = "Framework::IO";
+				- _subsystem = "framework::IO";
 				- _class = "";
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
 			- _lastID = 3;
-			- weakCGTime = 5.15.2008::16:1:0;
+			- weakCGTime = 5.19.2008::18:2:49;
 			- strongCGTime = 3.26.2008::16:35:25;
 			- Operations = { IRPYRawContainer 
-				- size = 3;
+				- size = 2;
 				- value = 
 				{ IConstructor 
 					- _id = GUID 70427cf7-ca09-440f-bd0e-d80f99d666c2;
@@ -1284,8 +1219,8 @@ switch (federateType)
 							- _defaultValue = "";
 							- _typeOf = { IHandle 
 								- _m2Class = "IType";
-								- _filename = "Framework.sbs";
-								- _subsystem = "Framework";
+								- _filename = "framework.sbs";
+								- _subsystem = "framework";
 								- _class = "";
 								- _name = "FederateFrameworkType";
 								- _id = GUID 6b2281aa-cebf-438f-8f30-70fecf43f565;
@@ -1310,7 +1245,7 @@ switch (federateType)
 					- _name = "createFederateInterface";
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 4;
+						- size = 5;
 						- value = 
 						{ IArgument 
 							- _id = GUID 387df54b-46de-4bff-8ee9-738a7c08fd7c;
@@ -1341,14 +1276,31 @@ switch (federateType)
 							- _argumentDirection = In;
 						}
 						{ IArgument 
-							- _id = GUID edd045ac-9905-4e3b-8d9c-338966253e7a;
-							- _name = "interfaceType";
+							- _id = GUID bb634c36-e9d2-4b93-90bb-675f495aa885;
+							- _name = "maxMessageSize";
 							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 764d8a6f-c7d9-4ffb-8289-682c61ac891e;
-								- _myState = 8192;
-								- _declaration = "Framework::InterfaceType";
-								- _kind = Language;
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 7343f0cf-b140-4056-b7e1-76297313f76b;
+							- _name = "maxMessages";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -1368,9 +1320,9 @@ switch (federateType)
 						}
 					}
 					- myReturnType = { IType 
-						- _id = GUID d89b97cb-56f1-4210-a04c-9f6fe9d1b2c3;
+						- _id = GUID d4738e27-cdad-4a62-8981-db8892214ff9;
 						- _myState = 8192;
-						- _declaration = "Framework::IO::FederateInterface*";
+						- _declaration = "framework::IO::FederateInterface*";
 						- _kind = Language;
 					}
 					- _abstract = 0;
@@ -1383,82 +1335,10 @@ switch (federateType)
 						- _bodyData = "switch(fedFrameworkType)
 {
   case HLA_FederateFrameworkType:
-    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::HLA_FederateInterface(name, interfaceType) ) );
+    return( static_cast<framework::IO::FederateInterface*>( new framework::IO::HLA_FederateInterface(interfaceID, name,  maxMessageSize, maxMessages, federateInterfaceType) ) );
   
   case OASIS_FederateFrameworkType:
-    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::OASIS_FederateInterface(name, interfaceType) ) );
-};  
-
-return(NULL);          ";
-					}
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 3e1fd031-38ec-426e-902a-83d0390a483c;
-					- _name = "createFederateInterface";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 3;
-						- value = 
-						{ IArgument 
-							- _id = GUID 1a08a7cb-d3a1-42bb-8a50-63de57d6a535;
-							- _name = "name";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID c1ee114d-fefb-45b3-afc8-d829eea053c9;
-								- _myState = 8192;
-								- _declaration = "std::string";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID b925f88d-692e-4c46-a278-1d550f2ea6e7;
-							- _name = "interfaceType";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 0f652774-2e95-4ef6-b157-09153df8ea2a;
-								- _myState = 8192;
-								- _declaration = "Framework::InterfaceType";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 5459d079-6d03-4394-afaa-c68ca29224b7;
-							- _name = "federateInterfaceType";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 5f82b68a-dcc6-455d-9818-fffe0fb5640e;
-								- _myState = 8192;
-								- _declaration = "FederateInterfaceType";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- myReturnType = { IType 
-						- _id = GUID 55aa6b34-fc7c-4b41-b631-da88495c5bc5;
-						- _myState = 8192;
-						- _declaration = "Framework::IO::FederateInterface * ";
-						- _kind = Language;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "switch(fedFrameworkType)
-{
-  case HLA_FederateFrameworkType:
-    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::HLA_FederateInterface(interfaceID, name, interfaceType) ) );
-  
-  case OASIS_FederateFrameworkType:
-    return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::OASIS_FederateInterface(interfaceID, name, interfaceType) ) );
+    return( static_cast<framework::IO::FederateInterface*>( new framework::IO::OASIS_FederateInterface(interfaceID, name,  maxMessageSize, maxMessages, federateInterfaceType) ) );
 };  
 
 return(NULL);          ";
@@ -1500,7 +1380,7 @@ return(NULL);          ";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
 						- _filename = "IO.sbs";
-						- _subsystem = "Framework::IO";
+						- _subsystem = "framework::IO";
 						- _class = "";
 						- _name = "FederateIO_Handler";
 						- _id = GUID cf4439a3-1222-47bd-9929-fed3599f6153;

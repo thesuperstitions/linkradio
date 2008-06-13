@@ -2,10 +2,10 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 { ISubsystem 
 	- _ownerHandle = { IHandle 
 		- _m2Class = "ISubsystem";
-		- _filename = "Framework.sbs";
+		- _filename = "framework.sbs";
 		- _subsystem = "";
 		- _class = "";
-		- _name = "Framework";
+		- _name = "framework";
 		- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 	}
 	- _id = GUID 8fbbad80-da56-43db-b59d-bfd3da133518;
@@ -68,7 +68,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 					}
 				}
 			}
-			- _name = "Framework";
+			- _name = "framework";
 			- Stereotypes = { IRPYRawContainer 
 				- size = 1;
 				- value = 
@@ -83,15 +83,15 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			}
 			- _dependsOn = { INObjectHandle 
 				- _m2Class = "ISubsystem";
-				- _filename = "Framework.sbs";
+				- _filename = "framework.sbs";
 				- _subsystem = "";
 				- _class = "";
-				- _name = "Framework";
+				- _name = "framework";
 				- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 			}
 		}
 	}
-	- _lastID = 32;
+	- _lastID = 33;
 	- Declaratives = { IRPYRawContainer 
 		- size = 5;
 		- value = 
@@ -131,56 +131,65 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- _id = GUID dafa1e7c-fb05-4f62-9adf-1098d2a3a2f0;
 		}
 	}
-	- weakCGTime = 5.15.2008::13:1:37;
-	- strongCGTime = 4.1.2008::16:59:27;
+	- weakCGTime = 5.27.2008::16:37:14;
+	- strongCGTime = 5.27.2008::16:37:14;
 	- _defaultComposite = GUID b3558c13-0914-4592-a3eb-dbfbf70d98db;
 	- _eventsBaseID = -1;
 	- Classes = { IRPYRawContainer 
-		- size = 12;
+		- size = 8;
 		- value = 
 		{ IClass 
 			- _id = GUID b3558c13-0914-4592-a3eb-dbfbf70d98db;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- _lastID = 6;
-			- weakCGTime = 5.14.2008::17:5:23;
-			- strongCGTime = 4.1.2008::16:59:27;
-			- Operations = { IRPYRawContainer 
+			- _lastID = 8;
+			- weakCGTime = 5.21.2008::13:3:15;
+			- strongCGTime = 5.20.2008::12:9:52;
+			- Attrs = { IRPYRawContainer 
 				- size = 1;
 				- value = 
-				{ IPrimitiveOperation 
-					- _id = GUID f8fc6c41-bc4f-45ac-bf1e-a598bb0af256;
-					- _name = "getRawBuffer";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 7af1915c-dfac-4a1c-863e-afd20610ee3b;
-							- _name = "buffer";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IClass";
-								- _id = GUID 404bed6e-6063-4893-babb-668204371250;
+				{ IAttribute 
+					- _id = GUID 36b9c8ea-60d8-4253-9e68-0a98a717cc32;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ConstantVariableAsDefine";
+												- _Value = "True";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
 							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
 						}
 					}
-					- _returnType = { IHandle 
+					- _name = "MAX_FEDERATE_INTERFACE_DEVICES";
+					- _defaultValue = "100";
+					- _typeOf = { IHandle 
 						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
+						- _filename = "PredefinedTypes.sbs";
+						- _subsystem = "PredefinedTypes";
 						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+						- _name = "RhpString";
+						- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
 					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
+					- _isOrdered = 0;
 					- _protection = iPublic;
 					- _static = 0;
-					- _constant = 0;
+					- _isReference = 0;
+					- _isConstant = 1;
 				}
 			}
 			- _multiplicity = "";
@@ -238,9 +247,136 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 				}
 			}
 			- _name = "FederateInterface";
-			- _lastID = 17;
-			- weakCGTime = 5.15.2008::16:21:35;
-			- strongCGTime = 5.15.2008::16:21:35;
+			- Dependencies = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IDependency 
+					- _id = GUID aec9c37c-45d1-4f1f-9436-9d4d4393c990;
+					- _myState = 2048;
+					- _name = "Control";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "Usage";
+							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "ISubsystem";
+						- _filename = "Control.sbs";
+						- _subsystem = "framework";
+						- _class = "";
+						- _name = "Control";
+						- _id = GUID 4d9e2ad4-1c34-4722-ab87-77f5f75a8cab;
+					}
+				}
+				{ IDependency 
+					- _id = GUID 5af5e652-9a46-4c08-82e1-a30a4a1bb9a5;
+					- _myState = 2048;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Dependency";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "UsageType";
+												- _Value = "Implementation";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Specification,Implementation,Existence";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "Federate";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "Usage";
+							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _filename = "Control.sbs";
+						- _subsystem = "framework::Control";
+						- _class = "";
+						- _name = "Federate";
+						- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
+					}
+				}
+				{ IDependency 
+					- _id = GUID 17d0b185-5fcb-4386-97f3-c921a2702810;
+					- _myState = 2048;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Dependency";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "UsageType";
+												- _Value = "Implementation";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Specification,Implementation,Existence";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "PostOffice";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "Usage";
+							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
+					}
+				}
+			}
+			- _lastID = 18;
+			- weakCGTime = 5.19.2008::17:7:15;
+			- strongCGTime = 5.19.2008::17:7:15;
 			- Operations = { IRPYRawContainer 
 				- size = 4;
 				- value = 
@@ -272,16 +408,16 @@ this->Thread::join();
 
 Thread::stop();
 
-if (publisherQueue != NULL)
+if (publishQueue != NULL)
 {
-  delete publisherQueue;  
-  publisherQueue(NULL);
+  delete publishQueue;  
+  publishQueue = NULL;
 }
 
-if (subscriberQueue != NULL)
+if (subscribeQueue != NULL)
 {
-  delete subscriberQueue;  
-  subscriberQueue(NULL);
+  delete subscribeQueue;  
+  subscribeQueue = NULL;
 }
 ";
 					}
@@ -291,17 +427,34 @@ if (subscriberQueue != NULL)
 					- _name = "processFederateMessage";
 					- _virtual = 1;
 					- Args = { IRPYRawContainer 
-						- size = 1;
+						- size = 2;
 						- value = 
 						{ IArgument 
 							- _id = GUID e485dd14-4e6d-4480-9c3b-122190c06356;
 							- _name = "message";
 							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 7b2afdd3-6412-48a5-918a-244725fbec6c;
-								- _myState = 8192;
-								- _declaration = "FederateMessage*";
-								- _kind = Language;
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID eb3c9f0a-e707-42ea-a9ca-e5435c5a1669;
+							- _name = "messageSizeInBytes";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -322,24 +475,18 @@ if (subscriberQueue != NULL)
 					- _static = 0;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "
-// This thread handles a message from a publisher that is to be sent to subscribers.              
-Buffer* bPtr;
-
-  
-if (subscriberQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
+						- _bodyData = "  
+if (subscribeQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)     
 {
   // Wait for process on other end of queue to be ready.
-  if (subscriberQueue->SynchronizeQueueUsers() == false)   
+  if (subscribeQueue->SynchronizeQueueUsers() == false)   
   {  // The subscriber isn't ready to receive from the queue.
     return(false);
   }
 }  
 
 // Send the message to the subscriber.
-bPtr = message->getMessage()->getBuffer();
-inputQueue()->timedAddMessage(bPtr->byteArray, bPtr->sizeOfByteArray, 1, 0);
-return (inputQueue->timedAddMessage(((unsigned char*)bPtr->byteArray), bPtr->sizeOfByteArray, 1, 0) );
+return (subscribeQueue->timedAddMessage(((unsigned char*)message), messageSizeInBytes, 1, 0) );
 ";
 					}
 				}
@@ -368,27 +515,25 @@ return (inputQueue->timedAddMessage(((unsigned char*)bPtr->byteArray), bPtr->siz
 						- _bodyData = "
 // This thread handles a message from a publisher that is to be sent to subscribers.              
 unsigned char    message[INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES];    
-unsigned long    messageSizeInBytes;
-FederateMessage* fmPtr = (FederateMessage*)&message;  
-Buffer*          bPtr;
+unsigned int     messageSizeInBytes;
   
 while (exitFlag != true)
 {  
-  if (outputQueue->getQueueState() == InterprocessQueue::QueueSynchronizing)     
+  if (publishQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)     
   {
     // Wait for process on other end of queue to be ready.
-    while (outputQueue->SynchronizeQueueUsers() == false);
+    while (publishQueue->SynchronizeQueueUsers() == false);
   }  
   else
   {
-    if (inputQueue->timedGetMessage((unsigned char*)&message, &messageSizeInBytes, 1, 0) == true )
+    if (publishQueue->timedGetMessage((unsigned char*)&message, &messageSizeInBytes, 1, 0) == true )
     {    
       // Create a FederateMessage instance and populate it.
 //                  FederateMessage* fm_Ptr = new FederateMessage( this, &message, messageSizeInBytes );    
     
       // Send the message to the Post Office for delivery.
 //                  Framework::Control::getFederate()->getThePostOffice()->sendMessage( fm_Ptr);
-      Framework::Control::getFederate()->getThePostOffice()->sendMessage( &message, messageSizeInBytes);
+      framework::Control::getFederate()->getThePostOffice()->sendMessage( (char*)&message, messageSizeInBytes, this);
     }   
   }
 };
@@ -487,15 +632,16 @@ while (exitFlag != true)
 switch (federateInterfaceType)
 {
   case FederateInterfaceTypePublisher: 
-    setPublisherQueue(new InterprocessQueue(name, maxMessageSize, maxMessages)); 
+    setPublishQueue(new framework::utils::InterprocessQueue((char*)name.c_str(), maxMessageSize, maxMessages)); 
   break;
   
   case FederateInterfaceTypeSubscriber:
-    setSubscriberQueue(new InterprocessQueue(name, maxMessageSize, maxMessages)); 
-    Thread::start();
+    setSubscribeQueue(new framework::utils::InterprocessQueue((char*)name.c_str(), maxMessageSize, maxMessages)); 
+    framework::utils::Thread::start();
   break;
   
   default:
+  break;
 };
         ";
 					}
@@ -503,7 +649,7 @@ switch (federateInterfaceType)
 				}
 			}
 			- Attrs = { IRPYRawContainer 
-				- size = 6;
+				- size = 7;
 				- value = 
 				{ IAttribute 
 					- _id = GUID b8c2acb8-4c72-4497-8e1f-4ae5b56def70;
@@ -630,9 +776,9 @@ switch (federateInterfaceType)
 					- _name = "subscribeQueue";
 					- _defaultValue = "";
 					- myTypeOf = { IType 
-						- _id = GUID 3cd2b359-5ec5-404d-9be2-655f8f44ce05;
+						- _id = GUID 3ae165ca-f5e7-42a6-becb-d499cbb880d9;
 						- _myState = 8192;
-						- _declaration = "Framework::utils::InterprocessQueue*";
+						- _declaration = "framework::utils::InterprocessQueue*";
 						- _kind = Language;
 					}
 					- _multiplicity = "100";
@@ -642,19 +788,35 @@ switch (federateInterfaceType)
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
+				{ IAttribute 
+					- _id = GUID f0a939bf-5a51-48fe-bbca-426f48181d27;
+					- _name = "publishQueue";
+					- _defaultValue = "";
+					- myTypeOf = { IType 
+						- _id = GUID 98401f7c-2c11-4ccc-92b5-be0a3a12042c;
+						- _myState = 8192;
+						- _declaration = "framework::utils::InterprocessQueue*";
+						- _kind = Language;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
 			}
 			- Inheritances = { IRPYRawContainer 
 				- size = 1;
 				- value = 
 				{ IGeneralization 
-					- _id = GUID 15e42209-5af7-42b3-84e6-d2402f49adc7;
+					- _id = GUID 68a594f6-3b1d-4153-a63d-2223b6a1242d;
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "utils.sbs";
-						- _subsystem = "Framework::utils";
+						- _subsystem = "framework::utils";
 						- _class = "";
 						- _name = "Thread";
-						- _id = GUID 7c9c9e29-d0f9-42a0-a78f-f9d105a531e6;
+						- _id = GUID a6ad4edd-0913-4dd6-95a9-29466c277cc8;
 					}
 					- _inheritanceType = iPublic;
 					- _isVirtual = 0;
@@ -665,7 +827,7 @@ switch (federateInterfaceType)
 				- _m2Class = "";
 			}
 			- Associations = { IRPYRawContainer 
-				- size = 3;
+				- size = 1;
 				- value = 
 				{ IAssociationEnd 
 					- _id = GUID 70c4a35d-3bf1-4fb0-b1fb-6ab949792286;
@@ -679,1553 +841,6 @@ switch (federateInterfaceType)
 					- _inverse = { IHandle 
 						- _m2Class = "IAssociationEnd";
 						- _id = GUID 8c40885a-c01d-4e39-bc10-a30b992d4f84;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-				{ IAssociationEnd 
-					- _id = GUID 73a40df0-e084-4bcd-b7c6-1c24ba8ff188;
-					- _myState = 8192;
-					- _name = "subscriberQueue";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "utils.sbs";
-						- _subsystem = "Framework::utils";
-						- _class = "";
-						- _name = "InterprocessQueue";
-						- _id = GUID 9e91004b-dbf1-41b9-9d0d-6cd63915269d;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-				{ IAssociationEnd 
-					- _id = GUID 8427cbde-1aaf-4c57-bff3-0decddb71307;
-					- _myState = 8192;
-					- _name = "publisherQueue";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "utils.sbs";
-						- _subsystem = "Framework::utils";
-						- _class = "";
-						- _name = "InterprocessQueue";
-						- _id = GUID 9e91004b-dbf1-41b9-9d0d-6cd63915269d;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID 685300f8-76ae-4ae9-b4a1-9f2859ffa96e;
-			- _myState = 8192;
-			- _name = "FederateMessage";
-			- _lastID = 6;
-			- weakCGTime = 5.14.2008::17:10:46;
-			- strongCGTime = 4.1.2008::17:59:30;
-			- Operations = { IRPYRawContainer 
-				- size = 2;
-				- value = 
-				{ IConstructor 
-					- _id = GUID c35e8571-aea2-4fa5-bf48-618b25464d0b;
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
-						{ IArgument 
-							- _id = GUID 7678c51a-89f0-4b8b-ad11-4b878447ecba;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 7414428f-c557-459f-af20-5e776d3f387f;
-								- _myState = 8192;
-								- _declaration = "Framework::IO::FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 4fcbb3a2-0ca7-4d18-b82c-51272561977c;
-							- _name = "parameters";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 838e5b3f-69c4-43b3-a340-cfcc09613dce;
-								- _myState = 8192;
-								- _declaration = "const rti1516::ParameterHandleValueMap &";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "";
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _initializer = "";
-				}
-				{ IConstructor 
-					- _id = GUID 263cee8d-4ac0-4ce8-b4e3-14d459382aca;
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 3;
-						- value = 
-						{ IArgument 
-							- _id = GUID b7de6c5d-fbe7-4749-9ebc-c6fffdbede45;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 86a8de76-6798-40a2-8942-e4cc1e204d5b;
-								- _myState = 8192;
-								- _declaration = "Framework::IO::FederateInterface *";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID de4703ac-cc6d-4e9a-a8e3-6053a1a31178;
-							- _name = "message";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 491f381d-d674-40a2-bee2-090d1d19f79a;
-								- _myState = 8192;
-								- _declaration = "unsigned char*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 64fcfa98-3178-40ae-888b-64dde0e9e423;
-							- _name = "messageSizeInBytes";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "unsigned int";
-								- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "";
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "             ";
-					}
-					- _initializer = "Message(message, messageSizeInBytes), federateInterface(interface)";
-				}
-			}
-			- Attrs = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IAttribute 
-					- _id = GUID 507e332b-bc73-4cc3-8988-7a41118032ad;
-					- _name = "federateInterface";
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 8185f0e8-1f82-46c8-8cc9-6c6dd6f538fb;
-						- _myState = 8192;
-						- _declaration = "FederateInterface*";
-						- _kind = Language;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-			}
-			- Inheritances = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IGeneralization 
-					- _id = GUID 4f0b2515-92a9-4bc6-8b94-213e91d81291;
-					- _dependsOn = { INObjectHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 859c4e60-1747-44a5-9491-2868fc48dd51;
-					}
-					- _inheritanceType = iPublic;
-					- _isVirtual = 0;
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID 7a29fc07-139c-43be-98cd-d5747865cb5f;
-			- _myState = 8192;
-			- _name = "IO_Handler";
-			- _lastID = 6;
-			- weakCGTime = 4.9.2008::13:10:36;
-			- strongCGTime = 3.25.2008::18:28:47;
-			- Operations = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IPrimitiveOperation 
-					- _id = GUID 1888df33-d1f5-4a38-abc7-b36d9b7da319;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Operation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Kind";
-												- _Value = "abstract";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "common,abstract";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "recvMessage";
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
-						{ IArgument 
-							- _id = GUID f92a9514-701d-4e70-84e7-f783d1b34925;
-							- _name = "seconds";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "int";
-								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 3c795ede-2482-4a4a-899d-44429e0e101c;
-							- _name = "nanoseconds";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "unsigned long";
-								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- myReturnType = { IType 
-						- _id = GUID 02ed812d-ed76-4bea-969b-61108c47f113;
-						- _myState = 8192;
-						- _declaration = "FederateMessage*";
-						- _kind = Language;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- Associations = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IAssociationEnd 
-					- _id = GUID ed80e6bc-2e62-4e2b-bead-e17c25090b3f;
-					- _myState = 10240;
-					- _name = "itsSerializer";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
-						- _class = "";
-						- _name = "Serializer";
-						- _id = GUID 0b4af63c-82bd-4c18-98d9-d51a75aae8c1;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
-						- _class = "Serializer";
-						- _name = "itsIO_Handler";
-						- _id = GUID efb4e3d7-7414-4268-ba5b-1c268c26e633;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID 859c4e60-1747-44a5-9491-2868fc48dd51;
-			- _myState = 8192;
-			- _name = "Message";
-			- _lastID = 4;
-			- weakCGTime = 5.14.2008::17:17:8;
-			- strongCGTime = 5.14.2008::17:12:22;
-			- Operations = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IConstructor 
-					- _id = GUID b8c6b6ee-f507-441d-a76d-57c4c6933ec7;
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
-						{ IArgument 
-							- _id = GUID fd2beccf-61d6-4949-9683-118137122821;
-							- _name = "message";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID e08fd242-4a50-4aed-b429-d2a94beeb864;
-								- _myState = 8192;
-								- _declaration = "unsigned char*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID d6a9ae3f-f952-4ffd-b6b2-2aa9ebf73627;
-							- _name = "messageSizeInBytes";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "unsigned long";
-								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "";
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "
-// Give this message a unique instance number.
-instanceNumber = messageCount++;
-  
-// Creat the Buffer object 
-setItsBuffer(new Buffer(message, messageSizeInBytes)); 
-getItsBuffer()->setItsMessage(this); 
-";
-					}
-					- _initializer = "messagePtr(message), sizeOfMessageInBytes(SizeInBytes), messageCount++";
-				}
-			}
-			- Attrs = { IRPYRawContainer 
-				- size = 3;
-				- value = 
-				{ IAttribute 
-					- _id = GUID ecef1c38-6599-4fd7-bbcd-72c91a4fc724;
-					- _name = "messageCount";
-					- _defaultValue = "0";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "unsigned long";
-						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 1;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 8bf57380-ece1-4e1c-b164-c731255107c7;
-					- _name = "sizeOfMessageInBytes";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "unsigned long";
-						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 118c77bb-9e46-41c4-8b90-a95f33120e5f;
-					- _name = "messagePtr";
-					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 57b45af5-b8bb-4618-8cc5-5c9435016690;
-						- _myState = 8192;
-						- _declaration = "unsigned char*";
-						- _kind = Language;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
-			- _myState = 8192;
-			- _name = "PostOffice";
-			- _lastID = 8;
-			- weakCGTime = 4.9.2008::13:10:36;
-			- strongCGTime = 3.4.2008::13:57:2;
-			- Operations = { IRPYRawContainer 
-				- size = 7;
-				- value = 
-				{ IPrimitiveOperation 
-					- _id = GUID 66ead425-57ab-480c-a06d-d26477616e13;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Operation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Kind";
-												- _Value = "abstract";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "common,abstract";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "announcePublication";
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 16a39db6-6ef3-426e-8f5a-181c581db5ba;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 4eec1264-bd67-4e7d-a190-412f7b66424d;
-								- _myState = 8192;
-								- _declaration = "FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 9870620f-3864-4b53-afad-b9327f82bb62;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Operation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Kind";
-												- _Value = "abstract";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "common,abstract";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "announceSubscription";
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 33c5220c-8f31-4240-9dbc-e9b98ddc36f9;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 655f79c7-14a9-4e33-b238-11a6f3fdaa1f;
-								- _myState = 8192;
-								- _declaration = "FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID bb47891a-be38-42fb-9a58-490ea32c20c9;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Operation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Kind";
-												- _Value = "abstract";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "common,abstract";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "sendMessage";
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID ccf1d755-e2a7-4c04-8e95-b766e0315479;
-							- _name = "message";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID b83d9bc4-b76b-40e8-983d-3f2a2685a056;
-								- _myState = 8192;
-								- _declaration = "FederateMessage*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "";
-					}
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 5c72c973-c548-4af3-952a-cd5fc551a85c;
-					- _name = "findFederateInterface";
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 0;
-					}
-					- myReturnType = { IType 
-						- _id = GUID 062c9575-1f01-4995-97f0-a44add9926a0;
-						- _myState = 8192;
-						- _declaration = "FederateInterface*";
-						- _kind = Language;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "return(NULL);  // This is just temporary until the code is fleshed out.";
-					}
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 29053b01-fdc8-4b13-8c36-23ba8cc00892;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Operation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Kind";
-												- _Value = "abstract";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "common,abstract";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "receiveMessage";
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
-						{ IArgument 
-							- _id = GUID d1f852a8-e236-4f21-9b85-b3c4c9958f83;
-							- _name = "buffer";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 100eea0f-867f-429e-b8b8-926c9a3cea80;
-								- _myState = 8192;
-								- _declaration = "Buffer*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID bf3ee816-c92d-4da9-9dbe-ce80870aaed8;
-							- _name = "theInteraction";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "int";
-								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 56e36046-017d-4cfd-860f-b04fcb2c0689;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Operation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Kind";
-												- _Value = "abstract";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "common,abstract";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "sendMessage";
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 1bba3706-b6bd-4a41-bc70-3f02dcf8fbea;
-							- _name = "message";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 2193a604-1f77-4988-8414-051eb6671837;
-								- _myState = 8192;
-								- _declaration = "FrameworkMessage*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID a8767252-e408-44fe-a5dc-8f139e79edc4;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Operation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Kind";
-												- _Value = "abstract";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "common,abstract";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "unsubscribe";
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 3571b2fa-f67e-4383-b10d-452d18b002bc;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID d867a58d-285e-49f9-a442-9b71a8d1498b;
-								- _myState = 8192;
-								- _declaration = "FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- Associations = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IAssociationEnd 
-					- _id = GUID f61970c5-f17c-4724-b031-003e93bde471;
-					- _myState = 8192;
-					- _name = "theFederate";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
-						- _class = "";
-						- _name = "Federate";
-						- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
-						- _class = "Federate";
-						- _name = "thePostOffice";
-						- _id = GUID 7746d984-3bb6-4873-9926-8d1a798b35ce;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
-			- _myState = 8192;
-			- _name = "HLA_PostOffice";
-			- _lastID = 10;
-			- weakCGTime = 5.15.2008::17:43:55;
-			- strongCGTime = 5.15.2008::17:41:16;
-			- Operations = { IRPYRawContainer 
-				- size = 10;
-				- value = 
-				{ IPrimitiveOperation 
-					- _id = GUID 954e8386-11a6-4732-92b3-322ea46ed165;
-					- _name = "announceSubscription";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 88480bf4-9c50-427c-9d7d-74619f545aa6;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID dd76a058-f638-4036-8d52-441419c0475f;
-								- _myState = 8192;
-								- _declaration = "FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "
-// If the Interaction has not been already created, create it.
-this->createInteractionClassHandle(static_cast<HLA_FederateInterface*>(interface));
-
-// Sign up to Subscribe to the interaction.
-getFrameworkFederateAmbassador()->subscribeInteractionClass(static_cast<HLA_FederateInterface*>(interface)->getInteractionClassHandle());";
-					}
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 3736c69a-886c-4189-926d-d558fe023bad;
-					- _name = "sendMessage";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 6e67fc8c-688b-4660-ab99-b641c9cfd88a;
-							- _name = "message";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 8b371fe0-15e4-4919-8a8d-88e81ea5a55c;
-								- _myState = 8192;
-								- _declaration = "FrameworkMessage*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 5c4615fd-ba37-488c-94e5-fb38fc9f9443;
-					- _name = "sendMessage";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 4cada56b-684e-4062-b41c-5eab51cee883;
-							- _name = "message";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 536baa9e-9c55-4eaa-a4cb-186d56968569;
-								- _myState = 8192;
-								- _declaration = "FederateMessage*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "HLA_FederateInterface* HLA_Interface = reinterpret_cast<HLA_FederateInterface*>(message->getFederateInterface());
-
-if (RealTimeMode() == true)
-{  
-  getTheFrameworkFederateAmbassador()->sendRO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getmsgPtr());
-}
-else // Discrete Mode.
-{
-  getTheFrameworkFederateAmbassador()->sendTSO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getmsgPtr());
-}";
-					}
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 044a39ae-4a1f-40ec-b472-c2167dbc965e;
-					- _name = "receiveMessage";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
-						{ IArgument 
-							- _id = GUID 66891bf0-eb36-418d-b48a-10e67cd10ec5;
-							- _name = "buffer";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID fab7c8a9-89a3-4668-880f-b90289d4ed12;
-								- _myState = 8192;
-								- _declaration = "Buffer*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 35f54996-f539-4c78-a98c-5d06ca640f35;
-							- _name = "theInteraction";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "int";
-								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 745df3c4-902f-431b-8d19-c907aa2732e1;
-					- _name = "unsubscribe";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID b64b2258-eba8-4496-ba15-14306a839f5b;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 270c6691-816f-4fb3-ad66-edd8e42b4562;
-								- _myState = 8192;
-								- _declaration = "FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 48a36eb4-9c54-4bd9-9ccf-bb61610c48b2;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CPP_CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Operation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "ThrowExceptions";
-												- _Value = " rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::FederateInternalError ";
-												- _Type = String;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "receiveInteraction";
-					- _description = { IDescription 
-						- _text = "6.9";
-					}
-					- _virtual = 1;
-					- Args = { IRPYRawContainer 
-						- size = 5;
-						- value = 
-						{ IArgument 
-							- _id = GUID a47ae903-9875-402e-a09c-1946b14d8898;
-							- _name = "theInteraction";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID f956077d-c521-4797-bd32-ab6dfd31ebac;
-								- _myState = 8192;
-								- _declaration = "rti1516::InteractionClassHandle";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 38fd62ca-5a1a-449a-b8c6-886d5f62460e;
-							- _name = "theParameterValues";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID b28ea3e7-ff8d-4322-b8ae-01c23ffe1824;
-								- _myState = 8192;
-								- _declaration = "const rti1516::ParameterHandleValueMap &";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 254de35e-280c-4597-9835-b934e64c3656;
-							- _name = "theUserSuppliedTag";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID ec2dbdcc-d984-4d8c-9d70-89a79027e77c;
-								- _myState = 8192;
-								- _declaration = "const rti1516::VariableLengthData &";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 4965711a-eaaa-41fd-8049-c60be6fd9c6a;
-							- _name = "sentOrder";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID b683e784-6cad-4f05-a9f1-58a8fc6fc452;
-								- _myState = 8192;
-								- _declaration = "rti1516::OrderType";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID f7b36a6a-e30a-47d4-9c90-d27319fd4f88;
-							- _name = "theType";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 49852fb9-04f0-4f81-8868-1cccc03fd046;
-								- _myState = 8192;
-								- _declaration = "rti1516::TransportationType";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "                               
-HLA_FederateInterface* hfi_ptr = getTheHLA_FederateInterface(theInteraction);
-                               
-// Build a FederateMessage from the interaction data.
-Framework::IO::FederateMessage* msg = new Framework::IO::FederateMessage(hfi_ptr, theParameterValues);
-//this->addTheMessage(reinterpret_cast<Framework::IO::Message*>(msg));
-
-// Send the Interaction Parameter to the FederateInterface (HLA_FederateInterface in this case).
-//todo            hfi_ptr->getItsFederateIO_Handler()->getItsFederateIO_InputThread()->addFederateMessage(msg);";
-					}
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 5b990538-10d0-4ea6-9a65-e237379b5b99;
-					- _name = "createInteractionClassHandle";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID fe5151b6-b53f-4842-8026-f5dca88cb738;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 4b26b8d2-ea52-4ab9-a59a-f6547149e14f;
-								- _myState = 8192;
-								- _declaration = "HLA_FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "if (interface->getIsInteractionClassHandleSet() == false )
-{
-  // Get the interaction class handle from the RTI ambassador then we map it to a string.
-  interface->setInteractionClassHandle( getFrameworkFederateAmbassador()->getInteractionClassHandle( DtToWString(interface->getInterfaceName().c_str()) ) );
-
-  // Map the HLA Federate Interface to the Interaction Class Handle.
-  addTheHLA_FederateInterface( interface->getInteractionClassHandle(), interface ); 
-  
-  // Set the HLA Federate Interface's association to the HLA Post Office.  (This may not actually be used.)
-  interface->setTheHLA_PostOffice(this);
-
-  // Create a Parameter Handle.
-  interface->setParamHandle(getFrameworkFederateAmbassador()->getParameterHandle( interface->getInteractionClassHandle(), DtToWString(\"Data\")) );
- }";
-					}
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID 882a3cb3-d6c1-4fd2-89fb-c7e2a9b262b2;
-					- _name = "announcePublication";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 102e594b-9d58-4baf-97cf-06ffb0924bb4;
-							- _name = "interface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 7fceb9b7-d0e2-49f2-8737-5699271992f2;
-								- _myState = 8192;
-								- _declaration = "FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "
-// If the Interaction has not been already created, create it.
-this->createInteractionClassHandle((HLA_FederateInterface*)interface);
-
-// Sign up to Publish on the interaction.
-Framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cast<HLA_FederateInterface*>(interface))->getInteractionClassHandle());";
-					}
-				}
-				{ IConstructor 
-					- _id = GUID 4f51383f-589b-4ea2-8018-e0ffb88530d0;
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IArgument 
-							- _id = GUID 7709eb1e-485d-464b-8c78-bfcd42e365a8;
-							- _name = "frameworkFederateAmbassador";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 61405729-4805-4908-a933-607d86c4ec5a;
-								- _myState = 8192;
-								- _declaration = "FrameworkFederateAmbassador*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "";
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "setTheFrameworkFederateAmbassador(frameworkFederateAmbassador);";
-					}
-					- _initializer = "";
-				}
-				{ IPrimitiveOperation 
-					- _id = GUID e7f9f5a5-e13d-4470-9dee-42eba41f00ff;
-					- _name = "sendMessage";
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
-						{ IArgument 
-							- _id = GUID 77421200-9fe5-459f-8c9a-404675157eee;
-							- _name = "message";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "char*";
-								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 8d4fdd2c-2d80-4a83-8c82-41e5ba9222f2;
-							- _name = "hlaFederateInterface";
-							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 9b6a0e10-4b11-4319-879b-df5e4829354b;
-								- _myState = 8192;
-								- _declaration = "HLA_FederateInterface*";
-								- _kind = Language;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "
-HLA_FederateInterface* HLA_Interface = reinterpret_cast<HLA_FederateInterface*>(message->getFederateInterface());
-
-if (RealTimeMode() == true)
-{  
-  getTheFrameworkFederateAmbassador()->sendRO(hlaFederateInterfacee->getInteractionClassHandle(), hlaFederateInterface->getParamHandle(), ((char*)hlaFederateInterface->getInterfaceName().c_str()), message);
-}
-else // Discrete Mode.
-{
-  getTheFrameworkFederateAmbassador()->sendTSO(hlaFederateInterfacee->getInteractionClassHandle(), hlaFederateInterfacee->getParamHandle(), ((char*)hlaFederateInterfacee->getInterfaceName().c_str()), message);
-}
-";
-					}
-				}
-			}
-			- Inheritances = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IGeneralization 
-					- _id = GUID 394b5703-2f8a-4fad-9bb4-ec646222bebf;
-					- _dependsOn = { INObjectHandle 
-						- _m2Class = "IClass";
-						- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
-					}
-					- _inheritanceType = iPublic;
-					- _isVirtual = 0;
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- Associations = { IRPYRawContainer 
-				- size = 2;
-				- value = 
-				{ IAssociationEnd 
-					- _id = GUID 8c11aba0-994b-411b-90a1-c918385cf369;
-					- _myState = 8192;
-					- _name = "theFrameworkFederateAmbassador";
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _filename = "Framework.sbs";
-						- _subsystem = "Framework";
-						- _class = "";
-						- _name = "FrameworkFederateAmbassador";
-						- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _filename = "Framework.sbs";
-						- _subsystem = "Framework";
-						- _class = "FrameworkFederateAmbassador";
-						- _name = "itsHLA_PostOffice";
-						- _id = GUID 60f9c4ba-1f12-4412-927d-ece61029ace6;
-					}
-					- _linkName = "";
-					- _linkType = Assoc;
-					- _navigability = Navigable;
-				}
-				{ IAssociationEnd 
-					- _id = GUID 585c660f-3c13-4500-935f-bfdf0d2c81fd;
-					- _myState = 8192;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Relation";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Dependency";
-												- _Value = "Weak";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "Weak, Strong";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "theHLA_FederateInterface";
-					- _multiplicity = "0..*";
-					- _qualifier = "interactionClassHandle";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID dde46e90-5f22-43aa-9977-e8d01f7597e8;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "IAssociationEnd";
-						- _id = GUID a07b0821-c348-4e26-80ff-eb39f4729415;
 					}
 					- _linkName = "";
 					- _linkType = Assoc;
@@ -2289,78 +904,6 @@ else // Discrete Mode.
 					}
 				}
 				{ IDependency 
-					- _id = GUID db44874b-c72e-4682-8de0-5e7c1757adbe;
-					- _myState = 2048;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Dependency";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "UsageType";
-												- _Value = "Implementation";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "Specification,Implementation,Existence";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "Buffer";
-					- Dependencies = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IDependency 
-							- _id = GUID 62f2d4fe-3586-441c-9d28-107edbb54beb;
-							- _myState = 2048;
-							- _name = "C_IO_Functions";
-							- Stereotypes = { IRPYRawContainer 
-								- size = 1;
-								- value = 
-								{ IHandle 
-									- _m2Class = "IStereotype";
-									- _filename = "PredefinedTypes.sbs";
-									- _subsystem = "PredefinedTypes";
-									- _class = "";
-									- _name = "Usage";
-									- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
-								}
-							}
-							- _dependsOn = { INObjectHandle 
-								- _m2Class = "IClass";
-								- _id = GUID e2ec2408-a6c3-40e6-b1fd-77ab8aa0dfb4;
-							}
-						}
-					}
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "PredefinedTypes.sbs";
-							- _subsystem = "PredefinedTypes";
-							- _class = "";
-							- _name = "Usage";
-							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
-						}
-					}
-					- _dependsOn = { INObjectHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 404bed6e-6063-4893-babb-668204371250;
-					}
-				}
-				{ IDependency 
 					- _id = GUID 65e65b05-4a3e-415e-9540-ba1ffa3c67ec;
 					- _myState = 2048;
 					- _properties = { IPropertyContainer 
@@ -2407,10 +950,57 @@ else // Discrete Mode.
 						- _id = GUID e2ec2408-a6c3-40e6-b1fd-77ab8aa0dfb4;
 					}
 				}
+				{ IDependency 
+					- _id = GUID 5814cb37-62a4-4d95-9881-025c27e2e332;
+					- _myState = 2048;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Dependency";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "UsageType";
+												- _Value = "Implementation";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Specification,Implementation,Existence";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "FederateInterface";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "Usage";
+							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 1993cc7d-a0e3-4f31-a771-97a1d245afb2;
+					}
+				}
 			}
 			- _lastID = 21;
-			- weakCGTime = 5.15.2008::16:6:34;
-			- strongCGTime = 5.13.2008::16:10:8;
+			- weakCGTime = 5.19.2008::17:55:37;
+			- strongCGTime = 5.19.2008::17:49:19;
 			- Operations = { IRPYRawContainer 
 				- size = 3;
 				- value = 
@@ -2508,11 +1098,11 @@ else // Discrete Mode.
 					- _itsBody = { IBody 
 						- _bodyData = "  
 // Create a FederateInterface by calling the factory.
-Framework::IO::FederateInterface* FI_Ptr = getItsFederateInterfaceFactory()->createFederateInterface(
+framework::IO::FederateInterface* FI_Ptr = getItsFederateInterfaceFactory()->createFederateInterface(
   interfaceID, interfaceName, maxMessageSize, maxMessages, federateInterfaceType);
             
 // Map the Federate interface to its name.
-addItsFederateInterface(interfaceName, FI_Ptr);   
+addItsFederateInterface(interfaceID, FI_Ptr);   
            
 switch (federateInterfaceType)
 {
@@ -2525,6 +1115,7 @@ switch (federateInterfaceType)
   break;
   
   default:
+  break;
 };
  
 
@@ -2563,7 +1154,7 @@ return(FI_Ptr);
 					- _constant = 0;
 					- _itsBody = { IBody 
 						- _bodyData = "
-setItsFederateInterfaceFactory( new Framework::Control::FederateInterfaceFactory(frameworkType) );  
+setItsFederateInterfaceFactory( new framework::Control::FederateInterfaceFactory(frameworkType) );  
 ";
 					}
 					- _initializer = "frameworkType(frameworkType)";
@@ -2620,9 +1211,9 @@ setItsFederateInterfaceFactory(NULL);
 					- _name = "interfaceType";
 					- _defaultValue = "";
 					- myTypeOf = { IType 
-						- _id = GUID 1c575fdd-543a-4bda-9c3d-087380999027;
+						- _id = GUID 6e7f9a15-849d-4e33-addd-68709b4a53eb;
 						- _myState = 8192;
-						- _declaration = "Framework::InterfaceType";
+						- _declaration = "framework::InterfaceType";
 						- _kind = Language;
 					}
 					- _isOrdered = 0;
@@ -2630,19 +1221,6 @@ setItsFederateInterfaceFactory(NULL);
 					- _static = 0;
 					- _isReference = 0;
 					- _isConstant = 0;
-				}
-			}
-			- Inheritances = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IGeneralization 
-					- _id = GUID 9d237b0d-01db-4652-8c64-7104ef52c36d;
-					- _dependsOn = { INObjectHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 7a29fc07-139c-43be-98cd-d5747865cb5f;
-					}
-					- _inheritanceType = iPublic;
-					- _isVirtual = 0;
 				}
 			}
 			- _multiplicity = "";
@@ -2678,7 +1256,7 @@ setItsFederateInterfaceFactory(NULL);
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
 						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
+						- _subsystem = "framework::Control";
 						- _class = "";
 						- _name = "FederateInterfaceFactory";
 						- _id = GUID 33704959-484f-4e7d-ab1e-77c760fb3e21;
@@ -2698,7 +1276,7 @@ setItsFederateInterfaceFactory(NULL);
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
 						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
+						- _subsystem = "framework::Control";
 						- _class = "";
 						- _name = "Federate";
 						- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
@@ -2706,7 +1284,7 @@ setItsFederateInterfaceFactory(NULL);
 					- _inverse = { IHandle 
 						- _m2Class = "IAssociationEnd";
 						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
+						- _subsystem = "framework::Control";
 						- _class = "Federate";
 						- _name = "itsFederateIO_Handler";
 						- _id = GUID cc3c3047-c525-4d64-83da-4322d006ea1b;
@@ -2750,13 +1328,13 @@ setItsFederateInterfaceFactory(NULL);
 			- _theMainDiagram = { IHandle 
 				- _m2Class = "IDiagram";
 				- _filename = "IOClassDiagram.omd";
-				- _subsystem = "Framework::IO";
+				- _subsystem = "framework::IO";
 				- _class = "";
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
 			- _lastID = 3;
-			- weakCGTime = 5.15.2008::14:49:12;
+			- weakCGTime = 5.27.2008::16:30:53;
 			- strongCGTime = 5.13.2008::16:6:28;
 			- Operations = { IRPYRawContainer 
 				- size = 3;
@@ -2765,8 +1343,23 @@ setItsFederateInterfaceFactory(NULL);
 					- _id = GUID 34e05f2e-3afb-44e9-b817-80669da27ff7;
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 3;
+						- size = 5;
 						- value = 
+						{ IArgument 
+							- _id = GUID 84095639-1eff-4b98-9397-a25773446841;
+							- _name = "interfaceID";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
 						{ IArgument 
 							- _id = GUID 7e1853fe-b7b3-41ca-b56c-42c9a8b7ef17;
 							- _name = "name";
@@ -2781,14 +1374,31 @@ setItsFederateInterfaceFactory(NULL);
 							- _argumentDirection = In;
 						}
 						{ IArgument 
-							- _id = GUID c8775f52-7964-490d-99b0-4f8d38109427;
-							- _name = "interfaceType";
+							- _id = GUID 7f610219-fd86-4798-a315-c93a93ed06e7;
+							- _name = "maxMessageSize";
 							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 84d3dcb7-91c6-4cc5-912d-1d4e58d9c4c4;
-								- _myState = 8192;
-								- _declaration = "Framework::InterfaceType";
-								- _kind = Language;
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 8929d520-13c2-49bc-866f-f8c6eeb6824c;
+							- _name = "maxMessages";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -2816,7 +1426,7 @@ setItsFederateInterfaceFactory(NULL);
 					- _protection = iPublic;
 					- _static = 0;
 					- _constant = 0;
-					- _initializer = "FederateInterface(name, interfaceType)";
+					- _initializer = "FederateInterface(interfaceID, name, maxMessageSize, maxMessages, federateInterfaceType)";
 				}
 				{ IPrimitiveOperation 
 					- _id = GUID bb8f1b5d-ec23-4854-844f-3427aab6b29b;
@@ -2880,7 +1490,6 @@ isInteractionClassHandleSet = true;";
 					- _constant = 0;
 					- _itsBody = { IBody 
 						- _bodyData = "
-delete controlQueue;
 ";
 					}
 				}
@@ -3124,12 +1733,12 @@ delete controlQueue;
 			- _theMainDiagram = { IHandle 
 				- _m2Class = "IDiagram";
 				- _filename = "IOClassDiagram.omd";
-				- _subsystem = "Framework::IO";
+				- _subsystem = "framework::IO";
 				- _class = "";
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
-			- weakCGTime = 5.15.2008::14:49:35;
+			- weakCGTime = 5.20.2008::12:22:16;
 			- strongCGTime = 4.1.2008::16:44:21;
 			- Operations = { IRPYRawContainer 
 				- size = 1;
@@ -3138,8 +1747,23 @@ delete controlQueue;
 					- _id = GUID 359a065d-370e-4831-8428-f648023bbc12;
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
-						- size = 3;
+						- size = 5;
 						- value = 
+						{ IArgument 
+							- _id = GUID 9fe32d88-33c5-4ecf-a3c5-3f0054a1a9dd;
+							- _name = "interfaceID";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
 						{ IArgument 
 							- _id = GUID 6c646525-14a5-4cb6-9047-2990c8399cca;
 							- _name = "name";
@@ -3154,14 +1778,31 @@ delete controlQueue;
 							- _argumentDirection = In;
 						}
 						{ IArgument 
-							- _id = GUID a12a04d1-9bad-4647-8ad9-cf3cf99cbc70;
-							- _name = "interfaceType";
+							- _id = GUID 3e501766-3c25-4db9-b115-fccf8cb8cca0;
+							- _name = "maxMessageSize";
 							- _defaultValue = "";
-							- myTypeOf = { IType 
-								- _id = GUID 2afea8f5-0bfa-4ce0-8ce1-6a239e65eef6;
-								- _myState = 8192;
-								- _declaration = "Framework::InterfaceType";
-								- _kind = Language;
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID ac03e85b-2617-46bc-9378-d6546cabfa4b;
+							- _name = "maxMessages";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "unsigned long";
+								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
 							}
 							- _isOrdered = 0;
 							- _argumentDirection = In;
@@ -3189,7 +1830,7 @@ delete controlQueue;
 					- _protection = iPublic;
 					- _static = 0;
 					- _constant = 0;
-					- _initializer = "FederateInterface(name, interfaceType)";
+					- _initializer = "FederateInterface(interfaceID, name, maxMessageSize, maxMessages, federateInterfaceType)";
 				}
 			}
 			- Inheritances = { IRPYRawContainer 
@@ -3203,173 +1844,6 @@ delete controlQueue;
 					}
 					- _inheritanceType = iPublic;
 					- _isVirtual = 0;
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID 404bed6e-6063-4893-babb-668204371250;
-			- _myState = 8192;
-			- _name = "Buffer";
-			- Dependencies = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IDependency 
-					- _id = GUID 85f73a1d-dccf-4f35-bc55-cefc20d7437c;
-					- _myState = 2048;
-					- _properties = { IPropertyContainer 
-						- Subjects = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IPropertySubject 
-								- _Name = "CG";
-								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IPropertyMetaclass 
-										- _Name = "Dependency";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "UsageType";
-												- _Value = "Existence";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "Specification,Implementation,Existence";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					- _name = "Message";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "PredefinedTypes.sbs";
-							- _subsystem = "PredefinedTypes";
-							- _class = "";
-							- _name = "Usage";
-							- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
-						}
-					}
-					- _dependsOn = { INObjectHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 859c4e60-1747-44a5-9491-2868fc48dd51;
-					}
-				}
-			}
-			- _lastID = 3;
-			- weakCGTime = 5.14.2008::17:9:12;
-			- strongCGTime = 3.13.2008::15:20:48;
-			- Operations = { IRPYRawContainer 
-				- size = 2;
-				- value = 
-				{ IDestructor 
-					- _id = GUID 2d99faff-1ed1-4a16-8330-1a133a201618;
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 0;
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "delete byteArray;
-byteArray = NULL; 
-sizeOfByteArray = 0;";
-					}
-				}
-				{ IConstructor 
-					- _id = GUID 04bd4c3d-8444-4a85-9ba4-bd0c75a7d8ea;
-					- _virtual = 0;
-					- Args = { IRPYRawContainer 
-						- size = 2;
-						- value = 
-						{ IArgument 
-							- _id = GUID 6feb501b-b034-48ea-8e58-aa16776d4000;
-							- _name = "byteArray";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "char*";
-								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-						{ IArgument 
-							- _id = GUID 39b0abf4-52da-4427-b7f8-3e791cd4abcc;
-							- _name = "sizeOfByteArray";
-							- _defaultValue = "";
-							- _typeOf = { IHandle 
-								- _m2Class = "IType";
-								- _filename = "PredefinedTypesC++.sbs";
-								- _subsystem = "PredefinedTypesCpp";
-								- _class = "";
-								- _name = "unsigned long";
-								- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
-							}
-							- _isOrdered = 0;
-							- _argumentDirection = In;
-						}
-					}
-					- _returnType = { IHandle 
-						- _m2Class = "";
-					}
-					- _abstract = 0;
-					- _final = 0;
-					- _concurrency = Sequential;
-					- _protection = iPublic;
-					- _static = 0;
-					- _constant = 0;
-					- _itsBody = { IBody 
-						- _bodyData = "";
-					}
-					- _initializer = "byteArray(byteArray), sizeOfByteArray(sizeOfByteArray)";
-				}
-			}
-			- Attrs = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IAttribute 
-					- _id = GUID 7aa3c4ed-a519-4f09-b148-88ca18c2f6ef;
-					- _name = "byteArray";
-					- _defaultValue = "";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "char*";
-						- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
-					}
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
 				}
 			}
 			- _multiplicity = "";
@@ -3397,7 +1871,7 @@ sizeOfByteArray = 0;";
 									- value = 
 									{ IProperty 
 										- _Name = "ImpIncludes";
-										- _Value = "<string>";
+										- _Value = "<string>, <fstream>";
 										- _Type = String;
 									}
 									{ IProperty 
@@ -3460,16 +1934,16 @@ sizeOfByteArray = 0;";
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IClass";
 						- _filename = "Control.sbs";
-						- _subsystem = "Framework::Control";
+						- _subsystem = "framework::Control";
 						- _class = "";
 						- _name = "Federate";
 						- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
 					}
 				}
 			}
-			- _lastID = 15;
-			- weakCGTime = 5.15.2008::17:27:38;
-			- strongCGTime = 5.15.2008::17:27:16;
+			- _lastID = 19;
+			- weakCGTime = 5.20.2008::12:6:24;
+			- strongCGTime = 5.20.2008::11:55:54;
 			- Operations = { IRPYRawContainer 
 				- size = 6;
 				- value = 
@@ -3553,21 +2027,19 @@ sizeOfByteArray = 0;";
 					- _constant = 0;
 					- _itsBody = { IBody 
 						- _bodyData = "
-unsigned int  sizeInBytes;  
+unsigned int                         sizeInBytes; 
+framework::utils::InterprocessQueue* ipq; 
 
- std::string queueName.sprintf(\"%s-%s-%u-%u-%u\", &(device_list_ptr->name_string[0]), &(device_ptr->enet_address[0], 
-   device_ptr->enet_port, device_ptr->device_id, device_ptr->port);   
-
-if( (InterprocessQueue* ipq = getItsInterprocessQueue(queueName.c_str()) ) != NULL)
+if( (ipq = (framework::utils::InterprocessQueue*)publishQueues[findDeviceIndex(device)]) != NULL)
 { 
-  if ipq->timedGetMessage(((unsigned char*)buffer_ptr->io_pkt.address), &sizeInBytes, 10, 0) == true )
+  if (ipq->timedGetMessage(((unsigned char*)buffer_ptr->io_pkt.address), &sizeInBytes, 10, 0) == true )
   {   
     // De-serialize the message data.  
     // message = Framework::IO::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
     return(OK);
   } 
 }
-return(CHANNEL_READINESS_ERR);
+return(ERROR);
 ";
 					}
 				}
@@ -3607,18 +2079,15 @@ return(CHANNEL_READINESS_ERR);
 					- _static = 1;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "
- IO_InterfaceInformationType  info; 
- unsigned int                 sizeInBytes;  
- 
+						- _bodyData = " 
  // Todo Config file must contain the device enet port and its publish and subscribe interface names.
  //      These names are used to set up the interprocess queues for sending and receiving messages. 
  
- int index = findDevice(device_ptr->enet_port);
+ int index = findDeviceIndex(1);  //device_list_ptr->enet_port
     
 
-addItsInterprocessQueue( (subscribeQueue = new Framework::utils::InterprocessQueue(subscribeQueueNames[index])) ); 
-addItsInterprocessQueue( (publishQueue = new Framework::utils::InterprocessQueue(publishQueueNames[index])) ); 
+subscribeQueues[index] = (void*) new framework::utils::InterprocessQueue(subscribeQueueNames[index], maxMessageSize[index], maxMessageCount[index]); 
+publishQueues[index]    = (void*) new framework::utils::InterprocessQueue(publishQueueNames[index], maxMessageSize[index], maxMessageCount[index]); 
               
 federateInterfaceCount++;
  ";
@@ -3648,7 +2117,8 @@ if ( input_stream.is_open() )
   int deviceIndex = 0;
   while (!input_stream.eof())
   { 
-    inStream >> enetPorts[deviceIndex] >> deviceIDs >> subscribeQueueNames[deviceIndex] >> publishQueueNames[deviceIndex];  
+    input_stream >> federateInterfaceEnetPorts[deviceIndex] >> federateInterfaceDeviceIDs[deviceIndex] >> subscribeQueueNames[deviceIndex] >> publishQueueNames[deviceIndex] 
+             >> maxMessageSize[deviceIndex] >> maxMessageCount[deviceIndex];  
     deviceIndex++;
   };
 }
@@ -3712,35 +2182,32 @@ if ( input_stream.is_open() )
 						- _filename = "PredefinedTypesC++.sbs";
 						- _subsystem = "PredefinedTypesCpp";
 						- _class = "";
-						- _name = "void";
-						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+						- _name = "int";
+						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
 					}
 					- _abstract = 0;
 					- _final = 0;
 					- _concurrency = Sequential;
 					- _protection = iPublic;
-					- _static = 0;
+					- _static = 1;
 					- _constant = 0;
 					- _itsBody = { IBody 
 						- _bodyData = "
-unsigned int  sizeInBytes;
+framework::utils::InterprocessQueue* ipq;
 
- std::string queueName.sprintf(\"%s-%s-%u-%u-%u\", &(device_list_ptr->name_string[0]), &(device_ptr->enet_address[0], 
-   device_ptr->enet_port, device_ptr->device_id, device_ptr->port);   
-
-if( (InterprocessQueue* ipq = getItsInterprocessQueue(queueName.c_str()) ) != NULL)
+if( (ipq = (framework::utils::InterprocessQueue*)publishQueues[findDeviceIndex(device)]) != NULL)
 { 
   // Serialize the message data.  
   // message = Framework::IO::serializer( message);
 
-  if (ipq->timeAddMessage(((unsigned char*)buffer_ptr->io_pkt.address), buffer_ptr->io_pkt.req_size, 10, 0) == true )
+  if (ipq->timedAddMessage(((unsigned char*)buffer_ptr->io_pkt.address), buffer_ptr->io_pkt.req_size, 10, 0) == true )
   {   
     // De-serialize the message data.  
     // message = Framework::IO::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
     return(OK);
   } 
 }
-return(CHANNEL_READINESS_ERR);
+return(ERROR);
 
 ";
 					}
@@ -3801,12 +2268,15 @@ return(CHANNEL_READINESS_ERR);
 					- _final = 0;
 					- _concurrency = Sequential;
 					- _protection = iPublic;
-					- _static = 0;
+					- _static = 1;
 					- _constant = 0;
 					- _itsBody = { IBody 
-						- _bodyData = "for (i=0; i < MAX_FEDERATE_INTERFACE_DEVICES; i++)
+						- _bodyData = "
+int i;
+
+for (i=0; i < MAX_FEDERATE_INTERFACE_DEVICES; i++)
 {
-  if (enetPorts[i] == inputEnetPort)
+  if (federateInterfaceEnetPorts[i] == inputEnetPort)
     return(i);
 }
 return(-1);";
@@ -3814,7 +2284,7 @@ return(-1);";
 				}
 			}
 			- Attrs = { IRPYRawContainer 
-				- size = 9;
+				- size = 11;
 				- value = 
 				{ IAttribute 
 					- _id = GUID d2b1c79a-b56e-4bf1-a76f-c4d6da214b48;
@@ -3858,8 +2328,26 @@ return(-1);";
 							{ IPropertySubject 
 								- _Name = "CPP_CG";
 								- Metaclasses = { IRPYRawContainer 
-									- size = 1;
+									- size = 2;
 									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 2;
+											- value = 
+											{ IProperty 
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+											{ IProperty 
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
+											}
+										}
+									}
 									{ IPropertyMetaclass 
 										- _Name = "Type";
 										- Properties = { IRPYRawContainer 
@@ -3883,47 +2371,73 @@ return(-1);";
 						}
 					}
 					- _name = "federateInterfaceNames";
-					- _defaultValue = "\"\"";
-					- myTypeOf = { IType 
-						- _id = GUID 0009f31d-0c15-4d35-8b19-05cd6fb5f37c;
-						- _myState = 8192;
-						- _properties = { IPropertyContainer 
-							- Subjects = { IRPYRawContainer 
-								- size = 1;
-								- value = 
-								{ IPropertySubject 
-									- _Name = "CPP_CG";
-									- Metaclasses = { IRPYRawContainer 
-										- size = 1;
-										- value = 
-										{ IPropertyMetaclass 
-											- _Name = "Type";
-											- Properties = { IRPYRawContainer 
-												- size = 1;
-												- value = 
-												{ IProperty 
-													- _Name = "Visibility";
-													- _Value = "Public";
-													- _Type = Enum;
-													- _ExtraTypeInfo = "Private, Protected, Public";
-												}
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "char*";
+						- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+					}
+					- _multiplicity = "100";
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 1;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 31dc833a-b6bc-49b9-afc7-a3a82d579c26;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 2;
+											- value = 
+											{ IProperty 
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+											{ IProperty 
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
 											}
 										}
 									}
 								}
 							}
 						}
-						- _declaration = "std::string";
-						- _kind = Language;
+					}
+					- _name = "federateInterfaceCount";
+					- _defaultValue = "0";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "int";
+						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
 					}
 					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 0;
+					- _protection = iProtected;
+					- _static = 1;
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
 				{ IAttribute 
-					- _id = GUID fd24f97f-cd54-4895-8e2d-91d5a8756598;
+					- _id = GUID 4b4ed055-d5c3-408a-82da-3cc491fd5f1f;
 					- _properties = { IPropertyContainer 
 						- Subjects = { IRPYRawContainer 
 							- size = 2;
@@ -3931,7 +2445,7 @@ return(-1);";
 							{ IPropertySubject 
 								- _Name = "CG";
 								- Metaclasses = { IRPYRawContainer 
-									- size = 2;
+									- size = 1;
 									- value = 
 									{ IPropertyMetaclass 
 										- _Name = "Attribute";
@@ -3946,48 +2460,28 @@ return(-1);";
 											}
 										}
 									}
-									{ IPropertyMetaclass 
-										- _Name = "Type";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
-											{ IProperty 
-												- _Name = "Implementation";
-												- _Value = "StaticArray";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "Default,Scalar,StaticArray,Fixed,BoundedOrdered,BoundedUnordered,UnboundedOrdered,UnboundedUnordered,Qualified,EmbeddedScalar,EmbeddedFixed,User";
-											}
-										}
-									}
 								}
 							}
 							{ IPropertySubject 
 								- _Name = "CPP_CG";
 								- Metaclasses = { IRPYRawContainer 
-									- size = 2;
+									- size = 1;
 									- value = 
 									{ IPropertyMetaclass 
 										- _Name = "Attribute";
 										- Properties = { IRPYRawContainer 
-											- size = 1;
+											- size = 2;
 											- value = 
 											{ IProperty 
-												- _Name = "Kind";
-												- _Value = "virtual";
-												- _Type = Enum;
-												- _ExtraTypeInfo = "common,virtual,abstract";
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
 											}
-										}
-									}
-									{ IPropertyMetaclass 
-										- _Name = "Type";
-										- Properties = { IRPYRawContainer 
-											- size = 1;
-											- value = 
 											{ IProperty 
-												- _Name = "DefaultValue";
-												- _Value = "NULL";
-												- _Type = String;
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
 											}
 										}
 									}
@@ -3995,42 +2489,7 @@ return(-1);";
 							}
 						}
 					}
-					- _name = "federateInterfacePtrs";
-					- _defaultValue = "NULL";
-					- myTypeOf = { IType 
-						- _id = GUID 9293bfcd-a11c-4a3a-afd0-d02f7a837f63;
-						- _myState = 8192;
-						- _declaration = "FederateInterface*";
-						- _kind = Language;
-					}
-					- _multiplicity = "100";
-					- _isOrdered = 0;
-					- _protection = iPublic;
-					- _static = 1;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 31dc833a-b6bc-49b9-afc7-a3a82d579c26;
-					- _name = "federateInterfaceCount";
-					- _defaultValue = "0";
-					- _typeOf = { IHandle 
-						- _m2Class = "IType";
-						- _filename = "PredefinedTypesC++.sbs";
-						- _subsystem = "PredefinedTypesCpp";
-						- _class = "";
-						- _name = "int";
-						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
-					}
-					- _isOrdered = 0;
-					- _protection = iProtected;
-					- _static = 0;
-					- _isReference = 0;
-					- _isConstant = 0;
-				}
-				{ IAttribute 
-					- _id = GUID 4b4ed055-d5c3-408a-82da-3cc491fd5f1f;
-					- _name = "federateInterfaceEnetPort";
+					- _name = "federateInterfaceEnetPorts";
 					- _defaultValue = "";
 					- _typeOf = { IHandle 
 						- _m2Class = "IType";
@@ -4040,15 +2499,67 @@ return(-1);";
 						- _name = "int";
 						- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
 					}
+					- _multiplicity = "100";
 					- _isOrdered = 0;
 					- _protection = iPublic;
-					- _static = 0;
+					- _static = 1;
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
 				{ IAttribute 
 					- _id = GUID be4e60c1-f169-4548-8d51-332a98ca5ad4;
-					- _name = "federateInterfacePtr";
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Implementation";
+												- _Value = "StaticArray";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Default,Scalar,StaticArray,Fixed,BoundedOrdered,BoundedUnordered,UnboundedOrdered,UnboundedUnordered,EmbeddedScalar,EmbeddedFixed,User";
+											}
+										}
+									}
+								}
+							}
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 2;
+											- value = 
+											{ IProperty 
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+											{ IProperty 
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "federateInterfacePtrs";
 					- _defaultValue = "";
 					- _typeOf = { IHandle 
 						- _m2Class = "IType";
@@ -4067,23 +2578,56 @@ return(-1);";
 				}
 				{ IAttribute 
 					- _id = GUID a21c6b51-fd82-4110-aab1-064998a4c0b2;
-					- _name = "publishQueue";
+					- _name = "publishQueues";
 					- _defaultValue = "";
-					- myTypeOf = { IType 
-						- _id = GUID 9237e713-d186-4d40-9fa0-1b244891966e;
-						- _myState = 8192;
-						- _declaration = "Framework::utils::InterprocessQueue*";
-						- _kind = Language;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void *";
+						- _id = GUID 68975846-a809-4f2e-9f11-00ad6073974c;
 					}
 					- _multiplicity = "100";
 					- _isOrdered = 0;
 					- _protection = iPublic;
-					- _static = 0;
+					- _static = 1;
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
 				{ IAttribute 
 					- _id = GUID 2cf9d90e-8add-4f87-abe5-97d8e9f02328;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 2;
+											- value = 
+											{ IProperty 
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+											{ IProperty 
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 					- _name = "subscribeQueueNames";
 					- _defaultValue = "";
 					- _typeOf = { IHandle 
@@ -4097,12 +2641,43 @@ return(-1);";
 					- _multiplicity = "100";
 					- _isOrdered = 0;
 					- _protection = iPublic;
-					- _static = 0;
+					- _static = 1;
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
 				{ IAttribute 
 					- _id = GUID 2ea93b30-5d75-4934-9dcf-242f4d1af30c;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 2;
+											- value = 
+											{ IProperty 
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+											{ IProperty 
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 					- _name = "publishQueueNames";
 					- _defaultValue = "";
 					- _typeOf = { IHandle 
@@ -4116,13 +2691,44 @@ return(-1);";
 					- _multiplicity = "100";
 					- _isOrdered = 0;
 					- _protection = iPublic;
-					- _static = 0;
+					- _static = 1;
 					- _isReference = 0;
 					- _isConstant = 0;
 				}
 				{ IAttribute 
 					- _id = GUID 0f4d24d8-7bd2-4ea9-9dec-733648087091;
-					- _name = "deviceIDs";
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 2;
+											- value = 
+											{ IProperty 
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+											{ IProperty 
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "federateInterfaceDeviceIDs";
 					- _defaultValue = "";
 					- _typeOf = { IHandle 
 						- _m2Class = "IType";
@@ -4135,9 +2741,551 @@ return(-1);";
 					- _multiplicity = "100";
 					- _isOrdered = 0;
 					- _protection = iPublic;
-					- _static = 0;
+					- _static = 1;
 					- _isReference = 0;
 					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 95724614-0cf1-4aae-81ef-6da12ff668b4;
+					- _name = "subscribeQueues";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void *";
+						- _id = GUID 68975846-a809-4f2e-9f11-00ad6073974c;
+					}
+					- _multiplicity = "100";
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 1;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID b4ec2b4d-a25f-421e-9fd7-6f066ac9a383;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Implementation";
+												- _Value = "StaticArray";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Default,Scalar,StaticArray,Fixed,BoundedOrdered,BoundedUnordered,UnboundedOrdered,UnboundedUnordered,EmbeddedScalar,EmbeddedFixed,User";
+											}
+										}
+									}
+								}
+							}
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 2;
+											- value = 
+											{ IProperty 
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+											{ IProperty 
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "maxMessageSize";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned int";
+						- _id = GUID 7688bde5-e3a0-4b4d-bcd7-cbfa35c3b811;
+					}
+					- _multiplicity = "100";
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 1;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 4c825706-3381-4a3e-9aed-8e16a525e515;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Implementation";
+												- _Value = "StaticArray";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Default,Scalar,StaticArray,Fixed,BoundedOrdered,BoundedUnordered,UnboundedOrdered,UnboundedUnordered,EmbeddedScalar,EmbeddedFixed,User";
+											}
+										}
+									}
+								}
+							}
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Attribute";
+										- Properties = { IRPYRawContainer 
+											- size = 2;
+											- value = 
+											{ IProperty 
+												- _Name = "AccessorGenerate";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+											{ IProperty 
+												- _Name = "MutatorGenerate";
+												- _Value = "Never";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Smart, Always, Never";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "maxMessageCount";
+					- _defaultValue = "";
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "unsigned long";
+						- _id = GUID c8a5c793-f60c-46d1-80a0-4ea6d9338a78;
+					}
+					- _multiplicity = "100";
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 1;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
+			- _myState = 8192;
+			- _name = "PostOffice";
+			- _lastID = 8;
+			- weakCGTime = 5.21.2008::12:59:10;
+			- strongCGTime = 5.21.2008::12:59:10;
+			- Operations = { IRPYRawContainer 
+				- size = 6;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID 66ead425-57ab-480c-a06d-d26477616e13;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "announcePublication";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 16a39db6-6ef3-426e-8f5a-181c581db5ba;
+							- _name = "interface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 4eec1264-bd67-4e7d-a190-412f7b66424d;
+								- _myState = 8192;
+								- _declaration = "FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 9870620f-3864-4b53-afad-b9327f82bb62;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "announceSubscription";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 33c5220c-8f31-4240-9dbc-e9b98ddc36f9;
+							- _name = "interface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 655f79c7-14a9-4e33-b238-11a6f3fdaa1f;
+								- _myState = 8192;
+								- _declaration = "FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID bb47891a-be38-42fb-9a58-490ea32c20c9;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "sendMessage";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 3;
+						- value = 
+						{ IArgument 
+							- _id = GUID 4e4b70bd-c7b6-45e0-863f-a37b66f5bef6;
+							- _name = "message";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID fd4b839a-86a1-45ec-9b12-b172b2b29e67;
+							- _name = "messageSizeInBytes";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID d4b96d9b-8cea-46af-9c4e-df39d78f595e;
+							- _name = "federateInterface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 7c1107f9-bcfa-4a65-ac0d-81dd96669036;
+								- _myState = 8192;
+								- _declaration = "FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 5c72c973-c548-4af3-952a-cd5fc551a85c;
+					- _name = "findFederateInterface";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- myReturnType = { IType 
+						- _id = GUID 062c9575-1f01-4995-97f0-a44add9926a0;
+						- _myState = 8192;
+						- _declaration = "FederateInterface*";
+						- _kind = Language;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "return(NULL);  // This is just temporary until the code is fleshed out.";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 56e36046-017d-4cfd-860f-b04fcb2c0689;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "sendMessage";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 1bba3706-b6bd-4a41-bc70-3f02dcf8fbea;
+							- _name = "message";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 2193a604-1f77-4988-8414-051eb6671837;
+								- _myState = 8192;
+								- _declaration = "FrameworkMessage*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID a8767252-e408-44fe-a5dc-8f139e79edc4;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "unsubscribe";
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 3571b2fa-f67e-4383-b10d-452d18b002bc;
+							- _name = "interface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID d867a58d-285e-49f9-a442-9b71a8d1498b;
+								- _myState = 8192;
+								- _declaration = "FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
 				}
 			}
 			- _multiplicity = "";
@@ -4148,26 +3296,582 @@ return(-1);";
 				- size = 1;
 				- value = 
 				{ IAssociationEnd 
-					- _id = GUID c97333d3-7ace-4b42-aeaa-5bd7ad748b19;
-					- _myState = 10240;
-					- _name = "itsInterprocessQueue";
-					- _multiplicity = "0..*";
-					- _qualifier = "QueueName";
+					- _id = GUID f61970c5-f17c-4724-b031-003e93bde471;
+					- _myState = 8192;
+					- _name = "theFederate";
+					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
-						- _filename = "utils.sbs";
-						- _subsystem = "Framework::utils";
+						- _filename = "Control.sbs";
+						- _subsystem = "framework::Control";
 						- _class = "";
-						- _name = "InterprocessQueue";
-						- _id = GUID 9e91004b-dbf1-41b9-9d0d-6cd63915269d;
+						- _name = "Federate";
+						- _id = GUID 7b241d23-c35f-4922-86b4-d26212198837;
 					}
 					- _inverse = { IHandle 
 						- _m2Class = "IAssociationEnd";
-						- _filename = "utils.sbs";
-						- _subsystem = "Framework::utils";
-						- _class = "InterprocessQueue";
-						- _name = "itsC_IO_Functions";
-						- _id = GUID 731c346b-7487-4025-a5e8-77382e0fd627;
+						- _filename = "Control.sbs";
+						- _subsystem = "framework::Control";
+						- _class = "Federate";
+						- _name = "thePostOffice";
+						- _id = GUID 7746d984-3bb6-4873-9926-8d1a798b35ce;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 2f84e3c1-b31c-4c12-b70f-d9fb7b563ec0;
+			- _myState = 8192;
+			- _name = "HLA_PostOffice";
+			- _lastID = 10;
+			- weakCGTime = 5.27.2008::16:37:14;
+			- strongCGTime = 5.27.2008::16:37:14;
+			- Operations = { IRPYRawContainer 
+				- size = 8;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID 954e8386-11a6-4732-92b3-322ea46ed165;
+					- _name = "announceSubscription";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 88480bf4-9c50-427c-9d7d-74619f545aa6;
+							- _name = "interface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID dd76a058-f638-4036-8d52-441419c0475f;
+								- _myState = 8192;
+								- _declaration = "FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "
+// If the Interaction has not been already created, create it.
+this->createInteractionClassHandle(static_cast<HLA_FederateInterface*>(interface));
+
+// Sign up to Subscribe to the interaction.
+getFrameworkFederateAmbassador()->subscribeInteractionClass(static_cast<HLA_FederateInterface*>(interface)->getInteractionClassHandle());";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 3736c69a-886c-4189-926d-d558fe023bad;
+					- _name = "sendMessage";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 6e67fc8c-688b-4660-ab99-b641c9cfd88a;
+							- _name = "message";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 8b371fe0-15e4-4919-8a8d-88e81ea5a55c;
+								- _myState = 8192;
+								- _declaration = "FrameworkMessage*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 745df3c4-902f-431b-8d19-c907aa2732e1;
+					- _name = "unsubscribe";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID b64b2258-eba8-4496-ba15-14306a839f5b;
+							- _name = "interface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 270c6691-816f-4fb3-ad66-edd8e42b4562;
+								- _myState = 8192;
+								- _declaration = "FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 48a36eb4-9c54-4bd9-9ccf-bb61610c48b2;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ThrowExceptions";
+												- _Value = " rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::FederateInternalError ";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "receiveInteraction";
+					- _description = { IDescription 
+						- _text = "6.9";
+					}
+					- _virtual = 1;
+					- Args = { IRPYRawContainer 
+						- size = 5;
+						- value = 
+						{ IArgument 
+							- _id = GUID a47ae903-9875-402e-a09c-1946b14d8898;
+							- _name = "theInteraction";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID f956077d-c521-4797-bd32-ab6dfd31ebac;
+								- _myState = 8192;
+								- _declaration = "rti1516::InteractionClassHandle";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 38fd62ca-5a1a-449a-b8c6-886d5f62460e;
+							- _name = "theParameterValues";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID b28ea3e7-ff8d-4322-b8ae-01c23ffe1824;
+								- _myState = 8192;
+								- _declaration = "const rti1516::ParameterHandleValueMap &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 254de35e-280c-4597-9835-b934e64c3656;
+							- _name = "theUserSuppliedTag";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID ec2dbdcc-d984-4d8c-9d70-89a79027e77c;
+								- _myState = 8192;
+								- _declaration = "const rti1516::VariableLengthData &";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 4965711a-eaaa-41fd-8049-c60be6fd9c6a;
+							- _name = "sentOrder";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID b683e784-6cad-4f05-a9f1-58a8fc6fc452;
+								- _myState = 8192;
+								- _declaration = "rti1516::OrderType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID f7b36a6a-e30a-47d4-9c90-d27319fd4f88;
+							- _name = "theType";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 49852fb9-04f0-4f81-8868-1cccc03fd046;
+								- _myState = 8192;
+								- _declaration = "rti1516::TransportationType";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "                               
+HLA_FederateInterface* hfiPtr = getTheHLA_FederateInterface(theInteraction);
+  
+rti1516::ParameterHandleValueMap::const_iterator i = theParameterValues.begin();
+const rti1516::VariableLengthData& data = (*i).second;
+char* messagePtr = ((char*)data.data());
+
+hfiPtr->processFederateMessage(messagePtr, data.size());
+";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 5b990538-10d0-4ea6-9a65-e237379b5b99;
+					- _name = "createInteractionClassHandle";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID fe5151b6-b53f-4842-8026-f5dca88cb738;
+							- _name = "interface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 4b26b8d2-ea52-4ab9-a59a-f6547149e14f;
+								- _myState = 8192;
+								- _declaration = "HLA_FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "if (interface->getIsInteractionClassHandleSet() == false )
+{
+  // Get the interaction class handle from the RTI ambassador then we map it to a string.
+  interface->setInteractionClassHandle( getFrameworkFederateAmbassador()->getInteractionClassHandle( DtToWString(interface->getInterfaceName().c_str()) ) );
+
+  // Map the HLA Federate Interface to the Interaction Class Handle.
+  addTheHLA_FederateInterface( interface->getInteractionClassHandle(), interface ); 
+  
+  // Set the HLA Federate Interface's association to the HLA Post Office.  (This may not actually be used.)
+  interface->setTheHLA_PostOffice(this);
+
+  // Create a Parameter Handle.
+  interface->setParamHandle(getFrameworkFederateAmbassador()->getParameterHandle( interface->getInteractionClassHandle(), DtToWString(\"Data\")) );
+ }";
+					}
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 882a3cb3-d6c1-4fd2-89fb-c7e2a9b262b2;
+					- _name = "announcePublication";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 102e594b-9d58-4baf-97cf-06ffb0924bb4;
+							- _name = "interface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 7fceb9b7-d0e2-49f2-8737-5699271992f2;
+								- _myState = 8192;
+								- _declaration = "FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "
+// If the Interaction has not been already created, create it.
+this->createInteractionClassHandle((HLA_FederateInterface*)interface);
+
+// Sign up to Publish on the interaction.
+framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cast<HLA_FederateInterface*>(interface))->getInteractionClassHandle());
+";
+					}
+				}
+				{ IConstructor 
+					- _id = GUID 4f51383f-589b-4ea2-8018-e0ffb88530d0;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 7709eb1e-485d-464b-8c78-bfcd42e365a8;
+							- _name = "frameworkFederateAmbassador";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 61405729-4805-4908-a933-607d86c4ec5a;
+								- _myState = 8192;
+								- _declaration = "FrameworkFederateAmbassador*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "";
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "setTheFrameworkFederateAmbassador(frameworkFederateAmbassador);";
+					}
+					- _initializer = "";
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID e7f9f5a5-e13d-4470-9dee-42eba41f00ff;
+					- _name = "sendMessage";
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 3;
+						- value = 
+						{ IArgument 
+							- _id = GUID 77421200-9fe5-459f-8c9a-404675157eee;
+							- _name = "message";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "char*";
+								- _id = GUID a1f818e6-c022-42d5-bbc0-075bf073b055;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID 9b115cd1-95f5-4516-87de-375f4ab10788;
+							- _name = "messageSizeInBytes";
+							- _defaultValue = "";
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypesC++.sbs";
+								- _subsystem = "PredefinedTypesCpp";
+								- _class = "";
+								- _name = "int";
+								- _id = GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+						{ IArgument 
+							- _id = GUID dcba7602-02b0-423a-a1b0-8517503bc950;
+							- _name = "federateInterface";
+							- _defaultValue = "";
+							- myTypeOf = { IType 
+								- _id = GUID 7fb07ab3-ae53-483c-b619-71f39bf33ad4;
+								- _myState = 8192;
+								- _declaration = "FederateInterface*";
+								- _kind = Language;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+					- _itsBody = { IBody 
+						- _bodyData = "
+HLA_FederateInterface* HLA_Interface = reinterpret_cast<HLA_FederateInterface*>(federateInterface);
+
+if (RealTimeMode() == true)
+{  
+  getTheFrameworkFederateAmbassador()->sendRO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message,  messageSizeInBytes);
+}
+else // Discrete Mode.
+{
+  getTheFrameworkFederateAmbassador()->sendTSO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message,  messageSizeInBytes);
+}
+";
+					}
+				}
+			}
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 394b5703-2f8a-4fad-9bb4-ec646222bebf;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d6572e0f-bec3-40cb-bd75-7289109d6efb;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 8c11aba0-994b-411b-90a1-c918385cf369;
+					- _myState = 8192;
+					- _name = "theFrameworkFederateAmbassador";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "framework.sbs";
+						- _subsystem = "framework";
+						- _class = "";
+						- _name = "FrameworkFederateAmbassador";
+						- _id = GUID 58b4e217-e8bc-4230-8ac9-fbd8b71a9978;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _filename = "framework.sbs";
+						- _subsystem = "framework";
+						- _class = "FrameworkFederateAmbassador";
+						- _name = "itsHLA_PostOffice";
+						- _id = GUID 60f9c4ba-1f12-4412-927d-ece61029ace6;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 585c660f-3c13-4500-935f-bfdf0d2c81fd;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Relation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Dependency";
+												- _Value = "Weak";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "Weak, Strong";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "theHLA_FederateInterface";
+					- _multiplicity = "0..*";
+					- _qualifier = "interactionClassHandle";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID dde46e90-5f22-43aa-9977-e8d01f7597e8;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID a07b0821-c348-4e26-80ff-eb39f4729415;
 					}
 					- _linkName = "";
 					- _linkType = Assoc;
@@ -4177,6 +3881,6 @@ return(-1);";
 			- _classModifier = Unspecified;
 		}
 	}
-	- _configurationRelatedTime = 5.12.2008::17:28:6;
+	- _configurationRelatedTime = 5.21.2008::12:56:6;
 }
 

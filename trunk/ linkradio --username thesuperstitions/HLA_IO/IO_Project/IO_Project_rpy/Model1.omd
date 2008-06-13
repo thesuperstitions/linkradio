@@ -33,8 +33,8 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 			- m_type = 78;
 			- m_pModelObject = { IHandle 
 				- _m2Class = "IClass";
-				- _filename = "Framework.sbs";
-				- _subsystem = "Framework";
+				- _filename = "framework.sbs";
+				- _subsystem = "framework";
 				- _class = "";
 				- _name = "TopLevel";
 				- _id = GUID f087b006-c4f9-4606-927d-0806f058af46;
@@ -87,10 +87,10 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 	}
 	- _defaultSubsystem = { IHandle 
 		- _m2Class = "ISubsystem";
-		- _filename = "Framework.sbs";
+		- _filename = "framework.sbs";
 		- _subsystem = "";
 		- _class = "";
-		- _name = "Framework";
+		- _name = "framework";
 		- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 	}
 }

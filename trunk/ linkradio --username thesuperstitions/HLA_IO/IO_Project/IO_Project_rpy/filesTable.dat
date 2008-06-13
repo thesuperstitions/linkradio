@@ -3,19 +3,19 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 - filesTable = { IRPYRawContainer 
 	- size = 15;
 	- value = "IO_Project.rpy" ""
-	"IO_Project_rpy\\Control.sbs" "Framework::Control"
+	"IO_Project_rpy\\Control.sbs" "framework::Control"
 	"IO_Project_rpy\\DefaultComponent.cmp" "DefaultComponent"
-	"IO_Project_rpy\\Framework.sbs" "Framework"
 	"IO_Project_rpy\\FrameworkTest.sbs" "FrameworkTest"
-	"IO_Project_rpy\\IO.sbs" "Framework::IO"
-	"IO_Project_rpy\\IOClassDiagram.omd" "Framework::IO::IOClassDiagram"
+	"IO_Project_rpy\\IO.sbs" "framework::IO"
+	"IO_Project_rpy\\IOClassDiagram.omd" "framework::IO::IOClassDiagram"
 	"IO_Project_rpy\\Model1.omd" "Model1"
 	"IO_Project_rpy\\TestDiagram.omd" "FrameworkTest::TestDiagram"
-	"IO_Project_rpy\\Time.sbs" "Framework::Time"
-	"IO_Project_rpy\\Use_Case_42.2.msc" "Framework::IO::Use_Case_42.2"
+	"IO_Project_rpy\\Time.sbs" "framework::Time"
+	"IO_Project_rpy\\Use_Case_42.2.msc" "framework::IO::Use_Case_42.2"
 	"IO_Project_rpy\\boost_1.sbs" "boost"
+	"IO_Project_rpy\\framework.sbs" "framework"
 	"IO_Project_rpy\\interprocess_1.sbs" "boost::interprocess"
-	"IO_Project_rpy\\utils.sbs" "Framework::utils"
+	"IO_Project_rpy\\utils.sbs" "framework::utils"
 	"Projects.rpl" ""
 	
 }
