@@ -1,0 +1,677 @@
+head	6.34;
+branch	6.34.0;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+6.34
+date	2007.10.18.18.28.33;	author ceswbl2;	state Exp;
+branches
+	6.34.0.1;
+next	6.33;
+
+6.33
+date	2007.04.23.17.04.24;	author ceswbl2;	state Exp;
+branches
+	6.33.0.1;
+next	6.32;
+
+6.32
+date	2006.10.25.17.25.06;	author ceswbl2;	state Exp;
+branches
+	6.32.0.1;
+next	6.31;
+
+6.31
+date	2006.04.13.19.15.43;	author ceswbl2;	state Exp;
+branches
+	6.31.0.1;
+next	6.30;
+
+6.30
+date	2005.10.11.20.27.03;	author ceswbl2;	state Exp;
+branches
+	6.30.0.1;
+next	6.29;
+
+6.29
+date	2004.12.02.19.28.44;	author ceswbl2;	state Exp;
+branches
+	6.29.0.1;
+next	6.28;
+
+6.28
+date	2004.06.10.19.26.15;	author ceswbl2;	state Exp;
+branches
+	6.28.0.1;
+next	6.27;
+
+6.27
+date	2003.12.16.21.07.24;	author ceswbl2;	state Exp;
+branches
+	6.27.0.1;
+next	6.26;
+
+6.26
+date	2003.08.13.20.10.40;	author ceswbl2;	state Exp;
+branches
+	6.26.0.1;
+next	6.25;
+
+6.25
+date	2003.07.25.13.34.53;	author ceswbl2;	state Exp;
+branches
+	6.25.0.1;
+next	6.24;
+
+6.24
+date	2003.03.03.20.56.01;	author fran;	state Exp;
+branches
+	6.24.0.1;
+next	;
+
+6.24.0.1
+date	2003.03.03.20.56.19;	author fran;	state Exp;
+branches;
+next	;
+
+6.25.0.1
+date	2003.07.25.13.35.11;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.26.0.1
+date	2003.08.14.19.26.37;	author cwbl2tst;	state Exp;
+branches;
+next	;
+
+6.27.0.1
+date	2003.12.17.17.56.52;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.28.0.1
+date	2004.06.11.14.17.57;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.29.0.1
+date	2004.12.03.14.35.22;	author ceswbl2;	state Exp;
+branches;
+next	6.29.0.2;
+
+6.29.0.2
+date	2005.02.24.20.45.52;	author marc;	state Exp;
+branches;
+next	;
+
+6.30.0.1
+date	2005.10.12.16.54.04;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.31.0.1
+date	2006.04.14.14.52.45;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.32.0.1
+date	2006.10.26.16.06.09;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.33.0.1
+date	2007.04.24.16.31.07;	author ceswbl2;	state Exp;
+branches;
+next	6.33.0.2;
+
+6.33.0.2
+date	2007.10.12.11.42.42;	author tallman;	state Exp;
+branches;
+next	;
+
+6.34.0.1
+date	2007.10.19.14.29.49;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+6.34
+log
+@CESWBL2_6_34_OCT_18_07
+@
+text
+@#ifndef softwareClock_H
+#define softwareClock_H
+
+//------------------------------------------------------------------------------
+// Standard Includes 
+//------------------------------------------------------------------------------
+#include <list>
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>	//! <! This may not be a standard include !>
+
+//------------------------------------------------------------------------------
+// SoftwareClock Includes 
+//------------------------------------------------------------------------------
+#include <softwareClockHelper.h>
+
+
+#define TimeUndeterminedMode		0
+#define TimeWaitForeverMode			10
+#define TimeStepMode				20
+#define TimeSensitiveMode			30
+#define TimeInsensitiveMode			40
+
+
+
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
+//------------------------------------------------------------------------------
+// Structures
+//------------------------------------------------------------------------------
+typedef struct
+{
+	// Task time relevant info
+	int taskID;
+	int waitClock;
+	int exeMode;	
+	
+	// Members that tell wheather we timed out
+	bool aExitNow;
+	pthread_mutex_t aExitNowLock;
+	
+	// A spare set of signals with mutex that apps can use
+	pthread_cond_t aSpareSignal;
+	pthread_mutex_t aSpareSignalMutex;
+	
+	// Members to wake the task up (Provided by legacy apps)
+	pthread_cond_t *aSignal;
+	pthread_mutex_t *aSignalMutex;
+	
+	// Members for debugging
+	int redundantTimer;
+
+} TaskInfo;
+
+
+//------------------------------------------------------------------------------
+// Classes
+//------------------------------------------------------------------------------
+class SoftwareClock
+{
+  private:
+
+  	list <TaskInfo*> myTaskList;
+	pthread_t mainThread;				// Id of recv thread	
+	pthread_t debugThread;				// Id of debug thread 
+	int savedServerPort;				// Port of the server
+	char savedServerAddr[256];			// Address of the server
+  	int mySocket;						// My connection socket
+	int debugSocket;					// Socket used for remote debugging
+	int myClockSocketId;				// Server knows me by this socket index
+	pthread_mutex_t myResourceLock;		// Lock for shared resources
+	pthread_mutex_t myAbsTimeLock;		// Lock for abstime resource; and signal	
+	pthread_mutex_t myWorkLock;			// Lock for MainThread work/control signal
+	pthread_mutexattr_t myResourceLockAttr;  // Atributes of the locks
+	pthread_cond_t myAbsTimeInitSignal;	// Signal of initialzation of time
+	pthread_cond_t myWorkSignal;		// Signal for MainThread to go to work
+	bool isAbsTimeInit;			// Has the absolute time been initialized
+	unsigned long  msTotalTime;	// Time since computer started in milliseconds
+	int currSyncId;				// Current Syncyronization number
+	bool debugMode;				// Switch for debug info
+	
+	// Helper methods
+	void DebugPrint(int debugType);
+	int UpdateClock(int deltaTime);
+	
+	// Methods to manage this software clock list of tasks
+	TaskInfo* FindTask(int aTaskId);
+	TaskInfo* EnforceRegistration(int aTaskId);	
+	int AddTask(int aTaskId, int isTimeSensitive);
+	int RemoveTask(int aTaskId);
+	
+	// Methods to help plan for time advances
+	int	GetSmallestDelay(bool resolveUndeterminates);
+	int TryTimeAdvance(int aTimeAmount);
+
+	// Method to recieve/procces messages from the TimeServer
+	int ProcessServerData(int *aTimeGrant);
+	
+
+  public:
+
+	// Creation and connection methods
+  		SoftwareClock();
+		~SoftwareClock();
+	int ConnectTo(char *addr, int aPort);
+	int Disconnect(void);
+	
+	// Methods to notify the software clock of system changes
+	void TrashTask(int aTaskId);
+
+	// Methods tasks use to get abs time and delta time
+	unsigned long GetAbsTimeMs(void);
+	unsigned long RetrieveDeltaTimeMs(unsigned long *oldTimeMs);
+
+	// Methods to check for timing out and getting spare signals 
+	void GetSpareSignal(pthread_cond_t **aSignal, pthread_mutex_t **aSignalMutex);
+	bool IsTaskTimedOut(int aTaskId);
+
+	// Methods to control a tasks execution mode. Note, for time to move forward a
+	// task has to be in TimeWaitForeverMode, TimeStepMode, TimeInSensitiveMode, 
+	// or TimeSensitiveMode with a waitClock > 0
+	// Also the mutex passed in should be locked when RequestTimeAdvance() or WaitForMaxTimeStep()
+	int DisableTimeSensitivity(int aTaskId);
+	int SetWaitForeverMode(int aTaskId);
+	int SetUndeterminedMode(int aTaskId);
+	int ResetTimeSensitivity(int aTaskId);
+
+	// Methods to manage and control waking up; Note aLock should be locked
+	// when RequestTimeAdvance or WaitForMaxTimeStep is called
+	int RequestTimeAdvance(int aTaskId, int deltaTime, pthread_cond_t *aSignal,
+		pthread_mutex_t *aLock);
+	int WaitForMaxTimeStep(int aTaskId, int aNumMs, pthread_cond_t *aSignal,
+		pthread_mutex_t *aSignalMutex);
+	
+	// Tight Loop checker method	
+	void PerformRedundantCheck(int aTaskId);
+
+
+	// Hacker method to force a task settings
+	int ForceTaskSetting (int aTaskId, int *aExeMode, int *waitClock,
+		pthread_cond_t **aSignal, pthread_mutex_t **aSignalMutex,
+		int *redundantTimer, bool *aExitNow);
+
+
+	// The lifeline of this clock
+	// Even though the below are public methods, it should never be called.
+	// If you do MainThread() and DebugThread() will never return.
+	// MainThread and DebugThread must be declared as public in order for 
+	// them to be spawned.
+	int MainThread(void);
+	int DebugThread(void);
+};
+
+
+#ifdef	__cplusplus
+}
+#endif
+
+#endif
+@
+
+
+6.34.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.33
+log
+@CESWBL2_6_33_APR_23_07
+@
+text
+@@
+
+
+6.33.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.33.0.2
+log
+@Removed notices.  IAW TR#2677
+@
+text
+@@
+
+
+6.32
+log
+@CESWBL2_6_32_OCT_25_06
+@
+text
+@@
+
+
+6.32.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.31
+log
+@CESWBL2_6_31_APR_14_06
+@
+text
+@@
+
+
+6.31.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.30
+log
+@CESWBL2_6_30_OCT_12_05
+@
+text
+@@
+
+
+6.30.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.29
+log
+@CESWBL2_6_29_DEC_03_04
+@
+text
+@a3 1
+
+a13 1
+
+a14 6
+// VxWorks Includes
+//------------------------------------------------------------------------------
+#include <vxWorks.h>
+
+
+//------------------------------------------------------------------------------
+d20 5
+d28 1
+a39 1
+	bool isTimeSensitive;
+d41 1
+d43 2
+a44 1
+	// Members to wake the task up
+d46 6
+a51 1
+	bool aExitNow;
+d57 1
+a57 1
+	bool isDisabled;
+d72 1
+a72 1
+	char savedServerAddr[256];				// Address of the server
+a75 2
+	pthread_mutex_t myAbsTimeLock;		// Lock for abstime resource
+	pthread_mutex_t myTimeStepLock;		// Lock for myTimeStepSignal
+d77 1
+d80 2
+a81 4
+	pthread_cond_t absTimeInitSignal;	// Signal of initialzation of time
+	pthread_cond_t myTimeStepSignal;	// Signal that a timeStep has occured	
+	pthread_cond_t aWorkSignal;			// Signal for MainThread to go to work
+//  T_Struct gmTime;			// Time in (GM standard) since 1970
+d91 1
+a91 2
+	// Methods to manage this software clock
+	bool Contains(int aTaskId);
+d98 1
+a98 1
+	int GetSmallestDelay(void);
+d100 1
+a100 1
+	
+d116 1
+a116 1
+	// Methods tasks use to control their time sensitivity and for time info
+d118 10
+a127 2
+	unsigned long RetrieveDeltaTimeMs(unsigned long *oldTimeMs)	;
+	void GetTimeStepSignal(pthread_cond_t **aSignal, pthread_mutex_t **aMutex);
+d129 2
+d132 1
+a132 1
+	
+d134 1
+a134 1
+	// when RequestTimeAdvance is called
+d137 2
+a138 1
+	bool IsTaskTimedOut(int aTaskId);
+a139 3
+	// DebugSwitch Method
+	void EnableDebugging(bool aBool);
+
+d142 2
+a143 1
+	
+d145 2
+a146 2
+	int SoftwareClock::ForceTaskSetting (int aTaskId, bool *isTimeSensitive,
+		int *waitClock, pthread_cond_t **aSignal, pthread_mutex_t **aSignalMutex, 
+a147 4
+	
+	// Hacker method to render misbehaving time-sensitive threads as harmless
+	// VERY DANGEROUS <! NOT TESTED !>
+	int DisableTask(int ataskID);
+d153 2
+a154 1
+	// MainThread and DebugThread must be declared as public in order for them to be spawned.
+d156 1
+a156 1
+	int DebugThread(void);	
+@
+
+
+6.29.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.29.0.2
+log
+@Incorporate latest CWS middleware changes IAW TR #2256
+@
+text
+@d4 1
+d15 1
+d17 6
+a27 5
+#define TimeUndeterminedMode		0
+#define TimeWaitForeverMode			10
+#define TimeStepMode				20
+#define TimeSensitiveMode			30
+#define TimeInsensitiveMode			40
+a30 1
+
+d42 1
+a43 1
+	int exeMode;	
+d45 2
+a46 1
+	// Members that tell wheather we timed out
+a47 7
+	pthread_mutex_t aExitNowLock;
+	
+	// A spare set of signals with mutex that apps can use
+	pthread_cond_t aSpareSignal;
+	pthread_mutex_t aSpareSignalMutex;
+	
+	// Members to wake the task up (Provided by legacy apps)
+d53 1
+a53 1
+
+d68 1
+a68 1
+	char savedServerAddr[256];			// Address of the server
+d72 2
+a74 1
+	pthread_mutex_t myAbsTimeLock;		// Lock for abstime resource; and signal	
+d77 4
+a80 2
+	pthread_cond_t myAbsTimeInitSignal;	// Signal of initialzation of time
+	pthread_cond_t myWorkSignal;		// Signal for MainThread to go to work
+d90 2
+a91 1
+	// Methods to manage this software clock list of tasks
+d98 1
+a98 1
+	int	GetSmallestDelay(bool resolveUndeterminates);
+d100 1
+a100 1
+
+d116 1
+a116 1
+	// Methods tasks use to get abs time and delta time
+d118 2
+a119 10
+	unsigned long RetrieveDeltaTimeMs(unsigned long *oldTimeMs);
+
+	// Methods to check for timing out and getting spare signals 
+	void GetSpareSignal(pthread_cond_t **aSignal, pthread_mutex_t **aSignalMutex);
+	bool IsTaskTimedOut(int aTaskId);
+
+	// Methods to control a tasks execution mode. Note, for time to move forward a
+	// task has to be in TimeWaitForeverMode, TimeStepMode, TimeInSensitiveMode, 
+	// or TimeSensitiveMode with a waitClock > 0
+	// Also the mutex passed in should be locked when RequestTimeAdvance() or WaitForMaxTimeStep()
+a120 2
+	int SetWaitForeverMode(int aTaskId);
+	int SetUndeterminedMode(int aTaskId);
+d122 1
+a122 1
+
+d124 1
+a124 1
+	// when RequestTimeAdvance or WaitForMaxTimeStep is called
+d127 1
+a127 2
+	int WaitForMaxTimeStep(int aTaskId, int aNumMs, pthread_cond_t *aSignal,
+		pthread_mutex_t *aSignalMutex);
+d129 3
+d134 1
+a134 2
+
+
+d136 2
+a137 2
+	int ForceTaskSetting (int aTaskId, int *aExeMode, int *waitClock,
+		pthread_cond_t **aSignal, pthread_mutex_t **aSignalMutex,
+d139 4
+d148 1
+a148 2
+	// MainThread and DebugThread must be declared as public in order for 
+	// them to be spawned.
+d150 1
+a150 1
+	int DebugThread(void);
+@
+
+
+6.28
+log
+@CESWBL2_6_28_JUN_11_04
+@
+text
+@@
+
+
+6.28.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.27
+log
+@CESWBL2_6_27_DEC_17_03
+@
+text
+@@
+
+
+6.27.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.26
+log
+@CESWBL2_6_26_AUG_13_03
+@
+text
+@@
+
+
+6.26.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.25
+log
+@Correcting_RCS_Rev
+@
+text
+@@
+
+
+6.25.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.24
+log
+@initial wasp rev
+@
+text
+@@
+
+
+6.24.0.1
+log
+@initial wasp rev
+@
+text
+@@

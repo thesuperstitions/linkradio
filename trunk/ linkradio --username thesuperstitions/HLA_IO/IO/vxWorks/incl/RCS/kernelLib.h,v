@@ -1,0 +1,427 @@
+head	6.34;
+branch	6.34.0;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+6.34
+date	2007.10.18.18.28.33;	author ceswbl2;	state Exp;
+branches
+	6.34.0.1;
+next	6.33;
+
+6.33
+date	2007.04.23.17.04.24;	author ceswbl2;	state Exp;
+branches
+	6.33.0.1;
+next	6.32;
+
+6.32
+date	2006.10.25.17.25.06;	author ceswbl2;	state Exp;
+branches
+	6.32.0.1;
+next	6.31;
+
+6.31
+date	2006.04.13.19.15.43;	author ceswbl2;	state Exp;
+branches
+	6.31.0.1;
+next	6.30;
+
+6.30
+date	2005.10.11.20.27.03;	author ceswbl2;	state Exp;
+branches
+	6.30.0.1;
+next	6.29;
+
+6.29
+date	2004.12.02.19.28.44;	author ceswbl2;	state Exp;
+branches
+	6.29.0.1;
+next	6.28;
+
+6.28
+date	2004.06.10.19.26.15;	author ceswbl2;	state Exp;
+branches
+	6.28.0.1;
+next	6.27;
+
+6.27
+date	2003.12.16.21.07.24;	author ceswbl2;	state Exp;
+branches
+	6.27.0.1;
+next	6.26;
+
+6.26
+date	2003.08.13.20.10.40;	author ceswbl2;	state Exp;
+branches
+	6.26.0.1;
+next	6.25;
+
+6.25
+date	2003.08.11.16.44.53;	author fran;	state Exp;
+branches
+	6.25.0.1;
+next	;
+
+6.25.0.1
+date	2003.08.11.16.45.06;	author fran;	state Exp;
+branches;
+next	;
+
+6.26.0.1
+date	2003.08.14.19.26.37;	author cwbl2tst;	state Exp;
+branches;
+next	;
+
+6.27.0.1
+date	2003.12.17.17.56.52;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.28.0.1
+date	2004.06.11.14.17.57;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.29.0.1
+date	2004.12.03.14.35.22;	author ceswbl2;	state Exp;
+branches;
+next	6.29.0.2;
+
+6.29.0.2
+date	2005.02.24.20.45.52;	author marc;	state Exp;
+branches;
+next	;
+
+6.30.0.1
+date	2005.10.12.16.54.04;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.31.0.1
+date	2006.04.14.14.52.45;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.32.0.1
+date	2006.10.26.16.06.09;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.33.0.1
+date	2007.04.24.16.31.07;	author ceswbl2;	state Exp;
+branches;
+next	6.33.0.2;
+
+6.33.0.2
+date	2007.10.12.11.42.45;	author tallman;	state Exp;
+branches;
+next	;
+
+6.34.0.1
+date	2007.10.19.14.29.49;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+6.34
+log
+@CESWBL2_6_34_OCT_18_07
+@
+text
+@#ifndef KERNEL_LIB_H
+#define KERNEL_LIB_H
+
+#include "vxWorks.h"
+
+/*
+ * kernelTimeSlice - set a round robin scheduling parameter for tasks that
+ * are at the same priority level and ready to run.
+ *
+ * The default configutation is "round robin" or "time slicing" OFF. Calling
+ * the routine with any positive argument turns it ON. Calling it
+ * with a zero argument turns round robin OFF. A negative argument is
+ * ignored.
+ *
+ * This routine must be called before tasks are spawned to be efffective. It will
+ * not be effective for tasks that already are running when it is called. 
+ *
+ * The implementation does not use the actual passed in value. Instead it will
+ * use the default round robin values if  the 'ticks' argument is > 0.
+ * Execute "dispadmin -c RT -g" to display the default time quanta for each 
+ * RT priority.
+ *
+ */
+extern STATUS kernelTimeSlice(int ticks);
+	/* time-slice in ticks or 0 to disable round-robin */
+
+extern int kernelGetTimeSlice();
+	/* get time-slice in ticks. 0 = disable round-robin */
+
+/*
+ * Miscellaneous related debug commands: 
+ *
+ * See the "i" display in the shell for a printout of the policy used on 
+ * each thread.
+ *
+ * "dispadmin -c RT -g" will display the time quanta for each RT priority. units
+ * are in milliseconds.
+ *
+ * "priocntl -d -i class RT" will display the time quanta of all real-time 
+ * processes.
+ */
+
+#endif /* KERNEL_LIB_H */
+@
+
+
+6.34.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.33
+log
+@CESWBL2_6_33_APR_23_07
+@
+text
+@@
+
+
+6.33.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.33.0.2
+log
+@Removed notices.  IAW TR#2677
+@
+text
+@@
+
+
+6.32
+log
+@CESWBL2_6_32_OCT_25_06
+@
+text
+@@
+
+
+6.32.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.31
+log
+@CESWBL2_6_31_APR_14_06
+@
+text
+@@
+
+
+6.31.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.30
+log
+@CESWBL2_6_30_OCT_12_05
+@
+text
+@@
+
+
+6.30.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.29
+log
+@CESWBL2_6_29_DEC_03_04
+@
+text
+@d7 19
+a25 19
+* kernelTimeSlice - set a round robin scheduling parameter for tasks that
+* 					are at the same priority level and ready to run.
+*
+* The default configutation is "round robin" or "time slicing" OFF. Calling
+* the routine with any positive argument turns it ON. Calling it
+* with a zero argument turns round robin OFF. A negative argument is
+* ignored.
+*
+* This routine must be called before tasks are spawned to be efffective. It will
+* not be effective for tasks that already are running when it is called. 
+*
+* The implementation does not use the actual passed in value. Instead it will
+* use the default round robin values if  the 'ticks' argument is > 0.
+* Execute "dispadmin -c RT -g" to display the default time quanta for each 
+* RT priority.
+*
+*/
+extern STATUS kernelTimeSlice (
+	int ticks);		/* time-slice in ticks or 0 to disable round-robin */
+d27 2
+a28 1
+extern int kernelGetTimeSlice (); /* get time-slice in ticks. 0 = disable round-robin */
+d30 12
+a42 12
+/* Miscellaneous related debug commands: 
+*
+* See the "i" display in the shell for a printout of the policy used on 
+* each thread.
+*
+* "dispadmin -c RT -g" will display the time quanta for each RT priority. units
+* are in milliseconds.
+*
+* "priocntl -d -i class RT" will display the time quanta of all real-time 
+* processes.
+*/
+
+@
+
+
+6.29.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.29.0.2
+log
+@Incorporate latest CWS middleware changes IAW TR #2256
+@
+text
+@d7 19
+a25 19
+ * kernelTimeSlice - set a round robin scheduling parameter for tasks that
+ * are at the same priority level and ready to run.
+ *
+ * The default configutation is "round robin" or "time slicing" OFF. Calling
+ * the routine with any positive argument turns it ON. Calling it
+ * with a zero argument turns round robin OFF. A negative argument is
+ * ignored.
+ *
+ * This routine must be called before tasks are spawned to be efffective. It will
+ * not be effective for tasks that already are running when it is called. 
+ *
+ * The implementation does not use the actual passed in value. Instead it will
+ * use the default round robin values if  the 'ticks' argument is > 0.
+ * Execute "dispadmin -c RT -g" to display the default time quanta for each 
+ * RT priority.
+ *
+ */
+extern STATUS kernelTimeSlice(int ticks);
+	/* time-slice in ticks or 0 to disable round-robin */
+d27 1
+a27 2
+extern int kernelGetTimeSlice();
+	/* get time-slice in ticks. 0 = disable round-robin */
+a28 12
+/*
+ * Miscellaneous related debug commands: 
+ *
+ * See the "i" display in the shell for a printout of the policy used on 
+ * each thread.
+ *
+ * "dispadmin -c RT -g" will display the time quanta for each RT priority. units
+ * are in milliseconds.
+ *
+ * "priocntl -d -i class RT" will display the time quanta of all real-time 
+ * processes.
+ */
+d30 12
+@
+
+
+6.28
+log
+@CESWBL2_6_28_JUN_11_04
+@
+text
+@@
+
+
+6.28.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.27
+log
+@CESWBL2_6_27_DEC_17_03
+@
+text
+@@
+
+
+6.27.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.26
+log
+@CESWBL2_6_26_AUG_13_03
+@
+text
+@@
+
+
+6.26.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.25
+log
+@initial rev
+@
+text
+@@
+
+
+6.25.0.1
+log
+@initial rev
+@
+text
+@@

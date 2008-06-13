@@ -1,0 +1,491 @@
+head	6.34;
+branch	6.34.0;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+6.34
+date	2007.10.18.18.28.33;	author ceswbl2;	state Exp;
+branches
+	6.34.0.1;
+next	6.33;
+
+6.33
+date	2007.04.23.17.04.24;	author ceswbl2;	state Exp;
+branches
+	6.33.0.1;
+next	6.32;
+
+6.32
+date	2006.10.25.17.25.06;	author ceswbl2;	state Exp;
+branches
+	6.32.0.1;
+next	6.31;
+
+6.31
+date	2006.04.13.19.15.43;	author ceswbl2;	state Exp;
+branches
+	6.31.0.1;
+next	6.30;
+
+6.30
+date	2005.10.11.20.27.03;	author ceswbl2;	state Exp;
+branches
+	6.30.0.1;
+next	6.29;
+
+6.29
+date	2004.12.02.19.28.44;	author ceswbl2;	state Exp;
+branches
+	6.29.0.1;
+next	6.28;
+
+6.28
+date	2004.06.10.19.26.15;	author ceswbl2;	state Exp;
+branches
+	6.28.0.1;
+next	6.27;
+
+6.27
+date	2003.12.16.21.07.24;	author ceswbl2;	state Exp;
+branches
+	6.27.0.1;
+next	6.26;
+
+6.26
+date	2003.08.13.20.10.40;	author ceswbl2;	state Exp;
+branches
+	6.26.0.1;
+next	6.25;
+
+6.25
+date	2003.07.25.13.34.53;	author ceswbl2;	state Exp;
+branches
+	6.25.0.1;
+next	6.24;
+
+6.24
+date	2003.03.03.20.56.01;	author fran;	state Exp;
+branches
+	6.24.0.1;
+next	;
+
+6.24.0.1
+date	2003.03.03.20.56.19;	author fran;	state Exp;
+branches;
+next	;
+
+6.25.0.1
+date	2003.07.25.13.35.11;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.26.0.1
+date	2003.08.14.19.26.37;	author cwbl2tst;	state Exp;
+branches;
+next	;
+
+6.27.0.1
+date	2003.12.17.17.56.52;	author ceswbl2;	state Exp;
+branches;
+next	6.27.0.2;
+
+6.27.0.2
+date	2004.02.19.21.47.11;	author fran;	state Exp;
+branches;
+next	;
+
+6.28.0.1
+date	2004.06.11.14.17.57;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.29.0.1
+date	2004.12.03.14.35.22;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.30.0.1
+date	2005.10.12.16.54.04;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.31.0.1
+date	2006.04.14.14.52.45;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.32.0.1
+date	2006.10.26.16.06.09;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.33.0.1
+date	2007.04.24.16.31.07;	author ceswbl2;	state Exp;
+branches;
+next	6.33.0.2;
+
+6.33.0.2
+date	2007.10.12.11.42.41;	author tallman;	state Exp;
+branches;
+next	;
+
+6.34.0.1
+date	2007.10.19.14.29.49;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+6.34
+log
+@CESWBL2_6_34_OCT_18_07
+@
+text
+@/* pipeDrv.h - header file for pipeDrv.c */
+
+#ifndef __INCpipeDrvh
+#define __INCpipeDrvh
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* function declarations */
+
+#if defined(__STDC__) || defined(__cplusplus)
+
+/*
+ * @@limitation The POSIX implementation creates a named FIFO
+ * to implement the pipe. A named FIFO is a fixed size therefore the 
+ * nMessages and nBytes  arguments in pipeDevCreate() are essentially ignored. 
+ * However, if the application requests a pipe size that is larger than the
+ * named FIFO size then a warning message is printed out. An application
+ * that assumes it gets the larger pipe size and does not account for 
+ * being blocked in a write to that pipe, may have a problem. The 
+ * warning printout may help the developer detect the problem sooner.
+ *
+ * Note that while VxWorks maintains
+ * message boundaries in pipes, POSIX treats pipes as streams.
+ * Therefore, if you wish to support message semantics in a
+ * portable fashion, you might consider using message queues
+ * instead of pipes.
+ *
+ * A FIFO is a type of file and the 'name' argument specifies a pathname in
+ * the file system. The directory of the pathname should exist on the system 
+ * before your application calls this routine, and your application should
+ * have read and write permission to it. 
+ *
+ * It's the VxWorks' convention to name pipes like this: /pipe/<yourName>. 
+ * Creating a /pipe directory on your host with proper permissions
+ * will cover applications using pipes with the vxWorks naming convention.
+ *
+ */
+STATUS 
+pipeDevCreate (
+	char *name,
+	int nMessages,
+	int nBytes
+);
+
+STATUS
+pipeDrv (
+	void
+);
+
+/*
+ * Message boundaries and pipes:
+ *
+ * A vxWorks pipe preserves message boundaries and a Solaris pipe does not.
+ *
+ * Solaris pipes do not support ioctl() requests to return the
+ * number of messages in the pipe since message boundaries are not
+ * preserved. Thus the FIONMSGS ioctl() request supported by vxWorks
+ * is not supported in Solaris. The FIONMSGS symbol does not exist in Solaris.
+ *
+ * In many cases, it's easy for a vxWorks app to change from using a pipe
+ * to using a message queue. This would make the code more efficient when
+ * running on vxWorks because the pipe layer around the message queue is 
+ * eliminated. It would also make the code more portable between vxWorks
+ * and Solaris. Changing to a message queue allows you to get the number
+ * of messages in the queue without using the unsupported FIONMSGS.
+ *
+ * One case that is not easy to convert to message queues is the case when a
+ * task is doing a select() in multiple pipes. You can't do a select() on
+ * multiple message queues in either vxWorks or Solaris. However, if the
+ * pipe is carrying messages with identical sizes, it's possible to 
+ * keep using the pipe in both environments with some minor adjustments to
+ * the application. The Solaris ioct() FIONREAD request along with the 
+ * known message size can be used to find how many messages are in a 
+ * Solaris pipe. Solaris documents "FIONREAD" as: "Returns the number of 
+ * immediately readable characters in the int pointed to by the argument."
+ *
+ * The "pipeDrvNumMsgs()" provides a way to get the number of messages in 
+ * a pipe for this special case situation. The application could use
+ * a conditional compile to choose this function when compiling for
+ * Solaris or the ioctl(FIONMSGS) when compiling for vxWorks.
+ *
+ * Also, if the pipe messages all have the same size, the reading application
+ * should get one whole message if it requests a number of bytes equal to the
+ * message size.  Solaris doc says "In byte-stream mode, read() retrieves 
+ * data from the STREAM until as many bytes as were requested are transferred, 
+ * or until there is no more data to be retrieved."  The reading app should
+ * check that read() has returned a number of bytes that equals the message
+ * size. This check should be applicable in both Solaris and vxWorks. 
+ *
+ * FIONMSGS ioctl() request not supported in Solaris. This
+ * pipeDrvNumMsgs() func provides a way to get the
+ * number of messages in a Solaris pipe. Func assumes that 
+ * all messages are the same size. Will not work 
+ * correctly if they are not the same size.
+ */
+
+STATUS
+pipeDrvNumMsgs (
+    int fildes,		/* pipe's file descriptor */ 
+    int msgSzBytes,	/* size of fixed size message(s) in pipe, bytes */
+    int *numMsgsPtr	/* number of message in pipe */
+);
+
+#else	/* __STDC__ */
+
+extern STATUS 	pipeDevCreate ();
+extern STATUS 	pipeDrv ();
+
+#endif	/* __STDC__ */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __INCpipeDrvh */
+@
+
+
+6.34.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.33
+log
+@CESWBL2_6_33_APR_23_07
+@
+text
+@@
+
+
+6.33.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.33.0.2
+log
+@Removed notices.  IAW TR#2677
+@
+text
+@@
+
+
+6.32
+log
+@CESWBL2_6_32_OCT_25_06
+@
+text
+@@
+
+
+6.32.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.31
+log
+@CESWBL2_6_31_APR_14_06
+@
+text
+@@
+
+
+6.31.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.30
+log
+@CESWBL2_6_30_OCT_12_05
+@
+text
+@@
+
+
+6.30.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.29
+log
+@CESWBL2_6_29_DEC_03_04
+@
+text
+@@
+
+
+6.29.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.28
+log
+@CESWBL2_6_28_JUN_11_04
+@
+text
+@@
+
+
+6.28.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.27
+log
+@CESWBL2_6_27_DEC_17_03
+@
+text
+@a2 14
+/* Copyright 1984-1992 Wind River Systems, Inc. */
+
+/*
+modification history
+--------------------
+01e,22sep92,rrr  added support for c++
+01d,04jul92,jcf  cleaned up.
+01c,26may92,rrr  the tree shuffle
+01b,04oct91,rrr  passed through the ansification filter
+		  -fixed #else and #endif
+		  -changed copyright notice
+01a,05oct90,shl created.
+*/
+
+d16 9
+a24 2
+ * to implement the pipe. Therefore, the nMessages and nBytes
+ * arguments are ignored. Note also that while VxWorks maintains
+a38 6
+ * If your application calls this routine and the file at 'name' already
+ * exists, you will get a printout about what has occurred, but the 
+ * situation will not be considered an error and you will get an OK
+ * return code. There is no mechanism in the middleware layer
+ * to delete this file. A need to support this feature currently does not
+ * exist.
+@
+
+
+6.27.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.27.0.2
+log
+@Add comments about pipe size request vs supplied.
+TR#2015
+@
+text
+@d3 14
+d30 2
+a31 9
+ * to implement the pipe. A named FIFO is a fixed size therefore the 
+ * nMessages and nBytes  arguments in pipeDevCreate() are essentially ignored. 
+ * However, if the application requests a pipe size that is larger than the
+ * named FIFO size then a warning message is printed out. An application
+ * that assumes it gets the larger pipe size and does not account for 
+ * being blocked in a write to that pipe, may have a problem. The 
+ * warning printout may help the developer detect the problem sooner.
+ *
+ * Note that while VxWorks maintains
+d46 6
+@
+
+
+6.26
+log
+@CESWBL2_6_26_AUG_13_03
+@
+text
+@@
+
+
+6.26.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.25
+log
+@Correcting_RCS_Rev
+@
+text
+@@
+
+
+6.25.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.24
+log
+@initial wasp rev
+@
+text
+@@
+
+
+6.24.0.1
+log
+@initial wasp rev
+@
+text
+@@

@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IO", "IO.vcproj", "{0D4DCCEA-7163-488B-94B5-40905C192999}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug 1516 = Debug 1516
+		Debug NGC FULL = Debug NGC FULL
+		Release 1516 = Release 1516
+		Release NGC FULL = Release NGC FULL
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{0D4DCCEA-7163-488B-94B5-40905C192999}.Debug 1516.ActiveCfg = Debug 1516|Win32
+		{0D4DCCEA-7163-488B-94B5-40905C192999}.Debug 1516.Build.0 = Debug 1516|Win32
+		{0D4DCCEA-7163-488B-94B5-40905C192999}.Debug NGC FULL.ActiveCfg = Debug NGC FULL|Win32
+		{0D4DCCEA-7163-488B-94B5-40905C192999}.Debug NGC FULL.Build.0 = Debug NGC FULL|Win32
+		{0D4DCCEA-7163-488B-94B5-40905C192999}.Release 1516.ActiveCfg = Release 1516|Win32
+		{0D4DCCEA-7163-488B-94B5-40905C192999}.Release 1516.Build.0 = Release 1516|Win32
+		{0D4DCCEA-7163-488B-94B5-40905C192999}.Release NGC FULL.ActiveCfg = Release NGC FULL|Win32
+		{0D4DCCEA-7163-488B-94B5-40905C192999}.Release NGC FULL.Build.0 = Release NGC FULL|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

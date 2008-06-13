@@ -1,0 +1,398 @@
+head	6.34;
+branch	6.34.0;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+6.34
+date	2007.10.18.18.28.33;	author ceswbl2;	state Exp;
+branches
+	6.34.0.1;
+next	6.33;
+
+6.33
+date	2007.04.23.17.04.24;	author ceswbl2;	state Exp;
+branches
+	6.33.0.1;
+next	6.32;
+
+6.32
+date	2006.10.25.17.25.06;	author ceswbl2;	state Exp;
+branches
+	6.32.0.1;
+next	6.31;
+
+6.31
+date	2006.04.13.19.15.43;	author ceswbl2;	state Exp;
+branches
+	6.31.0.1;
+next	6.30;
+
+6.30
+date	2005.10.11.20.27.03;	author ceswbl2;	state Exp;
+branches
+	6.30.0.1;
+next	6.29;
+
+6.29
+date	2004.12.02.19.28.44;	author ceswbl2;	state Exp;
+branches
+	6.29.0.1;
+next	6.28;
+
+6.28
+date	2004.06.10.19.26.15;	author ceswbl2;	state Exp;
+branches
+	6.28.0.1;
+next	6.27;
+
+6.27
+date	2003.12.16.21.07.24;	author ceswbl2;	state Exp;
+branches
+	6.27.0.1;
+next	6.26;
+
+6.26
+date	2003.08.13.20.10.40;	author ceswbl2;	state Exp;
+branches
+	6.26.0.1;
+next	6.25;
+
+6.25
+date	2003.07.25.13.34.53;	author ceswbl2;	state Exp;
+branches
+	6.25.0.1;
+next	6.24;
+
+6.24
+date	2003.03.03.20.56.01;	author fran;	state Exp;
+branches
+	6.24.0.1;
+next	;
+
+6.24.0.1
+date	2003.03.03.20.56.19;	author fran;	state Exp;
+branches;
+next	;
+
+6.25.0.1
+date	2003.07.25.13.35.11;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.26.0.1
+date	2003.08.14.19.26.37;	author cwbl2tst;	state Exp;
+branches;
+next	;
+
+6.27.0.1
+date	2003.12.17.17.56.52;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.28.0.1
+date	2004.06.11.14.17.57;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.29.0.1
+date	2004.12.03.14.35.22;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.30.0.1
+date	2005.10.12.16.54.04;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.31.0.1
+date	2006.04.14.14.52.45;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.32.0.1
+date	2006.10.26.16.06.09;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+6.33.0.1
+date	2007.04.24.16.31.07;	author ceswbl2;	state Exp;
+branches;
+next	6.33.0.2;
+
+6.33.0.2
+date	2007.10.12.11.42.41;	author tallman;	state Exp;
+branches;
+next	;
+
+6.34.0.1
+date	2007.10.19.14.29.49;	author ceswbl2;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+6.34
+log
+@CESWBL2_6_34_OCT_18_07
+@
+text
+@/* routeLib.h - header file for the network routing library */
+
+
+/*
+modification history
+--------------------
+02f,26jun98,spm  added mRouteEntryDelete prototype
+02e,10jul97,rjc  added flag param to mRouteDelete.
+02d,11apr97,rjc  changed interface of m2RouteEntryAdd
+i02c,14feb97,rjc added mask versions of route add etc
+02d,11jul94,dzb  added prototype for routeNetAdd() (SPR #3395).
+02c,22sep92,rrr  added support for c++
+02b,27jul92,elh  moved routeShow to netShow.
+02a,04jul92,jcf  cleaned up.
+01g,26may92,rrr  the tree shuffle
+01f,02mar92,elh  added routeCmd.
+01e,04oct91,rrr  passed through the ansification filter
+		  -changed VOID to void
+01d,05oct90,shl  added ANSI function prototypes.
+01c,07aug90,shl  added IMPORT type to function declarations.
+01b,16nov87,llk  documentation
+01a,01nov87,llk  written
+*/
+
+#ifndef ROUTE_LIB_H
+#define ROUTE_LIB_H
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
+/*
+ * @@limitation This routine always returns OK. It makes
+ * the assumption that on a workstation, the necessary
+ * routes have already been set up. (Routes cannot be
+ * set by ordinary users, only by the super-user.)
+ */
+STATUS
+routeAdd (
+	char	*destination,
+	char	*gateway
+);
+
+/*
+ * @@limitation This routine always returns OK. It makes
+ * the assumption that on a workstation, the necessary
+ * routes have already been set up. (Routes cannot be
+ * set by ordinary users, only by the super-user.)
+ */
+STATUS
+routeDelete (
+	char	*destination,
+	char	*gateway
+);
+
+/*
+ * @@limitation Simply invokes the Unix command "netstat -r".
+ */
+void
+routeShow (
+	void
+);
+
+#ifdef	__cplusplus
+}
+#endif
+
+#endif /* ROUTE_LIB_H */
+@
+
+
+6.34.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.33
+log
+@CESWBL2_6_33_APR_23_07
+@
+text
+@a2 1
+/* Copyright 1984-1992 Wind River Systems, Inc. */
+a18 1
+		  -changed copyright notice
+a19 1
+                 added copyright notice.
+@
+
+
+6.33.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.33.0.2
+log
+@Removed notices.  IAW TR#2677
+@
+text
+@d3 1
+d20 1
+d22 1
+@
+
+
+6.32
+log
+@CESWBL2_6_32_OCT_25_06
+@
+text
+@@
+
+
+6.32.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.31
+log
+@CESWBL2_6_31_APR_14_06
+@
+text
+@@
+
+
+6.31.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.30
+log
+@CESWBL2_6_30_OCT_12_05
+@
+text
+@@
+
+
+6.30.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.29
+log
+@CESWBL2_6_29_DEC_03_04
+@
+text
+@@
+
+
+6.29.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.28
+log
+@CESWBL2_6_28_JUN_11_04
+@
+text
+@@
+
+
+6.28.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.27
+log
+@CESWBL2_6_27_DEC_17_03
+@
+text
+@@
+
+
+6.27.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.26
+log
+@CESWBL2_6_26_AUG_13_03
+@
+text
+@@
+
+
+6.26.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.25
+log
+@Correcting_RCS_Rev
+@
+text
+@@
+
+
+6.25.0.1
+log
+@Making_Branches
+@
+text
+@@
+
+
+6.24
+log
+@initial wasp rev
+@
+text
+@@
+
+
+6.24.0.1
+log
+@initial wasp rev
+@
+text
+@@
