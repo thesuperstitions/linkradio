@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::HLA_PostOffice
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::IO::HLA_PostOffice
+//!	Generated Date	: Tue, 27, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.cpp
 *********************************************************************/
 
@@ -12,22 +12,18 @@
 #include "Federate.h"
 // operation HLA_PostOffice(FrameworkFederateAmbassador*) 
 #include "FrameworkFederateAmbassador.h"
-// operation receiveMessage(Buffer*,int) 
-#include "Buffer.h"
 // operation announcePublication(FederateInterface*) 
 #include "FederateInterface.h"
-// operation sendMessage(FederateMessage*) 
-#include "FederateMessage.h"
 
 //----------------------------------------------------------------------------
 // HLA_PostOffice.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework::IO 
+//## package framework::IO 
 
 //## class HLA_PostOffice 
 
-namespace Framework {
+namespace framework {
     namespace IO {
         
         
@@ -53,7 +49,8 @@ namespace Framework {
             this->createInteractionClassHandle((HLA_FederateInterface*)interface);
             
             // Sign up to Publish on the interaction.
-            Framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cast<HLA_FederateInterface*>(interface))->getInteractionClassHandle());
+            framework::getFrameworkFederateAmbassador()->publishInteractionClass((static_cast<HLA_FederateInterface*>(interface))->getInteractionClassHandle());
+            
             //#]
         }
         
@@ -90,19 +87,14 @@ namespace Framework {
         void HLA_PostOffice::receiveInteraction(rti1516::InteractionClassHandle theInteraction, const rti1516::ParameterHandleValueMap & theParameterValues, const rti1516::VariableLengthData & theUserSuppliedTag, rti1516::OrderType sentOrder, rti1516::TransportationType theType) throw( rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::FederateInternalError ) {
             //#[ operation receiveInteraction(rti1516::InteractionClassHandle,const rti1516::ParameterHandleValueMap &,const rti1516::VariableLengthData &,rti1516::OrderType,rti1516::TransportationType) 
                                            
-            HLA_FederateInterface* hfi_ptr = getTheHLA_FederateInterface(theInteraction);
-                                           
-            // Build a FederateMessage from the interaction data.
-            Framework::IO::FederateMessage* msg = new Framework::IO::FederateMessage(hfi_ptr, theParameterValues);
-            //this->addTheMessage(reinterpret_cast<Framework::IO::Message*>(msg));
+            HLA_FederateInterface* hfiPtr = getTheHLA_FederateInterface(theInteraction);
+              
+            rti1516::ParameterHandleValueMap::const_iterator i = theParameterValues.begin();
+            const rti1516::VariableLengthData& data = (*i).second;
+            char* messagePtr = ((char*)data.data());
             
-            // Send the Interaction Parameter to the FederateInterface (HLA_FederateInterface in this case).
-            //todo            hfi_ptr->getItsFederateIO_Handler()->getItsFederateIO_InputThread()->addFederateMessage(msg);
-            //#]
-        }
-        
-        void HLA_PostOffice::receiveMessage(Buffer* buffer, int theInteraction) {
-            //#[ operation receiveMessage(Buffer*,int) 
+            hfiPtr->processFederateMessage(messagePtr, data.size());
+            
             //#]
         }
         
@@ -111,33 +103,18 @@ namespace Framework {
             //#]
         }
         
-        void HLA_PostOffice::sendMessage(FederateMessage* message) {
-            //#[ operation sendMessage(FederateMessage*) 
-            HLA_FederateInterface* HLA_Interface = reinterpret_cast<HLA_FederateInterface*>(message->getFederateInterface());
+        void HLA_PostOffice::sendMessage(char* message, int messageSizeInBytes, FederateInterface* federateInterface) {
+            //#[ operation sendMessage(char*,int,FederateInterface*) 
+            
+            HLA_FederateInterface* HLA_Interface = reinterpret_cast<HLA_FederateInterface*>(federateInterface);
             
             if (RealTimeMode() == true)
             {  
-              getTheFrameworkFederateAmbassador()->sendRO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getmsgPtr());
+              getTheFrameworkFederateAmbassador()->sendRO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message,  messageSizeInBytes);
             }
             else // Discrete Mode.
             {
-              getTheFrameworkFederateAmbassador()->sendTSO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message->getmsgPtr());
-            }
-            //#]
-        }
-        
-        void HLA_PostOffice::sendMessage(char* message, HLA_FederateInterface* hlaFederateInterface) {
-            //#[ operation sendMessage(char*,HLA_FederateInterface*) 
-            
-            HLA_FederateInterface* HLA_Interface = reinterpret_cast<HLA_FederateInterface*>(message->getFederateInterface());
-            
-            if (RealTimeMode() == true)
-            {  
-              getTheFrameworkFederateAmbassador()->sendRO(hlaFederateInterfacee->getInteractionClassHandle(), hlaFederateInterface->getParamHandle(), ((char*)hlaFederateInterface->getInterfaceName().c_str()), message);
-            }
-            else // Discrete Mode.
-            {
-              getTheFrameworkFederateAmbassador()->sendTSO(hlaFederateInterfacee->getInteractionClassHandle(), hlaFederateInterfacee->getParamHandle(), ((char*)hlaFederateInterfacee->getInterfaceName().c_str()), message);
+              getTheFrameworkFederateAmbassador()->sendTSO(HLA_Interface->getInteractionClassHandle(), HLA_Interface->getParamHandle(), ((char*)HLA_Interface->getInterfaceName().c_str()), message,  messageSizeInBytes);
             }
             
             //#]
@@ -148,15 +125,15 @@ namespace Framework {
             //#]
         }
         
-        Framework::FrameworkFederateAmbassador* HLA_PostOffice::getTheFrameworkFederateAmbassador() const {
+        framework::FrameworkFederateAmbassador* HLA_PostOffice::getTheFrameworkFederateAmbassador() const {
             return theFrameworkFederateAmbassador;
         }
         
-        void HLA_PostOffice::__setTheFrameworkFederateAmbassador(Framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
+        void HLA_PostOffice::__setTheFrameworkFederateAmbassador(framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
             theFrameworkFederateAmbassador = p_FrameworkFederateAmbassador;
         }
         
-        void HLA_PostOffice::_setTheFrameworkFederateAmbassador(Framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
+        void HLA_PostOffice::_setTheFrameworkFederateAmbassador(framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
             if(theFrameworkFederateAmbassador != NULL)
                 {
                     theFrameworkFederateAmbassador->__setItsHLA_PostOffice(NULL);
@@ -164,7 +141,7 @@ namespace Framework {
             __setTheFrameworkFederateAmbassador(p_FrameworkFederateAmbassador);
         }
         
-        void HLA_PostOffice::setTheFrameworkFederateAmbassador(Framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
+        void HLA_PostOffice::setTheFrameworkFederateAmbassador(framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
             if(p_FrameworkFederateAmbassador != NULL)
                 {
                     p_FrameworkFederateAmbassador->_setItsHLA_PostOffice(this);
@@ -176,13 +153,13 @@ namespace Framework {
             theFrameworkFederateAmbassador = NULL;
         }
         
-        std::map<rti1516::InteractionClassHandle, Framework::IO::HLA_FederateInterface*>::const_iterator HLA_PostOffice::getTheHLA_FederateInterface() const {
-            std::map<rti1516::InteractionClassHandle, Framework::IO::HLA_FederateInterface*>::const_iterator iter;
+        std::map<rti1516::InteractionClassHandle, framework::IO::HLA_FederateInterface*>::const_iterator HLA_PostOffice::getTheHLA_FederateInterface() const {
+            std::map<rti1516::InteractionClassHandle, framework::IO::HLA_FederateInterface*>::const_iterator iter;
             iter = theHLA_FederateInterface.begin();
             return iter;
         }
         
-        std::map<rti1516::InteractionClassHandle, Framework::IO::HLA_FederateInterface*>::const_iterator HLA_PostOffice::getTheHLA_FederateInterfaceEnd() const {
+        std::map<rti1516::InteractionClassHandle, framework::IO::HLA_FederateInterface*>::const_iterator HLA_PostOffice::getTheHLA_FederateInterfaceEnd() const {
             return theHLA_FederateInterface.end();
         }
         
@@ -191,7 +168,7 @@ namespace Framework {
         }
         
         void HLA_PostOffice::clearTheHLA_FederateInterface() {
-            std::map<rti1516::InteractionClassHandle, Framework::IO::HLA_FederateInterface*>::const_iterator iter;
+            std::map<rti1516::InteractionClassHandle, framework::IO::HLA_FederateInterface*>::const_iterator iter;
             iter = theHLA_FederateInterface.begin();
             while (iter != theHLA_FederateInterface.end()){
                 ((*iter).second)->_clearTheHLA_PostOffice();
@@ -200,14 +177,14 @@ namespace Framework {
             _clearTheHLA_FederateInterface();
         }
         
-        void HLA_PostOffice::_removeTheHLA_FederateInterface(Framework::IO::HLA_FederateInterface* p_HLA_FederateInterface) {
-            std::map<rti1516::InteractionClassHandle, Framework::IO::HLA_FederateInterface*>::iterator pos = std::find_if(theHLA_FederateInterface.begin(), theHLA_FederateInterface.end(),OMValueCompare<const rti1516::InteractionClassHandle,Framework::IO::HLA_FederateInterface*>(p_HLA_FederateInterface));
+        void HLA_PostOffice::_removeTheHLA_FederateInterface(framework::IO::HLA_FederateInterface* p_HLA_FederateInterface) {
+            std::map<rti1516::InteractionClassHandle, framework::IO::HLA_FederateInterface*>::iterator pos = std::find_if(theHLA_FederateInterface.begin(), theHLA_FederateInterface.end(),OMValueCompare<const rti1516::InteractionClassHandle,framework::IO::HLA_FederateInterface*>(p_HLA_FederateInterface));
             if (pos != theHLA_FederateInterface.end()) {
             	theHLA_FederateInterface.erase(pos);
             }
         }
         
-        void HLA_PostOffice::removeTheHLA_FederateInterface(Framework::IO::HLA_FederateInterface* p_HLA_FederateInterface) {
+        void HLA_PostOffice::removeTheHLA_FederateInterface(framework::IO::HLA_FederateInterface* p_HLA_FederateInterface) {
             if(p_HLA_FederateInterface != NULL)
                 {
                     p_HLA_FederateInterface->__setTheHLA_PostOffice(NULL);
@@ -215,15 +192,15 @@ namespace Framework {
             _removeTheHLA_FederateInterface(p_HLA_FederateInterface);
         }
         
-        Framework::IO::HLA_FederateInterface* HLA_PostOffice::getTheHLA_FederateInterface(rti1516::InteractionClassHandle key) const {
+        framework::IO::HLA_FederateInterface* HLA_PostOffice::getTheHLA_FederateInterface(rti1516::InteractionClassHandle key) const {
             return (theHLA_FederateInterface.find(key) != theHLA_FederateInterface.end() ? (*theHLA_FederateInterface.find(key)).second : NULL);
         }
         
-        void HLA_PostOffice::_addTheHLA_FederateInterface(rti1516::InteractionClassHandle key, Framework::IO::HLA_FederateInterface* p_HLA_FederateInterface) {
-            theHLA_FederateInterface.insert(std::map<rti1516::InteractionClassHandle, Framework::IO::HLA_FederateInterface*>::value_type(key, p_HLA_FederateInterface));
+        void HLA_PostOffice::_addTheHLA_FederateInterface(rti1516::InteractionClassHandle key, framework::IO::HLA_FederateInterface* p_HLA_FederateInterface) {
+            theHLA_FederateInterface.insert(std::map<rti1516::InteractionClassHandle, framework::IO::HLA_FederateInterface*>::value_type(key, p_HLA_FederateInterface));
         }
         
-        void HLA_PostOffice::addTheHLA_FederateInterface(rti1516::InteractionClassHandle key, Framework::IO::HLA_FederateInterface* p_HLA_FederateInterface) {
+        void HLA_PostOffice::addTheHLA_FederateInterface(rti1516::InteractionClassHandle key, framework::IO::HLA_FederateInterface* p_HLA_FederateInterface) {
             if(p_HLA_FederateInterface != NULL)
                 {
                     p_HLA_FederateInterface->_setTheHLA_PostOffice(this);
@@ -236,7 +213,7 @@ namespace Framework {
         }
         
         void HLA_PostOffice::removeTheHLA_FederateInterface(rti1516::InteractionClassHandle key) {
-            Framework::IO::HLA_FederateInterface* p_HLA_FederateInterface = getTheHLA_FederateInterface(key);
+            framework::IO::HLA_FederateInterface* p_HLA_FederateInterface = getTheHLA_FederateInterface(key);
             if(p_HLA_FederateInterface != NULL)
                 {
                     p_HLA_FederateInterface->_setTheHLA_PostOffice(NULL);
@@ -247,7 +224,7 @@ namespace Framework {
         void HLA_PostOffice::cleanUpRelations() {
             if(theFrameworkFederateAmbassador != NULL)
                 {
-                    Framework::IO::HLA_PostOffice* p_HLA_PostOffice = theFrameworkFederateAmbassador->getItsHLA_PostOffice();
+                    framework::IO::HLA_PostOffice* p_HLA_PostOffice = theFrameworkFederateAmbassador->getItsHLA_PostOffice();
                     if(p_HLA_PostOffice != NULL)
                         {
                             theFrameworkFederateAmbassador->__setItsHLA_PostOffice(NULL);
@@ -255,10 +232,10 @@ namespace Framework {
                     theFrameworkFederateAmbassador = NULL;
                 }
             {
-                std::map<rti1516::InteractionClassHandle, Framework::IO::HLA_FederateInterface*>::const_iterator iter;
+                std::map<rti1516::InteractionClassHandle, framework::IO::HLA_FederateInterface*>::const_iterator iter;
                 iter = theHLA_FederateInterface.begin();
                 while (iter != theHLA_FederateInterface.end()){
-                    Framework::IO::HLA_PostOffice* p_HLA_PostOffice = ((*iter).second)->getTheHLA_PostOffice();
+                    framework::IO::HLA_PostOffice* p_HLA_PostOffice = ((*iter).second)->getTheHLA_PostOffice();
                     if(p_HLA_PostOffice != NULL)
                         {
                             ((*iter).second)->__setTheHLA_PostOffice(NULL);

@@ -3,30 +3,26 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::PostOffice
-//!	Generated Date	: Mon, 14, Apr 2008  
+	Model Element	: framework::IO::PostOffice
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\PostOffice.cpp
 *********************************************************************/
 
 #include "PostOffice.h"
 // link theFederate 
 #include "Federate.h"
-// operation receiveMessage(Buffer*,int) 
-#include "Buffer.h"
 // operation announcePublication(FederateInterface*) 
 #include "FederateInterface.h"
-// operation sendMessage(FederateMessage*) 
-#include "FederateMessage.h"
 
 //----------------------------------------------------------------------------
 // PostOffice.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework::IO 
+//## package framework::IO 
 
 //## class PostOffice 
 
-namespace Framework {
+namespace framework {
     namespace IO {
         
         
@@ -44,15 +40,15 @@ namespace Framework {
             //#]
         }
         
-        Framework::Control::Federate* PostOffice::getTheFederate() const {
+        framework::Control::Federate* PostOffice::getTheFederate() const {
             return theFederate;
         }
         
-        void PostOffice::__setTheFederate(Framework::Control::Federate* p_Federate) {
+        void PostOffice::__setTheFederate(framework::Control::Federate* p_Federate) {
             theFederate = p_Federate;
         }
         
-        void PostOffice::_setTheFederate(Framework::Control::Federate* p_Federate) {
+        void PostOffice::_setTheFederate(framework::Control::Federate* p_Federate) {
             if(theFederate != NULL)
                 {
                     theFederate->__setThePostOffice(NULL);
@@ -60,7 +56,7 @@ namespace Framework {
             __setTheFederate(p_Federate);
         }
         
-        void PostOffice::setTheFederate(Framework::Control::Federate* p_Federate) {
+        void PostOffice::setTheFederate(framework::Control::Federate* p_Federate) {
             if(p_Federate != NULL)
                 {
                     p_Federate->_setThePostOffice(this);
@@ -75,7 +71,7 @@ namespace Framework {
         void PostOffice::cleanUpRelations() {
             if(theFederate != NULL)
                 {
-                    Framework::IO::PostOffice* p_PostOffice = theFederate->getThePostOffice();
+                    framework::IO::PostOffice* p_PostOffice = theFederate->getThePostOffice();
                     if(p_PostOffice != NULL)
                         {
                             theFederate->__setThePostOffice(NULL);

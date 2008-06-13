@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::RtiAmbassador
-//!	Generated Date	: Wed, 20, Feb 2008  
+	Model Element	: framework::RtiAmbassador
+//!	Generated Date	: Wed, 21, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\RtiAmbassador.h
 *********************************************************************/
 
@@ -21,26 +21,26 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-#include "Framework.h"
+#include "framework.h"
 
 //----------------------------------------------------------------------------
 // RtiAmbassador.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     class FrameworkFederateAmbassador;
 }
 
 
-//## package Framework 
+//## package framework 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     //## class RtiAmbassador 
     class RtiAmbassador  {
     
@@ -48,10 +48,7 @@ namespace Framework {
     ////    Constructors and destructors    ////
     public :
         
-        //## operation RtiAmbassador(FrameworkFederateAmbassador*) 
-        RtiAmbassador(FrameworkFederateAmbassador* frameworkFederateAmbassador);
-        
-        //## auto_generated 
+        //## operation RtiAmbassador() 
         RtiAmbassador();
         
         //## auto_generated 

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: DefaultConfig
-//!	Generated Date	: Fri, 15, Feb 2008  
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\MainDefaultComponent.cpp
 *********************************************************************/
 

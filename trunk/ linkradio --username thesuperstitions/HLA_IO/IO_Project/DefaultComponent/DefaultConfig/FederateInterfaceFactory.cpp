@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::Control::FederateInterfaceFactory
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::Control::FederateInterfaceFactory
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterfaceFactory.cpp
 *********************************************************************/
 
@@ -20,11 +20,11 @@
 // FederateInterfaceFactory.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework::Control 
+//## package framework::Control 
 
 //## class FederateInterfaceFactory 
 
-namespace Framework {
+namespace framework {
     namespace Control {
         
         
@@ -42,15 +42,15 @@ namespace Framework {
             cleanUpRelations();
         }
         
-        Framework::IO::FederateInterface* FederateInterfaceFactory::createFederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType) {
-            //#[ operation createFederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
+        framework::IO::FederateInterface* FederateInterfaceFactory::createFederateInterface(int interfaceID, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType) {
+            //#[ operation createFederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
             switch(fedFrameworkType)
             {
               case HLA_FederateFrameworkType:
-                return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::HLA_FederateInterface(interfaceID, name, interfaceType) ) );
+                return( static_cast<framework::IO::FederateInterface*>( new framework::IO::HLA_FederateInterface(interfaceID, name,  maxMessageSize, maxMessages, federateInterfaceType) ) );
               
               case OASIS_FederateFrameworkType:
-                return( static_cast<Framework::IO::FederateInterface*>( new Framework::IO::OASIS_FederateInterface(interfaceID, name, interfaceType) ) );
+                return( static_cast<framework::IO::FederateInterface*>( new framework::IO::OASIS_FederateInterface(interfaceID, name,  maxMessageSize, maxMessages, federateInterfaceType) ) );
             };  
             
             return(NULL);          
@@ -65,11 +65,11 @@ namespace Framework {
             fedFrameworkType = p_fedFrameworkType;
         }
         
-        Framework::IO::FederateIO_Handler* FederateInterfaceFactory::getItsFederateIO_Handler() const {
+        framework::IO::FederateIO_Handler* FederateInterfaceFactory::getItsFederateIO_Handler() const {
             return itsFederateIO_Handler;
         }
         
-        void FederateInterfaceFactory::setItsFederateIO_Handler(Framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
+        void FederateInterfaceFactory::setItsFederateIO_Handler(framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
             itsFederateIO_Handler = p_FederateIO_Handler;
         }
         

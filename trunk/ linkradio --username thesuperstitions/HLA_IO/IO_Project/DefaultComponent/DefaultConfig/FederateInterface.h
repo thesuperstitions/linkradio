@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::FederateInterface
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::IO::FederateInterface
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterface.h
 *********************************************************************/
 
@@ -23,38 +23,40 @@
 #include "RTI\RTI1516.h"
 #include "IO.h"
 // operation FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
-#include "Framework.h"
+#include "framework.h"
+// dependency Control 
+#include "Control.h"
 // class FederateInterface 
-#include "Thread.h"
+#include <Thread.h>
 
 //----------------------------------------------------------------------------
 // FederateInterface.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
-    namespace IO {
-        class FederateIO_Handler;
-        class FederateMessage;
+    namespace Control {
+        class Federate;
         
     } 
     
-namespace utils {
-    class InterprocessQueue;
+namespace IO {
+    class FederateIO_Handler;
+    class PostOffice;
 }
 
 }
 
 
-//## package Framework::IO 
+//## package framework::IO 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace IO {
         //## class FederateInterface 
         class FederateInterface : public utils::Thread {
@@ -73,8 +75,8 @@ namespace Framework {
         ////    Operations    ////
         public :
             
-            //## operation processFederateMessage(FederateMessage*) 
-            virtual bool processFederateMessage(FederateMessage* message);
+            //## operation processFederateMessage(char*,int) 
+            virtual bool processFederateMessage(char* message, int messageSizeInBytes);
             
             //## operation threadOperation() 
             void threadOperation();
@@ -114,28 +116,22 @@ namespace Framework {
             void setMaxMessages(unsigned long p_maxMessages);
             
             //## auto_generated 
-            static Framework::utils::InterprocessQueue* getSubscribeQueue();
+            framework::utils::InterprocessQueue* getPublishQueue() const;
             
             //## auto_generated 
-            static void setSubscribeQueue(Framework::utils::InterprocessQueue* p_subscribeQueue);
+            void setPublishQueue(framework::utils::InterprocessQueue* p_publishQueue);
+            
+            //## auto_generated 
+            static framework::utils::InterprocessQueue* getSubscribeQueue();
+            
+            //## auto_generated 
+            static void setSubscribeQueue(framework::utils::InterprocessQueue* p_subscribeQueue);
             
             //## auto_generated 
             FederateIO_Handler* getItsFederateIO_Handler() const;
             
             //## auto_generated 
             void setItsFederateIO_Handler(FederateIO_Handler* p_FederateIO_Handler);
-            
-            //## auto_generated 
-            utils::InterprocessQueue* getPublisherQueue() const;
-            
-            //## auto_generated 
-            void setPublisherQueue(utils::InterprocessQueue* p_InterprocessQueue);
-            
-            //## auto_generated 
-            utils::InterprocessQueue* getSubscriberQueue() const;
-            
-            //## auto_generated 
-            void setSubscriberQueue(utils::InterprocessQueue* p_InterprocessQueue);
         
         
         ////    Framework operations    ////
@@ -169,19 +165,15 @@ namespace Framework {
             
             unsigned long maxMessages;		//## attribute maxMessages 
             
-            static Framework::utils::InterprocessQueue* subscribeQueue;		//## attribute subscribeQueue 
+            framework::utils::InterprocessQueue* publishQueue;		//## attribute publishQueue 
+            
+            static framework::utils::InterprocessQueue* subscribeQueue;		//## attribute subscribeQueue 
             
         
         ////    Relations and components    ////
         protected :
             
             FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
-            
-            
-            utils::InterprocessQueue* publisherQueue;		//## link publisherQueue 
-            
-            
-            utils::InterprocessQueue* subscriberQueue;		//## link subscriberQueue 
             
         
         

@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::Control::Federate
-//!	Generated Date	: Mon, 12, May 2008  
+	Model Element	: framework::Control::Federate
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Federate.h
 *********************************************************************/
 
@@ -23,7 +23,7 @@
 #include "RTI\RTI1516.h"
 #include "Control.h"
 // operation Federate(FederateFrameworkType,FederateType,FrameworkFederateAmbassador*) 
-#include "Framework.h"
+#include "framework.h"
 // dependency FederateIO_Handler 
 #include "FederateIO_Handler.h"
 
@@ -32,7 +32,7 @@
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
     namespace Control {
         class FederateInterfaceFactory;
@@ -41,12 +41,12 @@ namespace Framework {
     
 } 
 
-namespace Framework {
+namespace framework {
     class FrameworkFederateAmbassador;
     
 } 
 
-namespace Framework {
+namespace framework {
     
     namespace IO {
         class HLA_PostOffice;
@@ -56,14 +56,14 @@ namespace Framework {
 }
 
 
-//## package Framework::Control 
+//## package framework::Control 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace Control {
         //## class Federate 
         class Federate  {

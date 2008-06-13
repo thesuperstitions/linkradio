@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::FederateIO_Handler
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::IO::FederateIO_Handler
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_Handler.h
 *********************************************************************/
 
@@ -26,21 +26,18 @@
 #include <iterator>
 #include <oxf/OMValueCompare.h>
 // operation FederateIO_Handler(FederateFrameworkType) 
-#include "Framework.h"
+#include "framework.h"
 // link itsFederateInterface 
 #include "FederateInterface.h"
-// class FederateIO_Handler 
-#include "IO_Handler.h"
 
 //----------------------------------------------------------------------------
 // FederateIO_Handler.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
     namespace IO {
-        class Buffer;
         class C_IO_Functions;
         
     } 
@@ -53,27 +50,22 @@ namespace Control {
 
 namespace IO {
     class PostOffice;
-    
-} 
-
-namespace Control {
-    class Serializer;
 }
 
 }
 
 
-//## package Framework::IO 
+//## package framework::IO 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace IO {
         //## class FederateIO_Handler 
-        class FederateIO_Handler : public IO_Handler {
+        class FederateIO_Handler  {
         
         
         ////    Constructors and destructors    ////
@@ -106,10 +98,10 @@ namespace Framework {
             void setFrameworkType(FederateFrameworkType p_frameworkType);
             
             //## auto_generated 
-            Framework::InterfaceType getInterfaceType() const;
+            framework::InterfaceType getInterfaceType() const;
             
             //## auto_generated 
-            void setInterfaceType(Framework::InterfaceType p_interfaceType);
+            void setInterfaceType(framework::InterfaceType p_interfaceType);
             
             //## auto_generated 
             Control::Federate* getItsFederate() const;
@@ -180,7 +172,7 @@ namespace Framework {
             
             FederateFrameworkType frameworkType;		//## attribute frameworkType 
             
-            Framework::InterfaceType interfaceType;		//## attribute interfaceType 
+            framework::InterfaceType interfaceType;		//## attribute interfaceType 
             
         
         ////    Relations and components    ////

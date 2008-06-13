@@ -3,39 +3,41 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::HLA_FederateInterface
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::IO::HLA_FederateInterface
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_FederateInterface.cpp
 *********************************************************************/
 
 #include "HLA_FederateInterface.h"
+// dependency Federate 
+#include "Federate.h"
 #include "FederateIO_Handler.h"
 // link theHLA_PostOffice 
 #include "HLA_PostOffice.h"
-#include "InterprocessQueue.h"
+// dependency PostOffice 
+#include "PostOffice.h"
 
 //----------------------------------------------------------------------------
 // HLA_FederateInterface.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework::IO 
+//## package framework::IO 
 
 //## class HLA_FederateInterface 
 
-namespace Framework {
+namespace framework {
     namespace IO {
         
         
-        HLA_FederateInterface::HLA_FederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType) : isInteractionClassHandleSet(false) ,FederateInterface(name, interfaceType) {
+        HLA_FederateInterface::HLA_FederateInterface(int interfaceID, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType) : isInteractionClassHandleSet(false) ,FederateInterface(interfaceID, name, maxMessageSize, maxMessages, federateInterfaceType) {
             theHLA_PostOffice = NULL;
-            //#[ operation HLA_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
+            //#[ operation HLA_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
             //#]
         }
         
         HLA_FederateInterface::~HLA_FederateInterface() {
             //#[ operation ~HLA_FederateInterface() 
             
-            delete controlQueue;
             
             //#]
             cleanUpRelations();
@@ -68,15 +70,15 @@ namespace Framework {
             paramHandle = p_paramHandle;
         }
         
-        Framework::IO::HLA_PostOffice* HLA_FederateInterface::getTheHLA_PostOffice() const {
+        framework::IO::HLA_PostOffice* HLA_FederateInterface::getTheHLA_PostOffice() const {
             return theHLA_PostOffice;
         }
         
-        void HLA_FederateInterface::__setTheHLA_PostOffice(Framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::__setTheHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
             theHLA_PostOffice = p_HLA_PostOffice;
         }
         
-        void HLA_FederateInterface::_setTheHLA_PostOffice(Framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::_setTheHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
             if(theHLA_PostOffice != NULL)
                 {
                     theHLA_PostOffice->_removeTheHLA_FederateInterface(this);
@@ -84,7 +86,7 @@ namespace Framework {
             __setTheHLA_PostOffice(p_HLA_PostOffice);
         }
         
-        void HLA_FederateInterface::setTheHLA_PostOffice(Framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::setTheHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
             if(p_HLA_PostOffice != NULL)
                 {
                     p_HLA_PostOffice->_addTheHLA_FederateInterface(getInteractionClassHandle(), this);
@@ -99,7 +101,7 @@ namespace Framework {
         void HLA_FederateInterface::cleanUpRelations() {
             if(theHLA_PostOffice != NULL)
                 {
-                    Framework::IO::HLA_PostOffice* current = theHLA_PostOffice;
+                    framework::IO::HLA_PostOffice* current = theHLA_PostOffice;
                     if(current != NULL)
                         {
                             current->_removeTheHLA_FederateInterface(interactionClassHandle);

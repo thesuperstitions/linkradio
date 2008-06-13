@@ -69,12 +69,14 @@ LIBS= \
 
 INCLUDE_PATH= \
   $(INCLUDE_QUALIFIER)"C:\MAK\makRti3.2\include" \
-  $(INCLUDE_QUALIFIER)"C:\MAK\makRti3.2\include" \
   $(INCLUDE_QUALIFIER)"C:\Program Files\boost\boost_1_35_0" \
-  $(INCLUDE_QUALIFIER)"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\\" \
   $(INCLUDE_QUALIFIER)"C:\Program Files\boost\boost_1_35_0\boost\thread" \
   $(INCLUDE_QUALIFIER)"C:\Program Files\Microsoft.NET\SDK\v1.1\include\\" \
-  $(INCLUDE_QUALIFIER)"C:\Documents and Settings\rosskw1\My Documents\ntds_common" \
+  $(INCLUDE_QUALIFIER)"C:\Documents and Settings\rosskw1\My Documents\ntds_common\\" \
+  $(INCLUDE_QUALIFIER)"C:\Program Files\Microsoft.NET\SDK\v1.1\include\\" \
+  $(INCLUDE_QUALIFIER)"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\\" \
+  $(INCLUDE_QUALIFIER)"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\\" \
+  $(INCLUDE_QUALIFIER)"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\\" \
   $(INCLUDE_QUALIFIER)$(OMROOT)/LangCpp/osconfig/WIN32
 
 ADDITIONAL_OBJS=
@@ -83,30 +85,24 @@ OBJS= \
   FrameworkFederateAmbassador.obj \
   RtiAmbassador.obj \
   FederateInterface.obj \
-  FederateMessage.obj \
-  IO_Handler.obj \
-  Message.obj \
-  PostOffice.obj \
-  HLA_PostOffice.obj \
   FederateIO_Handler.obj \
   HLA_FederateInterface.obj \
   OASIS_FederateInterface.obj \
-  Buffer.obj \
   C_IO_Functions.obj \
+  PostOffice.obj \
+  HLA_PostOffice.obj \
   Serializer.obj \
   Federate.obj \
-  ExampleFederate.obj \
+  HlaCecFederate.obj \
   FederateInterfaceFactory.obj \
-  Sleep.obj \
-  Thread.obj \
-  Timer.obj \
-  InterprocessQueue.obj \
   FrameworkTester.obj \
-  Framework.obj \
+  framework.obj \
   IO.obj \
   Control.obj \
-  utils.obj \
-  FrameworkTest.obj
+  FrameworkTest.obj \
+  InterprocessQueue.obj \
+  Thread.obj \
+  InterprocessQueue.obj
 
 
 
@@ -187,85 +183,61 @@ SOCK_LIB=
 
 
 
-FrameworkFederateAmbassador.obj : FrameworkFederateAmbassador.cpp FrameworkFederateAmbassador.h    Framework.h HLA_PostOffice.h RtiAmbassador.h 
+FrameworkFederateAmbassador.obj : FrameworkFederateAmbassador.cpp FrameworkFederateAmbassador.h    framework.h HLA_PostOffice.h RtiAmbassador.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FrameworkFederateAmbassador.obj" "FrameworkFederateAmbassador.cpp" 
 
 
 
-RtiAmbassador.obj : RtiAmbassador.cpp RtiAmbassador.h    Framework.h FrameworkFederateAmbassador.h 
+RtiAmbassador.obj : RtiAmbassador.cpp RtiAmbassador.h    framework.h FrameworkFederateAmbassador.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"RtiAmbassador.obj" "RtiAmbassador.cpp" 
 
 
 
-FederateInterface.obj : FederateInterface.cpp FederateInterface.h    IO.h FederateIO_Handler.h InterprocessQueue.h FederateMessage.h 
+FederateInterface.obj : FederateInterface.cpp FederateInterface.h    IO.h FederateIO_Handler.h Control.h Federate.h PostOffice.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FederateInterface.obj" "FederateInterface.cpp" 
 
 
 
-FederateMessage.obj : FederateMessage.cpp FederateMessage.h    IO.h FederateInterface.h Message.h Buffer.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FederateMessage.obj" "FederateMessage.cpp" 
-
-
-
-IO_Handler.obj : IO_Handler.cpp IO_Handler.h    IO.h Serializer.h FederateMessage.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"IO_Handler.obj" "IO_Handler.cpp" 
-
-
-
-Message.obj : Message.cpp Message.h    IO.h Buffer.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Message.obj" "Message.cpp" 
-
-
-
-PostOffice.obj : PostOffice.cpp PostOffice.h    IO.h Federate.h FederateInterface.h FederateMessage.h Buffer.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"PostOffice.obj" "PostOffice.cpp" 
-
-
-
-HLA_PostOffice.obj : HLA_PostOffice.cpp HLA_PostOffice.h    IO.h FrameworkFederateAmbassador.h HLA_FederateInterface.h FederateInterface.h FederateMessage.h Buffer.h PostOffice.h Federate.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"HLA_PostOffice.obj" "HLA_PostOffice.cpp" 
-
-
-
-FederateIO_Handler.obj : FederateIO_Handler.cpp FederateIO_Handler.h    IO.h FederateInterface.h FederateInterfaceFactory.h FederateMessage.h Federate.h PostOffice.h Buffer.h C_IO_Functions.h IO_Handler.h Serializer.h 
+FederateIO_Handler.obj : FederateIO_Handler.cpp FederateIO_Handler.h    IO.h FederateInterface.h FederateInterfaceFactory.h Federate.h PostOffice.h C_IO_Functions.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FederateIO_Handler.obj" "FederateIO_Handler.cpp" 
 
 
 
-HLA_FederateInterface.obj : HLA_FederateInterface.cpp HLA_FederateInterface.h    IO.h HLA_PostOffice.h FederateInterface.h FederateIO_Handler.h InterprocessQueue.h 
+HLA_FederateInterface.obj : HLA_FederateInterface.cpp HLA_FederateInterface.h    IO.h HLA_PostOffice.h FederateInterface.h Control.h FederateIO_Handler.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"HLA_FederateInterface.obj" "HLA_FederateInterface.cpp" 
 
 
 
-OASIS_FederateInterface.obj : OASIS_FederateInterface.cpp OASIS_FederateInterface.h    IO.h FederateInterface.h FederateIO_Handler.h InterprocessQueue.h 
+OASIS_FederateInterface.obj : OASIS_FederateInterface.cpp OASIS_FederateInterface.h    IO.h FederateInterface.h Control.h FederateIO_Handler.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"OASIS_FederateInterface.obj" "OASIS_FederateInterface.cpp" 
 
 
 
-Buffer.obj : Buffer.cpp Buffer.h    IO.h Message.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Buffer.obj" "Buffer.cpp" 
-
-
-
-C_IO_Functions.obj : C_IO_Functions.cpp C_IO_Functions.h    IO.h Federate.h FederateInterface.h 
+C_IO_Functions.obj : C_IO_Functions.cpp C_IO_Functions.h    IO.h Federate.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"C_IO_Functions.obj" "C_IO_Functions.cpp" 
 
 
 
-Serializer.obj : Serializer.cpp Serializer.h    Control.h IO_Handler.h IO.h 
+PostOffice.obj : PostOffice.cpp PostOffice.h    IO.h Federate.h FederateInterface.h 
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"PostOffice.obj" "PostOffice.cpp" 
+
+
+
+HLA_PostOffice.obj : HLA_PostOffice.cpp HLA_PostOffice.h    IO.h FrameworkFederateAmbassador.h HLA_FederateInterface.h FederateInterface.h PostOffice.h Federate.h 
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"HLA_PostOffice.obj" "HLA_PostOffice.cpp" 
+
+
+
+Serializer.obj : Serializer.cpp Serializer.h    Control.h IO.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Serializer.obj" "Serializer.cpp" 
 
@@ -277,75 +249,63 @@ Federate.obj : Federate.cpp Federate.h    Control.h PostOffice.h FederateIO_Hand
 
 
 
-ExampleFederate.obj : ExampleFederate.cpp ExampleFederate.h    Control.h FrameworkFederateAmbassador.h Federate.h FederateIO_Handler.h PostOffice.h 
+HlaCecFederate.obj : HlaCecFederate.cpp HlaCecFederate.h    Control.h Federate.h FederateIO_Handler.h PostOffice.h 
 	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"ExampleFederate.obj" "ExampleFederate.cpp" 
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"HlaCecFederate.obj" "HlaCecFederate.cpp" 
 
 
 
-FederateInterfaceFactory.obj : FederateInterfaceFactory.cpp FederateInterfaceFactory.h    Control.h FederateIO_Handler.h HLA_FederateInterface.h OASIS_FederateInterface.h FederateInterface.h Framework.h 
+FederateInterfaceFactory.obj : FederateInterfaceFactory.cpp FederateInterfaceFactory.h    Control.h FederateIO_Handler.h HLA_FederateInterface.h OASIS_FederateInterface.h FederateInterface.h framework.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FederateInterfaceFactory.obj" "FederateInterfaceFactory.cpp" 
 
 
 
-Sleep.obj : Sleep.cpp Sleep.h    utils.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Sleep.obj" "Sleep.cpp" 
-
-
-
-Thread.obj : Thread.cpp Thread.h    utils.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Thread.obj" "Thread.cpp" 
-
-
-
-Timer.obj : Timer.cpp Timer.h    utils.h Sleep.h Thread.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Timer.obj" "Timer.cpp" 
-
-
-
-InterprocessQueue.obj : InterprocessQueueTest-Linux\InterprocessQueue.cpp InterprocessQueue.h    utils.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"InterprocessQueue.obj" "InterprocessQueueTest-Linux\InterprocessQueue.cpp" 
-
-
-
-FrameworkTester.obj : FrameworkTester.cpp FrameworkTester.h    FrameworkTest.h FrameworkFederateAmbassador.h RtiAmbassador.h ExampleFederate.h C_IO_Functions.h 
+FrameworkTester.obj : FrameworkTester.cpp FrameworkTester.h    FrameworkTest.h FrameworkFederateAmbassador.h RtiAmbassador.h HlaCecFederate.h C_IO_Functions.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FrameworkTester.obj" "FrameworkTester.cpp" 
 
 
 
-Framework.obj : Framework.cpp Framework.h    FrameworkFederateAmbassador.h RtiAmbassador.h 
+framework.obj : framework.cpp framework.h    FrameworkFederateAmbassador.h RtiAmbassador.h 
 	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Framework.obj" "Framework.cpp" 
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"framework.obj" "framework.cpp" 
 
 
 
-IO.obj : IO.cpp IO.h    FederateInterface.h FederateMessage.h IO_Handler.h Message.h PostOffice.h HLA_PostOffice.h FederateIO_Handler.h HLA_FederateInterface.h OASIS_FederateInterface.h Buffer.h C_IO_Functions.h Framework.h 
+IO.obj : IO.cpp IO.h    FederateInterface.h FederateIO_Handler.h HLA_FederateInterface.h OASIS_FederateInterface.h C_IO_Functions.h PostOffice.h HLA_PostOffice.h framework.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"IO.obj" "IO.cpp" 
 
 
 
-Control.obj : Control.cpp Control.h    Serializer.h Federate.h ExampleFederate.h FederateInterfaceFactory.h Framework.h PostOffice.h 
+Control.obj : Control.cpp Control.h    Serializer.h Federate.h HlaCecFederate.h FederateInterfaceFactory.h framework.h PostOffice.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Control.obj" "Control.cpp" 
-
-
-
-utils.obj : utils.cpp utils.h    Sleep.h Thread.h Timer.h InterprocessQueue.h Framework.h 
-	$(CREATE_OBJ_DIR)
-	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"utils.obj" "utils.cpp" 
 
 
 
 FrameworkTest.obj : FrameworkTest.cpp FrameworkTest.h    FrameworkTester.h 
 	$(CREATE_OBJ_DIR)
 	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"FrameworkTest.obj" "FrameworkTest.cpp" 
+
+
+
+InterprocessQueue.obj : "C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\InterprocessQueue.cpp"     
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"InterprocessQueue.obj" "C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\InterprocessQueue.cpp" 
+
+
+
+Thread.obj : "C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp"     
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"Thread.obj" "C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp" 
+
+
+
+InterprocessQueue.obj : InterprocessQueueTest-Linux\InterprocessQueue.cpp     
+	$(CREATE_OBJ_DIR)
+	$(CPP) $(ConfigurationCPPCompileSwitches)  /Fo"InterprocessQueue.obj" "InterprocessQueueTest-Linux\InterprocessQueue.cpp" 
 
 
 
@@ -375,30 +335,24 @@ clean:
 	if exist FrameworkFederateAmbassador.obj erase FrameworkFederateAmbassador.obj
 	if exist RtiAmbassador.obj erase RtiAmbassador.obj
 	if exist FederateInterface.obj erase FederateInterface.obj
-	if exist FederateMessage.obj erase FederateMessage.obj
-	if exist IO_Handler.obj erase IO_Handler.obj
-	if exist Message.obj erase Message.obj
-	if exist PostOffice.obj erase PostOffice.obj
-	if exist HLA_PostOffice.obj erase HLA_PostOffice.obj
 	if exist FederateIO_Handler.obj erase FederateIO_Handler.obj
 	if exist HLA_FederateInterface.obj erase HLA_FederateInterface.obj
 	if exist OASIS_FederateInterface.obj erase OASIS_FederateInterface.obj
-	if exist Buffer.obj erase Buffer.obj
 	if exist C_IO_Functions.obj erase C_IO_Functions.obj
+	if exist PostOffice.obj erase PostOffice.obj
+	if exist HLA_PostOffice.obj erase HLA_PostOffice.obj
 	if exist Serializer.obj erase Serializer.obj
 	if exist Federate.obj erase Federate.obj
-	if exist ExampleFederate.obj erase ExampleFederate.obj
+	if exist HlaCecFederate.obj erase HlaCecFederate.obj
 	if exist FederateInterfaceFactory.obj erase FederateInterfaceFactory.obj
-	if exist Sleep.obj erase Sleep.obj
-	if exist Thread.obj erase Thread.obj
-	if exist Timer.obj erase Timer.obj
-	if exist InterprocessQueue.obj erase InterprocessQueue.obj
 	if exist FrameworkTester.obj erase FrameworkTester.obj
-	if exist Framework.obj erase Framework.obj
+	if exist framework.obj erase framework.obj
 	if exist IO.obj erase IO.obj
 	if exist Control.obj erase Control.obj
-	if exist utils.obj erase utils.obj
 	if exist FrameworkTest.obj erase FrameworkTest.obj
+	if exist InterprocessQueue.obj erase InterprocessQueue.obj
+	if exist Thread.obj erase Thread.obj
+	if exist InterprocessQueue.obj erase InterprocessQueue.obj
 	if exist $(TARGET_MAIN)$(OBJ_EXT) erase $(TARGET_MAIN)$(OBJ_EXT)
 	if exist *$(OBJ_EXT) erase *$(OBJ_EXT)
 	if exist $(TARGET_NAME).pdb erase $(TARGET_NAME).pdb

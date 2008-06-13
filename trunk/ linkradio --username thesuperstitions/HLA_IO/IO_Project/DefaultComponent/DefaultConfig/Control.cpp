@@ -3,49 +3,49 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::Control
-//!	Generated Date	: Mon, 7, Apr 2008  
+	Model Element	: framework::Control
+//!	Generated Date	: Wed, 21, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Control.cpp
 *********************************************************************/
 
 #include "Control.h"
-#include "ExampleFederate.h"
 #include "Federate.h"
 #include "FederateInterfaceFactory.h"
+#include "HlaCecFederate.h"
 #include "Serializer.h"
 
 //----------------------------------------------------------------------------
 // Control.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework::Control 
+//## package framework::Control 
 
-namespace Framework {
+namespace framework {
     namespace Control {
         
     }
 }
 
-namespace Framework {
+namespace framework {
     namespace Control {
         
         
         //## operation getFederate() 
-        Framework::Control::Federate* getFederate() {
+        framework::Control::Federate* getFederate() {
             //#[ operation getFederate() 
             return(theFederate);
             //#]
         }
         
-        //## operation setFederate(Framework::Control::Federate*) 
-        void setFederate(Framework::Control::Federate* federate) {
-            //#[ operation setFederate(Framework::Control::Federate*) 
+        //## operation setFederate(framework::Control::Federate*) 
+        void setFederate(framework::Control::Federate* federate) {
+            //#[ operation setFederate(framework::Control::Federate*) 
             theFederate = federate;
             //#]
         }
         
         //## attribute theFederate 
-        Framework::Control::Federate* theFederate;
+        framework::Control::Federate* theFederate;
         
     }
 }

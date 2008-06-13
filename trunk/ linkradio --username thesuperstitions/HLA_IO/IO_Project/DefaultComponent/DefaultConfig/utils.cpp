@@ -3,31 +3,29 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::utils
-//!	Generated Date	: Mon, 12, May 2008  
+	Model Element	: framework::utils
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\utils.cpp
 *********************************************************************/
 
 #include "utils.h"
 #include "InterprocessQueue.h"
-#include "Sleep.h"
-#include "Thread.h"
-#include "Timer.h"
 
 //----------------------------------------------------------------------------
 // utils.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework::utils 
+//## package framework::utils 
 
-namespace Framework {
+namespace framework {
     namespace utils {
         
     }
 }
 
-namespace Framework {
+namespace framework {
     namespace utils {
+        
         
         
     }

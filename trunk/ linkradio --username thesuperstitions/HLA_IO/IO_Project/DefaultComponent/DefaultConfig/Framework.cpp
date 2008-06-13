@@ -3,27 +3,26 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework
-//!	Generated Date	: Mon, 12, May 2008  
-	File Path	: DefaultComponent\DefaultConfig\Framework.cpp
+	Model Element	: framework
+//!	Generated Date	: Wed, 21, May 2008  
+	File Path	: DefaultComponent\DefaultConfig\framework.cpp
 *********************************************************************/
 
-#include "Framework.h"
+#include "framework.h"
 // operation getFrameworkFederateAmbassador() 
 #include "FrameworkFederateAmbassador.h"
-#include "RtiAmbassador.h"
 
 //----------------------------------------------------------------------------
-// Framework.cpp                                                                  
+// framework.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework 
+//## package framework 
 
-namespace Framework {
+namespace framework {
     
 }
 
-namespace Framework {
+namespace framework {
     
     
     //## operation RealTimeMode() 
@@ -36,21 +35,22 @@ namespace Framework {
     //## operation getFrameworkFederateAmbassador() 
     FrameworkFederateAmbassador* getFrameworkFederateAmbassador() {
         //#[ operation getFrameworkFederateAmbassador() 
-        return(NULL);
+        return(&frameworkFederateAmbassador);
         //#]
     }
     
     //## operation getTheRtiAmbassador() 
     rti1516::RTIambassador* getTheRtiAmbassador() {
         //#[ operation getTheRtiAmbassador() 
-        return(NULL);
+        return(&rtiAmbassador);
         //#]
     }
     
+    framework::FrameworkFederateAmbassador frameworkFederateAmbassador;
     
 }
 
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\Framework.cpp
+	File Path	: DefaultComponent\DefaultConfig\framework.cpp
 *********************************************************************/
 

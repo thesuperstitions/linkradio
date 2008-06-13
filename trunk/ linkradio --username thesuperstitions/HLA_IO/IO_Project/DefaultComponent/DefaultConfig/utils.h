@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::utils
-//!	Generated Date	: Mon, 12, May 2008  
+	Model Element	: framework::utils
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\utils.h
 *********************************************************************/
 
@@ -21,27 +21,25 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-#include "Framework.h"
-#include <boost/interprocess/sync/interprocess_semaphore.hpp>
+#include "InterprocessQueue.h"
+#include "Thread.h"
+#include "framework.h"
 
 //----------------------------------------------------------------------------
 // utils.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
     namespace utils {
         class InterprocessQueue;
-        class Sleep;
-        class Thread;
-        class Timer;
     }
     
 }
 
 
-//## package Framework::utils 
+//## package framework::utils 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -49,26 +47,9 @@ namespace Framework {
 #endif
 
 
-namespace Framework {
+namespace framework {
     
     namespace utils {
-        
-        //## type InterfaceType 
-        enum InterfaceType {
-            CEC_NTDS_SPY = 0,
-            CEC_NTDS_CND = 1,
-            CEC_NTDS_R48 = 2,
-            CEC_NTDS_R49 = 3,
-            SSDS_TCP_CEC = 4
-
-
-
-
-
-
-        };
-        
-        
         
     }
     

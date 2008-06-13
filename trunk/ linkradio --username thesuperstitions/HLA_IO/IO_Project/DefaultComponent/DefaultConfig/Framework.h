@@ -3,15 +3,15 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework
-//!	Generated Date	: Thu, 15, May 2008  
-	File Path	: DefaultComponent\DefaultConfig\Framework.h
+	Model Element	: framework
+//!	Generated Date	: Wed, 21, May 2008  
+	File Path	: DefaultComponent\DefaultConfig\framework.h
 *********************************************************************/
 
 
-#ifndef Framework_H 
+#ifndef framework_H 
 
-#define Framework_H 
+#define framework_H 
 
 #include <oxf/oxf.h>
 #include <string>
@@ -21,19 +21,20 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
+// dependency utils 
+#include <utils.h>
 
 //----------------------------------------------------------------------------
-// Framework.h                                                                  
+// framework.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     class FrameworkFederateAmbassador;
-    class RtiAmbassador;
 }
 
 
-//## package Framework 
+//## package framework 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -41,7 +42,7 @@ namespace Framework {
 #endif
 
 
-namespace Framework {
+namespace framework {
     
     //## type FrameworkMessage 
     struct FrameworkMessage {};
@@ -83,6 +84,20 @@ namespace Framework {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     };
     
     //## type FederateInterfaceType 
@@ -90,6 +105,20 @@ namespace Framework {
         FederateInterfaceTypeUnselected = 0,
         FederateInterfaceTypePublisher = 1,
         FederateInterfaceTypeSubscriber = 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     };
     
     
@@ -148,6 +177,9 @@ namespace Framework {
     //## operation getTheRtiAmbassador() 
     rti1516::RTIambassador* getTheRtiAmbassador();
     
+    //## classInstance frameworkFederateAmbassador 
+    extern FrameworkFederateAmbassador frameworkFederateAmbassador;
+    
     //## attribute INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE 
     #define INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE 20
     
@@ -160,6 +192,6 @@ namespace Framework {
 
 #endif  
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\Framework.h
+	File Path	: DefaultComponent\DefaultConfig\framework.h
 *********************************************************************/
 

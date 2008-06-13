@@ -4,15 +4,15 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: FrameworkTester
-//!	Generated Date	: Mon, 12, May 2008  
+//!	Generated Date	: Wed, 21, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkTester.cpp
 *********************************************************************/
 
 #include "FrameworkTester.h"
 // link Federate_1 
-#include "ExampleFederate.h"
+#include "HlaCecFederate.h"
 // dependency FederateFrameworkType 
-#include "Framework.h"
+#include "framework.h"
 
 //----------------------------------------------------------------------------
 // FrameworkTester.cpp                                                                  
@@ -33,14 +33,14 @@ FrameworkTester::FrameworkTester() : interfaceCount(0) {
     
     DEVICE_DATA dd[2];
     
-    if ( (theFrameworkFederateAmbassador = new Framework::FrameworkFederateAmbassador()) != NULL) 
+    if ( (theFrameworkFederateAmbassador = new framework::FrameworkFederateAmbassador()) != NULL) 
     {
-      theRtiAmbassador = new Framework::RtiAmbassador(theFrameworkFederateAmbassador);
+      theRtiAmbassador = new framework::RtiAmbassador(theFrameworkFederateAmbassador);
     }
     
-    Federate_1 = new Framework::Control::ExampleFederate(Framework::HLA_FederateFrameworkType, Framework::CEC_FederateType, getTheFrameworkFederateAmbassador());   
+    Federate_1 = new framework::Control::ExampleFederate(framework::HLA_FederateFrameworkType, framework::CEC_FederateType, getTheFrameworkFederateAmbassador());   
     
-    Federate_2 = new Framework::Control::ExampleFederate(Framework::HLA_FederateFrameworkType, Framework::SSDS_FederateType, getTheFrameworkFederateAmbassador());   
+    Federate_2 = new framework::Control::ExampleFederate(framework::HLA_FederateFrameworkType, framework::SSDS_FederateType, getTheFrameworkFederateAmbassador());   
     
     
     
@@ -65,7 +65,7 @@ int FrameworkTester::Configure_NTDS_Device(DEVICE_DATA * devices_ptr) {
     //      sprintf(s, "%s%u", devices_ptr->name_string, interfaceCount++);
     //      std::string myString = s;                               
       
-      Framework::IO::C_IO_Functions::Configure_NTDS_Device(devices_ptr);    
+      framework::IO::C_IO_Functions::Configure_NTDS_Device(devices_ptr);    
       
       devices_ptr++;
     };  
@@ -83,35 +83,35 @@ void FrameworkTester::setInterfaceCount(int p_interfaceCount) {
     interfaceCount = p_interfaceCount;
 }
 
-Framework::Control::ExampleFederate* FrameworkTester::getFederate_1() const {
+framework::Control::HlaCecFederate* FrameworkTester::getFederate_1() const {
     return Federate_1;
 }
 
-void FrameworkTester::setFederate_1(Framework::Control::ExampleFederate* p_ExampleFederate) {
-    Federate_1 = p_ExampleFederate;
+void FrameworkTester::setFederate_1(framework::Control::HlaCecFederate* p_HlaCecFederate) {
+    Federate_1 = p_HlaCecFederate;
 }
 
-Framework::Control::ExampleFederate* FrameworkTester::getFederate_2() const {
+framework::Control::HlaCecFederate* FrameworkTester::getFederate_2() const {
     return Federate_2;
 }
 
-void FrameworkTester::setFederate_2(Framework::Control::ExampleFederate* p_ExampleFederate) {
-    Federate_2 = p_ExampleFederate;
+void FrameworkTester::setFederate_2(framework::Control::HlaCecFederate* p_HlaCecFederate) {
+    Federate_2 = p_HlaCecFederate;
 }
 
-Framework::FrameworkFederateAmbassador* FrameworkTester::getTheFrameworkFederateAmbassador() const {
+framework::FrameworkFederateAmbassador* FrameworkTester::getTheFrameworkFederateAmbassador() const {
     return theFrameworkFederateAmbassador;
 }
 
-void FrameworkTester::setTheFrameworkFederateAmbassador(Framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
+void FrameworkTester::setTheFrameworkFederateAmbassador(framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
     theFrameworkFederateAmbassador = p_FrameworkFederateAmbassador;
 }
 
-Framework::RtiAmbassador* FrameworkTester::getTheRtiAmbassador() const {
+framework::RtiAmbassador* FrameworkTester::getTheRtiAmbassador() const {
     return theRtiAmbassador;
 }
 
-void FrameworkTester::setTheRtiAmbassador(Framework::RtiAmbassador* p_RtiAmbassador) {
+void FrameworkTester::setTheRtiAmbassador(framework::RtiAmbassador* p_RtiAmbassador) {
     theRtiAmbassador = p_RtiAmbassador;
 }
 

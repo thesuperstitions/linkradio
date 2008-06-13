@@ -3,54 +3,49 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::RtiAmbassador
-//!	Generated Date	: Mon, 14, Apr 2008  
+	Model Element	: framework::RtiAmbassador
+//!	Generated Date	: Wed, 21, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\RtiAmbassador.cpp
 *********************************************************************/
 
 #include "RtiAmbassador.h"
-// operation RtiAmbassador(FrameworkFederateAmbassador*) 
+// link itsFrameworkFederateAmbassador 
 #include "FrameworkFederateAmbassador.h"
 
 //----------------------------------------------------------------------------
 // RtiAmbassador.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework 
+//## package framework 
 
 //## class RtiAmbassador 
 
-namespace Framework {
+namespace framework {
     
-    
-    RtiAmbassador::RtiAmbassador(FrameworkFederateAmbassador* frameworkFederateAmbassador) {
-        itsFrameworkFederateAmbassador = NULL;
-        //#[ operation RtiAmbassador(FrameworkFederateAmbassador*) 
-        if (frameworkFederateAmbassador != NULL)
-        {
-        	setItsFrameworkFederateAmbassador(frameworkFederateAmbassador);  
-        	frameworkFederateAmbassador->setItsRtiAmbassador(this); 
-        }
-        //#]
-    }
     
     RtiAmbassador::RtiAmbassador() {
         itsFrameworkFederateAmbassador = NULL;
+        //#[ operation RtiAmbassador() 
+        
+        setItsFrameworkFederateAmbassador(getFrameworkFederateAmbassador());  
+        frameworkFederateAmbassador->setItsRtiAmbassador(this); 
+        
+        //#]
     }
     
     RtiAmbassador::~RtiAmbassador() {
         cleanUpRelations();
     }
     
-    Framework::FrameworkFederateAmbassador* RtiAmbassador::getItsFrameworkFederateAmbassador() const {
+    framework::FrameworkFederateAmbassador* RtiAmbassador::getItsFrameworkFederateAmbassador() const {
         return itsFrameworkFederateAmbassador;
     }
     
-    void RtiAmbassador::__setItsFrameworkFederateAmbassador(Framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
+    void RtiAmbassador::__setItsFrameworkFederateAmbassador(framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
         itsFrameworkFederateAmbassador = p_FrameworkFederateAmbassador;
     }
     
-    void RtiAmbassador::_setItsFrameworkFederateAmbassador(Framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
+    void RtiAmbassador::_setItsFrameworkFederateAmbassador(framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
         if(itsFrameworkFederateAmbassador != NULL)
             {
                 itsFrameworkFederateAmbassador->__setItsRtiAmbassador(NULL);
@@ -58,7 +53,7 @@ namespace Framework {
         __setItsFrameworkFederateAmbassador(p_FrameworkFederateAmbassador);
     }
     
-    void RtiAmbassador::setItsFrameworkFederateAmbassador(Framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
+    void RtiAmbassador::setItsFrameworkFederateAmbassador(framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador) {
         if(p_FrameworkFederateAmbassador != NULL)
             {
                 p_FrameworkFederateAmbassador->_setItsRtiAmbassador(this);
@@ -73,7 +68,7 @@ namespace Framework {
     void RtiAmbassador::cleanUpRelations() {
         if(itsFrameworkFederateAmbassador != NULL)
             {
-                Framework::RtiAmbassador* p_RtiAmbassador = itsFrameworkFederateAmbassador->getItsRtiAmbassador();
+                framework::RtiAmbassador* p_RtiAmbassador = itsFrameworkFederateAmbassador->getItsRtiAmbassador();
                 if(p_RtiAmbassador != NULL)
                     {
                         itsFrameworkFederateAmbassador->__setItsRtiAmbassador(NULL);

@@ -3,16 +3,14 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::Control::ExampleFederate
+	Model Element	: framework::Control::HlaFederate
 //!	Generated Date	: Wed, 21, May 2008  
-	File Path	: DefaultComponent\DefaultConfig\ExampleFederate.cpp
+	File Path	: DefaultComponent\DefaultConfig\HlaFederate.cpp
 *********************************************************************/
 
-#include "ExampleFederate.h"
+#include "HlaFederate.h"
 // dependency FederateInterfaceFactory 
 #include "FederateInterfaceFactory.h"
-// operation ExampleFederate(FederateFrameworkType,FederateType,FrameworkFederateAmbassador*) 
-#include "FrameworkFederateAmbassador.h"
 #include "FederateIO_Handler.h"
 // dependency HLA_PostOffice 
 #include "HLA_PostOffice.h"
@@ -20,25 +18,25 @@
 #include "PostOffice.h"
 
 //----------------------------------------------------------------------------
-// ExampleFederate.cpp                                                                  
+// HlaFederate.cpp                                                                  
 //----------------------------------------------------------------------------
 
 //## package framework::Control 
 
-//## class ExampleFederate 
+//## class HlaFederate 
 
 namespace framework {
     namespace Control {
         
-        ExampleFederate::ExampleFederate(FederateFrameworkType fedFrameworkType, FederateType fedType, FrameworkFederateAmbassador* frameworkFederateAmbassador) : Federate(fedFrameworkType, fedType, frameworkFederateAmbassador) {
-            //#[ operation ExampleFederate(FederateFrameworkType,FederateType,FrameworkFederateAmbassador*) 
+        HlaFederate::HlaFederate() : Federate(HLA_FederateFrameworkType, CEC_FederateType, getFrameworkFederateAmbassador()) {
+            //#[ operation HlaFederate() 
             //#]
         }
         
-        ExampleFederate::~ExampleFederate() {
+        HlaFederate::~HlaFederate() {
         }
         
-        void ExampleFederate::useCase_42_1_announcePublication() {
+        void HlaFederate::useCase_42_1_announcePublication() {
             //#[ operation useCase_42_1_announcePublication() 
             /*            
             switch (federateType)
@@ -55,7 +53,7 @@ namespace framework {
             //#]
         }
         
-        void ExampleFederate::useCase_42_2_announceSubscription() {
+        void HlaFederate::useCase_42_2_announceSubscription() {
             //#[ operation useCase_42_2_announceSubscription() 
             
             // Subscribe to the interaction so that we receive data on the interface.
@@ -64,7 +62,7 @@ namespace framework {
             //#]
         }
         
-        void ExampleFederate::useCase_42_3_sendMessageOnFederateInterface() {
+        void HlaFederate::useCase_42_3_sendMessageOnFederateInterface() {
             //#[ operation useCase_42_3_sendMessageOnFederateInterface() 
             
             
@@ -74,22 +72,8 @@ namespace framework {
     }
 }
 
-//## package framework 
-
-//## class TopLevel::ExampleFederate 
-
-namespace framework {
-    
-    ExampleFederate_C::ExampleFederate_C() {
-    }
-    
-    ExampleFederate_C::~ExampleFederate_C() {
-    }
-    
-}
-
 
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\ExampleFederate.cpp
+	File Path	: DefaultComponent\DefaultConfig\HlaFederate.cpp
 *********************************************************************/
 

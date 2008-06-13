@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: ReverseEngineering
-//!	Generated Date	: Mon, 12, May 2008  
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\ReverseEngineering.h
 *********************************************************************/
 
@@ -21,15 +21,10 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-#include "boost/interprocess/shared_memory_object.hpp"
-#include "boost/interprocess/sync/interprocess_mutex.hpp"
-#include "boost/interprocess/sync/interprocess_semaphore.hpp"
 
 //----------------------------------------------------------------------------
 // ReverseEngineering.h                                                                  
 //----------------------------------------------------------------------------
-
-class InterprocessQueue;
 
 //## package ReverseEngineering 
 
@@ -46,7 +41,6 @@ struct SharedMemoryQueueControlData {
     unsigned int NumberMessagesInQueue;		//## attribute NumberMessagesInQueue 
     unsigned long UniqueValue;		//## attribute UniqueValue 
     boost::interprocess::interprocess_semaphore addMessageSemaphore;		//## attribute addMessageSemaphore 
-    // ## attribute getMsgSemaphore
     boost::interprocess::interprocess_semaphore getMsgSemaphore;		//## attribute getMsgSemaphore 
     boost::interprocess::interprocess_mutex myDataAccessMutex;		//## attribute myDataAccessMutex 
 };
@@ -57,6 +51,9 @@ struct SharedMemoryQueueControlData {
 
 //## attribute INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES 
 #define INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES 100
+
+//## attribute __framework_utils__Thread__H 
+#define __framework_utils__Thread__H 
 
 
 

@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::PostOffice
-//!	Generated Date	: Mon, 14, Apr 2008  
+	Model Element	: framework::IO::PostOffice
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\PostOffice.h
 *********************************************************************/
 
@@ -23,41 +23,35 @@
 #include "RTI\RTI1516.h"
 #include "IO.h"
 // operation sendMessage(FrameworkMessage*) 
-#include "Framework.h"
+#include "framework.h"
 
 //----------------------------------------------------------------------------
 // PostOffice.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
-    namespace IO {
-        class Buffer;
+    namespace Control {
+        class Federate;
         
     } 
     
-namespace Control {
-    class Federate;
-    
-} 
-
 namespace IO {
     class FederateInterface;
-    class FederateMessage;
 }
 
 }
 
 
-//## package Framework::IO 
+//## package framework::IO 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace IO {
         //## class PostOffice 
         class PostOffice  {
@@ -85,11 +79,8 @@ namespace Framework {
             //## operation findFederateInterface() 
             virtual FederateInterface* findFederateInterface();
             
-            //## operation receiveMessage(Buffer*,int) 
-            virtual void receiveMessage(Buffer* buffer, int theInteraction)=0;
-            
-            //## operation sendMessage(FederateMessage*) 
-            virtual void sendMessage(FederateMessage* message)=0;
+            //## operation sendMessage(char*,int,FederateInterface*) 
+            virtual void sendMessage(char* message, int messageSizeInBytes, FederateInterface* federateInterface)=0;
             
             //## operation sendMessage(FrameworkMessage*) 
             virtual void sendMessage(FrameworkMessage* message)=0;

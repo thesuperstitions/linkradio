@@ -3,15 +3,15 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::Control
+	Model Element	: framework::Control::HlaFederate
 //!	Generated Date	: Wed, 21, May 2008  
-	File Path	: DefaultComponent\DefaultConfig\Control.h
+	File Path	: DefaultComponent\DefaultConfig\HlaFederate.h
 *********************************************************************/
 
 
-#ifndef Control_H 
+#ifndef HlaFederate_H 
 
-#define Control_H 
+#define HlaFederate_H 
 
 #include <oxf/oxf.h>
 #include <string>
@@ -21,29 +21,26 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-#include "framework.h"
+#include "Control.h"
+// class HlaFederate 
+#include "Federate.h"
 
 //----------------------------------------------------------------------------
-// Control.h                                                                  
+// HlaFederate.h                                                                  
 //----------------------------------------------------------------------------
 
 
 namespace framework {
     
     namespace Control {
-        class Federate;
         class FederateInterfaceFactory;
-        class HlaCecFederate;
         
     } 
     
 namespace IO {
+    class FederateIO_Handler;
+    class HLA_PostOffice;
     class PostOffice;
-    
-} 
-
-namespace Control {
-    class Serializer;
 }
 
 }
@@ -56,29 +53,42 @@ namespace Control {
 #pragma warning(disable: 4786)
 #endif
 
-
 namespace framework {
-    
     namespace Control {
+        //## class HlaFederate 
+        class HlaFederate : public Federate {
         
         
-        //## operation getFederate() 
-        framework::Control::Federate* getFederate();
+        ////    Constructors and destructors    ////
+        public :
+            
+            //## operation HlaFederate() 
+            HlaFederate();
+            
+            //## auto_generated 
+            ~HlaFederate();
         
-        //## operation setFederate(framework::Control::Federate*) 
-        void setFederate(framework::Control::Federate* federate);
         
-        //## attribute theFederate 
-        extern framework::Control::Federate* theFederate;
+        ////    Operations    ////
+        public :
+            
+            //## operation useCase_42_1_announcePublication() 
+            void useCase_42_1_announcePublication();
+            
+            //## operation useCase_42_2_announceSubscription() 
+            void useCase_42_2_announceSubscription();
+            
+            //## operation useCase_42_3_sendMessageOnFederateInterface() 
+            void useCase_42_3_sendMessageOnFederateInterface();
         
         
+        };
     }
-    
 }
 
 
 #endif  
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\Control.h
+	File Path	: DefaultComponent\DefaultConfig\HlaFederate.h
 *********************************************************************/
 

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: FrameworkTest
-//!	Generated Date	: Mon, 12, May 2008  
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkTest.h
 *********************************************************************/
 

@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO
-//!	Generated Date	: Mon, 12, May 2008  
+	Model Element	: framework::IO
+//!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\IO.h
 *********************************************************************/
 
@@ -21,25 +21,21 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-#include "Framework.h"
+#include "framework.h"
 
 //----------------------------------------------------------------------------
 // IO.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
     namespace IO {
-        class Buffer;
         class C_IO_Functions;
         class FederateInterface;
         class FederateIO_Handler;
-        class FederateMessage;
         class HLA_FederateInterface;
         class HLA_PostOffice;
-        class IO_Handler;
-        class Message;
         class OASIS_FederateInterface;
         class PostOffice;
     }
@@ -47,7 +43,7 @@ namespace Framework {
 }
 
 
-//## package Framework::IO 
+//## package framework::IO 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -55,13 +51,13 @@ namespace Framework {
 #endif
 
 
-namespace Framework {
+namespace framework {
     
     namespace IO {
         
         
-        //## operation getRawBuffer(Buffer) 
-        void getRawBuffer(const Buffer& buffer);
+        //## attribute MAX_FEDERATE_INTERFACE_DEVICES 
+        #define MAX_FEDERATE_INTERFACE_DEVICES 100
         
         
     }

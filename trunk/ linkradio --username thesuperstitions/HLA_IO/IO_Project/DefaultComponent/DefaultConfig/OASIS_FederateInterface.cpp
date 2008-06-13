@@ -3,28 +3,31 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::OASIS_FederateInterface
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::IO::OASIS_FederateInterface
+//!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.cpp
 *********************************************************************/
 
 #include "OASIS_FederateInterface.h"
+// dependency Federate 
+#include "Federate.h"
 #include "FederateIO_Handler.h"
-#include "InterprocessQueue.h"
+// dependency PostOffice 
+#include "PostOffice.h"
 
 //----------------------------------------------------------------------------
 // OASIS_FederateInterface.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package Framework::IO 
+//## package framework::IO 
 
 //## class OASIS_FederateInterface 
 
-namespace Framework {
+namespace framework {
     namespace IO {
         
-        OASIS_FederateInterface::OASIS_FederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType) : FederateInterface(name, interfaceType) {
-            //#[ operation OASIS_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
+        OASIS_FederateInterface::OASIS_FederateInterface(int interfaceID, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType) : FederateInterface(interfaceID, name, maxMessageSize, maxMessages, federateInterfaceType) {
+            //#[ operation OASIS_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
             //#]
         }
         

@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::FrameworkFederateAmbassador
-//!	Generated Date	: Mon, 14, Apr 2008  
+	Model Element	: framework::FrameworkFederateAmbassador
+//!	Generated Date	: Wed, 21, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkFederateAmbassador.h
 *********************************************************************/
 
@@ -21,35 +21,30 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-#include "Framework.h"
+#include "framework.h"
 
 //----------------------------------------------------------------------------
 // FrameworkFederateAmbassador.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
     namespace IO {
         class HLA_PostOffice;
-        
-    } 
+    }
     
-} 
-
-namespace Framework {
-    class RtiAmbassador;
 }
 
 
-//## package Framework 
+//## package framework 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     //## class FrameworkFederateAmbassador 
     
     //#[ ignore 
@@ -61,7 +56,7 @@ namespace Framework {
     ////    Constructors and destructors    ////
     public :
         
-        //## auto_generated 
+        //## operation FrameworkFederateAmbassador() 
         FrameworkFederateAmbassador();
         
         //## auto_generated 
@@ -98,11 +93,11 @@ namespace Framework {
         //## operation receiveInteraction(rti1516::InteractionClassHandle,const rti1516::ParameterHandleValueMap &,const rti1516::VariableLengthData &,rti1516::OrderType,rti1516::TransportationType) 
         void receiveInteraction(rti1516::InteractionClassHandle theInteraction, const rti1516::ParameterHandleValueMap & theParameterValues, const rti1516::VariableLengthData & theUserSuppliedTag, rti1516::OrderType sentOrder, rti1516::TransportationType theType) throw( rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::FederateInternalError );
         
-        //## operation sendRO(rti1516::InteractionClassHandle,rti1516::ParameterHandle,char*,char*) 
-        void sendRO(rti1516::InteractionClassHandle interactionClassHandle, rti1516::ParameterHandle parameterHandle, char* interactionName, char* messageToSend);
+        //## operation sendRO(rti1516::InteractionClassHandle,rti1516::ParameterHandle,char*,char*,int) 
+        void sendRO(rti1516::InteractionClassHandle interactionClassHandle, rti1516::ParameterHandle parameterHandle, char* interactionName, char* messageToSend, int messageSizeInBytes);
         
-        //## operation sendTSO(rti1516::InteractionClassHandle,rti1516::ParameterHandle,char*,char*) 
-        void sendTSO(rti1516::InteractionClassHandle interactionClassHandle, rti1516::ParameterHandle parameterHandle, char* interactionName, char* messageToSend);
+        //## operation sendTSO(rti1516::InteractionClassHandle,rti1516::ParameterHandle,char*,char*,int) 
+        void sendTSO(rti1516::InteractionClassHandle interactionClassHandle, rti1516::ParameterHandle parameterHandle, char* interactionName, char* messageToSend, int messageSizeInBytes);
         
         //## operation subscribeInteractionClass(rti1516::InteractionClassHandle) 
         void subscribeInteractionClass(rti1516::InteractionClassHandle interactionClassHandle);
@@ -116,12 +111,6 @@ namespace Framework {
         
         //## auto_generated 
         void setItsHLA_PostOffice(IO::HLA_PostOffice* p_HLA_PostOffice);
-        
-        //## auto_generated 
-        RtiAmbassador* getItsRtiAmbassador() const;
-        
-        //## auto_generated 
-        void setItsRtiAmbassador(RtiAmbassador* p_RtiAmbassador);
     
     
     ////    Framework operations    ////
@@ -135,15 +124,6 @@ namespace Framework {
         
         //## auto_generated 
         void _clearItsHLA_PostOffice();
-        
-        //## auto_generated 
-        void __setItsRtiAmbassador(RtiAmbassador* p_RtiAmbassador);
-        
-        //## auto_generated 
-        void _setItsRtiAmbassador(RtiAmbassador* p_RtiAmbassador);
-        
-        //## auto_generated 
-        void _clearItsRtiAmbassador();
     
     protected :
         
@@ -155,9 +135,6 @@ namespace Framework {
     protected :
         
         IO::HLA_PostOffice* itsHLA_PostOffice;		//## link itsHLA_PostOffice 
-        
-        
-        RtiAmbassador* itsRtiAmbassador;		//## link itsRtiAmbassador 
         
     
     

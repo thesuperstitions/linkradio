@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::HLA_FederateInterface
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::IO::HLA_FederateInterface
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_FederateInterface.h
 *********************************************************************/
 
@@ -22,8 +22,8 @@
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "IO.h"
-// operation HLA_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
-#include "Framework.h"
+// operation HLA_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
+#include "framework.h"
 // class HLA_FederateInterface 
 #include "FederateInterface.h"
 
@@ -32,29 +32,30 @@
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
-    namespace IO {
-        class FederateIO_Handler;
-        class HLA_PostOffice;
+    namespace Control {
+        class Federate;
         
     } 
     
-namespace utils {
-    class InterprocessQueue;
+namespace IO {
+    class FederateIO_Handler;
+    class HLA_PostOffice;
+    class PostOffice;
 }
 
 }
 
 
-//## package Framework::IO 
+//## package framework::IO 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace IO {
         //## class HLA_FederateInterface 
         class HLA_FederateInterface : public FederateInterface {
@@ -63,8 +64,8 @@ namespace Framework {
         ////    Constructors and destructors    ////
         public :
             
-            //## operation HLA_FederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
-            HLA_FederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType);
+            //## operation HLA_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
+            HLA_FederateInterface(int interfaceID, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType);
             
             //## operation ~HLA_FederateInterface() 
             ~HLA_FederateInterface();

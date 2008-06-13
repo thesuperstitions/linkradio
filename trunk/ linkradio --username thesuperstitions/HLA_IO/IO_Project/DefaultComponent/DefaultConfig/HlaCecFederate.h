@@ -3,15 +3,15 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::OASIS_FederateInterface
-//!	Generated Date	: Tue, 20, May 2008  
-	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.h
+	Model Element	: framework::Control::HlaCecFederate
+//!	Generated Date	: Wed, 21, May 2008  
+	File Path	: DefaultComponent\DefaultConfig\HlaCecFederate.h
 *********************************************************************/
 
 
-#ifndef OASIS_FederateInterface_H 
+#ifndef HlaCecFederate_H 
 
-#define OASIS_FederateInterface_H 
+#define HlaCecFederate_H 
 
 #include <oxf/oxf.h>
 #include <string>
@@ -21,33 +21,32 @@
 #include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-#include "IO.h"
-// operation OASIS_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
-#include "framework.h"
-// class OASIS_FederateInterface 
-#include "FederateInterface.h"
+#include "Control.h"
+// class HlaCecFederate 
+#include "Federate.h"
 
 //----------------------------------------------------------------------------
-// OASIS_FederateInterface.h                                                                  
+// HlaCecFederate.h                                                                  
 //----------------------------------------------------------------------------
 
 
 namespace framework {
     
     namespace Control {
-        class Federate;
+        class FederateInterfaceFactory;
         
     } 
     
 namespace IO {
     class FederateIO_Handler;
+    class HLA_PostOffice;
     class PostOffice;
 }
 
 }
 
 
-//## package framework::IO 
+//## package framework::Control 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -55,19 +54,32 @@ namespace IO {
 #endif
 
 namespace framework {
-    namespace IO {
-        //## class OASIS_FederateInterface 
-        class OASIS_FederateInterface : public FederateInterface {
+    namespace Control {
+        //## class HlaCecFederate 
+        class HlaCecFederate : public Federate {
         
         
         ////    Constructors and destructors    ////
         public :
             
-            //## operation OASIS_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
-            OASIS_FederateInterface(int interfaceID, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType);
+            //## operation HlaCecFederate() 
+            HlaCecFederate();
             
             //## auto_generated 
-            ~OASIS_FederateInterface();
+            ~HlaCecFederate();
+        
+        
+        ////    Operations    ////
+        public :
+            
+            //## operation useCase_42_1_announcePublication() 
+            void useCase_42_1_announcePublication();
+            
+            //## operation useCase_42_2_announceSubscription() 
+            void useCase_42_2_announceSubscription();
+            
+            //## operation useCase_42_3_sendMessageOnFederateInterface() 
+            void useCase_42_3_sendMessageOnFederateInterface();
         
         
         };
@@ -77,6 +89,6 @@ namespace framework {
 
 #endif  
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.h
+	File Path	: DefaultComponent\DefaultConfig\HlaCecFederate.h
 *********************************************************************/
 

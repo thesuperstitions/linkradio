@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::Control::FederateInterfaceFactory
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::Control::FederateInterfaceFactory
+//!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterfaceFactory.h
 *********************************************************************/
 
@@ -23,14 +23,14 @@
 #include "RTI\RTI1516.h"
 #include "Control.h"
 // operation FederateInterfaceFactory(FederateFrameworkType) 
-#include "Framework.h"
+#include "framework.h"
 
 //----------------------------------------------------------------------------
 // FederateInterfaceFactory.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
     namespace IO {
         class FederateInterface;
@@ -42,14 +42,14 @@ namespace Framework {
 }
 
 
-//## package Framework::Control 
+//## package framework::Control 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace Control {
         //## class FederateInterfaceFactory 
         class FederateInterfaceFactory  {
@@ -71,8 +71,8 @@ namespace Framework {
         ////    Operations    ////
         public :
             
-            //## operation createFederateInterface(std::string,Framework::InterfaceType,FederateInterfaceType) 
-            Framework::IO::FederateInterface* createFederateInterface(std::string name, Framework::InterfaceType interfaceType, FederateInterfaceType federateInterfaceType);
+            //## operation createFederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
+            framework::IO::FederateInterface* createFederateInterface(int interfaceID, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType);
         
         
         ////    Additional operations    ////

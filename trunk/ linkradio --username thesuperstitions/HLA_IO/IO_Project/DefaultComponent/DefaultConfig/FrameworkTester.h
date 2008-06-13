@@ -4,7 +4,7 @@
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
 	Model Element	: FrameworkTester
-//!	Generated Date	: Mon, 12, May 2008  
+//!	Generated Date	: Wed, 21, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FrameworkTester.h
 *********************************************************************/
 
@@ -34,10 +34,10 @@
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
     namespace Control {
-        class ExampleFederate;
+        class HlaCecFederate;
     }
     
 }
@@ -81,28 +81,28 @@ public :
     void setInterfaceCount(int p_interfaceCount);
     
     //## auto_generated 
-    Framework::Control::ExampleFederate* getFederate_1() const;
+    framework::Control::HlaCecFederate* getFederate_1() const;
     
     //## auto_generated 
-    void setFederate_1(Framework::Control::ExampleFederate* p_ExampleFederate);
+    void setFederate_1(framework::Control::HlaCecFederate* p_HlaCecFederate);
     
     //## auto_generated 
-    Framework::Control::ExampleFederate* getFederate_2() const;
+    framework::Control::HlaCecFederate* getFederate_2() const;
     
     //## auto_generated 
-    void setFederate_2(Framework::Control::ExampleFederate* p_ExampleFederate);
+    void setFederate_2(framework::Control::HlaCecFederate* p_HlaCecFederate);
     
     //## auto_generated 
-    Framework::FrameworkFederateAmbassador* getTheFrameworkFederateAmbassador() const;
+    framework::FrameworkFederateAmbassador* getTheFrameworkFederateAmbassador() const;
     
     //## auto_generated 
-    void setTheFrameworkFederateAmbassador(Framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador);
+    void setTheFrameworkFederateAmbassador(framework::FrameworkFederateAmbassador* p_FrameworkFederateAmbassador);
     
     //## auto_generated 
-    Framework::RtiAmbassador* getTheRtiAmbassador() const;
+    framework::RtiAmbassador* getTheRtiAmbassador() const;
     
     //## auto_generated 
-    void setTheRtiAmbassador(Framework::RtiAmbassador* p_RtiAmbassador);
+    void setTheRtiAmbassador(framework::RtiAmbassador* p_RtiAmbassador);
 
 
 ////    Framework operations    ////
@@ -121,16 +121,16 @@ protected :
 ////    Relations and components    ////
 protected :
     
-    Framework::Control::ExampleFederate* Federate_1;		//## link Federate_1 
+    framework::Control::HlaCecFederate* Federate_1;		//## link Federate_1 
     
     
-    Framework::Control::ExampleFederate* Federate_2;		//## link Federate_2 
+    framework::Control::HlaCecFederate* Federate_2;		//## link Federate_2 
     
     
-    Framework::FrameworkFederateAmbassador* theFrameworkFederateAmbassador;		//## link theFrameworkFederateAmbassador 
+    framework::FrameworkFederateAmbassador* theFrameworkFederateAmbassador;		//## link theFrameworkFederateAmbassador 
     
     
-    Framework::RtiAmbassador* theRtiAmbassador;		//## link theRtiAmbassador 
+    framework::RtiAmbassador* theRtiAmbassador;		//## link theRtiAmbassador 
     
 
 

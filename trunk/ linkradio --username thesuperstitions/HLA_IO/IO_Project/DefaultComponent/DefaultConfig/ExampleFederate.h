@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::Control::ExampleFederate
-//!	Generated Date	: Fri, 4, Apr 2008  
+	Model Element	: framework::Control::ExampleFederate
+//!	Generated Date	: Wed, 21, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\ExampleFederate.h
 *********************************************************************/
 
@@ -23,7 +23,7 @@
 #include "RTI\RTI1516.h"
 #include "Control.h"
 // operation ExampleFederate(FederateFrameworkType,FederateType,FrameworkFederateAmbassador*) 
-#include "Framework.h"
+#include "framework.h"
 // class ExampleFederate 
 #include "Federate.h"
 
@@ -32,7 +32,7 @@
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
     namespace Control {
         class FederateInterfaceFactory;
@@ -46,12 +46,12 @@ namespace IO {
 
 } 
 
-namespace Framework {
+namespace framework {
     class FrameworkFederateAmbassador;
     
 } 
 
-namespace Framework {
+namespace framework {
     
     namespace IO {
         class HLA_PostOffice;
@@ -61,14 +61,14 @@ namespace Framework {
 }
 
 
-//## package Framework::Control 
+//## package framework::Control 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace Control {
         //## class ExampleFederate 
         class ExampleFederate : public Federate {
@@ -99,6 +99,30 @@ namespace Framework {
         
         };
     }
+}
+//## package framework 
+
+#ifdef _MSC_VER
+// disable Microsoft compiler warning (debug information truncated)
+#pragma warning(disable: 4786)
+#endif
+
+namespace framework {
+    //## class TopLevel::ExampleFederate 
+    class ExampleFederate_C  {
+    
+    
+    ////    Constructors and destructors    ////
+    public :
+        
+        //## auto_generated 
+        ExampleFederate_C();
+        
+        //## auto_generated 
+        ~ExampleFederate_C();
+    
+    
+    };
 }
 
 

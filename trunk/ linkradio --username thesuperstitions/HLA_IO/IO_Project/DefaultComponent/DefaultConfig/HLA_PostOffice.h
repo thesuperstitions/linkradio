@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::IO::HLA_PostOffice
-//!	Generated Date	: Thu, 15, May 2008  
+	Model Element	: framework::IO::HLA_PostOffice
+//!	Generated Date	: Tue, 27, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.h
 *********************************************************************/
 
@@ -26,7 +26,7 @@
 #include <iterator>
 #include <oxf/OMValueCompare.h>
 // operation sendMessage(FrameworkMessage*) 
-#include "Framework.h"
+#include "framework.h"
 // link theHLA_FederateInterface 
 #include "HLA_FederateInterface.h"
 // class HLA_PostOffice 
@@ -37,39 +37,33 @@
 //----------------------------------------------------------------------------
 
 
-namespace Framework {
+namespace framework {
     
-    namespace IO {
-        class Buffer;
+    namespace Control {
+        class Federate;
         
     } 
     
-namespace Control {
-    class Federate;
-    
-} 
-
 namespace IO {
     class FederateInterface;
-    class FederateMessage;
     
 } 
 
 } 
 
-namespace Framework {
+namespace framework {
     class FrameworkFederateAmbassador;
 }
 
 
-//## package Framework::IO 
+//## package framework::IO 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace IO {
         //## class HLA_PostOffice 
         class HLA_PostOffice : public PostOffice {
@@ -104,17 +98,11 @@ namespace Framework {
             //## operation receiveInteraction(rti1516::InteractionClassHandle,const rti1516::ParameterHandleValueMap &,const rti1516::VariableLengthData &,rti1516::OrderType,rti1516::TransportationType) 
             virtual void receiveInteraction(rti1516::InteractionClassHandle theInteraction, const rti1516::ParameterHandleValueMap & theParameterValues, const rti1516::VariableLengthData & theUserSuppliedTag, rti1516::OrderType sentOrder, rti1516::TransportationType theType) throw( rti1516::InteractionClassNotRecognized, rti1516::InteractionParameterNotRecognized, rti1516::InteractionClassNotSubscribed, rti1516::FederateInternalError );
             
-            //## operation receiveMessage(Buffer*,int) 
-            void receiveMessage(Buffer* buffer, int theInteraction);
-            
             //## operation sendMessage(FrameworkMessage*) 
             void sendMessage(FrameworkMessage* message);
             
-            //## operation sendMessage(FederateMessage*) 
-            void sendMessage(FederateMessage* message);
-            
-            //## operation sendMessage(char*,HLA_FederateInterface*) 
-            void sendMessage(char* message, HLA_FederateInterface* hlaFederateInterface);
+            //## operation sendMessage(char*,int,FederateInterface*) 
+            void sendMessage(char* message, int messageSizeInBytes, FederateInterface* federateInterface);
             
             //## operation unsubscribe(FederateInterface*) 
             void unsubscribe(FederateInterface* interface);

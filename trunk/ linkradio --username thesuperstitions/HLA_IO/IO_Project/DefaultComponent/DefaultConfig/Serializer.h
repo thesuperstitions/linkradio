@@ -3,8 +3,8 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: Framework::Control::Serializer
-//!	Generated Date	: Fri, 4, Apr 2008  
+	Model Element	: framework::Control::Serializer
+//!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\Serializer.h
 *********************************************************************/
 
@@ -29,24 +29,14 @@
 // Serializer.h                                                                  
 //----------------------------------------------------------------------------
 
-
-namespace Framework {
-    
-    namespace IO {
-        class IO_Handler;
-    }
-    
-}
-
-
-//## package Framework::Control 
+//## package framework::Control 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
 #pragma warning(disable: 4786)
 #endif
 
-namespace Framework {
+namespace framework {
     namespace Control {
         //## class Serializer 
         class Serializer  {
@@ -65,53 +55,18 @@ namespace Framework {
         ////    Operations    ////
         public :
             
-            //## operation deserialize(const Framework::IO::Buffer &) 
-            inline void deserialize(const Framework::IO::Buffer & buffer) {
-                //#[ operation deserialize(const Framework::IO::Buffer &) 
+            //## operation deserialize(char*) 
+            inline void deserialize(char* buffer) {
+                //#[ operation deserialize(char*) 
                 //#]
             }
             
             
-            //## operation serialize(const Framework::IO::Buffer &) 
-            inline void serialize(const Framework::IO::Buffer & buffer) {
-                //#[ operation serialize(const Framework::IO::Buffer &) 
+            //## operation serialize(char*) 
+            inline void serialize(char* buffer) {
+                //#[ operation serialize(char*) 
                 //#]
             }
-            
-        
-        
-        ////    Additional operations    ////
-        public :
-            
-            //## auto_generated 
-            IO::IO_Handler* getItsIO_Handler() const;
-            
-            //## auto_generated 
-            void setItsIO_Handler(IO::IO_Handler* p_IO_Handler);
-        
-        
-        ////    Framework operations    ////
-        public :
-            
-            //## auto_generated 
-            void __setItsIO_Handler(IO::IO_Handler* p_IO_Handler);
-            
-            //## auto_generated 
-            void _setItsIO_Handler(IO::IO_Handler* p_IO_Handler);
-            
-            //## auto_generated 
-            void _clearItsIO_Handler();
-        
-        protected :
-            
-            //## auto_generated 
-            void cleanUpRelations();
-        
-        
-        ////    Relations and components    ////
-        protected :
-            
-            IO::IO_Handler* itsIO_Handler;		//## link itsIO_Handler 
             
         
         
