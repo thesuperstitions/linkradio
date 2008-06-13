@@ -1,21 +1,31 @@
 
-Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp'
-Reverse Engineering include file 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h'
+Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp'
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp, Line: 13 #include framework/utils/Thread.h ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp, Line: 15 #include boost/bind.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp, Line: 16 #include boost/function.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp, Line: 17 #include boost/thread.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp, Line: 19 #include framework/utils/Exception.h ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp, Line: 22 #include iostream ignored--file not found.
 Adding package 'ReverseEngineering' to project 'IO_Project'. ok.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 9 #include sys/mman.h ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 16 #include boost/interprocess/sync/interprocess_mutex.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 17 #include boost/interprocess/sync/interprocess_semaphore.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 18 #include boost/interprocess/shared_memory_object.hpp ignored--file not found.
-Analyzing struct 'SharedMemoryQueueControlData' from File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 24
-Adding package 'namespace_univ' to package 'ReverseEngineering'. ok.
-Adding package 'interprocess' to package 'namespace_univ'. ok.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 21 #include boost/interprocess/mapped_region.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 22 #include boost/date_time/posix_time/posix_time.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 23 #include boost/interprocess/sync/scoped_lock.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 24 #include boost/thread.hpp ignored--file not found.
-File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.cpp, Line: 25 #include sys/timeb.h ignored--file not found.
-Analyzing class 'InterprocessQueue' from File: C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\examples\InterprocessQueueTest-Linux\InterprocessQueue.h, Line: 44
-Adding class 'InterprocessQueue' to package 'ReverseEngineering'. ok.
+Adding package 'framework' to package 'ReverseEngineering'. ok.
+Adding package 'utils' to package 'framework'. ok.
+
+Parsing Summary:
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 27 *** >>Thread::Thread<< declared at "C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 27, does not denote a member function
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 28 *** Member and base-class initializers are only allowed for constructor functions of a class.
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 31 *** in destructor Thread::~Thread, this class does not have any destructor declared
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 31 *** in destructor Thread::~Thread, this class does not have any destructor declared
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 31 *** No destructor was declared for this class >>Thread::~Thread<<
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 38 *** start is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 38 *** start is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 59 *** stop is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 59 *** stop is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 70 *** join is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 70 *** join is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 80 *** threadOper is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 80 *** threadOper is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 88 *** yield is not a member of prefixing class Thread
+"C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp":LINE 88 *** yield is not a member of prefixing class Thread
 
 Reverse Engineering Done. See detailed report in the log file.
 

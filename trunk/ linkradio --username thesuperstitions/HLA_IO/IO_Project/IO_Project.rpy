@@ -10,10 +10,10 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 	}
 	- _defaultSubsystem = { ISubsystemHandle 
 		- _m2Class = "ISubsystem";
-		- _filename = "Framework.sbs";
+		- _filename = "framework.sbs";
 		- _subsystem = "";
 		- _class = "";
-		- _name = "Framework";
+		- _name = "framework";
 		- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 	}
 	- _component = { IHandle 
@@ -29,7 +29,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		- value = 
 		{ IMultiplicityItem 
 			- _name = "1";
-			- _count = 4;
+			- _count = 9;
 		}
 		{ IMultiplicityItem 
 			- _name = "*";
@@ -48,7 +48,7 @@ I-Logix-RPY-Archive version 8.0.9 C++ 893629
 		- size = 3;
 		- value = 
 		{ ISubsystem 
-			- fileName = "Framework";
+			- fileName = "framework";
 			- _id = GUID 60248ea5-0dec-4f7a-b68d-4395e419a607;
 		}
 		{ ISubsystem 

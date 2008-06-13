@@ -24,13 +24,13 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 			- _theDiagram = { IHandle 
 				- _m2Class = "IDiagram";
 				- _filename = "IOClassDiagram.omd";
-				- _subsystem = "Framework::IO";
+				- _subsystem = "framework::IO";
 				- _class = "";
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
-			- _UpLeft = 0 33 ;
-			- _DownRight = 1435 1184 ;
+			- _UpLeft = 0 0 ;
+			- _DownRight = 1637 1113 ;
 			- _instanceName = "";
 		}
 	}
