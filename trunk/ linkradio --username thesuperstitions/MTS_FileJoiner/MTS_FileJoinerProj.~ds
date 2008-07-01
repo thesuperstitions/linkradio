@@ -57,16 +57,34 @@ File_8=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\M
 File_9=SourceModule,'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\FederateIO_InputThread.cpp',0,1,43,1,1,0,0
 
 [Modules]
-Module0=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
-Module1=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\FrameworkThread.cpp
-Module2=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\Control.cpp
-Module3=C:\MAK\makRti3.2\include\RTI\RTI1516.h
-Count=4
+Module0=C:\Documents and Settings\rosskw1\My Documents\InterprocessQueue\InterprocessQueue.cpp
+Module1=C:\Documents and Settings\rosskw1\My Documents\InterprocessQueue\InterprocessQueue.h
+Module2=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp
+Module3=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\vxWorks\incl\vxWorks.h
+Module4=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\FrameworkThread.cpp
+Module5=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\Control.cpp
+Module6=C:\MAK\makRti3.2\include\RTI\RTI1516.h
+Count=7
 EditWindowCount=1
+
+[C:\Documents and Settings\rosskw1\My Documents\InterprocessQueue\InterprocessQueue.cpp]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\Documents and Settings\rosskw1\My Documents\InterprocessQueue\InterprocessQueue.h]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
 
 [C:\Documents and Settings\rosskw1\My Documents\SVN-Google\MTS_FileJoiner\MTS_FileJoiner.cpp]
 ModuleType=SourceModule
 FormState=1
+FormOnTop=0
+
+[C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\vxWorks\incl\vxWorks.h]
+ModuleType=SourceModule
+FormState=0
 FormOnTop=0
 
 [C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\FrameworkThread.cpp]
@@ -84,7 +102,7 @@ ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Program Files\Borland\CBuilder4\Projects\ProjectGroup1.bpg]
+[U:\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
@@ -114,13 +132,16 @@ RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
 BottomPanelData=00000400010000000B0000004D657373616765566965770000000000000000000000000000000000FFFFFFFF
-ViewCount=5
-CurrentView=1
+ViewCount=8
+CurrentView=2
 View0=0
 View1=1
 View2=2
 View3=3
 View4=4
+View5=5
+View6=6
+View7=7
 
 [ClassHierarchy@EditWindow0]
 TreeWidth=185
@@ -174,20 +195,41 @@ TopLine=87
 LeftCol=1
 
 [View2]
-Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\FrameworkThread.cpp
+Module=C:\Documents and Settings\rosskw1\My Documents\InterprocessQueue\InterprocessQueue.cpp
 CursorX=1
 CursorY=1
-TopLine=1
+TopLine=108
 LeftCol=1
 
 [View3]
-Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\Control.cpp
+Module=C:\Documents and Settings\rosskw1\My Documents\InterprocessQueue\InterprocessQueue.h
 CursorX=1
 CursorY=1
 TopLine=1
 LeftCol=1
 
 [View4]
+Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\vxWorks\incl\vxWorks.h
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+
+[View5]
+Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\FrameworkThread.cpp
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+
+[View6]
+Module=C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO\Control.cpp
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+
+[View7]
 Module=C:\MAK\makRti3.2\include\RTI\RTI1516.h
 CursorX=18
 CursorY=54
