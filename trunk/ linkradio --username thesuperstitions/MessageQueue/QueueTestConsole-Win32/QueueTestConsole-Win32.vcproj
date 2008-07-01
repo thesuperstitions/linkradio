@@ -75,7 +75,7 @@
 				InlineFunctionExpansion="2"
 				FavorSizeOrSpeed="1"
 				OptimizeForProcessor="3"
-				AdditionalIncludeDirectories="&quot;C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework&quot;;&quot;C:\Program Files\boost\boost_1_35_0&quot;"
+				AdditionalIncludeDirectories="&quot;C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework&quot;;&quot;C:\Program Files\boost\boost_1_35_0&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
@@ -128,7 +128,7 @@
 				RelativePath=".\ConsumerThread.cpp">
 			</File>
 			<File
-				RelativePath=".\InterprocessQueue.cpp">
+				RelativePath="..\..\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp">
 			</File>
 			<File
 				RelativePath=".\producerThread.cpp">
@@ -163,7 +163,7 @@
 				RelativePath=".\ConsumerThread.h">
 			</File>
 			<File
-				RelativePath=".\InterprocessQueue.h">
+				RelativePath="..\..\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.h">
 			</File>
 			<File
 				RelativePath=".\mainwindow.h">

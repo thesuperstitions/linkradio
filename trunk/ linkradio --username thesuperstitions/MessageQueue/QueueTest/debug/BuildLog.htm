@@ -11,82 +11,82 @@ Build Log
 </h3>
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Command Lines
-</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "C:\DOCUME~1\rosskw1\LOCALS~1\Temp\RSP000004.rsp" with contents
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "C:\DOCUME~1\rosskw1\LOCALS~1\Temp\BAT000041.bat" with contents
+[
+@echo off
+C:\Qt\4.3.2\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_THREAD_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I"c:\Qt\4.3.2\include\QtCore" -I"c:\Qt\4.3.2\include\QtCore" -I"c:\Qt\4.3.2\include\QtNetwork" -I"c:\Qt\4.3.2\include\QtNetwork" -I"c:\Qt\4.3.2\include\QtGui" -I"c:\Qt\4.3.2\include\QtGui" -I"c:\Qt\4.3.2\include" -I"." -I"c:\Program Files\boost\boost_1_35_0" -I"..\..\..\ComponentizedCombatSystemFramework" -I"c:\Qt\4.3.2\include\ActiveQt" -I"debug" -I"." -Ic:\Qt\4.3.2\mkspecs\win32-msvc.net -D_MSC_VER=1300 -DWIN32 mainwindow.h -o debug\moc_mainwindow.cpp
+
+if errorlevel 1 goto VCReportError
+goto VCEnd
+:VCReportError
+echo Project : error PRJ0019: A tool returned an error code from "MOC mainwindow.h"
+exit 1
+:VCEnd
+]
+Creating command line "C:\DOCUME~1\rosskw1\LOCALS~1\Temp\BAT000041.bat"
+Creating temporary file "C:\DOCUME~1\rosskw1\LOCALS~1\Temp\RSP000042.rsp" with contents
 [
 /I "c:\Qt\4.3.2\include\QtCore" /I "c:\Qt\4.3.2\include\QtNetwork" /I "c:\Qt\4.3.2\include\QtGui" /I "c:\Qt\4.3.2\include" /I "." /I "c:\Program Files\boost\boost_1_35_0" /I "..\..\..\ComponentizedCombatSystemFramework" /I "c:\Qt\4.3.2\include\ActiveQt" /I "debug" /I "c:\Qt\4.3.2\mkspecs\win32-msvc.net" /D "_WINDOWS" /D "UNICODE" /D "WIN32" /D "QT_LARGEFILE_SUPPORT" /D "QT_THREAD_SUPPORT" /D "QT_DLL" /D "QT_GUI_LIB" /D "QT_NETWORK_LIB" /D "QT_CORE_LIB" /FD /EHsc /MDd /GR /Fo"debug\\" /Fd".\\" /W3 /c /Zi /TP  -Zm300 -w34100 -w34189 -Zm300 -w34100 -w34189 -w34100 -w34189
+".\debug\moc_mainwindow.cpp"
 ".\mainwindow.cpp"
+".\main.cpp"
+".\Thread.cpp"
+".\producerThread.cpp"
+".\InterprocessQueue.cpp"
+".\ConsumerThread.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\rosskw1\LOCALS~1\Temp\RSP000004.rsp /nologo"
+Creating command line "cl.exe @C:\DOCUME~1\rosskw1\LOCALS~1\Temp\RSP000042.rsp /nologo"
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Output Window
-</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Compiling...
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>MOC mainwindow.h
+Compiling...
+moc_mainwindow.cpp
+c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest\ProducerThread.h(14) : fatal error C1083: Cannot open include file: 'InterprocessQueue.h': No such file or directory
 mainwindow.cpp
-c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest\Sleep.h(37) : warning C4100: 'interposition_safe' : unreferenced formal parameter
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(55) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest\ProducerThread.h(14) : fatal error C1083: Cannot open include file: 'InterprocessQueue.h': No such file or directory
+main.cpp
+c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest\ProducerThread.h(14) : fatal error C1083: Cannot open include file: 'InterprocessQueue.h': No such file or directory
+Thread.cpp
+C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\include\xloctime(122) : warning C4100: '_Iosbase' : unreferenced formal parameter
+        C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\include\xloctime(123) : while compiling class-template member function 'std::istreambuf_iterator<_Elem,_Traits> std::time_get<_Elem,_InIt>::do_get_time(_InIt,_InIt,std::ios_base &,std::_Iosb<_Dummy>::iostate &,tm *) const'
         with
         [
-            M=boost::interprocess::interprocess_mutex
+            _Elem=char,
+            _Traits=std::char_traits<char>,
+            _InIt=std::istreambuf_iterator<char,std::char_traits<char>>,
+            _Dummy=int
         ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(55) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\include\xloctime(637) : see reference to class template instantiation 'std::time_get<_Elem,_InIt>' being compiled
         with
         [
-            M=boost::interprocess::interprocess_mutex
+            _Elem=char,
+            _InIt=std::istreambuf_iterator<char,std::char_traits<char>>
         ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(45) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\include\xloctime(122) : warning C4100: '_Iosbase' : unreferenced formal parameter
+        C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\include\xloctime(123) : while compiling class-template member function 'std::istreambuf_iterator<_Elem,_Traits> std::time_get<_Elem,_InIt>::do_get_time(_InIt,_InIt,std::ios_base &,std::_Iosb<_Dummy>::iostate &,tm *) const'
         with
         [
-            M=boost::interprocess::interprocess_mutex
+            _Elem=wchar_t,
+            _Traits=std::char_traits<wchar_t>,
+            _InIt=std::istreambuf_iterator<wchar_t,std::char_traits<wchar_t>>,
+            _Dummy=int
         ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(45) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\include\xloctime(642) : see reference to class template instantiation 'std::time_get<_Elem,_InIt>' being compiled
         with
         [
-            M=boost::interprocess::interprocess_mutex
+            _Elem=wchar_t,
+            _InIt=std::istreambuf_iterator<wchar_t,std::char_traits<wchar_t>>
         ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(36) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(36) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(27) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(27) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_condition.hpp(149) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_condition.hpp(149) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_condition.hpp(93) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        c:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_condition.hpp(93) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-mainwindow.cpp(68) : error C2065: 'queue' : undeclared identifier
-mainwindow.cpp(84) : error C3861: 'queue': identifier not found, even with argument-dependent lookup
+producerThread.cpp
+c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest\ProducerThread.h(14) : fatal error C1083: Cannot open include file: 'InterprocessQueue.h': No such file or directory
+InterprocessQueue.cpp
+c1xx : fatal error C1083: Cannot open source file: '.\InterprocessQueue.cpp': No such file or directory
+ConsumerThread.cpp
+c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest\ConsumerThread.h(14) : fatal error C1083: Cannot open include file: 'InterprocessQueue.h': No such file or directory
+Generating Code...
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Results
 </font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
 Build log was saved at "file://c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTest\debug\\BuildLog.htm"
-QueueTest - 2 error(s), 1 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+QueueTest - 6 error(s), 2 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
 </font></table></body></html>

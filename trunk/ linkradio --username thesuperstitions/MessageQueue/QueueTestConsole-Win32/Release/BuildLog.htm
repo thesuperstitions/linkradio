@@ -11,165 +11,94 @@ Build Log
 </h3>
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Command Lines
-</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\RSP000046.rsp" with contents
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\RSP000050.rsp" with contents
 [
-/O2 /Ot /G7 /I "C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework" /I "C:\Program Files\boost\boost_1_35_0" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FD /EHsc /MT /GS /Fo"Release/" /Fd"Release/vc70.pdb" /W3 /c /Wp64 /TP
-".\QueueTestConsole-Win32.cpp"
-".\producerThread.cpp"
-".\InterprocessQueue.cpp"
-".\ConsumerThread.cpp"
+/O2 /Ot /G7 /I "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32" /I "C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework" /I "C:\Program Files\boost\boost_1_35_0" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FD /EHsc /MT /GS /Fo"Release/" /Fd"Release/vc70.pdb" /W3 /c /Wp64 /TP
+"\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp"
 ]
-Creating command line "cl.exe @"c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\RSP000046.rsp" /nologo"
-Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\RSP000047.rsp" with contents
+Creating command line "cl.exe @"c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\RSP000050.rsp" /nologo"
+Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\RSP000051.rsp" with contents
 [
 /VERBOSE:LIB /OUT:"Release/QueueTestConsole-Win32.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\boost\boost_1_35_0\lib" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /MACHINE:X86  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
 ".\Release\ConsumerThread.obj"
-".\Release\InterprocessQueue.obj"
 ".\Release\producerThread.obj"
 ".\Release\QueueTestConsole-Win32.obj"
 ".\Release\stdafx.obj"
 ".\Release\Thread.obj"
+".\Release\InterprocessQueue.obj"
 ]
-Creating command line "link.exe @"c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\RSP000047.rsp""
+Creating command line "link.exe @"c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\RSP000051.rsp""
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Output Window
 </font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Compiling...
-QueueTestConsole-Win32.cpp
-producerThread.cpp
-producerThread.cpp(121) : warning C4244: '=' : conversion from 'time_t' to 'int', possible loss of data
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(55) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(55) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(45) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(45) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(36) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(36) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(27) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(27) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_condition.hpp(149) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_condition.hpp(149) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_condition.hpp(93) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_condition.hpp(93) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
 InterprocessQueue.cpp
-InterprocessQueue.cpp(444) : warning C4244: '=' : conversion from 'time_t' to 'int', possible loss of data
-        InterprocessQueue.cpp(353) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(361) : warning C4244: '=' : conversion from 'time_t' to 'int', possible loss of data
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(321) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(353) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(321) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(292) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(269) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(292) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(269) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(258) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(253) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(258) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(253) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(225) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(222) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(225) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(222) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(206) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(189) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(206) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(189) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(199) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(182) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(199) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(182) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(190) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(173) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        InterprocessQueue.cpp(190) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
-        with
-        [
-            M=boost::interprocess::interprocess_mutex
-        ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(55) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        \Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessQueueTest\MessageQueue\QueueTestConsole-Win32\InterprocessQueue.cpp(173) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
@@ -179,7 +108,13 @@ InterprocessQueue.cpp(444) : warning C4244: '=' : conversion from 'time_t' to 'i
         [
             M=boost::interprocess::interprocess_mutex
         ]
-        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(45) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(55) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
+        with
+        [
+            M=boost::interprocess::interprocess_mutex
+        ]
+        C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\inte
+rprocess_semaphore.hpp(45) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
             M=boost::interprocess::interprocess_mutex
@@ -229,9 +164,6 @@ InterprocessQueue.cpp(444) : warning C4244: '=' : conversion from 'time_t' to 'i
         [
             M=boost::interprocess::interprocess_mutex
         ]
-ConsumerThread.cpp
-Generating Code...
-c:\documents and settings\rosskw1\my documents\svn-google\messagequeue\queuetestconsole-win32\interprocessqueue.cpp(431) : warning C4715: 'InterprocessQueue::timedGetMessage' : not all control paths return a value
 Linking...
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
 Searching libraries
@@ -274,8 +206,7 @@ Searching libraries
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\gdi32.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\winspool.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\comdlg32.lib:
-    Searching C:\Program Files\Microsoft Visual Studio 
-.NET 2003\Vc7\PlatformSDK\lib\advapi32.lib:
+    Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\advapi32.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\shell32.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\ole32.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\oleaut32.lib:
@@ -309,7 +240,8 @@ Searching libraries
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\gdi32.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\winspool.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\comdlg32.lib:
-    Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\advapi32.lib:
+    Searching C:\Program Files\Microsoft Visual Studio 
+.NET 2003\Vc7\PlatformSDK\lib\advapi32.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\shell32.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\ole32.lib:
     Searching C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\PlatformSDK\lib\oleaut32.lib:
@@ -324,5 +256,5 @@ Finished searching libraries
 Results
 </font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
 Build log was saved at "file://c:\Documents and Settings\rosskw1\My Documents\SVN-Google\MessageQueue\QueueTestConsole-Win32\Release\BuildLog.htm"
-QueueTestConsole-Win32 - 0 error(s), 4 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+QueueTestConsole-Win32 - 0 error(s), 2 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
 </font></table></body></html>

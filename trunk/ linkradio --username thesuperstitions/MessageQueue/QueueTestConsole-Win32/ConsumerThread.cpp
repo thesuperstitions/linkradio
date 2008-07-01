@@ -70,6 +70,7 @@ void ConsumerThread::threadOperation()
   //MessageStruct* msg;
   long  msgCount = 0;
   long  prevMsgCount = -1;
+  unsigned int   byteCount;
 
 //while(myQueue->SynchronizeQueueUsers() == false);
 
@@ -93,7 +94,7 @@ void ConsumerThread::threadOperation()
 			myQueue->LogMessage(s, msgCount);
 		}
 
-    if (myQueue->timedGetMessage((unsigned char*)&gmsg, 0, 500000) == true)
+    if (myQueue->timedGetMessage((unsigned char*)&gmsg, &byteCount, 0, 500000) == true)
     {
       msgCount = gmsg.MsgNumber;
 
