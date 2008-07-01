@@ -16,7 +16,17 @@
 #include <sys/timeb.h>
 
 #include "ntds_comm_.h"
-//#include "sps49_ids.h"
+#include "sps49_io_.h" 
+
+//*******************************************************************
+//*******************************************************************
+//SPS-49 Code
+static DEVICE_DATA NtdsDeviceData;
+static int NtdsDeviceId = 120;
+static int NtdsUnixDeviceNumber = 0;  
+//*******************************************************************
+//*******************************************************************
+
 
 enum Connections
 {
@@ -29,7 +39,6 @@ static BOOLEAN NtdsInitialized = TRUE;
 static char *NtdsOutBuf = NULL;
 static NTDS_OUTPUT_MSGS NtdsOutBufCtrl;
 static int CurrentNtdsStatus = CONNECTION_UP;
-static int NtdsDeviceId = 120;
 
 #define CONNECTION_UP 1
 #define NUM_OUT_BFRS 8
@@ -68,15 +77,59 @@ PublisherThread::PublisherThread(int unitNumber)
   
   //sprintf(s, "Unit%u-CEC_R49-Publisher", unitNumber);
   //myQueue = new framework::utils::InterprocessQueue(s, 1000, 1000);
+
+  //*******************************************************************
+  //*******************************************************************
+  //SPS-49 Code
+	NtdsDeviceData.board.driver_type = NO_BOARD;
+	NtdsDeviceData.board.primary_ntds_port_address = NtdsUnixDeviceNumber;
+	NtdsDeviceData.board.secondary_driver_type = NO_BOARD;
+	NtdsDeviceData.board.secondary_ntds_port_address = 0xffffffff;
+	NtdsDeviceData.redundant_channel_flag	= FALSE;
+
+	NtdsDeviceData.board.address_modifier = 0;
+	NtdsDeviceData.board.enet_address[0] = 0;
+	NtdsDeviceData.board.enet_port = unitNumber;
+	NtdsDeviceData.board.io_mode = 0;
+	NtdsDeviceData.board.interrupt_level = 0;
+	NtdsDeviceData.board.manual_ei_mode = FALSE;	/* set AUTO */
+	NtdsDeviceData.board.word_size = 4;
+	NtdsDeviceData.board.io_type = 0;
+	NtdsDeviceData.board.int_enable = TRUE;
+	NtdsDeviceData.board.passive_mode = FALSE;
+	NtdsDeviceData.board.server_enable = TRUE;
+	NtdsDeviceData.board.init_mode = 0;
+	NtdsDeviceData.device_id = NtdsDeviceId;
+	NtdsDeviceData.port = 2;
+	NtdsDeviceData.enet_port = unitNumber;
+	NtdsDeviceData.enet_address[0] = 0;
+	NtdsDeviceData.no_remote_enable	= TRUE;
+	NtdsDeviceData.raw_input_que_type = 0;
+	NtdsDeviceData.packed_output_queue = FALSE;
+	NtdsDeviceData.in_signal_queue = FALSE;
+	NtdsDeviceData.out_signal_queue = FALSE;
+	NtdsDeviceData.name_string[0] = 0;
+	NtdsDeviceData.user1 = 0;
+	NtdsDeviceData.user2 = 0;
+	NtdsDeviceData.user3 = 0;
+	NtdsDeviceData.user4 = 0;
+	NtdsDeviceData.user5 = 0;
+	NtdsDeviceData.user6 = 0;
+	NtdsDeviceData.user7 = 0;
+	NtdsDeviceData.user8 = 0;
+	NtdsDeviceData.user9 = 0;
+	NtdsDeviceData.user10 = 0;
+	NtdsDeviceData.next = NULL;
+
+  Initialize_SPS_Interface (&NtdsDeviceData);
+
+  //*******************************************************************
+  //*******************************************************************
 }
 
 PublisherThread::~PublisherThread()
 {
-
   stop();
-
-  //delete myQueue;
-
 }
 
 void PublisherThread::start()
@@ -90,8 +143,14 @@ void PublisherThread::stop()
 {
   exitFlag = true;
 
+  Delete_NTDS_Interprocess_Queues(NtdsDeviceData.port);
+
+  printf("\nPublisherThread::stop - Attempting to Join Thread.\n");
   this->Thread::join();
+
+  printf("\nPublisherThread::stop - Stopping Thread.\n");
   Thread::stop();
+  printf("\nPublisherThread::stop - Thread Stop Complete.\n");
 }
 
 int GetNtdsInterfaceStatus()
@@ -101,6 +160,7 @@ int GetNtdsInterfaceStatus()
 
 void PublisherThread::threadOperation()
 {
+  char           s[500];
   MessageStruct* msg;
   unsigned int   slot = 0;
 	int status;
@@ -138,17 +198,18 @@ void PublisherThread::threadOperation()
       NtdsOutBufCtrl.io_pkt.req_size = numBytes / 4;
       NtdsOutBufCtrl.io_pkt.retry_count = 0;
 
+      sprintf(s, "Pub - Msg #=%u, #Bytes=%u, words = %d, MT=%u\n", msg->MsgNumber, numBytes, hdr->num_wrds, hdr->msg_type);
+      LogMessage(s);
+
       if ( (status = Send_NTDS_Mesg (NtdsDeviceId, &NtdsOutBufCtrl, 0)) != OK ) 
       {
-		    printf ("SendToCep: Error %d sending msg to CEP\n",status);
+		    printf ("\nSendToCep: Error %d sending msg to CEP\n",status);
 		  }
-      else
-      {
-        LogMessage("PublisherThread::threadOperation - Sent Message\n");
-        framework::utils::Sleep::sleep(1, 0/*250000000*/);
-      }
+
+      framework::utils::Sleep::sleep(0, 50000000);
     } /* end if ( NtdsInitialized && CONNECTION_UP) ... */
   }
+  printf ("\nPublisherThread::threadOperation - Exiting Thread\n");
 }
 
 
@@ -170,7 +231,7 @@ void PublisherThread::threadOperation()
           Secs -= Mins * 60;
 
           //TS = gmtime( &tt );
-          printf("%02u:%02u:%02u.%03u : %s", Hours, Mins, Secs, t.millitm, Msg);
+          printf("\n%02u:%02u:%02u.%03u : %s", Hours, Mins, Secs, t.millitm, Msg);
         }
 
 

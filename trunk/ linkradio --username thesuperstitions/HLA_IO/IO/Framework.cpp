@@ -131,8 +131,14 @@ void joinFedEx(
 // Resign and destroy the federation execution
 void resignAndDestroy( rti1516::RTIambassador * rtiAmb)
 {
-   rtiAmb->resignFederationExecution(rti1516::DELETE_OBJECTS);
-   rtiAmb->destroyFederationExecution(federationName);
+  try
+  {
+     rtiAmb->resignFederationExecution(rti1516::DELETE_OBJECTS);
+     rtiAmb->destroyFederationExecution(federationName);
+  }
+  catch(...)
+  {
+  }
 }
    
 
@@ -170,6 +176,7 @@ void resignAndDestroy( rti1516::RTIambassador * rtiAmb)
 
     void finalizeFramework()
     {
+
       delete frameworkFederateAmbassador;
 
       // Resign and destroy federation

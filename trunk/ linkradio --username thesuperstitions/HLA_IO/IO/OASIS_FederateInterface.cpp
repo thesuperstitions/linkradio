@@ -26,7 +26,10 @@
 namespace framework {
     namespace IO {
         
-        OASIS_FederateInterface::OASIS_FederateInterface(FederateIO_Handler* FIOH, int interfaceID, int unitNumber, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType) : 
+        OASIS_FederateInterface::OASIS_FederateInterface(FederateIO_Handler* FIOH, int interfaceID, int unitNumber, 
+                                                         std::string name, unsigned long maxMessageSize, 
+                                                         unsigned long maxMessages, 
+                                                         FederateInterfaceType federateInterfaceType) : 
           FederateInterface(interfaceID, unitNumber, name, maxMessageSize, maxMessages, federateInterfaceType) 
         {
             //#[ operation OASIS_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 

@@ -31,11 +31,10 @@ FrameworkThread::FrameworkThread(int unitNumber)
 
 FrameworkThread::~FrameworkThread()
 {
-
-  framework::finalizeFramework();
-
   delete hlaCecFederate;
   hlaCecFederate = NULL;
+
+  framework::finalizeFramework();
 }
 
 void FrameworkThread::threadOperation()

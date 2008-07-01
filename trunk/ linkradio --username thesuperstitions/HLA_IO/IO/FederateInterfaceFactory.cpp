@@ -56,7 +56,7 @@ namespace framework {
               case OASIS_FederateFrameworkType:
                 return( static_cast<framework::IO::FederateInterface*>( new framework::IO::OASIS_FederateInterface(
                         getItsFederateIO_Handler(), interfaceID, 
-                        unitNumber, name,  maxMessageSize, maxMessages, federateInterfaceType) ) );
+                        unitNumber, name, maxMessageSize, maxMessages, federateInterfaceType) ) );
             };  
             
             return(NULL);          

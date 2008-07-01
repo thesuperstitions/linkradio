@@ -50,20 +50,20 @@ namespace framework {
             //#[ operation FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
             
             char s[200];
-
-            if ( (federateInterfaceType == FederateInterfaceTypePublisherSubscriber) || 
-                 (federateInterfaceType == FederateInterfaceTypePublisher) )
-            {
-              sprintf(s, "Unit%u-%s-Publisher", unitNumber, name.c_str());
-              setPublishQueue(new framework::utils::InterprocessQueue((char*)&s, maxMessageSize, maxMessages)); 
-              this->start(); // Start the thread that monitors messages coming from the Publish process.
-            }
               
             if ( (federateInterfaceType == FederateInterfaceTypePublisherSubscriber) || 
                  (federateInterfaceType == FederateInterfaceTypeSubscriber) )
             {
-              sprintf(s, "Unit%u-%s-Subscriber", unitNumber, name.c_str());
+              sprintf(s, "Unit%u-%s-Subscriber6", unitNumber, name.c_str());
               setSubscribeQueue(new framework::utils::InterprocessQueue((char*)&s, maxMessageSize, maxMessages)); 
+            }
+
+            if ( (federateInterfaceType == FederateInterfaceTypePublisherSubscriber) || 
+                 (federateInterfaceType == FederateInterfaceTypePublisher) )
+            {
+              sprintf(s, "Unit%u-%s-Publisher6", unitNumber, name.c_str());
+              setPublishQueue(new framework::utils::InterprocessQueue((char*)&s, maxMessageSize, maxMessages)); 
+              this->start(); // Start the thread that monitors messages coming from the Publish process.
             }
         }
         
@@ -72,9 +72,12 @@ namespace framework {
                         
             exitFlag = true;
             
+  printf("\nFederateInterface::~FederateInterface - Attempting to Join Thread.\n");
             this->Thread::join();
             
+  printf("\nFederateInterface::~FederateInterface - Stopping Thread.\n");
             Thread::stop();
+  printf("\nFederateInterface::~FederateInterface - Thread Stop Complete.\n");
             
             if (publishQueue != NULL)
             {
@@ -105,7 +108,6 @@ namespace framework {
             }  
             
             // Send the message to the subscriber.
-//printf("FederateInterface::processFederateMessage - Got Msg From Fed-Msg#=%u, #Bytes=%u\n", ((MessageStruct*)(message))->MsgNumber, messageSizeInBytes);
             return (subscribeQueue->timedAddMessage(message, messageSizeInBytes, 1, 0) );
             
             //#]
@@ -117,27 +119,38 @@ namespace framework {
             // This thread handles a message from a publisher that is to be sent to subscribers.              
             unsigned char    message[INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES];    
             unsigned int     messageSizeInBytes;
+
+            // Wait for process on other end of queue to be ready.
+            while ((subscribeQueue->SynchronizeQueueUsers() == false) && (exitFlag != true));
+
+            if (exitFlag != true)
+              printf("\nFedIntfc::ThreadOps  -  Subscribe Queue Synching Complete\n");
+             
               
             while (exitFlag != true)
             {  
               if (publishQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)     
               {
                 // Wait for process on other end of queue to be ready.
-                while (publishQueue->SynchronizeQueueUsers() == false);
+                while ((publishQueue->SynchronizeQueueUsers() == false) && (exitFlag != true));
+
+                if (exitFlag != true)
+                  printf("\nFedIntfc::ThreadOps  -  Publish Queue Synching Complete\n");
               }  
-              else
-              {
+              //else
+              //{
                 if (publishQueue->timedGetMessage((unsigned char*)&message, &messageSizeInBytes, 1, 0) == true )
                 {    
-//printf("\nFedIntfc::ThreadOps  - Got Msg From Pub-Msg#=%u, num_wds=%u, MT=%u\n", 
+////printf("\nFedIntfc::ThreadOps  - Got Msg From Pub-Msg#=%u, num_wds=%u, MT=%u\n", 
 //((MessageStruct*)(&message))->MsgNumber, ((MessageStruct*)(&message))->Hdr.num_wrds,((MessageStruct*)(&message))->Hdr.msg_type);
                   // Send the message to the Post Office for delivery.
                   framework::Control::getFederate()->getThePostOffice()->sendMessage( (char*)&message, messageSizeInBytes, this);
                 }   
-              }
+              //}
             };
                      
-            //#]
+            printf("\nFedIntfc::ThreadOps - Exiting Thread\n");
+          //#]
         }
         
         bool FederateInterface::getExitFlag() const {

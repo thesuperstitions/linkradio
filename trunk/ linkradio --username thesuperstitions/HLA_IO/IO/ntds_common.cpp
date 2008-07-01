@@ -42,14 +42,6 @@
 #include "Sleep.h"
 
 
-//******************************************************************************
-// Used by Framework.
-#include "InterprocessQueue.h"
-static framework::utils::InterprocessQueue* publishQueue;
-static framework::utils::InterprocessQueue* subscribeQueue;
-//******************************************************************************
-
-
 typedef unsigned int CLOCK;	/* cep wasp simulation clock */
 
 #if     !defined(FALSE) || (FALSE!=0)
@@ -330,6 +322,18 @@ static int                 First_Time = TRUE;
 static unsigned int        Comm_Configured[NUM_OF_NTDS_PORTS+1];
 
 static DEVICE_DATA         device_config[NUM_OF_NTDS_PORTS];
+
+//******************************************************************************
+// Used by Framework.
+#include "InterprocessQueue.h"
+static framework::utils::InterprocessQueue* publishQueue/*[NUM_OF_NTDS_PORTS]*/;
+static framework::utils::InterprocessQueue* subscribeQueue/*[NUM_OF_NTDS_PORTS]*/;
+static char              buffer[INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES];
+
+static bool exitFlag = false;
+
+//******************************************************************************
+
   /* The following is a pool of VME memory buffer used for communicating
    * with the NTDS board.  Data buffers and instruction chains MUST use
    * this pool for the NTDS board to communicate properly with the
@@ -1046,14 +1050,16 @@ int Configure_NTDS_Device (DEVICE_DATA *device_list_ptr)
       // Configure to use the Framework to do I/O to other units.
 
       char s[200];
+
+      sprintf(s, "Unit%u-%s-Subscriber6", device_ptr->enet_port, device_ptr->name_string);
+      subscribeQueue = new framework::utils::InterprocessQueue(s, INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
+        INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
   
-      sprintf(s, "Unit%u-%s-Publisher", device_ptr->enet_port, device_ptr->name_string);
+      sprintf(s, "Unit%u-%s-Publisher6", device_ptr->enet_port, device_ptr->name_string);
       publishQueue = new framework::utils::InterprocessQueue(s, INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
         INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
 
-      sprintf(s, "Unit%u-%s-Subscriber", device_ptr->enet_port, device_ptr->name_string);
-      subscribeQueue = new framework::utils::InterprocessQueue(s, INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
-        INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
+
       //***************************************************************************
     }
     /*  Initialize global values   */
@@ -1062,6 +1068,13 @@ int Configure_NTDS_Device (DEVICE_DATA *device_list_ptr)
 
   return (return_code);
 }
+
+void Delete_NTDS_Interprocess_Queues(unsigned int port)
+{
+  exitFlag = true;
+}
+
+
 
 /* #########################################################################
  *
@@ -1150,7 +1163,7 @@ Get_NTDS_Buffer (
 // #########################################################################
 int Send_NTDS_Mesg (int device, NTDS_OUTPUT_MSGS* buffer_ptr, int priority)
 {
-  int status, port;
+  int status, port, xferSize;
 
   status = get_port (device, PRIMARY_PORT, &port);
   if ( (status != OK) || (port == NO_PRIMARY_PORT) )
@@ -1169,15 +1182,20 @@ int Send_NTDS_Mesg (int device, NTDS_OUTPUT_MSGS* buffer_ptr, int priority)
 
   //**********************************************************************************************************
   // Framework Publish Code.
+
+  if (subscribeQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)
+  {
+    if(subscribeQueue->SynchronizeQueueUsers() == true)
+      printf("\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, Subscribe Queue Synching Complete", device, 'A'+port);
+  }
+
   if (publishQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)
   {
-    printf("\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, Synching To Queue Partner",
-      device, 'A'+port);
-    if(publishQueue->SynchronizeQueueUsers() != true)
-    {
-      return (CHANNEL_READINESS_ERR);
-    }
-    printf("\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, Queue Synching Complete", device, 'A'+port);
+    if(publishQueue->SynchronizeQueueUsers() == true)
+    //{
+    //  return (CHANNEL_READINESS_ERR);
+    //}
+      printf("\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, Publish Queue Synching Complete", device, 'A'+port);
   }
 
   Get_NTDS_Word_Size (device);
@@ -1187,11 +1205,19 @@ int Send_NTDS_Mesg (int device, NTDS_OUTPUT_MSGS* buffer_ptr, int priority)
   microSecs = buffer_ptr->io_pkt.time_out*microSecs; // Get it in the form of microseconds of timeout.
 
 
-  if(publishQueue->timedAddMessage((unsigned char*)buffer_ptr->io_pkt.address, 
+  if (publishQueue->timedAddMessage((unsigned char*)buffer_ptr->io_pkt.address, 
   buffer_ptr->io_pkt.req_size*Get_NTDS_Word_Size(device), 0, (unsigned long)microSecs ) == true)
     return(OK);
   else
+  {
+    if(publishQueue->timedGetMessage((unsigned char*)&buffer, (unsigned int*)&xferSize, 0, 100000)  == true)
+    {
+      if(publishQueue->timedAddMessage((unsigned char*)buffer_ptr->io_pkt.address, 
+      buffer_ptr->io_pkt.req_size*Get_NTDS_Word_Size(device), 0, (unsigned long)microSecs ) == true)
+        return(OK);
+    }
     return (CHANNEL_READINESS_ERR);
+  }
   //**********************************************************************************************************
 }
 
@@ -1207,7 +1233,8 @@ int Recv_NTDS_Mesg (int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS *buffer_p
   int          port;
   int          status;
   double       microSecs;
-  bool         exitFlag = false;
+
+  buffer_ptr->io_pkt.address = (unsigned int*)&buffer;
 
 /* Get logical device assignment */
 
@@ -1237,11 +1264,18 @@ int Recv_NTDS_Mesg (int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS *buffer_p
     return (DEVICE_NOT_CONFIGURED);
   }
   //*********************************************************************************************************
-  // Framework Code
+  // Framework Subscribe Code
+
+  if (publishQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)
+  {
+    if(publishQueue->SynchronizeQueueUsers() != true)
+      printf("\nNTDS:Recv_NTDS_Mesg-Device=%d, Port=%c, Publish Queue Synching Complete", device, 'A'+port);
+  }
+
   if (subscribeQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)
   {
-    printf("\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, Synching To Queue Partner",
-      device, 'A'+port);
+    //printf("\nNTDS:Recv_NTDS_Mesg-Device=%d, Port=%c, Synching To Queue Partner",
+    //  device, 'A'+port);
     if(subscribeQueue->SynchronizeQueueUsers() != true)
     {
       if (timeout == WAIT_FOREVER)
@@ -1249,7 +1283,7 @@ int Recv_NTDS_Mesg (int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS *buffer_p
       else
         return (CHANNEL_READINESS_ERR);
     }
-    printf("\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, Queue Synching Complete", device, 'A'+port);
+    printf("\nNTDS:Recv_NTDS_Mesg-Device=%d, Port=%c, Subscribe Queue Synching Complete", device, 'A'+port);
   }
 
   Get_NTDS_Word_Size (device);
@@ -1258,11 +1292,21 @@ int Recv_NTDS_Mesg (int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS *buffer_p
   {
     while (exitFlag == false)
     {    
-      if (subscribeQueue->timedGetMessage((unsigned char*)buffer_ptr->io_pkt.address, 
-      &buffer_ptr->io_pkt.tfr_size, 0, 1000000) == true)
-      {
+      if (subscribeQueue->timedGetMessage((unsigned char*)buffer_ptr->io_pkt.address, &buffer_ptr->io_pkt.tfr_size, 0, 1000000)  == true)
         return(OK);
-      }
+    };
+
+    // If we get here, that means that the exit flag was set to true and we need to shut down the queues.
+    if (publishQueue != NULL)
+    {
+      delete publishQueue;  
+      publishQueue = NULL;
+    }
+            
+    if (subscribeQueue != NULL)
+    {
+      delete subscribeQueue;  
+      subscribeQueue = NULL;
     }
   }
   else
@@ -1271,14 +1315,13 @@ int Recv_NTDS_Mesg (int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS *buffer_p
     microSecs = 1.0/microSecs; // Get it in the form of microSeconds/tick
     microSecs = timeout*microSecs; // Get it in the form of microseconds of timeout.
 
-    if (subscribeQueue->timedGetMessage((unsigned char*)buffer_ptr->io_pkt.address, 
-    &buffer_ptr->io_pkt.tfr_size, 0, (unsigned long)microSecs) == true)
-    {
+    // Attempt to read a message.
+    if (subscribeQueue->timedGetMessage((unsigned char*)buffer_ptr->io_pkt.address, &buffer_ptr->io_pkt.tfr_size, 0, (unsigned long)microSecs)  == true)
       return(OK);
-    }
     else
       return (CHANNEL_READINESS_ERR);
   }
+  return (CHANNEL_READINESS_ERR);
 }
 
 /*#########################################################################

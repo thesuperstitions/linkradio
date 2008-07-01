@@ -12,8 +12,18 @@
 #include <stdio.h>
 #include <time.h>
 #include <sys/timeb.h>
-//#include "Sleep.h"
+#include "Sleep.h"
 #include "ntds_comm_.h"
+#include "sps49_io_.h" 
+
+//*******************************************************************
+//*******************************************************************
+//SPS-49 Code
+static DEVICE_DATA NtdsDeviceData;
+static int NtdsDeviceId = 120;
+static int NtdsUnixDeviceNumber = 0;  
+//*******************************************************************
+
 
 //----------------------------------------------------------------------------
 // SubscriberThread.cpp
@@ -35,9 +45,9 @@ struct MessageStruct
 
 
 static timeb previousTime;
-static int NtdsDeviceId = 120;
 static NTDS_QUE_ID NtdsInputQ = 0;
 static NTDS_INPUT_MSGS NtdsInBufCtrl;
+//static char *NtdsInBuf = NULL;
 
 
 SubscriberThread::SubscriberThread(int unitNumber)
@@ -50,14 +60,59 @@ SubscriberThread::SubscriberThread(int unitNumber)
 
   previousTime.time = 0;
   previousTime.millitm = 0;
+
+  //*******************************************************************
+  //*******************************************************************
+  //SPS-49 Code
+	NtdsDeviceData.board.driver_type = NO_BOARD;
+	NtdsDeviceData.board.primary_ntds_port_address = NtdsUnixDeviceNumber;
+	NtdsDeviceData.board.secondary_driver_type = NO_BOARD;
+	NtdsDeviceData.board.secondary_ntds_port_address = 0xffffffff;
+	NtdsDeviceData.redundant_channel_flag	= FALSE;
+
+	NtdsDeviceData.board.address_modifier = 0;
+	NtdsDeviceData.board.enet_address[0] = 0;
+	NtdsDeviceData.board.enet_port = unitNumber;
+	NtdsDeviceData.board.io_mode = 0;
+	NtdsDeviceData.board.interrupt_level = 0;
+	NtdsDeviceData.board.manual_ei_mode = FALSE;	/* set AUTO */
+	NtdsDeviceData.board.word_size = 4;
+	NtdsDeviceData.board.io_type = 0;
+	NtdsDeviceData.board.int_enable = TRUE;
+	NtdsDeviceData.board.passive_mode = FALSE;
+	NtdsDeviceData.board.server_enable = TRUE;
+	NtdsDeviceData.board.init_mode = 0;
+	NtdsDeviceData.device_id = NtdsDeviceId;
+	NtdsDeviceData.port = 2;
+	NtdsDeviceData.enet_port = unitNumber;
+	NtdsDeviceData.enet_address[0] = 0;
+	NtdsDeviceData.no_remote_enable	= TRUE;
+	NtdsDeviceData.raw_input_que_type = 0;
+	NtdsDeviceData.packed_output_queue = FALSE;
+	NtdsDeviceData.in_signal_queue = FALSE;
+	NtdsDeviceData.out_signal_queue = FALSE;
+	NtdsDeviceData.name_string[0] = 0;
+	NtdsDeviceData.user1 = 0;
+	NtdsDeviceData.user2 = 0;
+	NtdsDeviceData.user3 = 0;
+	NtdsDeviceData.user4 = 0;
+	NtdsDeviceData.user5 = 0;
+	NtdsDeviceData.user6 = 0;
+	NtdsDeviceData.user7 = 0;
+	NtdsDeviceData.user8 = 0;
+	NtdsDeviceData.user9 = 0;
+	NtdsDeviceData.user10 = 0;
+	NtdsDeviceData.next = NULL;
+
+  Initialize_SPS_Interface (&NtdsDeviceData);
+
+  //*******************************************************************
+  //*******************************************************************
 }
 
 SubscriberThread::~SubscriberThread()
 {
-
   stop();
-
-//  delete myQueue;
 }
 
 void SubscriberThread::start()
@@ -71,9 +126,14 @@ void SubscriberThread::stop()
 {
   exitFlag = true;
 
+  Delete_NTDS_Interprocess_Queues(NtdsDeviceData.port);
+
+  printf("\nSubscriberThread::stop - Attempting to Join Thread.\n");
   this->Thread::join();
 
+  printf("\nSubscriberThread::stop - Stopping Thread.\n");
   Thread::stop();
+  printf("\nSubscriberThread::stop - Thread Stop Complete.\n");
 }
 
 void SubscriberThread::threadOperation()
@@ -89,15 +149,18 @@ void SubscriberThread::threadOperation()
 	R49_NTDS_HDR_STRUCT *hdr;
 
 //while(myQueue->SynchronizeQueueUsers() == false);
+	    NtdsInBufCtrl.partition_id = 0;
+    	NtdsInBufCtrl.free_buffer = KEEP_MESG_BUFFER;
+      NtdsInBufCtrl.io_pkt.time_out = 0;
 
   while(exitFlag == false)
   {
-    if (Recv_NTDS_Mesg(NtdsDeviceId, NtdsInputQ, &NtdsInBufCtrl, WAIT_FOREVER) == OK)
+    if (Recv_NTDS_Mesg(NtdsDeviceId, NtdsInputQ, &NtdsInBufCtrl, 1000) == OK)
     {
 		  inputBuffer = (char *) NtdsInBufCtrl.io_pkt.address;
+      gmsg = (MessageStruct*)inputBuffer;
 		  hdr = (R49_NTDS_HDR_STRUCT *) inputBuffer;
 		  msgBytes = hdr->num_wrds * sizeof(int);
-      printf ("processInput: msgBytes = %d words = %d\n",msgBytes, hdr->num_wrds);
 		  inputBuffer += sizeof(R49_NTDS_HDR_STRUCT);	/* bypass header */
 
       //if (gmsg.MsgNumber != (prevMsgCount+1))
@@ -108,21 +171,21 @@ void SubscriberThread::threadOperation()
 
       //if ((msgCount % 100000) == 0)
       //{
-      gmsg = (MessageStruct*)inputBuffer;
-      sprintf(s, "Subscriber::threadOps - Msg Number=%u, #Bytes=%u\n\n", gmsg->MsgNumber, msgBytes);
+      sprintf(s, "Sub - Msg #=%u, #Bytes=%u, words = %d, MT=%u\n", gmsg->MsgNumber, NtdsInBufCtrl.io_pkt.tfr_size, hdr->num_wrds, hdr->msg_type);
         LogMessage(s);
       //}
       prevMsgCount = msgCount;
     }
     else
     {
+      framework::utils::Sleep::sleep(0, 50000000);
+      
       LogMessage("TIMEOUT\n");
-      timeoutFlag = true;
+//      timeoutFlag = true;
     }
   };
 
-
-
+  printf("\nSubscriberThread::threadOperation - Exiting Thread.\n");
 }
 
 
@@ -140,7 +203,7 @@ void SubscriberThread::threadOperation()
           Secs -= Mins * 60;
 
           //TS = gmtime( &tt );
-          printf("%02u:%02u:%02u.%03u : %s", Hours, Mins, Secs, t.millitm, Msg);
+          printf("\n%02u:%02u:%02u.%03u : %s", Hours, Mins, Secs, t.millitm, Msg);
         }
 /*********************************************************************
 	SubscriberThread.cpp

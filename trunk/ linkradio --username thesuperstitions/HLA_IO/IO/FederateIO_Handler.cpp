@@ -50,20 +50,6 @@ namespace framework {
         FederateIO_Handler::~FederateIO_Handler() {
             //#[ operation ~FederateIO_Handler() 
             
-            delete getItsFederateInterfaceFactory();  
-            setItsFederateInterfaceFactory(NULL);
-
-            std::map<int, framework::IO::FederateInterface*>::const_iterator iter;
-            iter = itsFederateInterface.begin();
-            while (iter != itsFederateInterface.end())
-            {
-              delete (*iter).second;
-              removeItsFederateInterface((*iter).first);
-
-              iter++;
-            }
-
-            
             //#]
             cleanUpRelations();
         }
@@ -233,7 +219,8 @@ namespace framework {
                     framework::IO::FederateIO_Handler* p_FederateIO_Handler = ((*iter).second)->getItsFederateIO_Handler();
                     if(p_FederateIO_Handler != NULL)
                         {
-                            ((*iter).second)->__setItsFederateIO_Handler(NULL);
+                          ((*iter).second)->__setItsFederateIO_Handler(NULL);
+                          delete (*iter).second;
                         }
                     iter++;
                 }
@@ -241,7 +228,8 @@ namespace framework {
             }
             if(itsFederateInterfaceFactory != NULL)
                 {
-                    itsFederateInterfaceFactory = NULL;
+                  delete itsFederateInterfaceFactory;
+                  itsFederateInterfaceFactory = NULL;
                 }
         }
         

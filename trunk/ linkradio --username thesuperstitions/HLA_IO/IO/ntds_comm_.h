@@ -842,6 +842,10 @@ Configure_NTDS_Device (
    DEVICE_DATA *device_list_ptr
 );
 
+
+void Delete_NTDS_Interprocess_Queues(unsigned int port);
+
+
 /*#########################################################################
  *
  * SYNOPSIS: Get_Device_Data  (application)
