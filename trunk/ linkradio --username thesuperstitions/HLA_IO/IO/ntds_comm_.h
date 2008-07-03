@@ -1075,6 +1075,94 @@ Show_NTDS_Device_Name(
    int device_ID
 );
 
+
+/*#########################################################################
+ *
+ * SYNOPSIS: Send_NTDS_Mesg_To_Port   (application)
+ *
+ * DESCRIPTION:     This function queues an output request to the specified
+ *                port queue.  The caller provides the port id, a buffer
+ *                descriptor, and a queuing priority.
+ *
+ *                The buffer descriptor is of an NTDS_OUTPUT_MSGS type containing
+ *                the starting address of the message, and the length of the
+ *                message. It also includes the buffer partition_id.
+ *
+ *                   The caller determines how the output request will be queued
+ *                by setting the priority parameter to either MSG_PRI_NORMAL
+ *                or MSG_PRI_URGENT.  If the priority is set to MSG_PRI_NORMAL,
+ *                the output request is placed at the end of the output queue.
+ *                If the priority is set to MSG_PRI_URGENT, the output request
+ *                is placed at the front of the queue.
+ *
+ *                   The protocol output task is expected to dequeue the
+ *                output messages by calling the Deque_NTDS_Output_Mesg
+ *                function.
+ *
+ * PARAMETERS:
+ *
+ *    INPUT   port    :    This parameter contains the logical unit number of
+ *                        the port being used.
+ *
+ *        *buffer_ptr :    This parameter contains a pointer to the message
+ *                        buffer of type NTDS_OUTPUT_MSGS.
+ *
+ *                     The following fields are passed to the application in the
+ *                     buffer parameter:
+ *
+ *        io_pkt  : This field is a structure of information required for
+ *                  performing the buffer transfer.
+ *
+ *        partition_id : This field contains the partition_id of the
+ *                       buffer.  This allows the protocol task to return
+ *                       the buffer to the proper partition when partitions
+ *                       are being used. When malloc is being used this
+ *                       field should be NULL.
+ *
+ *        status : This field contains a pointer to the status buffer that
+ *            will be used by the protocol to save the transfer status.  This
+ *            field is only used if the "confirm" flag is set.  Likewise, if the
+ *            "confirm" flag is set a valid pointer must be provided.  If the
+ *            "confirm" flag is false the status pointer should be NULL.
+ *
+ *        confirm : This field determines if the protocol task should return a
+ *            status to the application.  If the flag is "TRUE" a valid status
+ *            pointer must be provided.  There are two possibilities for this
+ *            field  (TRUE, FALSE).
+ *
+ *        free_buffer : This field determines if the protocol should free the
+ *            buffer being sent.  There are two possibilities for this field.
+ *            (TRUE, FALSE)
+ *
+ *              priority :    This parameter contains the priority at which the
+ *             message buffer will be placed into the output
+ *             queue.  If the priority is set to MSG_PRI_NORMAL,
+ *             the message will be put at the end of the queued
+ *             message list.  If the priority is set to
+ *             MSG_PRI_URGENT the message will be placed at the
+ *             front of the list.
+ *
+ *   OUTPUT  NONE
+ *
+ *   RETURNS OK
+ *           NOT_LONG_ALIGNED
+ *           DEVICE_NOT_CONFIGURED
+ *           CHANNEL_READINESS_ERR
+ *           FUNCTION_NOT_IMPLEMENTED
+ *           NO_STATUS_BUFFER
+ *
+ *           subordinate function returns
+ *           VxWorks error code
+ *
+ *########################################################################*/
+//int
+//Send_NTDS_Mesg_To_Port (
+//  int                  port,
+//  NTDS_OUTPUT_MSGS   * buffer_ptr,
+//  int                  priority
+//);
+
+
 /*#########################################################################
  *
  * SYNOPSIS: Create_NTDS_Input_Q   (application)
@@ -1312,12 +1400,12 @@ Send_NTDS_Mesg (
  *           VxWorks error code
  *
  * ########################################################################*/
-//int
-//Send_NTDS_Mesg_Block (
-//  int                device,
-//  NTDS_OUTPUT_MSGS   * buffer_ptr,
-//  int                priority
-//);
+int
+Send_NTDS_Mesg_Block (
+  int                device,
+  NTDS_OUTPUT_MSGS   * buffer_ptr,
+  int                priority
+);
 
 /*#########################################################################
  *
@@ -1448,12 +1536,12 @@ Recv_NTDS_Mesg (
  *           VxWorks error status
  *
  * #########################################################################*/
-//int
-//Recv_NTDS_Signal (
-//   int              device,
-//   NTDS_SIGNAL_MSGS *signal_ptr,
-//   int              timeout
-//);
+int
+Recv_NTDS_Signal (
+   int              device,
+   NTDS_SIGNAL_MSGS *signal_ptr,
+   int              timeout
+);
 
 /*#########################################################################
  *
@@ -1488,11 +1576,11 @@ Recv_NTDS_Mesg (
  *              vxWorks error code
  *
  *#########################################################################*/
-//int
-//Send_NTDS_Signal (
-//   int              device,
-//   NTDS_SIGNAL_MSGS *signal_ptr
-//);
+int
+Send_NTDS_Signal (
+   int              device,
+   NTDS_SIGNAL_MSGS *signal_ptr
+);
 
 /*##########################################################################
  *
@@ -1549,12 +1637,12 @@ Recv_NTDS_Mesg (
  *           VxWorks error status
  *
  * #########################################################################*/
-//int
-//Recv_NTDS_Error (
-//   int             device,
-//   NTDS_ERROR_MSGS *mesg_ptr,
-//   int             timeout
-//);
+int
+Recv_NTDS_Error (
+   int             device,
+   NTDS_ERROR_MSGS *mesg_ptr,
+   int             timeout
+);
 
 /*##########################################################################
  *
@@ -1621,12 +1709,12 @@ Recv_NTDS_Mesg (
  *           VxWorks error status
  *
  * #########################################################################*/
-//int
-//Recv_Secondary_NTDS_Error (
-//   int             device,
-//   NTDS_ERROR_MSGS *mesg_ptr,
-//   int             timeout
-//);
+int
+Recv_Secondary_NTDS_Error (
+   int             device,
+   NTDS_ERROR_MSGS *mesg_ptr,
+   int             timeout
+);
 
 /*#########################################################################
  *
@@ -1667,11 +1755,11 @@ Recv_NTDS_Mesg (
  *           subordinate function returns
  *
  * #########################################################################*/
-//int
-//NTDS_Control (
-//   int device,
-//   int command
-//);
+int
+NTDS_Control (
+   int device,
+   int command
+);
 
 /*#########################################################################
  *
@@ -1712,11 +1800,11 @@ Recv_NTDS_Mesg (
  *           subordinate function returns
  *
  * #########################################################################*/
-//int
-//NTDS_Secondary_Control (
-//   int device,
-//   int command
-//);
+int
+NTDS_Secondary_Control (
+   int device,
+   int command
+);
 
 
 /*#########################################################################
@@ -1750,12 +1838,12 @@ Recv_NTDS_Mesg (
  *           subordinate function returns
  *
  * #########################################################################*/
-//int
-//Redundant_Channel_Control(
-//  int device,
-//  int port,
-//  int state
-//);
+int
+Redundant_Channel_Control(
+  int device,
+  int port,
+  int state
+);
 
 //#ifndef USG1
 /*#########################################################################
@@ -1790,11 +1878,11 @@ Recv_NTDS_Mesg (
  *   RETURNS None
  *
  * #########################################################################*/
-//SEM_ID
-//Get_Redundant_Channels_Queue_Sync_Semaphore(
-//  int port
-//);
-//#endif
+SEM_ID
+Get_Redundant_Channels_Queue_Sync_Semaphore(
+  int port
+);
+#endif
 
 #ifndef USG1
 /*#########################################################################
@@ -1819,11 +1907,11 @@ Recv_NTDS_Mesg (
  *
  *
  * #########################################################################*/
-//void
-//Change_Port_Name(
-//  int Port,
-//  char* New_Name
-//);
+void
+Change_Port_Name(
+  int Port,
+  char* New_Name
+);
 #endif
 
 /*#########################################################################
@@ -1847,11 +1935,11 @@ Recv_NTDS_Mesg (
  *         vxWorks ERROR code.
  *
  *#########################################################################*/
-//int
-//Send_Swap_Status (
-//   int device,
-//   int swap_msg
-//);
+int
+Send_Swap_Status (
+   int device,
+   int swap_msg
+);
 
 
 /*##########################################################################
@@ -2186,10 +2274,10 @@ Get_Primary_NTDS_Port (
  *          INVALID_DEVICE  If a valid port could not be found.
  *
  *#########################################################################*/
-//int
-//Get_Secondary_NTDS_Port (
-//   int device
-//);
+int
+Get_Secondary_NTDS_Port (
+   int device
+);
 
 /*#########################################################################
  *
@@ -2240,10 +2328,10 @@ Check_NTDS_Block_Que (
  *         BAD_PORT_ID
  *
  *#########################################################################*/
-//int
-//Check_NTDS_Output_Que (
-//   int port
-//);
+int
+Check_NTDS_Output_Que (
+   int port
+);
 
 /*#########################################################################
  *
@@ -2315,10 +2403,10 @@ NTDS_Status (
  * RETURNS Pointer to a text string describing the interface status. 
  *
  *#########################################################################*/
-//char *
-//Get_NTDS_Status_String (
-//   int device
-//);
+char *
+Get_NTDS_Status_String (
+   int device
+);
 
 /*#########################################################################
  *
@@ -2364,12 +2452,12 @@ NTDS_Status (
  *         vXWorks ERROR
  *
  *#########################################################################*/
-//int
-//NTDS_Status_Change (
-//   int              device,
-//   NTDS_STATUS_MSGS *mesg_ptr,
-//   int              time_out
-//);
+int
+NTDS_Status_Change (
+   int              device,
+   NTDS_STATUS_MSGS *mesg_ptr,
+   int              time_out
+);
 
 /*#########################################################################
  *
@@ -2430,12 +2518,12 @@ NTDS_Status (
  *              VxWorks error code
  *
  *########################################################################*/
-//int
-//Deque_Output_Mesg (
-//   int              port,
-//   NTDS_OUTPUT_MSGS *buffer_ptr,
-//   int              timeout
-//);
+int
+Deque_Output_Mesg (
+   int              port,
+   NTDS_OUTPUT_MSGS *buffer_ptr,
+   int              timeout
+);
 
 /*#########################################################################
  *
@@ -2496,12 +2584,12 @@ NTDS_Status (
  *              VxWorks error code
  *
  *########################################################################*/
-//int
-//Deque_Packed_Output_Mesg_Block (
-//   int              port,
-//   NTDS_OUTPUT_MSGS *buffer_ptr,
-//   int              timeout
-//);
+int
+Deque_Packed_Output_Mesg_Block (
+   int              port,
+   NTDS_OUTPUT_MSGS *buffer_ptr,
+   int              timeout
+);
 
 /*##########################################################################
  *
@@ -2550,12 +2638,12 @@ NTDS_Status (
  *           VxWorks error status
  *
  * #########################################################################*/
-//int
-//Deque_Output_Signal (
-//   int              port,
-//   NTDS_SIGNAL_MSGS *mesg_ptr,
-//   int              timeout
-//);
+int
+Deque_Output_Signal (
+   int              port,
+   NTDS_SIGNAL_MSGS *mesg_ptr,
+   int              timeout
+);
 
 /*#########################################################################
  *
@@ -2607,13 +2695,13 @@ NTDS_Status (
  *              VxWorks error code
  *
  *########################################################################*/
-//int
-//Queue_Input_Mesg (
-//   int            port,
-//   NIO_MESG     * buffer_ptr,
-//   unsigned int   mesg_type,
-//   char           free_buffer
-//);
+int
+Queue_Input_Mesg (
+   int            port,
+   NIO_MESG     * buffer_ptr,
+   unsigned int   mesg_type,
+   char           free_buffer
+);
 
 /*#########################################################################
  *
@@ -2650,12 +2738,12 @@ NTDS_Status (
  *              VxWorks error code
  *
  * ########################################################################*/
-//int
-//Queue_Remote_Input_Mesg ( 
-//   int          port,
-//   NIO_MESG     *buffer,
-//   char         free_buffer
-//);
+int
+Queue_Remote_Input_Mesg ( 
+   int          port,
+   NIO_MESG     *buffer,
+   char         free_buffer
+);
 
 /*#########################################################################
  *
@@ -2680,12 +2768,12 @@ NTDS_Status (
  *
  *
  * #########################################################################*/
-//int
-//Parse_Remote_Port_Mesg (
-//   int      port,
-//   int      data_src,
-//   NIO_MESG *packet
-//);
+int
+Parse_Remote_Port_Mesg (
+   int      port,
+   int      data_src,
+   NIO_MESG *packet
+);
 
 /*#########################################################################
  *
@@ -2742,11 +2830,11 @@ Get_Device_Id (
  *              vxWorks error code
  *
  *#########################################################################*/
-//int
-//Report_Port_Error (
-//   int             port,
-//   NTDS_ERROR_MSGS *mesg_ptr
-//);
+int
+Report_Port_Error (
+   int             port,
+   NTDS_ERROR_MSGS *mesg_ptr
+);
 
 /*#########################################################################
  *
@@ -2777,11 +2865,11 @@ Get_Device_Id (
  *
  *#########################################################################*/
 
-//int
-//Report_Port_Signal (
-//   int               port,
-//   NTDS_SIGNAL_MSGS  *mesg_ptr
-//);
+int
+Report_Port_Signal (
+   int               port,
+   NTDS_SIGNAL_MSGS  *mesg_ptr
+);
 
 /*#########################################################################
  *
@@ -2834,10 +2922,444 @@ int
 Get_Port_Status (
    int port
 );
+
+/*#########################################################################
+ *
+ * SYNOPSIS:  Get_Port_Status_String    (protocol)
+ *
+ * DESCRIPTION:    The Get_Port_Status_String function returns a pointer
+ *                 to a string that describes the current status of
+ *                 the interface at the port level.
+ *
+ * PARAMETERS:
+ *
+ *    INPUT   port :     This parameter contains the port number of
+ *                      the channel being used.
+ *
+ *    OUTPUT  NOTHING
+ *
+ *
+ * RETURNS Pointer to a text string describing the interface status. 
+ *
+ *#########################################################################*/
+char *
+Get_Port_Status_String (
+   int port
+);
+
+/*#########################################################################
+ *
+ * SYNOPSIS:  Check_For_NTDS_Boards
+ *
+ * DESCRIPTION:      This function queries the VME bus for a maximum of two
+ *              interface cards.  If the first board and only the first is
+ *              found a status of 1 is returned.  If the second board and
+ *              only the second board is found, a status of 2 is returned.
+ *              If both boards are found, a status of 3 is returned.  Any
+ *              other condition results in a 0 being returned.
+ *
+ * PARAMETERS:
+ *
+ *    INPUT   address_1 :    This parameter is the first board address.
+ *
+ *            address_2 :    This parameter is the second board address.
+ *
+ *    OUTPUT  NOTHING
+ *
+ * RETURNS 0 NO BOARDS FOUND
+ *         1 FIRST BOARD FOUND
+ *         2 SECOND BOARD FOUND
+ *         3 BOTH BOARDS FOUND
+ *
+ *#########################################################################*/
+int
+Check_For_NTDS_Boards (
+   unsigned int address_1,
+   unsigned int address_2
+);
+
+/*#########################################################################
+ *
+ * SYNOPSIS:  Find_NTDS_Boards 
+ *
+ * DESCRIPTION:      This function tests a list of possible NTDS card
+ *                 addresses that may be available. Each possible address is
+ *                 tested until two valid boards are found or the list is
+ *                 exhausted, which ever comes first.
+ *
+ * PARAMETERS:
+ *
+ *    INPUT   address_list :  This parameter is a pointer to a list of
+ *                            addresses to be tested for validity.
+ *
+ *             first_result :  This parameter contains a pointer to store the
+ *                             information on the first board found.
+ *
+ *             second_result :  This parameter contains a pointer to store the
+ *                              information on the second board found.
+ *
+ *    OUTPUT   first_result :  This parameter updates the pointer values
+ *                             storing information on the first board found.
+ *
+ *             second_result :  This parameter updates the pointer values
+ *                              storing information on the second board found.
+ *
+ *
+ * RETURNS 0 If no boards are found
+ *         1 If 1 board is found
+ *         2 If 2 boards are found
+ *
+ *#########################################################################*/
+int
+Find_NTDS_Boards (
+   unsigned int *address_ptr,
+   NTDS_BOARD_VENDOR *match1,
+   NTDS_BOARD_VENDOR *match2
+);
+
+/*#########################################################################
+ *
+ *        SYNOPSIS:        Find_NTDS_Mesg
+ *
+ *        DESCRIPTION:   This function finds the message type and buffer size
+ *                of a message.  The message type and buffer size are
+ *                expected to be in the first word pointed to by the
+ *                buffer pointer.
+ *
+ *                This function will also determine if the next message address
+ *                is really the next message or the end of the input buffer.
+ *                This is to support those interfaces that want to pass the raw
+ *                buffer to the application.  The type of message parsing
+ *                that is performed is determined when the device is
+ *                configured.
+ *
+ *                Find_NTDS_Mesg receives a mask to determine the bits
+ *                to save for both the message type and size of the
+ *                buffer.  Also included are variables used to determine
+ *                how far to shift the data to right justify it.
+ *
+ *                This function returns the message type, size of the
+ *                buffer, and the next buffer address.
+ *
+ *
+ *        PARAMETERS:
+ *
+ *    INPUT
+ *             port  :  This parameter determines the port that is attempting
+ *                      to sort out a message.  This parameter is required
+ *                      to determine if raw buffers or messages are being
+ *                      computed.
+ *
+ *             mesg_ptr :  This parameter is a pointer to a structure
+ *                         that has the following characteristics.
+ *
+ *             *buffer_address :  This parameter is a pointer to a pointer
+ *                                that points to the first word of the mesg
+ *                                buffer.
+ *
+ *             word_size :  This parameter determines the word width of the
+ *                          buffer being used. The two options are WORD_32
+ *                          and WORD_16.
+ *
+ *             msg_mask  :  This parameter contains the mask to be applied
+ *                          to the first word of the message to get the
+ *                          message type.
+ *
+ *             size_mask :  This parameter contains the mask to be applied
+ *                          to the first word of the message to get the
+ *                          size of the buffer.
+ *
+ *             msg_shift :  This parameter contains the number of shifts
+ *                          required to right justify the message type.
+ *
+ *             size_shift : This parameter contains the number of shifts
+ *                          required to right justify the message size.
+ *
+ *       num_of_words_type: This parameter determines if an extra word will
+ *                          be added to the message size and the next message
+ *                          address.  If the parameter is set to
+ *                          NW_WORDS_DOES_NOT_INCLUDE_HEADER_WORD, both values
+ *                          will be incremented appropriately.  If the
+ *                          parameter is set to NW_WORDS_INCLUDES_HEADER_WORD,
+ *                          the values will be returned as decoded.
+ *
+ *       buffer_length:     This parameter determines the length of the raw
+ *                          input buffer.  This value is usually extracted from
+ *                          the input packet's tfr_count parameter.
+ *
+ *    OUTPUT  *test_patt :  This parameter is updated to point to the
+ *                          test pattern following the message.
+ *
+ *             *buffer_size : This parameter is a pointer that will contain
+ *                            the size of the message.
+ *
+ *             *msg_type    : This parameter is a pointer that will contain
+ *                            the message type of the message.
+ *
+ *             *next_msg_address : This parameter is a pointer that will
+ *                                 contain the address of the next message.
+ *
+ *    RETURNS   NOTHING
+ *
+ *########################################################################*/
+void
+Find_NTDS_Mesg (
+   int port,
+   MESG_BLOCK *mesg_ptr
+ 
+);
+
+/*#########################################################################
+ *
+ * SYNOPSIS:  Get_NTDS_Partition
+ *
+ * DESCRIPTION:     This function gets a block of memory that can be accessed by
+ *               across the VME bus.  The memory block is taken from the
+ *               NTDS buffer pool.  This memory block is converted to a
+ *               partition that the caller can used to transfer data to or from
+ *               the NIO interface board.  The memory buffer is addressable
+ *               by off board processors. (Mapped to VME memory).
+ *
+ * PARAMETERS:
+ *
+ *   INPUT : size     This parameter determines the number of bytes that will be
+ *                    allocated.
+ *
+ *
+ * OUTPUT :  NONE
+ *
+ * RETURNS : partition  This parameter returns the partition id of the newly
+ *                    created partition.  If the partition id is NULL, a
+ *                    partition was not created.
+ *
+ * #########################################################################*/
+PART_ID
+Get_NTDS_Partition (
+  unsigned int size
+);
+
+/*#########################################################################
+ *
+ * SYNOPSIS:  Get_NTDS_Buffer
+ *
+ * DESCRIPTION:     This function gets a block of memory that can be accessed by
+ *               the NTDS interface board.  The memory buffer is addressable
+ *               by off board processors. (Mapped to VME memory).
+ *
+ * PARAMETERS:
+ *
+ *   INPUT : size     This parameter determines the number of bytes that will be
+ *                    allocated.
+ *
+ *                    This parameter is a pointer to the variable that will
+ *                    contain the partition id of the buffer.
+ *
+ *  OUTPUT : partition_id  This parameter will contain the new paritition id.
+ *
+ * RETURNS : *address The base address of the newly received buffer is returned.
+ *                    If the buffer address is NULL, a buffer was not allocated.
+ *
+ * #########################################################################*/
+char *
+Get_NTDS_Buffer (
+  unsigned int size,
+  PART_ID      *partition_id
+);
+
+/*#########################################################################
+ *
+ * SYNOPSIS:   Free_NTDS_Msg_Buffer
+ *
+ *  DESCRIPTION:   This function releases a buffer back to the buffer pool.
+ *        The partition id determines the buffer pool that will receive the
+ *        memory block.  If the partition id is NULL, the memory block will
+ *        be returned using a free block, implying the memory was gotten by
+ *        using a malloc command.  If the partition id is not NULL, a
+ *        memPartFree call.
+ *
+ *        PARAMETERS:
+ *
+ *      INPUT:
+ *
+ *          partition_id : The identifier determining where the memory
+ *                         block was taken.
+ *
+ *          *address_ptr :  A pointer to the memory block being freed.
+ *
+ *      OUTPUT : NONE
+ *
+ *    RETURNS   OK
+ *              vxWorks error code
+ *
+ *########################################################################*/
+int
+Free_NTDS_Msg_Buffer (
+ PART_ID partition_id,
+ char    *address_ptr
+);
+
+/*#########################################################################
+ *
+ * SYNOPSIS:   NTDS_Msgs
+ *
+ *  DESCRIPTION:   This function displays a count of all the data messages
+ *        that have been received for application processing.
+ *
+ *        PARAMETERS:
+ *
+ *      INPUT : NONE
+ *
+ *      OUTPUT : NONE
+ *
+ *    RETURNS   NOTHING
+ *
+ *########################################################################*/
+void
+NTDS_Msgs (
+   void
+);
+
+/*#####################################################################
+ *
+ * SYNOPSIS:   NTDS_Ques
+ *
+ *  DESCRIPTION:   This function displays a count of all the data 
+ *               messages that have been received for application 
+ *               processing.
+ *
+ *        PARAMETERS:
+ *
+ *      INPUT : NONE
+ *
+ *      OUTPUT : NONE
+ *
+ *    RETURNS   NOTHING
+ *
+ *########################################################################*/
+void
+NTDS_Ques (
+   void
+);
+
+/*#####################################################################
+ *
+ * SYNOPSIS:   Test_NTDS_Card
+ *
+ *  DESCRIPTION:   This function allows a person to configure the NTDS
+ *               package to communicate with a NTDS card.  The caller is
+ *               queried for the appropriate parameters before configuration.
+ *               The caller must also provide a valid NTDS card address before
+ *               the configuration will continue.
+ *
+ *  PARAMETERS:
+ *
+ *      INPUT : NONE
+ *
+ *      OUTPUT : NONE
+ *
+ *    RETURNS   NOTHING
+ *
+ *########################################################################*/
+void
+Test_NTDS_Card (
+   void
+);
+
+/*#####################################################################
+ *
+ * SYNOPSIS:   Set_NTDS_Gate_Revision_Info
+ *
+ *  DESCRIPTION:   This function is used primarily by the enet client
+ *                 in order to report the NTDS Gate's revision information.
+ *                 The enet server down in the NTDS Gate board sends a 
+ *                 structure called SATELLITE_CONFIGURATION_HDR up to the
+ *                 enet client which is in the application's board.  The 
+ *                 enet client calls this function which stores the revision
+ *                 information in the "NTDS_Gate_Revision_Info" string.
+ *
+ *  PARAMETERS:
+ *
+ *      INPUT : revision_info - the revision information string.
+ *
+ *      OUTPUT : NTDS_Gate_Revision_Info is set to the input string.
+ *
+ *    RETURNS   NOTHING
+ *
+ *########################################################################*/
+void Set_NTDS_Gate_Revision_Info(
+  char* revision_info
+);
+
+
+/*#####################################################################
+ *
+ * SYNOPSIS:   Get_NTDS_Gate_Revision_Info
+ *
+ *  DESCRIPTION:    This function is used by anyone needing the NTDS Gate's
+ *                 revision information.
+ *                 The enet server down in the NTDS Gate board sends a 
+ *                 structure called SATELLITE_CONFIGURATION_HDR up to the
+ *                 enet client which is in the application's board.  The 
+ *                 enet client calls the "Set_NTDS_Gate_Revision_Info"
+ *                 function which stores the revision information in the 
+ *                "NTDS_Gate_Revision_Info" string.
+ *
+ *  PARAMETERS:
+ *
+ *      INPUT : NONE
+ *
+ *      OUTPUT : NONE
+ *
+ *    RETURNS   The NTDS Gate revision information string.
+ *
+ *########################################################################*/
+char* Get_NTDS_Gate_Revision_Info(
+  void
+);
+
+
+/*#####################################################################
+ *
+ * SYNOPSIS:   Get_Board_Driver_Type
+ *
+ *  DESCRIPTION:    This function returns the NTDS board driver type.
+ *                  Sometimes apps need to know what kind of NTDS board
+ *                  they're talking to.  A call to this function will
+ *                  return that information.
+ *
+ *  PARAMETERS:
+ *
+ *      INPUT : port - port number associated with the NTDS board of interest.
+ *
+ *      OUTPUT : NONE
+ *
+ *    RETURNS   the driver-type of the NTDS board associated with the input port.
+ *
+ *########################################################################*/
+unsigned int Get_Board_Driver_Type(int Port);
+
+
+/*#####################################################################
+ *
+ * SYNOPSIS:   Hook_Task_Switching
+ *
+ *  DESCRIPTION:    This function turns on the capture of task swaps to
+ *                  the NTDS Trace buffer.  The user must supply the port
+ *                  to which the trace data is to be captured for.
+ *
+ *  PARAMETERS:
+ *
+ *      INPUT : port - port for which Tracing of task swaps should be captured.
+ *
+ *      OUTPUT : Task_Switching_Port.
+ *
+ *    RETURNS   NONE.
+ *
+ *########################################################################*/
+void Hook_Task_Switching(int port);
 
 #ifdef __cplusplus
 }
-#endif
 
 
 
