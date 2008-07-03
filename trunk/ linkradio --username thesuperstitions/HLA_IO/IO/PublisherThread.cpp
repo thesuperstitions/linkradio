@@ -143,8 +143,6 @@ void PublisherThread::stop()
 {
   exitFlag = true;
 
-  Delete_NTDS_Interprocess_Queues(NtdsDeviceData.port);
-
   printf("\nPublisherThread::stop - Attempting to Join Thread.\n");
   this->Thread::join();
 
@@ -184,7 +182,7 @@ void PublisherThread::threadOperation()
 
 	  if (NtdsInitialized && GetNtdsInterfaceStatus() == CONNECTION_UP) 
     { 
-	    NtdsOutBufCtrl.io_pkt.time_out = 0;
+	    NtdsOutBufCtrl.io_pkt.time_out = 1;
 	    NtdsOutBufCtrl.io_pkt.delay_time = 0;
 	    NtdsOutBufCtrl.status = 0;
 	    NtdsOutBufCtrl.confirm = FALSE;
@@ -198,17 +196,19 @@ void PublisherThread::threadOperation()
       NtdsOutBufCtrl.io_pkt.req_size = numBytes / 4;
       NtdsOutBufCtrl.io_pkt.retry_count = 0;
 
-      sprintf(s, "Pub - Msg #=%u, #Bytes=%u, words = %d, MT=%u\n", msg->MsgNumber, numBytes, hdr->num_wrds, hdr->msg_type);
-      LogMessage(s);
-
-      if ( (status = Send_NTDS_Mesg (NtdsDeviceId, &NtdsOutBufCtrl, 0)) != OK ) 
+      if ( (status = Send_NTDS_Mesg (NtdsDeviceId, &NtdsOutBufCtrl, 0)) == OK ) 
       {
-		    printf ("\nSendToCep: Error %d sending msg to CEP\n",status);
+        sprintf(s, "Pub - Msg #=%u, #Bytes=%u, words = %d, MT=%u\n", msg->MsgNumber, numBytes, hdr->num_wrds, hdr->msg_type);
+        LogMessage(s);
 		  }
+      else
+		    printf ("\nSendToCep: Error %d sending msg to CEP\n",status);
 
       framework::utils::Sleep::sleep(0, 50000000);
     } /* end if ( NtdsInitialized && CONNECTION_UP) ... */
   }
+  
+  //Delete_NTDS_Interprocess_Queues(NtdsDeviceData.port);
   printf ("\nPublisherThread::threadOperation - Exiting Thread\n");
 }
 

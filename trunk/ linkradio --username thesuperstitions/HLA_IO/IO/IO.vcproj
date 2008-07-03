@@ -622,6 +622,9 @@
 			RelativePath=".\ntds_common.cpp">
 		</File>
 		<File
+			RelativePath=".\ntds_sys.cpp">
+		</File>
+		<File
 			RelativePath=".\PublisherThread.cpp">
 		</File>
 		<File

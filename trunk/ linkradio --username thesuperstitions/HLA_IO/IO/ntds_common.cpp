@@ -35,6 +35,7 @@
 #include "stdio.h"
 #include "ntds_config.h"
 #include "ntds_comm_.h"
+#include "ntds_sys_.h"
 //#include "ntds_drivers.h"
 //#include "wrap_io_.h"
 #include <time.h>
@@ -325,12 +326,71 @@ static DEVICE_DATA         device_config[NUM_OF_NTDS_PORTS];
 
 //******************************************************************************
 // Used by Framework.
+
+#define NTDS_TICKS_TO_MICROSECS 1.0/( ((double)sysClkRateGet())/1000000.0)
+
 #include "InterprocessQueue.h"
-static framework::utils::InterprocessQueue* publishQueue/*[NUM_OF_NTDS_PORTS]*/;
-static framework::utils::InterprocessQueue* subscribeQueue/*[NUM_OF_NTDS_PORTS]*/;
+static framework::utils::InterprocessQueue* publishQueue[NUM_OF_NTDS_PORTS];
+static framework::utils::InterprocessQueue* subscribeQueue[NUM_OF_NTDS_PORTS];
 static char              buffer[INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES];
 
 static bool exitFlag = false;
+
+class QueueFactory
+{
+  public:
+    QueueFactory(void);
+    ~QueueFactory(void);
+    void createQueues(unsigned int port, unsigned int unit, char* name);
+};
+
+QueueFactory::QueueFactory(void)
+{
+  int i;
+  for (i=0; i<NUM_OF_NTDS_PORTS; i++)
+  {
+    publishQueue[i] = NULL;
+    subscribeQueue[i] = NULL;
+  }
+}
+
+QueueFactory::~QueueFactory(void)
+{
+  int i;
+  for (i=0; i<NUM_OF_NTDS_PORTS; i++)
+  {
+    if (publishQueue[i] != NULL)
+    {
+      delete publishQueue[i];
+      publishQueue[i] = NULL;
+    }
+
+    if (subscribeQueue[i] != NULL)
+    {
+      delete subscribeQueue[i];
+      subscribeQueue[i] = NULL;
+    }
+  }
+}
+
+void QueueFactory::createQueues(unsigned int port, unsigned int unit, char* name)
+{
+  char s[200];
+
+  if (publishQueue[port] == NULL)
+  {
+    sprintf(s, "Unit%u-%s-Pub", unit, name);
+    publishQueue[port] = new framework::utils::InterprocessQueue(s);
+
+    if (subscribeQueue[port] == NULL)
+    {
+      sprintf(s, "Unit%u-%s-Sub", unit, name);
+      subscribeQueue[port] = new framework::utils::InterprocessQueue(s);
+    }
+  } 
+}
+
+static QueueFactory queueFactory;
 
 //******************************************************************************
 
@@ -513,8 +573,8 @@ Get_Device_Configuration (
       {
         if ( (status == OK) && (port == NO_SECONDARY_PORT) )
         {
-          printf(
-            "\nNTDS:Get_Device_Configuration-Device=%d, Port=%c, There is no"
+          Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+            "NTDS:Get_Device_Configuration-Device=%d, Port=%c, There is no"
             " PRIMARY or SECONDARY port configured for this device.",
             device, 'A'+port);
           return (INVALID_DEVICE);
@@ -537,16 +597,16 @@ Get_Device_Configuration (
     }
     else
     {
-      printf(
-        "\nNTDS:Get_Device_Configuration-Device=%d, Port=%c, Device Not Configured",
+      Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+        "NTDS:Get_Device_Configuration-Device=%d, Port=%c, Device Not Configured",
         device, 'A'+port);
       return (INVALID_DEVICE);
     }
   }
   else
   {
-    printf(
-      "\nNTDS:Get_Device_Configuration-Device=%d, Port=%c  UNKNOWN DEVICE",
+    Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+      "NTDS:Get_Device_Configuration-Device=%d, Port=%c  UNKNOWN DEVICE",
       device, 'A'+port);
     return (status);
   }
@@ -774,8 +834,8 @@ int last_one;
 
    if (mt == 0)
    {
-     printf(
-       "\nNTDS:find_mt_index-Port=%c Trying to hash a message type of zero (0)",
+     Log_NTDS_Mesg (Get_Device_Id(port), NTDS_ERROR_CAT,
+       "NTDS:find_mt_index-Port=%c Trying to hash a message type of zero (0)",
        'A'+port);
      return (INDEX_NULL);
    }
@@ -989,11 +1049,13 @@ int Configure_NTDS_Device (DEVICE_DATA *device_list_ptr)
       status = assign_port_to_device (device, port, device_ptr->redundant_channel_flag);
       if (status != OK)
       {
-        printf("\nNTDS:Configure_NTDS_Device-Device=%d  Device table Full Norm=%d Alt=%d New=%d",
-          device,
-          Device_Ports[Get_Device_Index(device)].normal_port,
-          Device_Ports[Get_Device_Index(device)].alternate_port,
-          port);
+        Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+              "NTDS:Configure_NTDS_Device-Device=%d  Device table Full Norm=%d "
+              "Alt=%d New=%d",
+              device,
+              Device_Ports[Get_Device_Index(device)].normal_port,
+              Device_Ports[Get_Device_Index(device)].alternate_port,
+              port);
         return (status);
       }
 
@@ -1008,9 +1070,10 @@ int Configure_NTDS_Device (DEVICE_DATA *device_list_ptr)
       //   NTDS_Sys_Init (device_ptr);
 
       device_ptr->board.init_mode = LOCAL_INTERFACE;
-      printf("\nNTDS:Configure_NTDS_Device-Device=%d  Found First Board at Address 0x%x", 
-        device,
-        device_ptr->board.primary_ntds_port_address);
+      Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+                     "NTDS:Configure_NTDS_Device-Device=%d  Found First Board "
+                     "at Address 0x%x", device,
+                     device_ptr->board.primary_ntds_port_address);
       Port_Device[port] = device;
       NTDS_Channel_Status[port] = CHANNEL_STATUS_UNKNOWN;
 
@@ -1049,16 +1112,7 @@ int Configure_NTDS_Device (DEVICE_DATA *device_list_ptr)
       //***************************************************************************
       // Configure to use the Framework to do I/O to other units.
 
-      char s[200];
-
-      sprintf(s, "Unit%u-%s-Subscriber6", device_ptr->enet_port, device_ptr->name_string);
-      subscribeQueue = new framework::utils::InterprocessQueue(s, INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
-        INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
-  
-      sprintf(s, "Unit%u-%s-Publisher6", device_ptr->enet_port, device_ptr->name_string);
-      publishQueue = new framework::utils::InterprocessQueue(s, INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
-        INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
-
+      queueFactory.createQueues(port, device_ptr->enet_port, device_ptr->name_string);
 
       //***************************************************************************
     }
@@ -1067,11 +1121,6 @@ int Configure_NTDS_Device (DEVICE_DATA *device_list_ptr)
   }
 
   return (return_code);
-}
-
-void Delete_NTDS_Interprocess_Queues(unsigned int port)
-{
-  exitFlag = true;
 }
 
 
@@ -1163,15 +1212,18 @@ Get_NTDS_Buffer (
 // #########################################################################
 int Send_NTDS_Mesg (int device, NTDS_OUTPUT_MSGS* buffer_ptr, int priority)
 {
-  int status, port, xferSize;
+  int status, port/*, xferSize*/;
+
+  if (exitFlag == true)
+    return(CHANNEL_READINESS_ERR);
 
   status = get_port (device, PRIMARY_PORT, &port);
   if ( (status != OK) || (port == NO_PRIMARY_PORT) )
   {
     if ( (status == OK) && (port == NO_PRIMARY_PORT) )
     {
-      printf(
-        "\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, There is no"
+      Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+        "NTDS:Send_NTDS_Mesg-Device=%d, Port=%c, There is no"
         " PRIMARY port configured for this device.",
         device, 'A'+port);
       return (INVALID_DEVICE);
@@ -1183,41 +1235,15 @@ int Send_NTDS_Mesg (int device, NTDS_OUTPUT_MSGS* buffer_ptr, int priority)
   //**********************************************************************************************************
   // Framework Publish Code.
 
-  if (subscribeQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)
-  {
-    if(subscribeQueue->SynchronizeQueueUsers() == true)
-      printf("\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, Subscribe Queue Synching Complete", device, 'A'+port);
-  }
+  // Convert input ticks to microseconds.
+  double microSecs = ((double)buffer_ptr->io_pkt.time_out) * NTDS_TICKS_TO_MICROSECS;
 
-  if (publishQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)
-  {
-    if(publishQueue->SynchronizeQueueUsers() == true)
-    //{
-    //  return (CHANNEL_READINESS_ERR);
-    //}
-      printf("\nNTDS:Send_NTDS_Mesg-Device=%d, Port=%c, Publish Queue Synching Complete", device, 'A'+port);
-  }
-
-  Get_NTDS_Word_Size (device);
-
-  double microSecs = ((double)sysClkRateGet())/1000000.0; // Get it in the form of tick/microsecs
-  microSecs = 1.0/microSecs; // Get it in the form of microSeconds/tick
-  microSecs = buffer_ptr->io_pkt.time_out*microSecs; // Get it in the form of microseconds of timeout.
-
-
-  if (publishQueue->timedAddMessage((unsigned char*)buffer_ptr->io_pkt.address, 
+  // Drop the message in the Queue to the framework.
+  if (publishQueue[port]->timedAddMessage((unsigned char*)buffer_ptr->io_pkt.address, 
   buffer_ptr->io_pkt.req_size*Get_NTDS_Word_Size(device), 0, (unsigned long)microSecs ) == true)
     return(OK);
   else
-  {
-    if(publishQueue->timedGetMessage((unsigned char*)&buffer, (unsigned int*)&xferSize, 0, 100000)  == true)
-    {
-      if(publishQueue->timedAddMessage((unsigned char*)buffer_ptr->io_pkt.address, 
-      buffer_ptr->io_pkt.req_size*Get_NTDS_Word_Size(device), 0, (unsigned long)microSecs ) == true)
-        return(OK);
-    }
     return (CHANNEL_READINESS_ERR);
-  }
   //**********************************************************************************************************
 }
 
@@ -1232,7 +1258,10 @@ int Recv_NTDS_Mesg (int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS *buffer_p
 {
   int          port;
   int          status;
-  double       microSecs;
+  //double       microSecs;
+
+  if (exitFlag == true)
+    return(CHANNEL_READINESS_ERR);
 
   buffer_ptr->io_pkt.address = (unsigned int*)&buffer;
 
@@ -1243,8 +1272,8 @@ int Recv_NTDS_Mesg (int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS *buffer_p
   {
     if ( (status == OK) && (port == NO_NORMAL_PORT) )
     {
-      printf(
-        "\nNTDS:Recv_NTDS_Mesg-Device=%d, Port=%c, There is no"
+      Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+        "NTDS:Recv_NTDS_Mesg-Device=%d, Port=%c, There is no"
         " NORMAL port configured for this device.",
         device, 'A'+port);
       return (INVALID_DEVICE);
@@ -1252,71 +1281,34 @@ int Recv_NTDS_Mesg (int device, NTDS_QUE_ID lcl_index, NTDS_INPUT_MSGS *buffer_p
   }
   if (status != OK)
   {
-    printf( "\nNTDS:Recv_NTDS_Mesg-Port=%c, "
-      "UNKNOWN DEVICE", 'A'+port);
+    Log_NTDS_Mesg (device, NTDS_ERROR_CAT, "NTDS:Recv_NTDS_Mesg-Port=%c, "
+       "UNKNOWN DEVICE", 'A'+port);
     return (status);
   }
   if (Comm_Configured[port+1] != TRUE)
   {
-    printf(
-      "\nNTDS:Recv_NTDS_Mesg-Port=%c  Device is NOT Configured",
-      'A'+port);
+    Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+       "NTDS:Recv_NTDS_Mesg-Port=%c  Device is NOT Configured",
+       'A'+port);
     return (DEVICE_NOT_CONFIGURED);
   }
   //*********************************************************************************************************
   // Framework Subscribe Code
 
-  if (publishQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)
-  {
-    if(publishQueue->SynchronizeQueueUsers() != true)
-      printf("\nNTDS:Recv_NTDS_Mesg-Device=%d, Port=%c, Publish Queue Synching Complete", device, 'A'+port);
-  }
-
-  if (subscribeQueue->getQueueState() == framework::utils::InterprocessQueue::QueueSynchronizing)
-  {
-    //printf("\nNTDS:Recv_NTDS_Mesg-Device=%d, Port=%c, Synching To Queue Partner",
-    //  device, 'A'+port);
-    if(subscribeQueue->SynchronizeQueueUsers() != true)
-    {
-      if (timeout == WAIT_FOREVER)
-        while (subscribeQueue->SynchronizeQueueUsers() != true);
-      else
-        return (CHANNEL_READINESS_ERR);
-    }
-    printf("\nNTDS:Recv_NTDS_Mesg-Device=%d, Port=%c, Subscribe Queue Synching Complete", device, 'A'+port);
-  }
-
-  Get_NTDS_Word_Size (device);
-
   if (timeout == WAIT_FOREVER)
   {
     while (exitFlag == false)
     {    
-      if (subscribeQueue->timedGetMessage((unsigned char*)buffer_ptr->io_pkt.address, &buffer_ptr->io_pkt.tfr_size, 0, 1000000)  == true)
+      // Sit on Queue waiting for the next message from the framework.
+      if (subscribeQueue[port]->timedGetMessage((unsigned char*)buffer_ptr->io_pkt.address, &buffer_ptr->io_pkt.tfr_size, 0, 10000)  == true)
         return(OK);
     };
-
-    // If we get here, that means that the exit flag was set to true and we need to shut down the queues.
-    if (publishQueue != NULL)
-    {
-      delete publishQueue;  
-      publishQueue = NULL;
-    }
-            
-    if (subscribeQueue != NULL)
-    {
-      delete subscribeQueue;  
-      subscribeQueue = NULL;
-    }
   }
   else
   {
-    microSecs = ((double)sysClkRateGet())/1000000.0; // Get it in the form of tick/microsecs
-    microSecs = 1.0/microSecs; // Get it in the form of microSeconds/tick
-    microSecs = timeout*microSecs; // Get it in the form of microseconds of timeout.
-
     // Attempt to read a message.
-    if (subscribeQueue->timedGetMessage((unsigned char*)buffer_ptr->io_pkt.address, &buffer_ptr->io_pkt.tfr_size, 0, (unsigned long)microSecs)  == true)
+    if (subscribeQueue[port]->timedGetMessage((unsigned char*)buffer_ptr->io_pkt.address, &buffer_ptr->io_pkt.tfr_size, 0, 
+    ((unsigned long)((double)buffer_ptr->io_pkt.time_out) * NTDS_TICKS_TO_MICROSECS))  == true)
       return(OK);
     else
       return (CHANNEL_READINESS_ERR);
@@ -1363,8 +1355,8 @@ int status;
       {
         if ( (status == OK) && (port == NO_SECONDARY_PORT) )
         {
-          printf(
-            "\nNTDS:Get_NTDS_Port-Device=%d, Port=%c, There is no"
+          Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+            "NTDS:Get_NTDS_Port-Device=%d, Port=%c, There is no"
             " PRIMARY or SECONDARY port configured for this device.",
             device, 'A'+port);
           return (INVALID_DEVICE);
@@ -1417,8 +1409,8 @@ int status;
       {
         if ( (status == OK) && (port == NO_SECONDARY_PORT) )
         {
-          printf(
-            "\nNTDS:Get_NTDS_Word_Size-Device=%d, Port=%c, There is no"
+          Log_NTDS_Mesg (device, NTDS_ERROR_CAT,
+            "NTDS:Get_NTDS_Word_Size-Device=%d, Port=%c, There is no"
             " PRIMARY or SECONDARY port configured for this device.",
             device, 'A'+port);
           return ((unsigned int)INVALID_DEVICE);
@@ -1608,8 +1600,8 @@ int status;
   {
     if ( (status == OK) && (port == NO_PRIMARY_PORT) )
     {
-      printf(
-        "\nNTDS:Get_Primary_NTDS_Port-Device=%d, Port=%c, There is no"
+      Log_NTDS_Mesg (device, NTDS_STATUS_CAT,
+        "NTDS:Get_Primary_NTDS_Port-Device=%d, Port=%c, There is no"
         " PRIMARY port configured for this device.",
         device, 'A'+port);
       return (INVALID_DEVICE);
@@ -1655,8 +1647,8 @@ Get_Normal_NTDS_Port (
   {
     if ( (status == OK) && (port == NO_NORMAL_PORT) )
     {
-      printf(
-        "\nNTDS:Get_Normal_NTDS_Port-Device=%d, Port=%c, There is no"
+      Log_NTDS_Mesg (device, NTDS_STATUS_CAT,
+        "NTDS:Get_Normal_NTDS_Port-Device=%d, Port=%c, There is no"
         " NORMAL port configured for this device.",
         device, 'A'+port);
       return (INVALID_DEVICE);
@@ -1699,8 +1691,8 @@ Get_NTDS_Port_Status (
     status = NTDS_Channel_Status[port];
   else
   {
-    printf(
-      "\nNTDS:NTDS_Status-Port=%d, UNKNOWN PORT", port);
+    Log_NTDS_Mesg (Get_Device_Id(port), NTDS_STATUS_CAT,
+      "NTDS:NTDS_Status-Port=%d, UNKNOWN PORT", port);
     status = PORT_STATUS_UNKNOWN;
   }
   return (status);
@@ -1746,8 +1738,8 @@ NTDS_Status (
       {
         if ( (status == OK) && (port == NO_SECONDARY_PORT) )
         {
-          printf(
-            "\nNTDS:NTDS_Status-Device=%d, Port=%c, There is no"
+          Log_NTDS_Mesg (device, NTDS_STATUS_CAT,
+            "NTDS:NTDS_Status-Device=%d, Port=%c, There is no"
             " PRIMARY or SECONDARY port configured for this device.",
             device, 'A'+port);
           return (CHANNEL_STATUS_UNKNOWN);

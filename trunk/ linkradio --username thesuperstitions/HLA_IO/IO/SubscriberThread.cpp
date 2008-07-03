@@ -126,8 +126,6 @@ void SubscriberThread::stop()
 {
   exitFlag = true;
 
-  Delete_NTDS_Interprocess_Queues(NtdsDeviceData.port);
-
   printf("\nSubscriberThread::stop - Attempting to Join Thread.\n");
   this->Thread::join();
 
@@ -178,13 +176,14 @@ void SubscriberThread::threadOperation()
     }
     else
     {
-      framework::utils::Sleep::sleep(0, 50000000);
+      //framework::utils::Sleep::sleep(0, 1000000);
       
-      LogMessage("TIMEOUT\n");
+      //LogMessage("TIMEOUT\n");
 //      timeoutFlag = true;
     }
   };
 
+  //Delete_NTDS_Interprocess_Queues(NtdsDeviceData.port);
   printf("\nSubscriberThread::threadOperation - Exiting Thread.\n");
 }
 

@@ -12,6 +12,7 @@
 #include "PublisherThread.h"
 #include "SubscriberThread.h"
 #include "FrameworkThread.h"
+#include <boost/interprocess/shared_memory_object.hpp>
 //#include "ntds_comm_.h"
 //#include "sps49_io_.h" 
 
@@ -56,9 +57,14 @@ int main(int argc, char* argv[])
     publisherThread->start();
   }
 
+  printf("\nHit any key to DELETE Framework\n\n");
+  fgets(c, 2, stdin);
+
+  delete frameworkThread;
+
   if (unitNumber == 1)
   {
-    printf("\nHit any key to STOP  Receiving Messages\n\n");
+    printf("\nHit any key to STOP Receiving Messages\n\n");
     fgets(c, 2, stdin);
 
     delete subscriberThread;
@@ -66,16 +72,11 @@ int main(int argc, char* argv[])
 
   if (unitNumber == 2)
   {
-    printf("\nHit any key to STOP  Publishing Messages\n\n");
+    printf("\nHit any key to STOP Publishing Messages\n\n");
     fgets(c, 2, stdin);
 
 	  delete publisherThread;
   }
-
-  printf("\nHit any key to DELETE Framework\n\n");
-  fgets(c, 2, stdin);
-
-  delete frameworkThread;
 
   printf("\nHit any key to EXIT\n\n");
   fgets(c, 2, stdin);

@@ -68,8 +68,9 @@ namespace framework {
             
             //## operation FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
             FederateInterface(int interfaceID, int unitNumber, std::string name, 
-              unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType 
-              federateInterfaceType = FederateInterfaceTypeUnselected);
+              unsigned long maxMessageSize = INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
+              unsigned long maxMessages = INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE, 
+              FederateInterfaceType federateInterfaceType = FederateInterfaceTypeUnselected);
             
             //## operation ~FederateInterface() 
             ~FederateInterface();

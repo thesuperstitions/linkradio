@@ -27,7 +27,7 @@
 #include "ntds_comm_.h" 
 //#include "ntds_devices.h"
 //#include "ntds_drivers.h"
-//#include "ntds_sys_.h"
+#include "ntds_sys_.h"
 #include "ntds_config.h" 
 //#ifndef	SOLARIS_WASP
 //#include "nio_trace_.h"
@@ -295,9 +295,9 @@ int Initialize_SPS_Interface (DEVICE_DATA *sps_device)
 	status = Configure_NTDS_Device(sps_device);
 	if (status != OK)
 	{
-		printf(
-			"SPS:NTDS Protocol Config Failed Port %d, ERROR %x\n",
-				device_node_ptr->port, status);
+		Log_NTDS_Mesg (device_node_ptr->device_id, NTDS_ERROR_CAT, 
+                    "RDR49:Init-%d Configure NTDS Failure 0x%x\n", 
+                    device_node_ptr->port, status);
 		return(status);
 	}
 
@@ -369,8 +369,7 @@ int Initialize_SPS_Interface (DEVICE_DATA *sps_device)
 	//	    return(errnoGet());
 	//}
 
-	printf(  
-		"SPS:NTDS CHANNEL PORT %x IS CONFIGURED");
+	Log_NTDS_Mesg (device_node_ptr->device_id, NTDS_ERROR_CAT,"SPS:NTDS CHANNEL PORT IS CONFIGURED");
 
 	//if ( SPS_Cmds_Logged )
 	//{
