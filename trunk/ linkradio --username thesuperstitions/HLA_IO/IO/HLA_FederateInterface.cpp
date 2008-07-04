@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::HLA_FederateInterface
+	Model Element	: framework::io::hla::HLA_FederateInterface
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_FederateInterface.cpp
 *********************************************************************/
@@ -21,13 +21,13 @@
 // HLA_FederateInterface.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package framework::IO 
+//## package framework::io 
 
 //## class HLA_FederateInterface 
 
 namespace framework {
-    namespace IO {
-        
+  namespace io {
+    namespace hla {    
         
         HLA_FederateInterface::HLA_FederateInterface(FederateIO_Handler* FIOH, int interfaceID, int unitNumber, std::string name, unsigned long maxMessageSize, 
           unsigned long maxMessages, FederateInterfaceType federateInterfaceType) : 
@@ -76,15 +76,15 @@ namespace framework {
             paramHandle = p_paramHandle;
         }
         
-        framework::IO::HLA_PostOffice* HLA_FederateInterface::getTheHLA_PostOffice() const {
+        framework::io::HLA_PostOffice* HLA_FederateInterface::getTheHLA_PostOffice() const {
             return theHLA_PostOffice;
         }
         
-        void HLA_FederateInterface::__setTheHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::__setTheHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
             theHLA_PostOffice = p_HLA_PostOffice;
         }
         
-        void HLA_FederateInterface::_setTheHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::_setTheHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
             if(theHLA_PostOffice != NULL)
                 {
                     theHLA_PostOffice->_removeTheHLA_FederateInterface(this);
@@ -92,7 +92,7 @@ namespace framework {
             __setTheHLA_PostOffice(p_HLA_PostOffice);
         }
         
-        void HLA_FederateInterface::setTheHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::setTheHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
             if(p_HLA_PostOffice != NULL)
                 {
                     p_HLA_PostOffice->_addTheHLA_FederateInterface(getInteractionClassHandle(), this);
@@ -107,7 +107,7 @@ namespace framework {
         void HLA_FederateInterface::cleanUpRelations() {
             if(theHLA_PostOffice != NULL)
                 {
-                    framework::IO::HLA_PostOffice* current = theHLA_PostOffice;
+                    framework::io::HLA_PostOffice* current = theHLA_PostOffice;
                     if(current != NULL)
                         {
                             current->_removeTheHLA_FederateInterface(interactionClassHandle);
@@ -115,9 +115,9 @@ namespace framework {
                     theHLA_PostOffice = NULL;
                 }
         }
-        
-    }
-}
+    } // namespace hla    
+  } // namespace io
+} // namespace framework
 
 
 /*********************************************************************

@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::FederateIO_Handler
+	Model Element	: framework::io::FederateIO_Handler
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_Handler.h
 *********************************************************************/
@@ -35,7 +35,7 @@
 
 namespace framework {
     
-    namespace IO {
+    namespace io {
         class C_IO_Functions;
         
     } 
@@ -46,14 +46,14 @@ namespace Control {
     
 } 
 
-namespace IO {
+namespace io {
     class PostOffice;
 }
 
 }
 
 
-//## package framework::IO 
+//## package framework::io 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -61,7 +61,7 @@ namespace IO {
 #endif
 
 namespace framework {
-    namespace IO {
+    namespace io {
         //## class FederateIO_Handler 
         class FederateIO_Handler  {
         

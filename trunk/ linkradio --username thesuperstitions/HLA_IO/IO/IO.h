@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO
+	Model Element	: framework::io
 //!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\IO.h
 *********************************************************************/
@@ -29,7 +29,7 @@
 
 namespace framework {
     
-    namespace IO {
+    namespace io {
         class C_IO_Functions;
         class FederateInterface;
         class FederateIO_Handler;
@@ -42,7 +42,7 @@ namespace framework {
 }
 
 
-//## package framework::IO 
+//## package framework::io 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -52,7 +52,7 @@ namespace framework {
 
 namespace framework {
     
-    namespace IO {
+    namespace io {
         
         
         //## attribute MAX_FEDERATE_INTERFACE_DEVICES 

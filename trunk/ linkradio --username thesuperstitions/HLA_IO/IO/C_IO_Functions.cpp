@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::C_IO_Functions
+	Model Element	: framework::io::C_IO_Functions
 //!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\C_IO_Functions.cpp
 *********************************************************************/
@@ -18,12 +18,12 @@
 // C_IO_Functions.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package framework::IO 
+//## package framework::io 
 
 //## class C_IO_Functions 
 
 namespace framework {
-    namespace IO {
+    namespace io {
         
         // Static class member attribute
         int C_IO_Functions::federateInterfaceCount( 0 );
@@ -100,7 +100,7 @@ namespace framework {
               if (ipq->timedGetMessage(((unsigned char*)buffer_ptr->io_pkt.address), &sizeInBytes, 10, 0) == true )
               {   
                 // De-serialize the message data.  
-                // message = Framework::IO::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
+                // message = Framework::io::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
                 return(OK);
               } 
             }
@@ -117,12 +117,12 @@ namespace framework {
             if( (ipq = (framework::utils::InterprocessQueue*)publishQueues[findDeviceIndex(device)]) != NULL)
             { 
               // Serialize the message data.  
-              // message = Framework::IO::serializer( message);
+              // message = Framework::io::serializer( message);
             
               if (ipq->timedAddMessage(((unsigned char*)buffer_ptr->io_pkt.address), buffer_ptr->io_pkt.req_size, 10, 0) == true )
               {   
                 // De-serialize the message data.  
-                // message = Framework::IO::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
+                // message = Framework::io::deserializer( ((unsigned char*)buffer_ptr->io_pkt.address));
                 return(OK);
               } 
             }

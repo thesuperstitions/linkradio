@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::HLA_FederateInterface
+	Model Element	: framework::io::hla::HLA_FederateInterface
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_FederateInterface.h
 *********************************************************************/
@@ -38,7 +38,7 @@ namespace framework {
         
     } 
     
-namespace IO {
+namespace io {
     class FederateIO_Handler;
     class HLA_PostOffice;
     class PostOffice;
@@ -47,7 +47,7 @@ namespace IO {
 }
 
 
-//## package framework::IO 
+//## package framework::io 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -55,7 +55,8 @@ namespace IO {
 #endif
 
 namespace framework {
-    namespace IO {
+  namespace io {
+    namespace hla {    
         //## class HLA_FederateInterface 
         class HLA_FederateInterface : public FederateInterface {
         
@@ -140,8 +141,10 @@ namespace framework {
         
         
         };
-    }
-}
+
+    } // namespace hla    
+  } // namespace io
+} // namespace framework
 
 
 #endif  

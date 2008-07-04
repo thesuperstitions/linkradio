@@ -28,18 +28,17 @@
 // FederateInterfaceFactory.h                                                                  
 //----------------------------------------------------------------------------
 
-
 namespace framework {
-    
-    namespace IO {
+  namespace io {
+
         class FederateInterface;
         class FederateIO_Handler;
-        class HLA_FederateInterface;
         class OASIS_FederateInterface;
+    namespace hla {
+        class HLA_FederateInterface;
     }
-    
+  }
 }
-
 
 //## package framework::Control 
 
@@ -71,7 +70,7 @@ namespace framework {
         public :
             
             //## operation createFederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
-            framework::IO::FederateInterface* createFederateInterface(int interfaceID, int unitNumber, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType);
+          framework::io::FederateInterface* createFederateInterface(int interfaceID, int unitNumber, std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType);
         
         
         ////    Additional operations    ////
@@ -84,10 +83,10 @@ namespace framework {
             void setFedFrameworkType(FederateFrameworkType p_fedFrameworkType);
             
             //## auto_generated 
-            IO::FederateIO_Handler* getItsFederateIO_Handler() const;
+            io::FederateIO_Handler* getItsFederateIO_Handler() const;
             
             //## auto_generated 
-            void setItsFederateIO_Handler(IO::FederateIO_Handler* p_FederateIO_Handler);
+            void setItsFederateIO_Handler(io::FederateIO_Handler* p_FederateIO_Handler);
         
         
         ////    Framework operations    ////
@@ -106,14 +105,13 @@ namespace framework {
         ////    Relations and components    ////
         protected :
             
-            IO::FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
+            io::FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
             
         
         
         };
-    }
+  }
 }
-
 
 #endif  
 /*********************************************************************

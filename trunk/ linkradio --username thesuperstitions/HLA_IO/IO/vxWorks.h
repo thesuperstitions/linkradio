@@ -3,6 +3,8 @@
 
 
 //typedef char* PART_ID;
+typedef void* SEM_ID;
+#define NO_WAIT 0
 
 typedef unsigned int CLOCK;	/* cep wasp simulation clock */
 

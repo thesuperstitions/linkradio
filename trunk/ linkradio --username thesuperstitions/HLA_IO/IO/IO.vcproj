@@ -520,33 +520,6 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\IO.cpp">
-					<FileConfiguration
-						Name="Debug 1516|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release NGC FULL|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug NGC FULL|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release 1516|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)/$(InputName)1.obj"/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath=".\OASIS_FederateInterface.cpp">
 					<FileConfiguration
 						Name="Debug 1516|Win32">
@@ -619,7 +592,7 @@
 			RelativePath=".\FrameworkThread.cpp">
 		</File>
 		<File
-			RelativePath=".\ntds_common.cpp">
+			RelativePath=".\ntds_comm.cpp">
 		</File>
 		<File
 			RelativePath=".\ntds_sys.cpp">

@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::HLA_PostOffice
+	Model Element	: framework::io::HLA_PostOffice
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.h
 *********************************************************************/
@@ -42,7 +42,7 @@ namespace framework {
         
     } 
     
-namespace IO {
+namespace io {
     class FederateInterface;
     
 } 
@@ -54,7 +54,7 @@ namespace framework {
 }
 
 
-//## package framework::IO 
+//## package framework::io 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -62,7 +62,7 @@ namespace framework {
 #endif
 
 namespace framework {
-    namespace IO {
+    namespace io {
         //## class HLA_PostOffice 
         class HLA_PostOffice : public PostOffice {
         
@@ -90,7 +90,7 @@ namespace framework {
             void announceSubscription(FederateInterface* interface);
             
             //## operation createInteractionClassHandle(HLA_FederateInterface*) 
-            void createInteractionClassHandle(HLA_FederateInterface* interface);
+            void createInteractionClassHandle(framework::io::hla::HLA_FederateInterface* interface);
             
             // 6.9
             //## operation receiveInteraction(rti1516::InteractionClassHandle,const rti1516::ParameterHandleValueMap &,const rti1516::VariableLengthData &,rti1516::OrderType,rti1516::TransportationType) 
@@ -116,22 +116,22 @@ namespace framework {
             void setTheFrameworkFederateAmbassador(FrameworkFederateAmbassador* p_FrameworkFederateAmbassador);
             
             //## auto_generated 
-            std::map<rti1516::InteractionClassHandle, HLA_FederateInterface*>::const_iterator getTheHLA_FederateInterface() const;
+            std::map<rti1516::InteractionClassHandle, framework::io::hla::HLA_FederateInterface*>::const_iterator getTheHLA_FederateInterface() const;
             
             //## auto_generated 
-            std::map<rti1516::InteractionClassHandle, HLA_FederateInterface*>::const_iterator getTheHLA_FederateInterfaceEnd() const;
+            std::map<rti1516::InteractionClassHandle, framework::io::hla::HLA_FederateInterface*>::const_iterator getTheHLA_FederateInterfaceEnd() const;
             
             //## auto_generated 
             void clearTheHLA_FederateInterface();
             
             //## auto_generated 
-            void removeTheHLA_FederateInterface(HLA_FederateInterface* p_HLA_FederateInterface);
+            void removeTheHLA_FederateInterface(framework::io::hla::HLA_FederateInterface* p_HLA_FederateInterface);
             
             //## auto_generated 
-            HLA_FederateInterface* getTheHLA_FederateInterface(rti1516::InteractionClassHandle key) const;
+            framework::io::hla::HLA_FederateInterface* getTheHLA_FederateInterface(rti1516::InteractionClassHandle key) const;
             
             //## auto_generated 
-            void addTheHLA_FederateInterface(rti1516::InteractionClassHandle key, HLA_FederateInterface* p_HLA_FederateInterface);
+            void addTheHLA_FederateInterface(rti1516::InteractionClassHandle key, framework::io::hla::HLA_FederateInterface* p_HLA_FederateInterface);
             
             //## auto_generated 
             void removeTheHLA_FederateInterface(rti1516::InteractionClassHandle key);
@@ -153,10 +153,10 @@ namespace framework {
             void _clearTheHLA_FederateInterface();
             
             //## auto_generated 
-            void _removeTheHLA_FederateInterface(HLA_FederateInterface* p_HLA_FederateInterface);
+            void _removeTheHLA_FederateInterface(framework::io::hla::HLA_FederateInterface* p_HLA_FederateInterface);
             
             //## auto_generated 
-            void _addTheHLA_FederateInterface(rti1516::InteractionClassHandle key, HLA_FederateInterface* p_HLA_FederateInterface);
+            void _addTheHLA_FederateInterface(rti1516::InteractionClassHandle key, framework::io::hla::HLA_FederateInterface* p_HLA_FederateInterface);
             
             //## auto_generated 
             void _removeTheHLA_FederateInterface(rti1516::InteractionClassHandle key);
@@ -173,7 +173,7 @@ namespace framework {
             FrameworkFederateAmbassador* theFrameworkFederateAmbassador;		//## link theFrameworkFederateAmbassador 
             
             
-            std::map<rti1516::InteractionClassHandle, HLA_FederateInterface*> theHLA_FederateInterface;		//## link theHLA_FederateInterface 
+            std::map<rti1516::InteractionClassHandle, framework::io::hla::HLA_FederateInterface*> theHLA_FederateInterface;		//## link theHLA_FederateInterface 
             
         
         

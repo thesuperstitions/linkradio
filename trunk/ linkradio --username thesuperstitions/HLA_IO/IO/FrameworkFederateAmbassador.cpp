@@ -143,15 +143,15 @@ namespace framework {
         //#]
     }
     
-    framework::IO::HLA_PostOffice* FrameworkFederateAmbassador::getItsHLA_PostOffice() const {
+    framework::io::HLA_PostOffice* FrameworkFederateAmbassador::getItsHLA_PostOffice() const {
         return itsHLA_PostOffice;
     }
     
-    void FrameworkFederateAmbassador::__setItsHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+    void FrameworkFederateAmbassador::__setItsHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
         itsHLA_PostOffice = p_HLA_PostOffice;
     }
     
-    void FrameworkFederateAmbassador::_setItsHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+    void FrameworkFederateAmbassador::_setItsHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
         if(itsHLA_PostOffice != NULL)
             {
                 itsHLA_PostOffice->__setTheFrameworkFederateAmbassador(NULL);
@@ -159,7 +159,7 @@ namespace framework {
         __setItsHLA_PostOffice(p_HLA_PostOffice);
     }
     
-    void FrameworkFederateAmbassador::setItsHLA_PostOffice(framework::IO::HLA_PostOffice* p_HLA_PostOffice) {
+    void FrameworkFederateAmbassador::setItsHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
         if(p_HLA_PostOffice != NULL)
             {
                 p_HLA_PostOffice->_setTheFrameworkFederateAmbassador(this);

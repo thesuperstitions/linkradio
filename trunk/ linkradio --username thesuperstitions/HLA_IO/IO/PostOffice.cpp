@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::PostOffice
+	Model Element	: framework::io::PostOffice
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\PostOffice.cpp
 *********************************************************************/
@@ -18,12 +18,12 @@
 // PostOffice.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package framework::IO 
+//## package framework::io 
 
 //## class PostOffice 
 
 namespace framework {
-    namespace IO {
+    namespace io {
         
         
         PostOffice::PostOffice() {
@@ -71,7 +71,7 @@ namespace framework {
         void PostOffice::cleanUpRelations() {
             if(theFederate != NULL)
                 {
-                    framework::IO::PostOffice* p_PostOffice = theFederate->getThePostOffice();
+                    framework::io::PostOffice* p_PostOffice = theFederate->getThePostOffice();
                     if(p_PostOffice != NULL)
                         {
                             theFederate->__setThePostOffice(NULL);

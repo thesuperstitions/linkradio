@@ -47,7 +47,7 @@ namespace framework {
 
 namespace framework {
     
-    namespace IO {
+    namespace io {
         class HLA_PostOffice;
         class PostOffice;
     }
@@ -82,16 +82,16 @@ namespace framework {
         public :
             
             //## auto_generated 
-            IO::FederateIO_Handler* getItsFederateIO_Handler() const;
+            io::FederateIO_Handler* getItsFederateIO_Handler() const;
             
             //## auto_generated 
-            void setItsFederateIO_Handler(IO::FederateIO_Handler* p_FederateIO_Handler);
+            void setItsFederateIO_Handler(io::FederateIO_Handler* p_FederateIO_Handler);
             
             //## auto_generated 
-            IO::PostOffice* getThePostOffice() const;
+            io::PostOffice* getThePostOffice() const;
             
             //## auto_generated 
-            void setThePostOffice(IO::PostOffice* p_PostOffice);
+            void setThePostOffice(io::PostOffice* p_PostOffice);
         
         protected :
             
@@ -118,19 +118,19 @@ namespace framework {
         public :
             
             //## auto_generated 
-            void __setItsFederateIO_Handler(IO::FederateIO_Handler* p_FederateIO_Handler);
+            void __setItsFederateIO_Handler(io::FederateIO_Handler* p_FederateIO_Handler);
             
             //## auto_generated 
-            void _setItsFederateIO_Handler(IO::FederateIO_Handler* p_FederateIO_Handler);
+            void _setItsFederateIO_Handler(io::FederateIO_Handler* p_FederateIO_Handler);
             
             //## auto_generated 
             void _clearItsFederateIO_Handler();
             
             //## auto_generated 
-            void __setThePostOffice(IO::PostOffice* p_PostOffice);
+            void __setThePostOffice(io::PostOffice* p_PostOffice);
             
             //## auto_generated 
-            void _setThePostOffice(IO::PostOffice* p_PostOffice);
+            void _setThePostOffice(io::PostOffice* p_PostOffice);
             
             //## auto_generated 
             void _clearThePostOffice();
@@ -154,10 +154,10 @@ namespace framework {
         ////    Relations and components    ////
         protected :
             
-            IO::FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
+            io::FederateIO_Handler* itsFederateIO_Handler;		//## link itsFederateIO_Handler 
             
             
-            IO::PostOffice* thePostOffice;		//## link thePostOffice 
+            io::PostOffice* thePostOffice;		//## link thePostOffice 
             
         
         

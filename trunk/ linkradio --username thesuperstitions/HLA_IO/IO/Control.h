@@ -36,7 +36,7 @@ namespace framework {
         
     } 
     
-namespace IO {
+namespace io {
     class PostOffice;
     
 } 

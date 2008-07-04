@@ -42,21 +42,23 @@ namespace framework {
             cleanUpRelations();
         }
         
-        framework::IO::FederateInterface* FederateInterfaceFactory::createFederateInterface(int interfaceID, int unitNumber, 
+        framework::io::FederateInterface* FederateInterfaceFactory::createFederateInterface(int interfaceID, int unitNumber, 
           std::string name, unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType) 
         {
             //#[ operation createFederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
             switch(fedFrameworkType)
             {
               case HLA_FederateFrameworkType:
-                return( static_cast<framework::IO::FederateInterface*>( new framework::IO::HLA_FederateInterface(
+                return( static_cast<framework::io::FederateInterface*>( new framework::io::hla::HLA_FederateInterface(
                         getItsFederateIO_Handler(), interfaceID, 
                         unitNumber, name, maxMessageSize, maxMessages, federateInterfaceType) ) );
-              
+              break;
+
               case OASIS_FederateFrameworkType:
-                return( static_cast<framework::IO::FederateInterface*>( new framework::IO::OASIS_FederateInterface(
+                return( static_cast<framework::io::FederateInterface*>( new framework::io::OASIS_FederateInterface(
                         getItsFederateIO_Handler(), interfaceID, 
                         unitNumber, name, maxMessageSize, maxMessages, federateInterfaceType) ) );
+              break;
             };  
             
             return(NULL);          
@@ -71,11 +73,11 @@ namespace framework {
             fedFrameworkType = p_fedFrameworkType;
         }
         
-        framework::IO::FederateIO_Handler* FederateInterfaceFactory::getItsFederateIO_Handler() const {
+        framework::io::FederateIO_Handler* FederateInterfaceFactory::getItsFederateIO_Handler() const {
             return itsFederateIO_Handler;
         }
         
-        void FederateInterfaceFactory::setItsFederateIO_Handler(framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
+        void FederateInterfaceFactory::setItsFederateIO_Handler(framework::io::FederateIO_Handler* p_FederateIO_Handler) {
             itsFederateIO_Handler = p_FederateIO_Handler;
         }
         

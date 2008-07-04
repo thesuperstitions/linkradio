@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO
+	Model Element	: framework::io
 //!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\IO.cpp
 *********************************************************************/
@@ -21,16 +21,16 @@
 // IO.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package framework::IO 
+//## package framework::io 
 
 namespace framework {
-    namespace IO {
+    namespace io {
         
     }
 }
 
 namespace framework {
-    namespace IO {
+    namespace io {
         
         
         

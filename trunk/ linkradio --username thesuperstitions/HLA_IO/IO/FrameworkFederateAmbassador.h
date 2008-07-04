@@ -30,7 +30,7 @@
 
 namespace framework {
     
-    namespace IO {
+    namespace io {
         class HLA_PostOffice;
         
     } 
@@ -113,20 +113,20 @@ namespace framework {
     public :
         
         //## auto_generated 
-        IO::HLA_PostOffice* getItsHLA_PostOffice() const;
+        io::HLA_PostOffice* getItsHLA_PostOffice() const;
         
         //## auto_generated 
-        void setItsHLA_PostOffice(IO::HLA_PostOffice* p_HLA_PostOffice);
+        void setItsHLA_PostOffice(io::HLA_PostOffice* p_HLA_PostOffice);
     
     
     ////    Framework operations    ////
     public :
         
         //## auto_generated 
-        void __setItsHLA_PostOffice(IO::HLA_PostOffice* p_HLA_PostOffice);
+        void __setItsHLA_PostOffice(io::HLA_PostOffice* p_HLA_PostOffice);
         
         //## auto_generated 
-        void _setItsHLA_PostOffice(IO::HLA_PostOffice* p_HLA_PostOffice);
+        void _setItsHLA_PostOffice(io::HLA_PostOffice* p_HLA_PostOffice);
         
         //## auto_generated 
         void _clearItsHLA_PostOffice();
@@ -149,7 +149,7 @@ namespace framework {
     ////    Relations and components    ////
     protected :
         
-        IO::HLA_PostOffice* itsHLA_PostOffice;		//## link itsHLA_PostOffice 
+        io::HLA_PostOffice* itsHLA_PostOffice;		//## link itsHLA_PostOffice 
         
         
         rti1516::RTIambassador * itsRTIambassador ;		//## link itsRTIambassador  

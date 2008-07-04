@@ -44,16 +44,16 @@ namespace framework {
             switch(fedFrameworkType)
             {
               case HLA_FederateFrameworkType :  
-                setThePostOffice( static_cast<framework::IO::PostOffice*>(new framework::IO::HLA_PostOffice(frameworkFederateAmbassador)) );  
+                setThePostOffice( static_cast<framework::io::PostOffice*>(new framework::io::HLA_PostOffice(frameworkFederateAmbassador)) );  
               break;
                 
               case OASIS_FederateFrameworkType :    
-            //    setThePostOffice( static_cast<Framework::IO::PostOffice>(new Framework::IO::OASIS_PostOffice()) );
+            //    setThePostOffice( static_cast<Framework::io::PostOffice>(new Framework::io::OASIS_PostOffice()) );
               break;
             }; 
             
             // Create the FederateIO_Handler
-            setItsFederateIO_Handler(new framework::IO::FederateIO_Handler(fedFrameworkType)); 
+            setItsFederateIO_Handler(new framework::io::FederateIO_Handler(fedFrameworkType)); 
             getItsFederateIO_Handler()->setItsFederate(this);
             
             //#]
@@ -61,16 +61,16 @@ namespace framework {
         
         Federate::~Federate() 
         {
-          framework::IO::HLA_PostOffice* HPO;
+          framework::io::HLA_PostOffice* HPO;
 
-          framework::IO::FederateIO_Handler* FIOH = getItsFederateIO_Handler();
+          framework::io::FederateIO_Handler* FIOH = getItsFederateIO_Handler();
           delete FIOH;
 
-          framework::IO::PostOffice* PO = getThePostOffice();
+          framework::io::PostOffice* PO = getThePostOffice();
           switch(getFederateFrameworkType())
           {
             case HLA_FederateFrameworkType :  
-              HPO = static_cast<framework::IO::HLA_PostOffice*> (getThePostOffice()); 
+              HPO = static_cast<framework::io::HLA_PostOffice*> (getThePostOffice()); 
               delete HPO;
            	break;
                 
@@ -105,15 +105,15 @@ namespace framework {
             federateType = p_federateType;
         }
         
-        framework::IO::FederateIO_Handler* Federate::getItsFederateIO_Handler() const {
+        framework::io::FederateIO_Handler* Federate::getItsFederateIO_Handler() const {
             return itsFederateIO_Handler;
         }
         
-        void Federate::__setItsFederateIO_Handler(framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
+        void Federate::__setItsFederateIO_Handler(framework::io::FederateIO_Handler* p_FederateIO_Handler) {
             itsFederateIO_Handler = p_FederateIO_Handler;
         }
         
-        void Federate::_setItsFederateIO_Handler(framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
+        void Federate::_setItsFederateIO_Handler(framework::io::FederateIO_Handler* p_FederateIO_Handler) {
             if(itsFederateIO_Handler != NULL)
                 {
                     itsFederateIO_Handler->__setItsFederate(NULL);
@@ -121,7 +121,7 @@ namespace framework {
             __setItsFederateIO_Handler(p_FederateIO_Handler);
         }
         
-        void Federate::setItsFederateIO_Handler(framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
+        void Federate::setItsFederateIO_Handler(framework::io::FederateIO_Handler* p_FederateIO_Handler) {
             if(p_FederateIO_Handler != NULL)
                 {
                     p_FederateIO_Handler->_setItsFederate(this);
@@ -133,15 +133,15 @@ namespace framework {
             itsFederateIO_Handler = NULL;
         }
         
-        framework::IO::PostOffice* Federate::getThePostOffice() const {
+        framework::io::PostOffice* Federate::getThePostOffice() const {
             return thePostOffice;
         }
         
-        void Federate::__setThePostOffice(framework::IO::PostOffice* p_PostOffice) {
+        void Federate::__setThePostOffice(framework::io::PostOffice* p_PostOffice) {
             thePostOffice = p_PostOffice;
         }
         
-        void Federate::_setThePostOffice(framework::IO::PostOffice* p_PostOffice) {
+        void Federate::_setThePostOffice(framework::io::PostOffice* p_PostOffice) {
             if(thePostOffice != NULL)
                 {
                     thePostOffice->__setTheFederate(NULL);
@@ -149,7 +149,7 @@ namespace framework {
             __setThePostOffice(p_PostOffice);
         }
         
-        void Federate::setThePostOffice(framework::IO::PostOffice* p_PostOffice) {
+        void Federate::setThePostOffice(framework::io::PostOffice* p_PostOffice) {
             if(p_PostOffice != NULL)
                 {
                     p_PostOffice->_setTheFederate(this);

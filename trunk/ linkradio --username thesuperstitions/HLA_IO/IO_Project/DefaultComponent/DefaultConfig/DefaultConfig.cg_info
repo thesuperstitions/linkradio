@@ -288,7 +288,7 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 	- _name = "Control";
 	- _id = GUID 4d9e2ad4-1c34-4722-ab87-77f5f75a8cab;
 }
-- genTime = 5.21.2008::13:13:45;
+- genTime = 7.3.2008::18:24:8;
 - hElement = { IHandle 
 	- _m2Class = "IClass";
 	- _filename = "Control.sbs";

@@ -38,7 +38,7 @@ namespace framework {
         
     } 
     
-namespace IO {
+namespace io {
     class FederateIO_Handler;
     
 } 
@@ -52,7 +52,7 @@ namespace framework {
 
 namespace framework {
     
-    namespace IO {
+    namespace io {
         class HLA_PostOffice;
         class PostOffice;
     }

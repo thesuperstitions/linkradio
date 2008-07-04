@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::OASIS_FederateInterface
+	Model Element	: framework::io::OASIS_FederateInterface
 //!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.cpp
 *********************************************************************/
@@ -19,12 +19,12 @@
 // OASIS_FederateInterface.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package framework::IO 
+//## package framework::io 
 
 //## class OASIS_FederateInterface 
 
 namespace framework {
-    namespace IO {
+    namespace io {
         
         OASIS_FederateInterface::OASIS_FederateInterface(FederateIO_Handler* FIOH, int interfaceID, int unitNumber, 
                                                          std::string name, unsigned long maxMessageSize, 

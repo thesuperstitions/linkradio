@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::FederateInterface
+	Model Element	: framework::io::FederateInterface
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateInterface.cpp
 *********************************************************************/
@@ -21,7 +21,7 @@
 //----------------------------------------------------------------------------
 
 namespace framework {
-    namespace IO {
+  namespace io {
         
         FederateInterface::FederateInterface(int interfaceID, int unitNumber, std::string name, 
           unsigned long maxMessageSize, unsigned long maxMessages, FederateInterfaceType federateInterfaceType) : 
@@ -160,15 +160,15 @@ namespace framework {
             subscribeQueue = p_subscribeQueue;
         }
         
-        framework::IO::FederateIO_Handler* FederateInterface::getItsFederateIO_Handler() const {
+        framework::io::FederateIO_Handler* FederateInterface::getItsFederateIO_Handler() const {
             return itsFederateIO_Handler;
         }
         
-        void FederateInterface::__setItsFederateIO_Handler(framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
+        void FederateInterface::__setItsFederateIO_Handler(framework::io::FederateIO_Handler* p_FederateIO_Handler) {
             itsFederateIO_Handler = p_FederateIO_Handler;
         }
         
-        void FederateInterface::_setItsFederateIO_Handler(framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
+        void FederateInterface::_setItsFederateIO_Handler(framework::io::FederateIO_Handler* p_FederateIO_Handler) {
             if(itsFederateIO_Handler != NULL)
                 {
                     itsFederateIO_Handler->_removeItsFederateInterface(this);
@@ -176,7 +176,7 @@ namespace framework {
             __setItsFederateIO_Handler(p_FederateIO_Handler);
         }
         
-        void FederateInterface::setItsFederateIO_Handler(framework::IO::FederateIO_Handler* p_FederateIO_Handler) {
+        void FederateInterface::setItsFederateIO_Handler(framework::io::FederateIO_Handler* p_FederateIO_Handler) {
             if(p_FederateIO_Handler != NULL)
                 {
                     p_FederateIO_Handler->_addItsFederateInterface(getInterfaceID(), this);
@@ -191,17 +191,17 @@ namespace framework {
         void FederateInterface::cleanUpRelations() {
             if(itsFederateIO_Handler != NULL)
                 {
-                    framework::IO::FederateIO_Handler* current = itsFederateIO_Handler;
+                    framework::io::FederateIO_Handler* current = itsFederateIO_Handler;
                     if(current != NULL)
                         {
                             current->_removeItsFederateInterface(interfaceID);
                         }
                     itsFederateIO_Handler = NULL;
-                }
+                 }
         }
-        
-    }
-}
+
+  } // namespace io
+} // namespace framework
 
 
 /*********************************************************************

@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::PostOffice
+	Model Element	: framework::io::PostOffice
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\PostOffice.h
 *********************************************************************/
@@ -36,14 +36,14 @@ namespace framework {
         
     } 
     
-namespace IO {
+namespace io {
     class FederateInterface;
 }
 
 }
 
 
-//## package framework::IO 
+//## package framework::io 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -51,7 +51,7 @@ namespace IO {
 #endif
 
 namespace framework {
-    namespace IO {
+    namespace io {
         //## class PostOffice 
         class PostOffice  {
         

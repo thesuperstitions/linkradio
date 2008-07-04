@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::OASIS_FederateInterface
+	Model Element	: framework::io::OASIS_FederateInterface
 //!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.h
 *********************************************************************/
@@ -38,7 +38,7 @@ namespace framework {
         
     } 
     
-namespace IO {
+namespace io {
     class FederateIO_Handler;
     class PostOffice;
 }
@@ -46,7 +46,7 @@ namespace IO {
 }
 
 
-//## package framework::IO 
+//## package framework::io 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -54,7 +54,7 @@ namespace IO {
 #endif
 
 namespace framework {
-    namespace IO {
+    namespace io {
         //## class OASIS_FederateInterface 
         class OASIS_FederateInterface : public FederateInterface {
         

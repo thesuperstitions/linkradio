@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::FederateIO_Handler
+	Model Element	: framework::io::FederateIO_Handler
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\FederateIO_Handler.cpp
 *********************************************************************/
@@ -24,12 +24,12 @@
 // FederateIO_Handler.cpp                                                                  
 //----------------------------------------------------------------------------
 
-//## package framework::IO 
+//## package framework::io 
 
 //## class FederateIO_Handler 
 
 namespace framework {
-    namespace IO {
+    namespace io {
         
         
         FederateIO_Handler::FederateIO_Handler(FederateFrameworkType frameworkType) : frameworkType(frameworkType) ,itsFederateInterface() {
@@ -58,7 +58,7 @@ namespace framework {
             //#[ operation createFederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
               
             // Create a FederateInterface by calling the factory.
-            framework::IO::FederateInterface* FI_Ptr = getItsFederateInterfaceFactory()->createFederateInterface(
+            framework::io::FederateInterface* FI_Ptr = getItsFederateInterfaceFactory()->createFederateInterface(
               interfaceID, unitNumber, interfaceName, maxMessageSize, maxMessages, federateInterfaceType);
                         
             // Map the Federate interface to its name.
@@ -125,13 +125,13 @@ namespace framework {
             itsFederate = NULL;
         }
         
-        std::map<int, framework::IO::FederateInterface*>::const_iterator FederateIO_Handler::getItsFederateInterface() const {
-            std::map<int, framework::IO::FederateInterface*>::const_iterator iter;
+        std::map<int, framework::io::FederateInterface*>::const_iterator FederateIO_Handler::getItsFederateInterface() const {
+            std::map<int, framework::io::FederateInterface*>::const_iterator iter;
             iter = itsFederateInterface.begin();
             return iter;
         }
         
-        std::map<int, framework::IO::FederateInterface*>::const_iterator FederateIO_Handler::getItsFederateInterfaceEnd() const {
+        std::map<int, framework::io::FederateInterface*>::const_iterator FederateIO_Handler::getItsFederateInterfaceEnd() const {
             return itsFederateInterface.end();
         }
         
@@ -140,7 +140,7 @@ namespace framework {
         }
         
         void FederateIO_Handler::clearItsFederateInterface() {
-            std::map<int, framework::IO::FederateInterface*>::const_iterator iter;
+            std::map<int, framework::io::FederateInterface*>::const_iterator iter;
             iter = itsFederateInterface.begin();
             while (iter != itsFederateInterface.end()){
                 ((*iter).second)->_clearItsFederateIO_Handler();
@@ -149,14 +149,14 @@ namespace framework {
             _clearItsFederateInterface();
         }
         
-        void FederateIO_Handler::_removeItsFederateInterface(framework::IO::FederateInterface* p_FederateInterface) {
-            std::map<int, framework::IO::FederateInterface*>::iterator pos = std::find_if(itsFederateInterface.begin(), itsFederateInterface.end(),ValueCompare<const int,framework::IO::FederateInterface*>(p_FederateInterface));
+        void FederateIO_Handler::_removeItsFederateInterface(framework::io::FederateInterface* p_FederateInterface) {
+            std::map<int, framework::io::FederateInterface*>::iterator pos = std::find_if(itsFederateInterface.begin(), itsFederateInterface.end(),ValueCompare<const int,framework::io::FederateInterface*>(p_FederateInterface));
             if (pos != itsFederateInterface.end()) {
             	itsFederateInterface.erase(pos);
             }
         }
         
-        void FederateIO_Handler::removeItsFederateInterface(framework::IO::FederateInterface* p_FederateInterface) {
+        void FederateIO_Handler::removeItsFederateInterface(framework::io::FederateInterface* p_FederateInterface) {
             if(p_FederateInterface != NULL)
                 {
                     p_FederateInterface->__setItsFederateIO_Handler(NULL);
@@ -164,15 +164,15 @@ namespace framework {
             _removeItsFederateInterface(p_FederateInterface);
         }
         
-        framework::IO::FederateInterface* FederateIO_Handler::getItsFederateInterface(int key) const {
+        framework::io::FederateInterface* FederateIO_Handler::getItsFederateInterface(int key) const {
             return (itsFederateInterface.find(key) != itsFederateInterface.end() ? (*itsFederateInterface.find(key)).second : NULL);
         }
         
-        void FederateIO_Handler::_addItsFederateInterface(int key, framework::IO::FederateInterface* p_FederateInterface) {
-            itsFederateInterface.insert(std::map<int, framework::IO::FederateInterface*>::value_type(key, p_FederateInterface));
+        void FederateIO_Handler::_addItsFederateInterface(int key, framework::io::FederateInterface* p_FederateInterface) {
+            itsFederateInterface.insert(std::map<int, framework::io::FederateInterface*>::value_type(key, p_FederateInterface));
         }
         
-        void FederateIO_Handler::addItsFederateInterface(int key, framework::IO::FederateInterface* p_FederateInterface) {
+        void FederateIO_Handler::addItsFederateInterface(int key, framework::io::FederateInterface* p_FederateInterface) {
             if(p_FederateInterface != NULL)
                 {
                     p_FederateInterface->_setItsFederateIO_Handler(this);
@@ -185,7 +185,7 @@ namespace framework {
         }
         
         void FederateIO_Handler::removeItsFederateInterface(int key) {
-            framework::IO::FederateInterface* p_FederateInterface = getItsFederateInterface(key);
+            framework::io::FederateInterface* p_FederateInterface = getItsFederateInterface(key);
             if(p_FederateInterface != NULL)
                 {
                     p_FederateInterface->_setItsFederateIO_Handler(NULL);
@@ -205,7 +205,7 @@ namespace framework {
         void FederateIO_Handler::cleanUpRelations() {
             if(itsFederate != NULL)
                 {
-                    framework::IO::FederateIO_Handler* p_FederateIO_Handler = itsFederate->getItsFederateIO_Handler();
+                    framework::io::FederateIO_Handler* p_FederateIO_Handler = itsFederate->getItsFederateIO_Handler();
                     if(p_FederateIO_Handler != NULL)
                         {
                             itsFederate->__setItsFederateIO_Handler(NULL);
@@ -213,10 +213,10 @@ namespace framework {
                     itsFederate = NULL;
                 }
             {
-                std::map<int, framework::IO::FederateInterface*>::const_iterator iter;
+                std::map<int, framework::io::FederateInterface*>::const_iterator iter;
                 iter = itsFederateInterface.begin();
                 while (iter != itsFederateInterface.end()){
-                    framework::IO::FederateIO_Handler* p_FederateIO_Handler = ((*iter).second)->getItsFederateIO_Handler();
+                    framework::io::FederateIO_Handler* p_FederateIO_Handler = ((*iter).second)->getItsFederateIO_Handler();
                     if(p_FederateIO_Handler != NULL)
                         {
                           ((*iter).second)->__setItsFederateIO_Handler(NULL);

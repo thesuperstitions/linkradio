@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::IO::C_IO_Functions
+	Model Element	: framework::io::C_IO_Functions
 //!	Generated Date	: Tue, 20, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\C_IO_Functions.h
 *********************************************************************/
@@ -38,7 +38,7 @@ namespace framework {
 }
 
 
-//## package framework::IO 
+//## package framework::io 
 
 #ifdef _MSC_VER
 // disable Microsoft compiler warning (debug information truncated)
@@ -46,7 +46,7 @@ namespace framework {
 #endif
 
 namespace framework {
-    namespace IO {
+    namespace io {
         //## class C_IO_Functions 
         class C_IO_Functions  {
         
