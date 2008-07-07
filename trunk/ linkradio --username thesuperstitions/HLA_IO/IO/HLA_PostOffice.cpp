@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::io::HLA_PostOffice
+	Model Element	: framework::io::hla::HLA_PostOffice
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.cpp
 *********************************************************************/
@@ -26,7 +26,8 @@
 //## class HLA_PostOffice 
 
 namespace framework {
-    namespace io {
+  namespace io {
+    namespace hla {
         
         
         HLA_PostOffice::HLA_PostOffice(FrameworkFederateAmbassador* frameworkFederateAmbassador) : theHLA_FederateInterface() {
@@ -242,7 +243,7 @@ namespace framework {
         void HLA_PostOffice::cleanUpRelations() {
             if(theFrameworkFederateAmbassador != NULL)
                 {
-                    framework::io::HLA_PostOffice* p_HLA_PostOffice = theFrameworkFederateAmbassador->getItsHLA_PostOffice();
+                    framework::io::hla::HLA_PostOffice* p_HLA_PostOffice = theFrameworkFederateAmbassador->getItsHLA_PostOffice();
                     if(p_HLA_PostOffice != NULL)
                         {
                             theFrameworkFederateAmbassador->__setItsHLA_PostOffice(NULL);
@@ -253,7 +254,7 @@ namespace framework {
               std::map<rti1516::InteractionClassHandle, framework::io::hla::HLA_FederateInterface*>::const_iterator iter;
                 iter = theHLA_FederateInterface.begin();
                 while (iter != theHLA_FederateInterface.end()){
-                    framework::io::HLA_PostOffice* p_HLA_PostOffice = ((*iter).second)->getTheHLA_PostOffice();
+                    framework::io::hla::HLA_PostOffice* p_HLA_PostOffice = ((*iter).second)->getTheHLA_PostOffice();
                     if(p_HLA_PostOffice != NULL)
                         {
                             ((*iter).second)->__setTheHLA_PostOffice(NULL);
@@ -264,8 +265,9 @@ namespace framework {
             }
         }
         
-    }
-}
+    } // namespace hla
+  } // namespace io
+} // namespace framework
 
 
 /*********************************************************************

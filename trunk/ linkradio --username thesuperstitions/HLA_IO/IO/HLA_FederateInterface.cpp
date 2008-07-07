@@ -76,15 +76,15 @@ namespace framework {
             paramHandle = p_paramHandle;
         }
         
-        framework::io::HLA_PostOffice* HLA_FederateInterface::getTheHLA_PostOffice() const {
+        framework::io::hla::HLA_PostOffice* HLA_FederateInterface::getTheHLA_PostOffice() const {
             return theHLA_PostOffice;
         }
         
-        void HLA_FederateInterface::__setTheHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::__setTheHLA_PostOffice(framework::io::hla::HLA_PostOffice* p_HLA_PostOffice) {
             theHLA_PostOffice = p_HLA_PostOffice;
         }
         
-        void HLA_FederateInterface::_setTheHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::_setTheHLA_PostOffice(framework::io::hla::HLA_PostOffice* p_HLA_PostOffice) {
             if(theHLA_PostOffice != NULL)
                 {
                     theHLA_PostOffice->_removeTheHLA_FederateInterface(this);
@@ -92,7 +92,7 @@ namespace framework {
             __setTheHLA_PostOffice(p_HLA_PostOffice);
         }
         
-        void HLA_FederateInterface::setTheHLA_PostOffice(framework::io::HLA_PostOffice* p_HLA_PostOffice) {
+        void HLA_FederateInterface::setTheHLA_PostOffice(framework::io::hla::HLA_PostOffice* p_HLA_PostOffice) {
             if(p_HLA_PostOffice != NULL)
                 {
                     p_HLA_PostOffice->_addTheHLA_FederateInterface(getInteractionClassHandle(), this);
@@ -107,7 +107,7 @@ namespace framework {
         void HLA_FederateInterface::cleanUpRelations() {
             if(theHLA_PostOffice != NULL)
                 {
-                    framework::io::HLA_PostOffice* current = theHLA_PostOffice;
+                    framework::io::hla::HLA_PostOffice* current = theHLA_PostOffice;
                     if(current != NULL)
                         {
                             current->_removeTheHLA_FederateInterface(interactionClassHandle);

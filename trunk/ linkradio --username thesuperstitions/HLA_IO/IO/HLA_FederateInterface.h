@@ -40,8 +40,10 @@ namespace framework {
     
 namespace io {
     class FederateIO_Handler;
-    class HLA_PostOffice;
     class PostOffice;
+    namespace hla {
+      class HLA_PostOffice;
+    }
 }
 
 }

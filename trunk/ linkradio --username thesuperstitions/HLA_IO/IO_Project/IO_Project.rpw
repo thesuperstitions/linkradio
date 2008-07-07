@@ -29,8 +29,8 @@ I-Logix-RPY-Archive version 8.0.9 * 893629
 				- _name = "IOClassDiagram";
 				- _id = GUID 4fc7f080-ff78-47c7-8dbf-f0af1b61ed85;
 			}
-			- _UpLeft = 0 45 ;
-			- _DownRight = 1928 847 ;
+			- _UpLeft = 0 25 ;
+			- _DownRight = 2410 1387 ;
 			- _instanceName = "";
 		}
 	}

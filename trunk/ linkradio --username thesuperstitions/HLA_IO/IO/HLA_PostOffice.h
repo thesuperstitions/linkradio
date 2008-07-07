@@ -3,7 +3,7 @@
 	Login		: rosskw1
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: framework::io::HLA_PostOffice
+	Model Element	: framework::io::hla::HLA_PostOffice
 //!	Generated Date	: Mon, 19, May 2008  
 	File Path	: DefaultComponent\DefaultConfig\HLA_PostOffice.h
 *********************************************************************/
@@ -62,7 +62,8 @@ namespace framework {
 #endif
 
 namespace framework {
-    namespace io {
+  namespace io {
+    namespace hla {
         //## class HLA_PostOffice 
         class HLA_PostOffice : public PostOffice {
         
@@ -179,6 +180,7 @@ namespace framework {
         
         };
     }
+  }
 }
 
 

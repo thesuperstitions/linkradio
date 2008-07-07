@@ -44,7 +44,7 @@ namespace framework {
             switch(fedFrameworkType)
             {
               case HLA_FederateFrameworkType :  
-                setThePostOffice( static_cast<framework::io::PostOffice*>(new framework::io::HLA_PostOffice(frameworkFederateAmbassador)) );  
+                setThePostOffice( static_cast<framework::io::PostOffice*>(new framework::io::hla::HLA_PostOffice(frameworkFederateAmbassador)) );  
               break;
                 
               case OASIS_FederateFrameworkType :    
@@ -61,7 +61,7 @@ namespace framework {
         
         Federate::~Federate() 
         {
-          framework::io::HLA_PostOffice* HPO;
+          framework::io::hla::HLA_PostOffice* HPO;
 
           framework::io::FederateIO_Handler* FIOH = getItsFederateIO_Handler();
           delete FIOH;
@@ -70,7 +70,7 @@ namespace framework {
           switch(getFederateFrameworkType())
           {
             case HLA_FederateFrameworkType :  
-              HPO = static_cast<framework::io::HLA_PostOffice*> (getThePostOffice()); 
+              HPO = static_cast<framework::io::hla::HLA_PostOffice*> (getThePostOffice()); 
               delete HPO;
            	break;
                 
