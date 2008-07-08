@@ -13,41 +13,46 @@
 #include "Federate.h"
 #include "FederateInterfaceFactory.h"
 #include "Serializer.h"
-
 //----------------------------------------------------------------------------
 // Control.cpp                                                                  
 //----------------------------------------------------------------------------
 
 //## package framework::Control 
 
-namespace framework {
-    namespace Control {
-        
-    }
+namespace framework
+{
+	namespace Control
+	{
+
+	}
 }
 
-namespace framework {
-    namespace Control {
-        
-        
-        //## operation getFederate() 
-        framework::Control::Federate* getFederate() {
-            //#[ operation getFederate() 
-            return(theFederate);
-            //#]
-        }
-        
-        //## operation setFederate(framework::Control::Federate*) 
-        void setFederate(framework::Control::Federate* federate) {
-            //#[ operation setFederate(framework::Control::Federate*) 
-            theFederate = federate;
-            //#]
-        }
-        
-        //## attribute theFederate 
-        framework::Control::Federate* theFederate;
-        
-    }
+namespace framework
+{
+	namespace Control
+	{
+
+
+		//## operation getFederate() 
+		framework::Control::Federate* getFederate()
+		{
+			//#[ operation getFederate() 
+			return(theFederate);
+			//#]
+		}
+
+		//## operation setFederate(framework::Control::Federate*) 
+		void setFederate(framework::Control::Federate* federate)
+		{
+			//#[ operation setFederate(framework::Control::Federate*) 
+			theFederate = federate;
+			//#]
+		}
+
+		//## attribute theFederate 
+		framework::Control::Federate* theFederate;
+
+	}
 }
 
 /*********************************************************************

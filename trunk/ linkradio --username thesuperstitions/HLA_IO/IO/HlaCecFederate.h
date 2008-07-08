@@ -13,33 +13,35 @@
 
 #define HlaCecFederate_H 
 
-#include <string>
-#include <algorithm>
-#include <sstream>
-#include <iomanip>
-#include <iostream>
 #include "Configuration.h"
-#include "RTI\RTI1516.h"
 #include "Control.h"
 // class HlaCecFederate 
 #include "Federate.h"
-
+#include "RTI\RTI1516.h"
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
 //----------------------------------------------------------------------------
 // HlaCecFederate.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace framework {
-    
-    namespace Control {
-        class FederateInterfaceFactory;
-        
-    } 
-    
-namespace io {
-    class FederateIO_Handler;
-    class HLA_PostOffice;
-    class PostOffice;
+namespace framework
+{
+
+	namespace Control
+	{
+		class FederateInterfaceFactory;
+
+	} 
+
+namespace io
+{
+	class FederateIO_Handler;
+	class HLA_PostOffice;
+	class PostOffice;
 }
 
 }
@@ -52,37 +54,40 @@ namespace io {
 #pragma warning(disable: 4786)
 #endif
 
-namespace framework {
-    namespace Control {
-        //## class HlaCecFederate 
-        class HlaCecFederate : public Federate {
-        
-        
-        ////    Constructors and destructors    ////
-        public :
-            
-            //## operation HlaCecFederate() 
-            HlaCecFederate(int unitNumber);
-            
-            //## auto_generated 
-            ~HlaCecFederate();
-        
-        
-        ////    Operations    ////
-        public :
-            
-            //## operation useCase_42_1_announcePublication() 
-            void useCase_42_1_announcePublication();
-            
-            //## operation useCase_42_2_announceSubscription() 
-            void useCase_42_2_announceSubscription();
-            
-            //## operation useCase_42_3_sendMessageOnFederateInterface() 
-            void useCase_42_3_sendMessageOnFederateInterface();
-        
-        
-        };
-    }
+namespace framework
+{
+	namespace Control
+	{
+		//## class HlaCecFederate 
+		class HlaCecFederate : public Federate
+		{
+
+
+		////    Constructors and destructors    ////
+		public :
+
+			//## operation HlaCecFederate() 
+			HlaCecFederate(int unitNumber);
+
+			//## auto_generated 
+			~HlaCecFederate();
+
+
+		////    Operations    ////
+		public :
+
+			//## operation useCase_42_1_announcePublication() 
+			void useCase_42_1_announcePublication();
+
+			//## operation useCase_42_2_announceSubscription() 
+			void useCase_42_2_announceSubscription();
+
+			//## operation useCase_42_3_sendMessageOnFederateInterface() 
+			void useCase_42_3_sendMessageOnFederateInterface();
+
+
+		};
+	}
 }
 
 

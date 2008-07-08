@@ -8,13 +8,12 @@
 	File Path	: DefaultComponent\DefaultConfig\OASIS_FederateInterface.cpp
 *********************************************************************/
 
-#include "OASIS_FederateInterface.h"
 // dependency Federate 
 #include "Federate.h"
 #include "FederateIO_Handler.h"
+#include "OASIS_FederateInterface.h"
 // dependency PostOffice 
 #include "PostOffice.h"
-
 //----------------------------------------------------------------------------
 // OASIS_FederateInterface.cpp                                                                  
 //----------------------------------------------------------------------------
@@ -23,23 +22,26 @@
 
 //## class OASIS_FederateInterface 
 
-namespace framework {
-    namespace io {
-        
-        OASIS_FederateInterface::OASIS_FederateInterface(FederateIO_Handler* FIOH, int interfaceID, int unitNumber, 
-                                                         std::string name, unsigned long maxMessageSize, 
-                                                         unsigned long maxMessages, 
-                                                         FederateInterfaceType federateInterfaceType) : 
-          FederateInterface(interfaceID, unitNumber, name, maxMessageSize, maxMessages, federateInterfaceType) 
-        {
-            //#[ operation OASIS_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
-            //#]
-        }
-        
-        OASIS_FederateInterface::~OASIS_FederateInterface() {
-        }
-        
-    }
+namespace framework
+{
+	namespace io
+	{
+
+		OASIS_FederateInterface::OASIS_FederateInterface(FederateIO_Handler* FIOH, int interfaceID, int unitNumber, 
+															std::string name, unsigned long maxMessageSize, 
+															unsigned long maxMessages, 
+															FederateInterfaceType federateInterfaceType) : 
+			FederateInterface(interfaceID, unitNumber, name, maxMessageSize, maxMessages, federateInterfaceType) 
+			{
+				//#[ operation OASIS_FederateInterface(int,std::string,unsigned long,unsigned long,FederateInterfaceType) 
+				//#]
+			}
+
+		OASIS_FederateInterface::~OASIS_FederateInterface()
+		{
+		}
+
+	}
 }
 
 

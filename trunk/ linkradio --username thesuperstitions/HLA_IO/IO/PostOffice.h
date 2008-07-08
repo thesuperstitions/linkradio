@@ -13,31 +13,33 @@
 
 #define PostOffice_H 
 
-#include <string>
-#include <algorithm>
-#include <sstream>
-#include <iomanip>
-#include <iostream>
 #include "Configuration.h"
-#include "RTI\RTI1516.h"
 #include "IO.h"
+#include "RTI\RTI1516.h"
 // operation sendMessage(FrameworkMessage*) 
 #include "framework.h"
-
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
 //----------------------------------------------------------------------------
 // PostOffice.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace framework {
-    
-    namespace Control {
-        class Federate;
-        
-    } 
-    
-namespace io {
-    class FederateInterface;
+namespace framework
+{
+
+	namespace Control
+	{
+		class Federate;
+
+	} 
+
+namespace io
+{
+	class FederateInterface;
 }
 
 }
@@ -50,81 +52,84 @@ namespace io {
 #pragma warning(disable: 4786)
 #endif
 
-namespace framework {
-    namespace io {
-        //## class PostOffice 
-        class PostOffice  {
-        
-        
-        ////    Constructors and destructors    ////
-        public :
-            
-            //## auto_generated 
-            PostOffice();
-            
-            //## auto_generated 
-            virtual ~PostOffice();
-        
-        
-        ////    Operations    ////
-        public :
-            
-            //## operation announcePublication(FederateInterface*) 
-            virtual void announcePublication(FederateInterface* interface)=0;
-            
-            //## operation announceSubscription(FederateInterface*) 
-            virtual void announceSubscription(FederateInterface* interface)=0;
-            
-            //## operation findFederateInterface() 
-            virtual FederateInterface* findFederateInterface();
-            
-            //## operation sendMessage(char*,int,FederateInterface*) 
-            virtual void sendMessage(char* message, int messageSizeInBytes, FederateInterface* federateInterface)=0;
-            
-            //## operation sendMessage(FrameworkMessage*) 
-            virtual void sendMessage(FrameworkMessage* message)=0;
-            
-            //## operation unsubscribe(FederateInterface*) 
-            virtual void unsubscribe(FederateInterface* interface)=0;
-        
-        
-        ////    Additional operations    ////
-        public :
-            
-            //## auto_generated 
-            Control::Federate* getTheFederate() const;
-            
-            //## auto_generated 
-            void setTheFederate(Control::Federate* p_Federate);
-        
-        
-        ////    Framework operations    ////
-        public :
-            
-            //## auto_generated 
-            void __setTheFederate(Control::Federate* p_Federate);
-            
-            //## auto_generated 
-            void _setTheFederate(Control::Federate* p_Federate);
-            
-            //## auto_generated 
-            void _clearTheFederate();
-        
-        protected :
-            
-            //## auto_generated 
-            void cleanUpRelations();
-        
-        
-        ////    Relations and components    ////
-        protected :
-            
-            Control::Federate* theFederate;		//## link theFederate 
-            
-        
-        
-        };
-    }
+namespace framework
+{
+	namespace io
+	{
+		//## class PostOffice 
+		class PostOffice
+		{
+
+
+		////    Constructors and destructors    ////
+		public :
+
+			//## auto_generated 
+			PostOffice();
+
+			//## auto_generated 
+			virtual ~PostOffice();
+
+
+		////    Operations    ////
+		public :
+
+			//## operation announcePublication(FederateInterface*) 
+			virtual void announcePublication(FederateInterface* interface)=0;
+
+			//## operation announceSubscription(FederateInterface*) 
+			virtual void announceSubscription(FederateInterface* interface)=0;
+
+			//## operation findFederateInterface() 
+			virtual FederateInterface* findFederateInterface();
+
+			//## operation sendMessage(char*,int,FederateInterface*) 
+			virtual void sendMessage(char* message, int messageSizeInBytes, FederateInterface* federateInterface)=0;
+
+			//## operation sendMessage(FrameworkMessage*) 
+			virtual void sendMessage(FrameworkMessage* message)=0;
+
+			//## operation unsubscribe(FederateInterface*) 
+			virtual void unsubscribe(FederateInterface* interface)=0;
+
+
+		////    Additional operations    ////
+		public :
+
+			//## auto_generated 
+			Control::Federate* getTheFederate() const;
+
+			//## auto_generated 
+			void setTheFederate(Control::Federate* p_Federate);
+
+
+		////    Framework operations    ////
+		public :
+
+			//## auto_generated 
+			void __setTheFederate(Control::Federate* p_Federate);
+
+			//## auto_generated 
+			void _setTheFederate(Control::Federate* p_Federate);
+
+			//## auto_generated 
+			void _clearTheFederate();
+
+		protected :
+
+			//## auto_generated 
+			void cleanUpRelations();
+
+
+		////    Relations and components    ////
+		protected :
+
+			Control::Federate* theFederate;		//## link theFederate 
+
+
+
+		};
+	}
 }
 
 

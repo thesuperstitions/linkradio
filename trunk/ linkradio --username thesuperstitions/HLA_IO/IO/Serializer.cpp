@@ -9,7 +9,6 @@
 *********************************************************************/
 
 #include "Serializer.h"
-
 //----------------------------------------------------------------------------
 // Serializer.cpp                                                                  
 //----------------------------------------------------------------------------
@@ -18,16 +17,20 @@
 
 //## class Serializer 
 
-namespace framework {
-    namespace Control {
-        
-        Serializer::Serializer() {
-        }
-        
-        Serializer::~Serializer() {
-        }
-        
-    }
+namespace framework
+{
+	namespace Control
+	{
+
+		Serializer::Serializer()
+		{
+		}
+
+		Serializer::~Serializer()
+		{
+		}
+
+	}
 }
 
 

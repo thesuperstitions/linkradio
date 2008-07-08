@@ -8,33 +8,36 @@
 	File Path	: DefaultComponent\DefaultConfig\IO.cpp
 *********************************************************************/
 
-#include "IO.h"
 #include "C_IO_Functions.h"
-#include "FederateInterface.h"
 #include "FederateIO_Handler.h"
+#include "FederateInterface.h"
 #include "HLA_FederateInterface.h"
 #include "HLA_PostOffice.h"
+#include "IO.h"
 #include "OASIS_FederateInterface.h"
 #include "PostOffice.h"
-
 //----------------------------------------------------------------------------
 // IO.cpp                                                                  
 //----------------------------------------------------------------------------
 
 //## package framework::io 
 
-namespace framework {
-    namespace io {
-        
-    }
+namespace framework
+{
+	namespace io
+	{
+
+	}
 }
 
-namespace framework {
-    namespace io {
-        
-        
-        
-    }
+namespace framework
+{
+	namespace io
+	{
+
+
+
+	}
 }
 
 /*********************************************************************

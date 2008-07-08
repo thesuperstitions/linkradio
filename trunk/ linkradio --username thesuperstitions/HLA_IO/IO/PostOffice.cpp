@@ -8,12 +8,11 @@
 	File Path	: DefaultComponent\DefaultConfig\PostOffice.cpp
 *********************************************************************/
 
-#include "PostOffice.h"
 // link theFederate 
 #include "Federate.h"
 // operation announcePublication(FederateInterface*) 
 #include "FederateInterface.h"
-
+#include "PostOffice.h"
 //----------------------------------------------------------------------------
 // PostOffice.cpp                                                                  
 //----------------------------------------------------------------------------
@@ -22,65 +21,76 @@
 
 //## class PostOffice 
 
-namespace framework {
-    namespace io {
-        
-        
-        PostOffice::PostOffice() {
-            theFederate = NULL;
-        }
-        
-        PostOffice::~PostOffice() {
-            cleanUpRelations();
-        }
-        
-        FederateInterface* PostOffice::findFederateInterface() {
-            //#[ operation findFederateInterface() 
-            return(NULL);  // This is just temporary until the code is fleshed out.
-            //#]
-        }
-        
-        framework::Control::Federate* PostOffice::getTheFederate() const {
-            return theFederate;
-        }
-        
-        void PostOffice::__setTheFederate(framework::Control::Federate* p_Federate) {
-            theFederate = p_Federate;
-        }
-        
-        void PostOffice::_setTheFederate(framework::Control::Federate* p_Federate) {
-            if(theFederate != NULL)
-                {
-                    theFederate->__setThePostOffice(NULL);
-                }
-            __setTheFederate(p_Federate);
-        }
-        
-        void PostOffice::setTheFederate(framework::Control::Federate* p_Federate) {
-            if(p_Federate != NULL)
-                {
-                    p_Federate->_setThePostOffice(this);
-                }
-            _setTheFederate(p_Federate);
-        }
-        
-        void PostOffice::_clearTheFederate() {
-            theFederate = NULL;
-        }
-        
-        void PostOffice::cleanUpRelations() {
-            if(theFederate != NULL)
-                {
-                    framework::io::PostOffice* p_PostOffice = theFederate->getThePostOffice();
-                    if(p_PostOffice != NULL)
-                        {
-                            theFederate->__setThePostOffice(NULL);
-                        }
-                    theFederate = NULL;
-                }
-        }
-        
-    }
+namespace framework
+{
+	namespace io
+	{
+
+
+		PostOffice::PostOffice()
+		{
+			theFederate = NULL;
+		}
+
+		PostOffice::~PostOffice()
+		{
+			cleanUpRelations();
+		}
+
+		FederateInterface* PostOffice::findFederateInterface()
+		{
+			//#[ operation findFederateInterface() 
+			return(NULL);  // This is just temporary until the code is fleshed out.
+			//#]
+		}
+
+		framework::Control::Federate* PostOffice::getTheFederate() const
+		{
+			return theFederate;
+		}
+
+		void PostOffice::__setTheFederate(framework::Control::Federate* p_Federate)
+		{
+			theFederate = p_Federate;
+		}
+
+		void PostOffice::_setTheFederate(framework::Control::Federate* p_Federate)
+		{
+			if(theFederate != NULL)
+			{
+				theFederate->__setThePostOffice(NULL);
+			}
+			__setTheFederate(p_Federate);
+		}
+
+		void PostOffice::setTheFederate(framework::Control::Federate* p_Federate)
+		{
+			if(p_Federate != NULL)
+			{
+				p_Federate->_setThePostOffice(this);
+			}
+			_setTheFederate(p_Federate);
+		}
+
+		void PostOffice::_clearTheFederate()
+		{
+			theFederate = NULL;
+		}
+
+		void PostOffice::cleanUpRelations()
+		{
+			if(theFederate != NULL)
+			{
+				framework::io::PostOffice* p_PostOffice = theFederate->getThePostOffice();
+				if(p_PostOffice != NULL)
+				{
+					theFederate->__setThePostOffice(NULL);
+					}
+						theFederate = NULL;
+					}
+		}
+
+	}
 }
 
 

@@ -13,32 +13,33 @@
 
 #define IO_H 
 
-#include <string>
-#include <algorithm>
-#include <sstream>
-#include <iomanip>
-#include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
 #include "framework.h"
-
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
 //----------------------------------------------------------------------------
 // IO.h                                                                  
 //----------------------------------------------------------------------------
 
 
-namespace framework {
-    
-    namespace io {
-        class C_IO_Functions;
-        class FederateInterface;
-        class FederateIO_Handler;
-        class HLA_FederateInterface;
-        class HLA_PostOffice;
-        class OASIS_FederateInterface;
-        class PostOffice;
-    }
-    
+namespace framework
+{
+
+	namespace io
+	{
+		class C_IO_Functions;
+		class FederateInterface;
+		class FederateIO_Handler;
+		class HLA_FederateInterface;
+		class HLA_PostOffice;
+		class OASIS_FederateInterface;
+		class PostOffice;
+	}
+
 }
 
 
@@ -50,17 +51,19 @@ namespace framework {
 #endif
 
 
-namespace framework {
-    
-    namespace io {
-        
-        
-        //## attribute MAX_FEDERATE_INTERFACE_DEVICES 
-        #define MAX_FEDERATE_INTERFACE_DEVICES 100
-        
-        
-    }
-    
+namespace framework
+{
+
+	namespace io
+	{
+
+
+		//## attribute MAX_FEDERATE_INTERFACE_DEVICES 
+		#define MAX_FEDERATE_INTERFACE_DEVICES 100
+
+
+	}
+
 }
 
 

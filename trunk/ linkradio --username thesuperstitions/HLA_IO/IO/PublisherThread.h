@@ -1,7 +1,7 @@
 /*********************************************************************
 	Login		: rosskw1
 	Model Element	: PublisherThread
-  Generated Date	: Mon, 21, Apr 2008  
+	Generated Date	: Mon, 21, Apr 2008  
 	File Path	: PublisherThread.h
 *********************************************************************/
 
@@ -10,9 +10,8 @@
 
 #define PublisherThread_H 
 
-#include "Thread.h"
 #include "InterprocessQueue.h"
-
+#include "Thread.h"
 //----------------------------------------------------------------------------
 // PublisherThread.h                                                                  
 //----------------------------------------------------------------------------
@@ -24,27 +23,27 @@
 #pragma warning(disable: 4786)
 #endif
 
-        //## class PublisherThread 
+		//## class PublisherThread 
 class PublisherThread  : public framework::utils::Thread
 {             
-  ////    Constructors and destructors    ////
-  public :
-    framework::utils::InterprocessQueue* myQueue;
-            
-    //## auto_generated 
-    PublisherThread(int unitNumber);
-            
-    //## auto_generated 
-    ~PublisherThread();
+	////    Constructors and destructors    ////
+	public :
+	framework::utils::InterprocessQueue* myQueue;
+
+	//## auto_generated 
+	PublisherThread(int unitNumber);
+
+	//## auto_generated 
+	~PublisherThread();
 
 	  virtual void threadOperation();
 
-    virtual void start();
-  	virtual void stop();
+	virtual void start();
+	virtual void stop();
 		void LogMessage(char* Msg);
 
-  protected:
-    bool exitFlag;
+	protected:
+	bool exitFlag;
 };
 
 

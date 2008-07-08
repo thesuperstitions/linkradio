@@ -8,15 +8,15 @@
 	File Path	: DefaultComponent\DefaultConfig\HlaCecFederate.cpp
 *********************************************************************/
 
-#include "HlaCecFederate.h"
 // dependency FederateInterfaceFactory 
-#include "FederateInterfaceFactory.h"
 #include "FederateIO_Handler.h"
+#include "FederateInterfaceFactory.h"
 // dependency HLA_PostOffice 
 #include "HLA_PostOffice.h"
+//#include "Sleep.h"
+#include "HlaCecFederate.h"
 // dependency PostOffice 
 #include "PostOffice.h"
-
 //----------------------------------------------------------------------------
 // HlaCecFederate.cpp                                                                  
 //----------------------------------------------------------------------------
@@ -29,50 +29,52 @@
 
 
 
-namespace framework {
-    namespace Control {
-        
-        HlaCecFederate::HlaCecFederate(int unitNumber) : Federate(HLA_FederateFrameworkType, CEC_FederateType, getFrameworkFederateAmbassador()) 
-        {
-            //#[ operation HlaCecFederate() 
+namespace framework
+{
+	namespace Control
+	{
 
-          unsigned int ID = 1;
+		HlaCecFederate::HlaCecFederate(int unitNumber) : Federate(HLA_FederateFrameworkType, CEC_FederateType, getFrameworkFederateAmbassador()) 
+		{
+			//#[ operation HlaCecFederate() 
+			unsigned int ID = 1;
+			getItsFederateIO_Handler()->createFederateInterface(ID++, unitNumber, "R49", INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
+			INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE, FederateInterfaceTypePublisherSubscriber);
+			//#]
+		}
 
-          getItsFederateIO_Handler()->createFederateInterface(ID++, unitNumber, "R49", INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
-            INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE, FederateInterfaceTypePublisherSubscriber);
+		HlaCecFederate::~HlaCecFederate() 
+		{
+		}
 
-            //#]
-        }
-        
-        HlaCecFederate::~HlaCecFederate() 
-        {
-        }
-        
-        void HlaCecFederate::useCase_42_1_announcePublication() {
-            //#[ operation useCase_42_1_announcePublication() 
-            
-            
-            
-            //#]
-        }
-        
-        void HlaCecFederate::useCase_42_2_announceSubscription() {
-            //#[ operation useCase_42_2_announceSubscription() 
-            
-            // Subscribe to the interaction so that we receive data on the interface.
-            //            getThePostOffice()->announceSubscription(getTheFederateInterface("SPYtoCECNtds"));   
-            
-            //#]
-        }
-        
-        void HlaCecFederate::useCase_42_3_sendMessageOnFederateInterface() {
-            //#[ operation useCase_42_3_sendMessageOnFederateInterface() 
-            
-            
-            //#]
-        }
-        
-    }
+		void HlaCecFederate::useCase_42_1_announcePublication()
+		{
+			//#[ operation useCase_42_1_announcePublication() 
+
+
+
+			//#]
+		}
+
+		void HlaCecFederate::useCase_42_2_announceSubscription()
+		{
+			//#[ operation useCase_42_2_announceSubscription() 
+
+			// Subscribe to the interaction so that we receive data on the interface.
+			//            getThePostOffice()->announceSubscription(getTheFederateInterface("SPYtoCECNtds"));   
+
+			//#]
+		}
+
+		void HlaCecFederate::useCase_42_3_sendMessageOnFederateInterface()
+		{
+			//#[ operation useCase_42_3_sendMessageOnFederateInterface() 
+
+
+			//#]
+		}
+
+	}
 }
 
 

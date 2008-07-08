@@ -14,7 +14,7 @@ modification history
 01e,05oct90,dnw  changed MSG_Q_INFO structure.
 01d,05oct90,dnw  changed function declarations for new interface.
 01c,05oct90,shl  added ANSI function prototypes.
-                 made #endif ANSI style.
+					made #endif ANSI style.
 01b,07aug90,shl  moved function declarations to end of file.
 01a,10may90,dnw  written
 */
@@ -22,11 +22,11 @@ modification history
 #ifndef MSGQ_LIB_H
 #define MSGQ_LIB_H
 
-#include <vxWorks.h>
 #include <pthread.h>
-
+#include <vxWorks.h>
 #ifdef	__cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #define M_msgQLib	(65 << 16)
@@ -52,34 +52,34 @@ typedef void *MSG_Q_ID;
 
 typedef struct                  /* MSG_Q_INFO */
 {
-    int     numMsgs;            /* OUT: number of messages queued */
-    int     numTasks;           /* OUT: number of tasks waiting on msg q */
+	int     numMsgs;            /* OUT: number of messages queued */
+	int     numTasks;           /* OUT: number of tasks waiting on msg q */
 
-    int     sendTimeouts;       /* OUT: count of send timeouts */
-    int     recvTimeouts;       /* OUT: count of receive timeouts */
+	int     sendTimeouts;       /* OUT: count of send timeouts */
+	int     recvTimeouts;       /* OUT: count of receive timeouts */
 
-    int     options;            /* OUT: options with which msg q was created */
-    int     maxMsgs;            /* OUT: max messages that can be queued */
-    int     maxMsgLength;       /* OUT: max byte length of each message */
+	int     options;            /* OUT: options with which msg q was created */
+	int     maxMsgs;            /* OUT: max messages that can be queued */
+	int     maxMsgLength;       /* OUT: max byte length of each message */
 
-    int     taskIdListMax;      /* IN: max tasks to fill in taskIdList */
-    int *   taskIdList;         /* PTR: array of task ids waiting on msg q */
+	int     taskIdListMax;      /* IN: max tasks to fill in taskIdList */
+	int *   taskIdList;         /* PTR: array of task ids waiting on msg q */
 
-    int     msgListMax;         /* IN: max msgs to fill in msg lists */
-    char ** msgPtrList;         /* PTR: array of msg ptrs queued to msg q */
-    int *   msgLenList;         /* PTR: array of lengths of msgs */
-    
-    unsigned int overflows;	/* OUT: count of sends to full queue */
-    unsigned int hiwat;		/* OUT: largest number of msgs ever in queue */
+	int     msgListMax;         /* IN: max msgs to fill in msg lists */
+	char ** msgPtrList;         /* PTR: array of msg ptrs queued to msg q */
+	int *   msgLenList;         /* PTR: array of lengths of msgs */
+
+	unsigned int overflows;	/* OUT: count of sends to full queue */
+	unsigned int hiwat;		/* OUT: largest number of msgs ever in queue */
 
 } MSG_Q_INFO;
 
 
 /*
- * @limitation In this POSIX implementation, the <i>options</i>
- * argument is ignored, as message queueing/dequeueing is always
- * performed in priority order.
- */
+	* @limitation In this POSIX implementation, the <i>options</i>
+	* argument is ignored, as message queueing/dequeueing is always
+	* performed in priority order.
+	*/
 MSG_Q_ID
 msgQCreate (
 	int maxMsgs,
@@ -93,11 +93,11 @@ msgQDelete (
 );
 
 /*
- * @limitation When timeout is specified as NO_WAIT, the POSIX implementation
- * temporarily changes the queue's attributes to nonblocking (as is also the
- * case for msgQReceive). To avoid a potential conflict with the receiver, one
- * should not use NO_WAIT for msgQSend, but only for msgQReceive.
- */
+	* @limitation When timeout is specified as NO_WAIT, the POSIX implementation
+	* temporarily changes the queue's attributes to nonblocking (as is also the
+	* case for msgQReceive). To avoid a potential conflict with the receiver, one
+	* should not use NO_WAIT for msgQSend, but only for msgQReceive.
+	*/
 STATUS
 msgQSend (
 	MSG_Q_ID msgQId,
@@ -116,10 +116,10 @@ msgQReceive (
 );
 
 /*
- * @limitation Only the numMsgs, maxMsgs and maxMsgLength fields are filled
- * in with useful information in the structure pointed to by pInfo. The
- * options field is always set to MSG_Q_PRIORITY (see msgQCreate);
- */
+	* @limitation Only the numMsgs, maxMsgs and maxMsgLength fields are filled
+	* in with useful information in the structure pointed to by pInfo. The
+	* options field is always set to MSG_Q_PRIORITY (see msgQCreate);
+	*/
 STATUS  
 msgQInfoGet (
 	MSG_Q_ID msgQId,

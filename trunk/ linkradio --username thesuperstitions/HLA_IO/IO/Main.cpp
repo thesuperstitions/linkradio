@@ -8,14 +8,11 @@
 	File Path	: DefaultComponent\DefaultConfig\MainDefaultComponent.cpp
 *********************************************************************/
 
+#include "FrameworkThread.h"
 #include "Main.h"
 #include "PublisherThread.h"
 #include "SubscriberThread.h"
-#include "FrameworkThread.h"
 #include <boost/interprocess/shared_memory_object.hpp>
-//#include "ntds_comm_.h"
-//#include "sps49_io_.h" 
-
 
 PublisherThread*    publisherThread;
 SubscriberThread*   subscriberThread;
@@ -29,59 +26,52 @@ FrameworkThread*    frameworkThread;
 int main(int argc, char* argv[]) 
 {
 
-  char c[5];
-  int unitNumber = atoi(argv[1]);
+	char c[5];
+	int unitNumber = atoi(argv[1]);
 
-  printf("Hit any key to CREATE Framework");
-  fgets(c, 2, stdin);
+	printf("Hit any key to CREATE Framework");
+	fgets(c, 2, stdin);
 
-  frameworkThread = new FrameworkThread(unitNumber);
+	frameworkThread = new FrameworkThread(unitNumber);
 
-  if (unitNumber == 1)
-  {
-    printf("\n\nHit any key to START Receiving messages\n");
-    fgets(c, 2, stdin);
+	if (unitNumber == 1)
+	{
+		printf("\n\nHit any key to START Receiving messages\n");
+		fgets(c, 2, stdin);
+		subscriberThread = new SubscriberThread(unitNumber);
+		subscriberThread->start();
+	}
 
-    subscriberThread = new SubscriberThread(unitNumber);
+	if (unitNumber == 2)
+	{
+		printf("\n\nHit any key to START Publishing messages\n");
+		fgets(c, 2, stdin);
+		publisherThread = new PublisherThread(unitNumber);
+		publisherThread->start();
+	}
 
-    subscriberThread->start();
-  }
-   
-  if (unitNumber == 2)
-  {
-    printf("\n\nHit any key to START Publishing messages\n");
-    fgets(c, 2, stdin);
+	printf("\nHit any key to DELETE Framework\n\n");
+	fgets(c, 2, stdin);
 
-    publisherThread = new PublisherThread(unitNumber);
+	delete frameworkThread;
 
-    publisherThread->start();
-  }
+	if (unitNumber == 1)
+	{
+		printf("\nHit any key to STOP Receiving Messages\n\n");
+		fgets(c, 2, stdin);
+		delete subscriberThread;
+	}
 
-  printf("\nHit any key to DELETE Framework\n\n");
-  fgets(c, 2, stdin);
+	if (unitNumber == 2)
+	{
+		printf("\nHit any key to STOP Publishing Messages\n\n");
+		fgets(c, 2, stdin);
+	}
 
-  delete frameworkThread;
+	printf("\nHit any key to EXIT\n\n");
+	fgets(c, 2, stdin);
 
-  if (unitNumber == 1)
-  {
-    printf("\nHit any key to STOP Receiving Messages\n\n");
-    fgets(c, 2, stdin);
-
-    delete subscriberThread;
-  }
-
-  if (unitNumber == 2)
-  {
-    printf("\nHit any key to STOP Publishing Messages\n\n");
-    fgets(c, 2, stdin);
-
-	  delete publisherThread;
-  }
-
-  printf("\nHit any key to EXIT\n\n");
-  fgets(c, 2, stdin);
-
-  return 0;
+	return 0;
 }
 
 

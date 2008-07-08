@@ -1,7 +1,7 @@
 /*********************************************************************
 	Login		: rosskw1
 	Model Element	: FrameworkThread
-  Generated Date	: Mon, 21, Apr 2008  
+	Generated Date	: Mon, 21, Apr 2008  
 	File Path	: FrameworkThread.h
 *********************************************************************/
 
@@ -10,10 +10,9 @@
 
 #define FrameworkThread_H 
 
-#include "Thread.h"
-#include "InterprocessQueue.h"
 #include "HlaCecFederate.h"
-
+#include "InterprocessQueue.h"
+#include "Thread.h"
 //----------------------------------------------------------------------------
 // FrameworkThread.h                                                                  
 //----------------------------------------------------------------------------
@@ -27,26 +26,26 @@
 //## class FrameworkThread 
 class FrameworkThread  : public framework::utils::Thread
 {
-  ////    Constructors and destructors    ////
-  public :       
+	////    Constructors and destructors    ////
+	public :       
 //    framework::utils::InterprocessQueue* myQueue;
-    framework::Control::HlaCecFederate* hlaCecFederate;
+	framework::Control::HlaCecFederate* hlaCecFederate;
 
-    //## auto_generated 
-    FrameworkThread(int unitNumber);
-            
-    //## auto_generated 
-    ~FrameworkThread();
+	//## auto_generated 
+	FrameworkThread(int unitNumber);
 
-   // virtual void start();
-  	//virtual void stop();
+	//## auto_generated 
+	~FrameworkThread();
+
+	// virtual void start();
+	//virtual void stop();
 
 	  virtual void threadOperation();
 
-   // void LogMessage(char* Msg, double count);
+	// void LogMessage(char* Msg, double count);
 
-  protected:
-    bool exitFlag;
+	protected:
+	bool exitFlag;
 };
 
 

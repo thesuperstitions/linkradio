@@ -13,14 +13,13 @@
 
 #define MainDefaultComponent_H 
 
-#include <string>
-#include <algorithm>
-#include <sstream>
-#include <iomanip>
-#include <iostream>
 #include "Configuration.h"
 #include "RTI\RTI1516.h"
-
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
 //----------------------------------------------------------------------------
 // MainDefaultComponent.h                                                                  
 //----------------------------------------------------------------------------
