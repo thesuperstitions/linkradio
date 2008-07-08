@@ -5,7 +5,7 @@
 #This file sorts the includes statements alphabetically
 
 $include = 0;
-$comment = 0
+$comment = 0;
 
 foreach $file (@ARGV) {
 
