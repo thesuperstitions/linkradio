@@ -25,8 +25,6 @@ namespace framework
 {
 	namespace io
 	{
-
-
 		PostOffice::PostOffice()
 		{
 			theFederate = NULL;
