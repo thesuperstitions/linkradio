@@ -210,9 +210,9 @@ namespace framework
 				if(current != NULL)
 				{
 					current->_removeItsFederateInterface(interfaceID);
-					}
-						itsFederateIO_Handler = NULL;
-					}
+				}
+				itsFederateIO_Handler = NULL;
+			}
 		}
 
 	} // namespace io

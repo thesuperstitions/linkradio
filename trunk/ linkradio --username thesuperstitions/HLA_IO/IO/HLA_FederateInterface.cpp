@@ -124,9 +124,9 @@ namespace framework
 				if(current != NULL)
 				{
 					current->_removeTheHLA_FederateInterface(interactionClassHandle);
-					}
+				}
 						theHLA_PostOffice = NULL;
-					}
+			}
 		}
 	} // namespace hla    
 	} // namespace io
