@@ -27,67 +27,43 @@ namespace framework
 	{
 		PostOffice::PostOffice()
 		{
-			theFederate = NULL;
 		}
 
 		PostOffice::~PostOffice()
 		{
-			cleanUpRelations();
 		}
+    
+    FederateInterface* PostOffice::createFederateInterface(int interfaceID, int unitNumber, 
+		std::string interfaceName, unsigned long maxMessageSize, 
+    unsigned long maxMessages, FederateInterfaceType federateInterfaceType)
+    {
 
-		FederateInterface* PostOffice::findFederateInterface()
-		{
-			//#[ operation findFederateInterface() 
-			return(NULL);  // This is just temporary until the code is fleshed out.
-			//#]
-		}
+			// Create a FederateInterface by calling the factory.
+			framework::io::FederateInterface* FI_Ptr = createFederateInterfaceObject(
+				interfaceID, unitNumber, interfaceName, maxMessageSize, maxMessages, federateInterfaceType);
 
-		framework::Control::Federate* PostOffice::getTheFederate() const
-		{
-			return theFederate;
-		}
-
-		void PostOffice::__setTheFederate(framework::Control::Federate* p_Federate)
-		{
-			theFederate = p_Federate;
-		}
-
-		void PostOffice::_setTheFederate(framework::Control::Federate* p_Federate)
-		{
-			if(theFederate != NULL)
-			{
-				theFederate->__setThePostOffice(NULL);
-			}
-			__setTheFederate(p_Federate);
-		}
-
-		void PostOffice::setTheFederate(framework::Control::Federate* p_Federate)
-		{
-			if(p_Federate != NULL)
-			{
-				p_Federate->_setThePostOffice(this);
-			}
-			_setTheFederate(p_Federate);
-		}
-
-		void PostOffice::_clearTheFederate()
-		{
-			theFederate = NULL;
-		}
-
-		void PostOffice::cleanUpRelations()
-		{
-			if(theFederate != NULL)
-			{
-				framework::io::PostOffice* p_PostOffice = theFederate->getThePostOffice();
-				if(p_PostOffice != NULL)
-				{
-					theFederate->__setThePostOffice(NULL);
+			if ( (federateInterfaceType == FederateInterfaceTypePublisherSubscriber) || 
+					(federateInterfaceType == FederateInterfaceTypePublisher) )
+					{
+						announcePublication( FI_Ptr );   
 					}
-						theFederate = NULL;
-					}
-		}
 
+			if ( (federateInterfaceType == FederateInterfaceTypePublisherSubscriber) || 
+					(federateInterfaceType == FederateInterfaceTypeSubscriber) )
+					{
+						announceSubscription( FI_Ptr ); 
+					}
+
+			return(FI_Ptr); 
+    }
+
+		// same method, but inserts default sizes automatically
+		FederateInterface* PostOffice::createFederateInterface(int interfaceID, int unitNumber, 
+		std::string interfaceName, FederateInterfaceType federateInterfaceType)
+    {
+      return (createFederateInterface(interfaceID, unitNumber, interfaceName, INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
+        INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE, federateInterfaceType) );
+    }
 	}
 }
 

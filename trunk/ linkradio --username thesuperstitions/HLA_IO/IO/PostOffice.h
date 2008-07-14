@@ -80,9 +80,6 @@ namespace framework
 			//## operation announceSubscription(FederateInterface*) 
 			virtual void announceSubscription(FederateInterface* interface)=0;
 
-			//## operation findFederateInterface() 
-			virtual FederateInterface* findFederateInterface();
-
 			//## operation sendMessage(char*,int,FederateInterface*) 
 			virtual void sendMessage(char* message, int messageSizeInBytes, FederateInterface* federateInterface)=0;
 
@@ -92,42 +89,22 @@ namespace framework
 			//## operation unsubscribe(FederateInterface*) 
 			virtual void unsubscribe(FederateInterface* interface)=0;
 
+		  virtual FederateInterface* createFederateInterface(int interfaceID, int unitNumber, 
+		    std::string interfaceName, unsigned long maxMessageSize, 
+		    unsigned long maxMessages, FederateInterfaceType federateInterfaceType);
 
-		////    Additional operations    ////
-		public :
+		// same method, but inserts default sizes automatically
+		  virtual FederateInterface* createFederateInterface(int interfaceID, int unitNumber, 
+		    std::string interfaceName, FederateInterfaceType federateInterfaceType);
 
-			//## auto_generated 
-			Control::Federate* getTheFederate() const;
+	private:
 
-			//## auto_generated 
-			void setTheFederate(Control::Federate* p_Federate);
+		  virtual FederateInterface* createFederateInterfaceObject(int interfaceID, int unitNumber, 
+		    std::string interfaceName, unsigned long maxMessageSize, 
+		    unsigned long maxMessages, FederateInterfaceType federateInterfaceType )=0;
 
-
-		////    Framework operations    ////
-		public :
-
-			//## auto_generated 
-			void __setTheFederate(Control::Federate* p_Federate);
-
-			//## auto_generated 
-			void _setTheFederate(Control::Federate* p_Federate);
-
-			//## auto_generated 
-			void _clearTheFederate();
-
-		protected :
-
-			//## auto_generated 
-			void cleanUpRelations();
-
-
-		////    Relations and components    ////
-		protected :
-
-			Control::Federate* theFederate;		//## link theFederate 
-
-
-
+		  virtual FederateInterface* createFederateInterfaceObject(int interfaceID, int unitNumber, 
+		    std::string interfaceName, FederateInterfaceType federateInterfaceType )=0;
 		};
 	}
 }
