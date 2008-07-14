@@ -13,6 +13,17 @@ extern int shm_unlink(const char *);
 }
 #endif
 
+#ifdef SOLARIS
+     
+	// The include <inttypes.h> below is put in to avoid the following warning, seen with Sun CC
+    //     compiler on Solaris:
+	//"/usr/include/sys/int_const.h", line 73: Warning (Anachronism): Attempt to redefine INT64__ C without using #undef.
+	// This is deliberately put in _before_ the boost includes.
+	#include <inttypes.h>
+     
+#endif
+
+
 #include <boost/interprocess/sync/interprocess_mutex.hpp>
 #include <boost/interprocess/sync/interprocess_semaphore.hpp>
 #include <boost/interprocess/shared_memory_object.hpp>
@@ -51,7 +62,7 @@ class InterprocessQueue
       QueueSynchronized  = 1
     };
 
-    InterprocessQueue(char* queueName, unsigned int maxMessageSizeInBytes=INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
+    InterprocessQueue(const char* queueName, unsigned int maxMessageSizeInBytes=INTERPROCESS_QUEUE_MAX_MESSAGE_SIZE_IN_BYTES, 
                       unsigned long int maxNumberOfMessages=INTERPROCESS_QUEUE_MAX_MESSAGES_IN_QUEUE);
 
     //## operation Queue()
@@ -68,7 +79,7 @@ class InterprocessQueue
     ////    Operations    ////
     public :
       //## operation addMessage(FederateMessage*)
-      virtual bool       timedAddMessage(unsigned char* message, unsigned int messageSizeInBytes, 
+      virtual bool       timedAddMessage(const unsigned char* message, unsigned int messageSizeInBytes, 
                                          unsigned int timeoutSecs, unsigned long int timeoutMicroSecs);
 
 			virtual bool       timedGetMessage(unsigned char* msg, unsigned int* messageSizeInBytes, 

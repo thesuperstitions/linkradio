@@ -41,7 +41,7 @@ struct InterprocessQueueSyncMessage
 //Constructor
 
 //---------------------------------------------------------------------------
-InterprocessQueue::InterprocessQueue(char* queueName, unsigned int maxMessageSizeInBytes,
+InterprocessQueue::InterprocessQueue(const char* queueName, unsigned int maxMessageSizeInBytes,
                                      unsigned long int maxNumberOfMessages) :
 exitFlag(false), QueueInitializationSemaphore(0), 
 maxMsgSize(maxMessageSizeInBytes + sizeof(unsigned int)),
@@ -77,7 +77,7 @@ maxMsgs(maxNumberOfMessages), totalQueueSize(maxMsgSize * maxMsgs)
 
     //Construct the shared structure in memory
     myQueue = new (addr1) unsigned char[totalQueueSize];
-    printf("\nInterprocessQueue-QName=%s, Qadd=0x%x, Qsize=%u\n", queueName, myQueue, totalQueueSize);
+    //printf("\nInterprocessQueue-QName=%s, Qadd=0x%x, Qsize=%u\n", queueName, myQueue, totalQueueSize);
 
 
     sprintf(ControlDataName, "%sControlData", queueName);
@@ -122,7 +122,7 @@ maxMsgs(maxNumberOfMessages), totalQueueSize(maxMsgSize * maxMsgs)
     {
       myControlData->InterfaceStatus = true;
       //queueState = QueueSynchronized;
-      printf("\nInterprocessQueue::InterprocessQueue-Queue Synching Complete");
+      //printf("\nInterprocessQueue::InterprocessQueue-Queue Synching Complete");
     }
 
   }
@@ -211,7 +211,7 @@ InterprocessQueue::QueueState InterprocessQueue::getQueueState(void)
 //
 //---------------------------------------------------------------------------
 
-bool InterprocessQueue::timedAddMessage(unsigned char* message, unsigned int messageSizeInBytes,
+bool InterprocessQueue::timedAddMessage(const unsigned char* message, unsigned int messageSizeInBytes,
                                         unsigned int timeoutSecs, unsigned long int timeoutMicroSecs)
 {
   try
