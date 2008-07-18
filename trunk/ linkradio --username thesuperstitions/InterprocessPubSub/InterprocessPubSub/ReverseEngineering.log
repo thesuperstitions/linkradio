@@ -1,0 +1,23 @@
+
+Reverse Engineering 'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.cpp'
+Reverse Engineering include file 'C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.h'
+Adding package 'InterprocessPubSub' to project 'InterprocessPubSub'. ok.
+File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.h, Line: 27 #include boost/interprocess/sync/interprocess_mutex.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.h, Line: 28 #include boost/interprocess/sync/interprocess_semaphore.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.h, Line: 29 #include boost/interprocess/shared_memory_object.hpp ignored--file not found.
+Adding package 'framework' to package 'InterprocessPubSub'. ok.
+Adding package 'utils' to package 'framework'. ok.
+Analyzing struct 'SharedMemoryQueueControlData' from File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.h, Line: 39
+Analyzing class 'InterprocessQueue' from File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.h, Line: 55
+Adding class 'InterprocessQueue' to package 'utils'. ok.
+File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.cpp, Line: 21 #include boost/interprocess/mapped_region.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.cpp, Line: 22 #include boost/date_time/posix_time/posix_time.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.cpp, Line: 23 #include boost/interprocess/sync/scoped_lock.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.cpp, Line: 24 #include boost/thread.hpp ignored--file not found.
+File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.cpp, Line: 25 #include sys/timeb.h ignored--file not found.
+Adding package 'namespace_univ' to project 'InterprocessPubSub'. ok.
+Adding package 'interprocess' to package 'namespace_univ'. ok.
+Analyzing struct 'InterprocessQueueSyncMessage' from File: C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\InterprocessQueue.cpp, Line: 33
+
+Reverse Engineering Done. See detailed report in the log file.
+

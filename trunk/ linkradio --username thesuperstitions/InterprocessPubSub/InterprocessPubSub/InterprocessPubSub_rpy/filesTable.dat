@@ -1,0 +1,12 @@
+I-Logix-RPY-Archive version 8.0.9 * 893629
+
+- filesTable = { IRPYRawContainer 
+	- size = 5;
+	- value = "InterprocessPubSub.rpy" ""
+	"InterprocessPubSub_rpy\\DefaultComponent.cmp" "DefaultComponent"
+	"InterprocessPubSub_rpy\\InterprocessPubSub.sbs" "InterprocessPubSub"
+	"InterprocessPubSub_rpy\\Model1.omd" "Model1"
+	"Projects.rpl" ""
+	
+}
+
