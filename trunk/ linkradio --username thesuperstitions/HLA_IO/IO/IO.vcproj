@@ -21,7 +21,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="C:\MAK\makRti3.2\include;C:\MAK\makRti3.2;&quot;C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\ntds_common\&quot;;&quot;C:\Program Files\Microsoft.NET\SDK\v1.1\include\&quot;;&quot;C:\Program Files\boost\boost_1_35_0\boost\thread\&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\ComponentizedCombatSystemFramework\framework\utils&quot;;&quot;C:\Program Files\boost\boost_1_35_0\&quot;"
+				AdditionalIncludeDirectories="C:\MAK\makRti3.2\include;C:\MAK\makRti3.2;&quot;C:\Documents and Settings\rosskw1\My Documents\SVN-Google\HLA_IO\IO&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\ntds_common\&quot;;&quot;C:\Program Files\Microsoft.NET\SDK\v1.1\include\&quot;;&quot;C:\Program Files\boost\boost_1_35_0\boost\thread\&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\CCSTF&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\CCSTF\framework\utils&quot;;&quot;C:\Program Files\boost\boost_1_35_0\&quot;"
 				PreprocessorDefinitions="RTI_USES_STD_FSTREAM=1;_DEBUG;WIN32;_CONSOLE;DtIFSPEC1516;RTI_USES_STD_FSTREAM"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -521,13 +521,16 @@
 				Name="utils"
 				Filter="">
 				<File
-					RelativePath="..\..\..\ComponentizedCombatSystemFramework\framework\utils\Exception.cpp">
+					RelativePath="..\..\..\CCSTF\framework\utils\Exception.cpp">
 				</File>
 				<File
-					RelativePath="..\..\..\ComponentizedCombatSystemFramework\framework\utils\InterprocessQueue.cpp">
+					RelativePath="..\..\InterprocessQueue\InterprocessQueue.cpp">
 				</File>
 				<File
-					RelativePath="..\..\..\ComponentizedCombatSystemFramework\framework\utils\Thread.cpp">
+					RelativePath="..\..\InterprocessQueue\InterprocessQueue.h">
+				</File>
+				<File
+					RelativePath="..\..\..\CCSTF\framework\utils\Thread.cpp">
 				</File>
 			</Filter>
 		</Filter>
