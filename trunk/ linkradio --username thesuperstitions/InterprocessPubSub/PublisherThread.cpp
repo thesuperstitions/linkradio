@@ -19,13 +19,6 @@
 
 #define BUFFER_SIZE 4096
 
-
-//----------------------------------------------------------------------------
-// PublisherThread.cpp
-//----------------------------------------------------------------------------
-
-//## class PublisherThread
-
 struct MessageStruct
 {
   unsigned char       UnitNumber;
@@ -33,17 +26,78 @@ struct MessageStruct
   unsigned char       MsgBody[96];
 };
 
+
+
+    ReaderThread::ReaderThread(Socket* SC) : mySocket(SC), exitFlag(false) 
+    {
+    };
+
+    ReaderThread::~ReaderThread(void) 
+    {
+      stop();
+    }
+
+    void ReaderThread::start()
+    {
+     exitFlag = false;
+     Thread::start();
+    }
+
+    void ReaderThread::stop()
+    {
+      char          s[500];
+
+      exitFlag = true;
+  
+      printf ("\nReaderThread::stop - Closing Socket\n");
+      mySocket->Close();
+
+      printf("\nReaderThread::stop - Attempting to Join Thread.\n");
+      this->Thread::join();
+
+      printf("\nReaderThread::stop - Stopping Thread.\n");
+      Thread::stop();
+      printf("\nReaderThread::stop - Thread Stop Complete.\n");
+    }
+
+    void ReaderThread::threadOperation()
+    {
+      char          s[500];
+
+      while(exitFlag == false)
+      {
+        MessageStruct dataBuffer;
+        unsigned int BytesReceived;
+        BytesReceived = mySocket->ReceiveBytes((char*)&dataBuffer, sizeof(dataBuffer));
+        
+        sprintf(s, "ReaderThread::threadOps-Receive-Unit=%u, Msg=%u", dataBuffer.UnitNumber, dataBuffer.MsgNumber);
+        mySocket->LogData(s);
+      }
+
+      sprintf (s, "\nReaderThread::threadOps - Exiting Thread\n");
+    }
+
+
+//----------------------------------------------------------------------------
+// PublisherThread.cpp
+//----------------------------------------------------------------------------
+
+//## class PublisherThread
 PublisherThread::PublisherThread(int unitNumber, char* IP) : SocketClient(IP)
 {
   //char s[200];
   exitFlag = false;
   myUnitNumber = unitNumber;
   strcpy(myIP, IP);
+  myReader = NULL;
 }
 
 PublisherThread::~PublisherThread()
 {
   stop();
+
+  if (myReader != NULL)
+    delete myReader;
 }
 
 void PublisherThread::start()
@@ -100,8 +154,8 @@ void PublisherThread::threadOperation()
 void PublisherThread::ClientSocketConnected(Socket* ClientSocket)
 {
   char s[500];
-  MessageStruct dataBuffer;
-  unsigned int BytesReceived;
+  //MessageStruct dataBuffer;
+  //unsigned int BytesReceived;
 
   mySocket = ClientSocket;
 
@@ -110,13 +164,8 @@ void PublisherThread::ClientSocketConnected(Socket* ClientSocket)
 
   this->start();
 
-  while(exitFlag == false)
-  {
-    BytesReceived = this->ReceiveBytes((char*)&dataBuffer, sizeof(dataBuffer));
-    
-    sprintf(s, "PubThread::ClientConnected-Receive-Unit=%u, Msg=%u", dataBuffer.UnitNumber, dataBuffer.MsgNumber);
-    this->LogData(s);
-  }
+  myReader = new ReaderThread(mySocket);
+  myReader->start();
 }
 
 

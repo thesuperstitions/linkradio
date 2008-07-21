@@ -24,6 +24,25 @@
 #pragma warning(disable: 4786)
 #endif
 
+
+class ReaderThread : public framework::utils::Thread
+{
+  public:
+    ReaderThread(Socket* SC);
+
+    ~ReaderThread(void);
+
+    void start();
+
+    void stop();
+
+    void threadOperation();
+
+  protected:
+    Socket* mySocket;
+    bool    exitFlag;
+};
+
 		//## class PublisherThread 
 class PublisherThread  : public framework::utils::Thread,  public SocketClient
 {             
@@ -48,6 +67,7 @@ class PublisherThread  : public framework::utils::Thread,  public SocketClient
     Socket*       mySocket;
     unsigned char myUnitNumber;
     char          myIP[50];
+    ReaderThread* myReader;
 };
 
 
