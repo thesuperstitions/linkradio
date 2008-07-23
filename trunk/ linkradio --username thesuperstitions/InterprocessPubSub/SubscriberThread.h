@@ -10,7 +10,7 @@
 
 #define SubscriberThread_H 
 
-#include "Thread.h"
+#include "framework/utils/Thread.h"
 #include "InterprocessQueue.h"
 
 //----------------------------------------------------------------------------
