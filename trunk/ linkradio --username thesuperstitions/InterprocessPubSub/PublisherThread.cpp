@@ -4,7 +4,7 @@
 	Generated Date	: Mon, 21, Apr 2008
 	File Path	: PublisherThread.cpp
 
-  Description: This class is based upon the "Thread" class.  It
+  Description: this class is based upon the "Thread" class.  It
   generates messages that get queued for consumption by the
   "consumerThread".
 
@@ -15,8 +15,15 @@
 #include "Sleep.h"
 #include <sys/timeb.h>
 #include <string.h>
+#include "FileReader.h"
 
 
+#define FILE_TO_READ "LNE_DX_024_5min"
+
+//---------------------------------------------------------------------------
+
+#define NETWORK_HEADER_SIZE  (int)sizeof(networkHeader_t)
+#define PACKET_HEADER_SIZE   (int)sizeof(packetHeader_t)
 #define BUFFER_SIZE 4096
 
 struct MessageStruct
@@ -43,10 +50,10 @@ struct MessageStruct
      Thread::start();
     }
 
+
+
     void ReaderThread::stop()
     {
-      char          s[500];
-
       exitFlag = true;
   
       printf ("\nReaderThread::stop - Closing Socket\n");
@@ -60,7 +67,7 @@ struct MessageStruct
       printf("\nReaderThread::stop - Thread Stop Complete.\n");
     }
 
-    void ReaderThread::threadOperation()
+ /*   void ReaderThread::threadOperation()
     {
       char          s[500];
 
@@ -70,13 +77,84 @@ struct MessageStruct
         unsigned int BytesReceived;
         BytesReceived = mySocket->ReceiveBytes((char*)&dataBuffer, sizeof(dataBuffer));
         
-        sprintf(s, "ReaderThread::threadOps-Receive-Unit=%u, Msg=%u", dataBuffer.UnitNumber, dataBuffer.MsgNumber);
+        sprintf(s, "ReaderThread::threadOps-Receive-Unit=%p, Msg=%u", mySocket, dataBuffer.MsgNumber);
         mySocket->LogData(s);
       }
 
       sprintf (s, "\nReaderThread::threadOps - Exiting Thread\n");
+    }*/
+  
+void ReaderThread::threadOperation()
+{
+  unsigned char ByteBuffer[MAX_SOCKET_BYTES];
+  unsigned int  BytesReceived;
+  unsigned long MsgLength;
+  char s[500];
+  int PktCount = 0;
+  struct timeb     t;
+  unsigned int     H, M, S;
+  int i;
+
+  do
+  {
+    BytesReceived = mySocket->ReceiveBytes((char*)&MsgLength, sizeof(MsgLength));
+
+      // Timestamp the Data.
+      ftime(&t);
+      S = t.time % 86400;  //Skin off the days.
+      H = S / 3600;
+      S = S % 3600;
+      M = S / 60;
+      S = S % 60;
+
+    MsgLength = ntohl(MsgLength);
+    mySocket->LogData("");
+    mySocket->LogData("***** Start Client Socket Message Processor *****");
+    mySocket->LogData("");
+
+    sprintf(s, "MessageReader-%2u:%2u:%2u.%3u-Rcvd MsgLength (%u bytes).  MsgLength=%u.",
+      H, M, S, t.millitm, sizeof(MsgLength), BytesReceived);
+    mySocket->LogData(s);
+    /*
+    char* cp = (char*)&MsgLength;
+    for (i=0; i<BytesReceived; i++)
+    {
+      sprintf(s, "Byte #%u = %x = %u", i, cp[i], cp[i]);
+      this->LogData(s);
+    }
+    */
+
+    //    sprintf(s, "MessageReader - %2u:%2u:%2u.%3u - Client Socket Received MsgLength=%u Bytes.",
+    //      H, M, S, t.millitm, MsgLength);
+    //    this->LogData(s);
+    BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, MAX_SOCKET_BYTES);
+    if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
+      return;
+    else
+    {
+      sprintf(s, "MessageReader-%2u:%2u:%2u.%3u - Rcvd Msg=%u Bytes.",
+        H, M, S, t.millitm, BytesReceived);
+      mySocket->LogData(s);
+
+      //char* cp = (char*)&ByteBuffer;
+      //for (i=0; i<BytesReceived; i++)
+      //{
+      //  sprintf(s, "Byte #%u = %x = %u", i, cp[i], cp[i]);
+      //  this->LogData(s);
+      //}
+
+      //  sprintf(s, "MessageReader - Client Socket Received Packet #%u", PktCount);
+        //this->LogData("");
+      //  PrintData((networkHeader_t*)ByteBuffer);
+      this->ProcessLinkMessages((InitialWord*)ByteBuffer);
     }
 
+    PktCount++;
+    mySocket->LogData("***** End Client Socket Message Processor *****");
+    mySocket->LogData("");
+
+  } while (exitFlag == false);
+}
 
 //----------------------------------------------------------------------------
 // PublisherThread.cpp
@@ -119,36 +197,83 @@ void PublisherThread::stop()
   printf("\nPublisherThread::stop - Thread Stop Complete.\n");
 }
 
+//---------------------------------------------------------------------------
+
+struct DataHeader
+{
+  unsigned STN;
+  unsigned NumberOfBytesInMessage;
+};
+
+
 void PublisherThread::threadOperation()
 {
-  char          s[500];
-  MessageStruct msg;
-  unsigned int  slot = 0;
+  FileReader*      FR = new FileReader(FILE_TO_READ);
+  networkHeader_t* Ptr;
+  int              PktCount = 0;
+  char             s[500];
+  struct timeb     t;
+  unsigned int     H, M, S, byteCount;
+  networkHeader_t *nHdr;
+  packetHeader_t  *pHdr;
+  InitialWord* LinkMsg;
 
-  msg.MsgNumber = 0;
-  msg.UnitNumber = myUnitNumber;
-
-  while(exitFlag == false)
+  while ((FR->packetsRemain()) && (exitFlag == FALSE))
   {
-    msg.MsgNumber++;
+    if ((Ptr = ((networkHeader_t*)FR->getNextPacket())) != NULL)
+    {
+      // Timestamp the Data.
+      ftime(&t);
+      S = t.time % 86400;  //Skin off the days.
+      H = S / 3600;
+      S = S % 3600;
+      M = S / 60;
+      S = S % 60;
 
-    this->SendBytes((char*)(&msg), sizeof(msg));
+      nHdr = (networkHeader_t*)Ptr;
+      pHdr = (packetHeader_t*)((int)(nHdr) + NETWORK_HEADER_SIZE);
+      LinkMsg  = (InitialWord*)((int)(pHdr) + PACKET_HEADER_SIZE);
+      byteCount = Ptr->length - (NETWORK_HEADER_SIZE + PACKET_HEADER_SIZE);
 
-    sprintf(s, "PublisherThread::threadOps-Send-   Unit=%u, Msg=%u", msg.UnitNumber, msg.MsgNumber);
-    this->LogData(s);
+      DataHeader Hdr;
+      unsigned long SwappedByteCount;
 
+      Hdr.STN = htonl(2222);
+      Hdr.NumberOfBytesInMessage = htonl(byteCount);
+      SwappedByteCount = ntohl(sizeof(DataHeader) + byteCount);
 
-    //MessageStruct dataBuffer;
-    //unsigned int BytesReceived;
-    //BytesReceived = this->ReceiveBytes((char*)&dataBuffer, sizeof(dataBuffer));
-    //
-    //sprintf(s, "PubThread::ClientConnected-Receive-Unit=%u, Msg=%u", dataBuffer.UnitNumber, dataBuffer.MsgNumber);
-    //this->LogData(s);
+      this->LogData("");
+      this->LogData("********** Start of SUT Link Data Output **********");
 
-    framework::utils::Sleep::sleep(0, 500000000);
+      this->SendBytes((char*)(SwappedByteCount), sizeof(SwappedByteCount));
+      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Bytes To Follow.  #Bytes sent=%u, Length=%u Bytes",
+        H, M, S, t.millitm, sizeof(SwappedByteCount), sizeof(DataHeader) + byteCount);
+      this->LogData(s);
+
+      this->SendBytes((char*)(&Hdr), sizeof(Hdr));
+      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Header.  #Bytes=%u",
+        H, M, S, t.millitm, sizeof(Hdr));
+      this->LogData(s);
+
+      this->SendBytes((char*)(LinkMsg), byteCount);
+//      this->SendBytes((char*)(Ptr), Ptr->length);
+      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Data Packet#%u, Length=%u Bytes",
+        H, M, S, t.millitm, PktCount, byteCount);
+      this->LogData(s);
+
+      this->LogData("**********   END of SUT Link Data Output **********");
+      this->LogData("");
+
+//      this->ProcessSimpleMessages(((char*)Ptr), Ptr->length);
+
+      framework::utils::Sleep::sleep(0, 500000000);
+      free(Ptr);
+      PktCount++;
+    }
   }
+  FR->closeFile();
   
-  sprintf (s, "\nPublisherThread::threadOperation - Exiting Thread\n");
+  printf("\nPublisherThread::threadOperation - Exiting Thread\n");
 }
 
 void PublisherThread::ClientSocketConnected(Socket* ClientSocket)

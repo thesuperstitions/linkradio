@@ -291,6 +291,12 @@
 			</Filter>
 		</Filter>
 		<File
+			RelativePath=".\FileReader.cpp">
+		</File>
+		<File
+			RelativePath=".\LinkMessages.cpp">
+		</File>
+		<File
 			RelativePath=".\Main.cpp">
 		</File>
 		<File

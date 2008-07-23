@@ -13,6 +13,7 @@
 #include "InterprocessQueue.h"
 #include "Thread.h"
 #include "SocketClient.h"
+#include "LinkMessages.h"
 //----------------------------------------------------------------------------
 // PublisherThread.h                                                                  
 //----------------------------------------------------------------------------
@@ -25,7 +26,7 @@
 #endif
 
 
-class ReaderThread : public framework::utils::Thread
+class ReaderThread : public framework::utils::Thread, public LinkMessages
 {
   public:
     ReaderThread(Socket* SC);

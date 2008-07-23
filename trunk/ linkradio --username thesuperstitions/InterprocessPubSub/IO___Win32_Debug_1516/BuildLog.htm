@@ -11,19 +11,13 @@ Build Log
 </h3>
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Command Lines
-</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\RSP000004.rsp" with contents
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\RSP000024.rsp" with contents
 [
 /Od /I "C:\Documents and Settings\rosskw1\My Documents\SVN-APL_Gforge\Libraries\Sockets" /I "C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub" /I "C:\Program Files\Microsoft.NET\SDK\v1.1\include\\" /I "C:\Program Files\boost\boost_1_35_0\boost\thread\\" /I "C:\Documents and Settings\rosskw1\My Documents\CCSTF" /I "C:\Documents and Settings\rosskw1\My Documents\CCSTF\framework\utils" /I "C:\Program Files\boost\boost_1_35_0\\" /D "RTI_USES_STD_FSTREAM=1" /D "_DEBUG" /D "WIN32" /D "_CONSOLE" /D "DtIFSPEC1516" /D "RTI_USES_STD_FSTREAM" /D "_MBCS" /Gm /EHsc /RTC1 /MDd /GS /arch:SSE2 /Fp".\IO___Win32_Debug_1516/IO.pch" /Fo".\IO___Win32_Debug_1516/" /Fd".\Io___Win32_Debug_1516/" /W3 /c /Zi
-".\SubscriberThread.cpp"
-"\Documents and Settings\rosskw1\My Documents\SVN-APL_Gforge\Libraries\Sockets\SocketClient.cpp"
-"\Documents and Settings\rosskw1\My Documents\SVN-APL_Gforge\Libraries\Sockets\Socket.cpp"
 ".\PublisherThread.cpp"
-".\Main.cpp"
-"\Documents and Settings\rosskw1\My Documents\CCSTF\framework\utils\Thread.cpp"
-"\Documents and Settings\rosskw1\My Documents\CCSTF\framework\utils\Exception.cpp"
 ]
-Creating command line "cl.exe @"c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\RSP000004.rsp" /nologo"
-Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\RSP000005.rsp" with contents
+Creating command line "cl.exe @"c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\RSP000024.rsp" /nologo"
+Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\RSP000025.rsp" with contents
 [
 /OUT:"IO___Win32_Debug_1516/IOd.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\MAK\makRti3.2\lib" /LIBPATH:"C:\Program Files\boost\boost_1_35_0\lib" /DEBUG /PDB:".\IO___Win32_Debug_1516/IOd.pdb" /SUBSYSTEM:CONSOLE /MACHINE:X86 librti1516d.lib libFedTime1516d.lib odbc32.lib odbccp32.lib ws2_32.lib netapi32.lib WinMM.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "\MAK\makRti3.2\lib\librti1516d.lib" "\MAK\makRti3.2\lib\libfedtime1516d.lib"
 ".\IO___Win32_Debug_1516\Exception.obj"
@@ -33,9 +27,11 @@ Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Goog
 ".\IO___Win32_Debug_1516\Socket.obj"
 ".\IO___Win32_Debug_1516\SocketClient.obj"
 ".\IO___Win32_Debug_1516\SubscriberThread.obj"
+".\IO___Win32_Debug_1516\FileReader.obj"
+".\IO___Win32_Debug_1516\LinkMessages.obj"
 ]
-Creating command line "link.exe @"c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\RSP000005.rsp""
-Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\BAT000006.bat" with contents
+Creating command line "link.exe @"c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\RSP000025.rsp""
+Creating temporary file "c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\BAT000026.bat" with contents
 [
 @echo off
 IO___Win32_Debug_1516\IOd.exe ..\bin
@@ -46,15 +42,12 @@ echo Project : error PRJ0019: A tool returned an error code from "Performing Pos
 exit 1
 :VCEnd
 ]
-Creating command line ""c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\BAT000006.bat""
+Creating command line ""c:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub\IO___Win32_Debug_1516\BAT000026.bat""
 </pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
 Output Window
 </font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Compiling...
-SubscriberThread.cpp
-SocketClient.cpp
-Socket.cpp
 PublisherThread.cpp
-PublisherThread.cpp(48) : warning C4101: 's' : unreferenced local variable
+PublisherThread.cpp(96) : warning C4101: 'i' : unreferenced local variable
         C:\Program Files\boost\boost_1_35_0\boost\interprocess\sync\emulation\interprocess_semaphore.hpp(55) : see reference to class template instantiation 'boost::interprocess::upgradable_lock<M>' being compiled
         with
         [
@@ -115,10 +108,6 @@ PublisherThread.cpp(48) : warning C4101: 's' : unreferenced local variable
         [
             M=boost::interprocess::interprocess_mutex
         ]
-Main.cpp
-Thread.cpp
-Exception.cpp
-Generating Code...
 Linking...
 Performing Post-Build Event...
 Hit any key to EXIT

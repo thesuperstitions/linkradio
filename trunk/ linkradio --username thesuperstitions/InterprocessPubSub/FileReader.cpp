@@ -17,6 +17,7 @@
 //#include <iostream>
 
 #include "FileReader.h"
+//#include "Sleep.h"
 //#include "simple.h"
 
 
@@ -104,8 +105,8 @@ char * FileReader::getNextPacket ()
     free (data);
 
     // Sleep
-    printf ("getNextPacket:sleeping %d secs...\n", timeDelay);
-    Sleep (timeDelay);
+    //printf ("getNextPacket:sleeping %d secs...\n", timeDelay);
+    //framework::utils::Sleep::sleep (timeDelay);
 
     return ( packet );
 
