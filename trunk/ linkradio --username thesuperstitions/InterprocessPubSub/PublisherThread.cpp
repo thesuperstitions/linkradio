@@ -100,60 +100,46 @@ void ReaderThread::threadOperation()
 
   do
   {
-    BytesReceived = mySocket->ReceiveBytes((char*)&MsgLength, sizeof(MsgLength));
+    //BytesReceived = mySocket->ReceiveBytes((char*)&MsgLength, sizeof(MsgLength));
 
-    MsgLength = ntohl(MsgLength);
-    mySocket->LogData("");
-    mySocket->LogData("***** Start Client Socket Message Processor *****");
-    mySocket->LogData("");
+    //MsgLength = ntohl(MsgLength);
+    //mySocket->LogData("");
+    //mySocket->LogData("***** Start Client Socket Message Processor *****");
+    //mySocket->LogData("");
 
-    sprintf(s, "MessageReader-Rcvd MsgLength (%u bytes).  MsgLength=%u.",
-      sizeof(MsgLength), BytesReceived);
-    mySocket->LogData(s);
-    /*
-    char* cp = (char*)&MsgLength;
-    for (i=0; i<BytesReceived; i++)
-    {
-      sprintf(s, "Byte #%u = %x = %u", i, cp[i], cp[i]);
-      this->LogData(s);
-    }
-    */
-
-    //    sprintf(s, "MessageReader - %2u:%2u:%2u.%3u - Client Socket Received MsgLength=%u Bytes.",
-    //      H, M, S, t.millitm, MsgLength);
-    //    this->LogData(s);
+    //sprintf(s, "MessageReader-Rcvd MsgLength (%u bytes).  MsgLength=%u.",
+    //  sizeof(MsgLength), BytesReceived);
+    //mySocket->LogData(s);
+ 
     DataHeader DHptr;
-    BytesReceived = mySocket->ReceiveBytes((char*)&DHptr, sizeof(DataHeader));
+    unsigned int STN;
+    unsigned int NumberOfBytesInMessage;
+
+      BytesReceived = mySocket->ReceiveBytes((char*)&DHptr, sizeof(DataHeader));
     if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
       return;
     else
     {
+//      STN = htonl(DHptr.STN);
+//      NumberOfBytesInMessage = htonl(DHptr.NumberOfBytesInMessage);
+      STN = DHptr.STN;
+      NumberOfBytesInMessage = DHptr.NumberOfBytesInMessage;
       sprintf(s, "MessageReader-Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
-      sizeof(DataHeader), BytesReceived, htonl(DHptr.STN));
+      sizeof(DataHeader), BytesReceived, STN);
       mySocket->LogData(s);
     }
 
 
-    BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, htonl(DHptr.NumberOfBytesInMessage));
-    if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
-      return;
-    else
-    {
-      sprintf(s, "MessageReader-Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
-      htonl(DHptr.NumberOfBytesInMessage), BytesReceived, htonl(DHptr.STN));
-      mySocket->LogData(s);
+    //BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, NumberOfBytesInMessage);
+    //if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
+    //  return;
+    //else
+    //{
+    //  sprintf(s, "MessageReader-Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
+    //  NumberOfBytesInMessage, BytesReceived, STN);
+    //  mySocket->LogData(s);
 
-      //char* cp = (char*)&ByteBuffer;
-      //for (i=0; i<BytesReceived; i++)
-      //{
-      //  sprintf(s, "Byte #%u = %x = %u", i, cp[i], cp[i]);
-      //  this->LogData(s);
-      //}
-
-      //  sprintf(s, "MessageReader - Client Socket Received Packet #%u", PktCount);
-        //this->LogData("");
-      //  PrintData((networkHeader_t*)ByteBuffer);
-      this->ProcessLinkMessages((InitialWord*)ByteBuffer);
+    //  this->ProcessLinkMessages((InitialWord*)ByteBuffer);
     }
 
     PktCount++;
@@ -229,29 +215,28 @@ void PublisherThread::threadOperation()
       DataHeader Hdr;
       unsigned long SwappedByteCount;
 
-      Hdr.STN = htonl(myUnitNumber);
-      Hdr.NumberOfBytesInMessage = htonl(byteCount);
+      Hdr.STN = /*htonl(*/myUnitNumber;
+      Hdr.NumberOfBytesInMessage = /*htonl(*/byteCount;
       unsigned long totalSize = sizeof(DataHeader) + byteCount;
       SwappedByteCount = ntohl(totalSize);
 
       this->LogData("");
       this->LogData("********** Start of SUT Link Data Output **********");
 
-      this->SendBytes((char*)(&SwappedByteCount), sizeof(SwappedByteCount));
-      sprintf(s, "WriteDataToSUT - #Bytes sent=%u, Total Length=%u Bytes, STN=%u",
-        sizeof(SwappedByteCount), totalSize, myUnitNumber);
-      this->LogData(s);
+      //this->SendBytes((char*)(&SwappedByteCount), sizeof(SwappedByteCount));
+      //sprintf(s, "WriteDataToSUT - #Bytes sent=%u, Total Length=%u Bytes, STN=%u",
+      //  sizeof(SwappedByteCount), totalSize, myUnitNumber);
+      //this->LogData(s);
 
       this->SendBytes((char*)(&Hdr), sizeof(Hdr));
       sprintf(s, "WriteDataToSUT - Sent Header.  #Bytes=%u, STN#%u",
         sizeof(Hdr), myUnitNumber);
       this->LogData(s);
 
-      this->SendBytes((char*)(LinkMsg), byteCount);
-//      this->SendBytes((char*)(Ptr), Ptr->length);
-      sprintf(s, "WriteDataToSUT - Sent Packet#%u, Length=%u Bytes, STN=%u",
-        PktCount, byteCount, myUnitNumber);
-      this->LogData(s);
+      //this->SendBytes((char*)(LinkMsg), byteCount);
+      //sprintf(s, "WriteDataToSUT - Sent Packet#%u, Length=%u Bytes, STN=%u",
+      //  PktCount, byteCount, myUnitNumber);
+      //this->LogData(s);
 
       this->LogData("**********   END of SUT Link Data Output **********");
       this->LogData("");
@@ -279,7 +264,7 @@ void PublisherThread::ClientSocketConnected(Socket* ClientSocket)
   sprintf(s, "PublisherThread::ClientSocketConnected - Connected to server on %s", ClientHostString);
   this->LogData(s);
 
-  this->start();
+//  this->start();
 
   myReader = new ReaderThread(mySocket);
   myReader->start();
