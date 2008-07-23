@@ -140,7 +140,7 @@ void ReaderThread::threadOperation()
     //  mySocket->LogData(s);
 
     //  this->ProcessLinkMessages((InitialWord*)ByteBuffer);
-    }
+    //}
 
     PktCount++;
     mySocket->LogData("***** End Client Socket Message Processor *****");
