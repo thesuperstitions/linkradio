@@ -21,7 +21,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;C:\Documents and Settings\rosskw1\My Documents\SVN-APL_Gforge\Libraries\Sockets&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\SVN-Google\InterprocessPubSub&quot;;&quot;C:\Program Files\Microsoft.NET\SDK\v1.1\include\&quot;;&quot;C:\Program Files\boost\boost_1_35_0\boost\thread\&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\CCSTF&quot;;&quot;C:\Documents and Settings\rosskw1\My Documents\CCSTF\framework\utils&quot;;&quot;C:\Program Files\boost\boost_1_35_0\&quot;"
+				AdditionalIncludeDirectories="&quot;C:\Documents and Settings\rosskw1.JHUAPL\My Documents\CCSTF\framework\utils&quot;;&quot;C:\Documents and Settings\rosskw1.JHUAPL\My Documents\CCSTF&quot;;&quot;C:\Documents and Settings\rosskw1.JHUAPL\My Documents\SVN-APL_Gforge\Libraries\Sockets&quot;;&quot;C:\Documents and Settings\rosskw1.JHUAPL\My Documents\SVN-Google\InterprocessPubSub&quot;;&quot;C:\Program Files\Microsoft.NET\SDK\v1.1\include\&quot;;&quot;C:\Program Files\boost\boost_1_35_0\boost\thread\&quot;;&quot;C:\Program Files\boost\boost_1_35_0\&quot;"
 				PreprocessorDefinitions="RTI_USES_STD_FSTREAM=1;_DEBUG;WIN32;_CONSOLE;DtIFSPEC1516;RTI_USES_STD_FSTREAM"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
