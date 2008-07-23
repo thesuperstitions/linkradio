@@ -26,11 +26,17 @@
 #define PACKET_HEADER_SIZE   (int)sizeof(packetHeader_t)
 #define BUFFER_SIZE 4096
 
-struct MessageStruct
+//struct MessageStruct
+//{
+//  unsigned char       UnitNumber;
+//  long                MsgNumber;
+//  unsigned char       MsgBody[96];
+//};
+
+struct DataHeader
 {
-  unsigned char       UnitNumber;
-  long                MsgNumber;
-  unsigned char       MsgBody[96];
+  unsigned STN;
+  unsigned NumberOfBytesInMessage;
 };
 
 
@@ -93,7 +99,6 @@ void ReaderThread::threadOperation()
   int PktCount = 0;
   struct timeb     t;
   unsigned int     H, M, S;
-  int i;
 
   do
   {
@@ -127,13 +132,25 @@ void ReaderThread::threadOperation()
     //    sprintf(s, "MessageReader - %2u:%2u:%2u.%3u - Client Socket Received MsgLength=%u Bytes.",
     //      H, M, S, t.millitm, MsgLength);
     //    this->LogData(s);
-    BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, MAX_SOCKET_BYTES);
+    DataHeader DHptr;
+    BytesReceived = mySocket->ReceiveBytes((char*)&DHptr, sizeof(DataHeader));
     if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
       return;
     else
     {
-      sprintf(s, "MessageReader-%2u:%2u:%2u.%3u - Rcvd Msg=%u Bytes.",
-        H, M, S, t.millitm, BytesReceived);
+      sprintf(s, "MessageReader-%2u:%2u:%2u.%3u - Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
+      H, M, S, t.millitm, sizeof(DataHeader), BytesReceived, DHptr.STN);
+      mySocket->LogData(s);
+    }
+
+
+    BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, DHptr.NumberOfBytesInMessage);
+    if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
+      return;
+    else
+    {
+      sprintf(s, "MessageReader-%2u:%2u:%2u.%3u - Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
+      H, M, S, t.millitm, DHptr.NumberOfBytesInMessage, BytesReceived, DHptr.STN);
       mySocket->LogData(s);
 
       //char* cp = (char*)&ByteBuffer;
@@ -199,13 +216,6 @@ void PublisherThread::stop()
 
 //---------------------------------------------------------------------------
 
-struct DataHeader
-{
-  unsigned STN;
-  unsigned NumberOfBytesInMessage;
-};
-
-
 void PublisherThread::threadOperation()
 {
   FileReader*      FR = new FileReader(FILE_TO_READ);
@@ -238,27 +248,28 @@ void PublisherThread::threadOperation()
       DataHeader Hdr;
       unsigned long SwappedByteCount;
 
-      Hdr.STN = htonl(2222);
+      Hdr.STN = htonl(myUnitNumber);
       Hdr.NumberOfBytesInMessage = htonl(byteCount);
-      SwappedByteCount = ntohl(sizeof(DataHeader) + byteCount);
+      unsigned long totalSize = sizeof(DataHeader) + byteCount;
+      SwappedByteCount = ntohl(totalSize);
 
       this->LogData("");
       this->LogData("********** Start of SUT Link Data Output **********");
 
-      this->SendBytes((char*)(SwappedByteCount), sizeof(SwappedByteCount));
-      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Bytes To Follow.  #Bytes sent=%u, Length=%u Bytes",
-        H, M, S, t.millitm, sizeof(SwappedByteCount), sizeof(DataHeader) + byteCount);
+      this->SendBytes((char*)(&SwappedByteCount), sizeof(SwappedByteCount));
+      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - #Bytes sent=%u, Total Length=%u Bytes, STN=%u",
+        H, M, S, t.millitm, sizeof(SwappedByteCount), totalSize, myUnitNumber);
       this->LogData(s);
 
       this->SendBytes((char*)(&Hdr), sizeof(Hdr));
-      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Header.  #Bytes=%u",
-        H, M, S, t.millitm, sizeof(Hdr));
+      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Header.  #Bytes=%u, STN#%u",
+        H, M, S, t.millitm, sizeof(Hdr), myUnitNumber);
       this->LogData(s);
 
       this->SendBytes((char*)(LinkMsg), byteCount);
 //      this->SendBytes((char*)(Ptr), Ptr->length);
-      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Data Packet#%u, Length=%u Bytes",
-        H, M, S, t.millitm, PktCount, byteCount);
+      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Packet#%u, Length=%u Bytes, STN=%u",
+        H, M, S, t.millitm, PktCount, byteCount, myUnitNumber);
       this->LogData(s);
 
       this->LogData("**********   END of SUT Link Data Output **********");

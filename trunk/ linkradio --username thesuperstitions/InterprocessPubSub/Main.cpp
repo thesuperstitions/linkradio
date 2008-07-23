@@ -37,13 +37,13 @@ int main(int argc, char* argv[])
 	//	subscriberThread = new SubscriberThread(unitNumber);
 	//}
 
-	if (unitNumber == 2)
-	{
+	//if (unitNumber == 2)
+	//{
 		printf("\n\nHit any key to START Publishing messages\n");
 		fgets(c, 2, stdin);
 		publisherThread = new PublisherThread(unitNumber, IP);
     publisherThread->Initialize();
-	}
+	//}
 
 	//if (unitNumber == 1)
 	//{
@@ -52,12 +52,12 @@ int main(int argc, char* argv[])
 	//	delete subscriberThread;
 	//}
 
-	if (unitNumber == 2)
-	{
+	//if (unitNumber == 2)
+	//{
 		printf("\nHit any key to STOP Publishing Messages\n\n");
 		fgets(c, 2, stdin);
     delete publisherThread;
-	}
+	//}
 
 	printf("\nHit any key to EXIT\n\n");
 	fgets(c, 2, stdin);
