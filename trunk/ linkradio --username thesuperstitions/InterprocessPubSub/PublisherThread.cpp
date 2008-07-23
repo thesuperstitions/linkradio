@@ -97,8 +97,6 @@ void ReaderThread::threadOperation()
   unsigned long MsgLength;
   char s[500];
   int PktCount = 0;
-  struct timeb     t;
-  unsigned int     H, M, S;
 
   do
   {
@@ -214,11 +212,10 @@ void PublisherThread::threadOperation()
   networkHeader_t* Ptr;
   int              PktCount = 0;
   char             s[500];
-  struct timeb     t;
-  unsigned int     H, M, S, byteCount;
   networkHeader_t *nHdr;
   packetHeader_t  *pHdr;
   InitialWord* LinkMsg;
+  unsigned int     byteCount;
 
   while ((FR->packetsRemain()) && (exitFlag == FALSE))
   {
