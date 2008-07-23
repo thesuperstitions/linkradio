@@ -104,21 +104,13 @@ void ReaderThread::threadOperation()
   {
     BytesReceived = mySocket->ReceiveBytes((char*)&MsgLength, sizeof(MsgLength));
 
-      // Timestamp the Data.
-      ftime(&t);
-      S = t.time % 86400;  //Skin off the days.
-      H = S / 3600;
-      S = S % 3600;
-      M = S / 60;
-      S = S % 60;
-
     MsgLength = ntohl(MsgLength);
     mySocket->LogData("");
     mySocket->LogData("***** Start Client Socket Message Processor *****");
     mySocket->LogData("");
 
-    sprintf(s, "MessageReader-%2u:%2u:%2u.%3u-Rcvd MsgLength (%u bytes).  MsgLength=%u.",
-      H, M, S, t.millitm, sizeof(MsgLength), BytesReceived);
+    sprintf(s, "MessageReader-Rcvd MsgLength (%u bytes).  MsgLength=%u.",
+      sizeof(MsgLength), BytesReceived);
     mySocket->LogData(s);
     /*
     char* cp = (char*)&MsgLength;
@@ -138,19 +130,19 @@ void ReaderThread::threadOperation()
       return;
     else
     {
-      sprintf(s, "MessageReader-%2u:%2u:%2u.%3u - Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
-      H, M, S, t.millitm, sizeof(DataHeader), BytesReceived, DHptr.STN);
+      sprintf(s, "MessageReader-Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
+      sizeof(DataHeader), BytesReceived, htonl(DHptr.STN));
       mySocket->LogData(s);
     }
 
 
-    BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, DHptr.NumberOfBytesInMessage);
+    BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, htonl(DHptr.NumberOfBytesInMessage));
     if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
       return;
     else
     {
-      sprintf(s, "MessageReader-%2u:%2u:%2u.%3u - Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
-      H, M, S, t.millitm, DHptr.NumberOfBytesInMessage, BytesReceived, DHptr.STN);
+      sprintf(s, "MessageReader-Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
+      htonl(DHptr.NumberOfBytesInMessage), BytesReceived, htonl(DHptr.STN));
       mySocket->LogData(s);
 
       //char* cp = (char*)&ByteBuffer;
@@ -232,14 +224,6 @@ void PublisherThread::threadOperation()
   {
     if ((Ptr = ((networkHeader_t*)FR->getNextPacket())) != NULL)
     {
-      // Timestamp the Data.
-      ftime(&t);
-      S = t.time % 86400;  //Skin off the days.
-      H = S / 3600;
-      S = S % 3600;
-      M = S / 60;
-      S = S % 60;
-
       nHdr = (networkHeader_t*)Ptr;
       pHdr = (packetHeader_t*)((int)(nHdr) + NETWORK_HEADER_SIZE);
       LinkMsg  = (InitialWord*)((int)(pHdr) + PACKET_HEADER_SIZE);
@@ -257,19 +241,19 @@ void PublisherThread::threadOperation()
       this->LogData("********** Start of SUT Link Data Output **********");
 
       this->SendBytes((char*)(&SwappedByteCount), sizeof(SwappedByteCount));
-      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - #Bytes sent=%u, Total Length=%u Bytes, STN=%u",
-        H, M, S, t.millitm, sizeof(SwappedByteCount), totalSize, myUnitNumber);
+      sprintf(s, "WriteDataToSUT - #Bytes sent=%u, Total Length=%u Bytes, STN=%u",
+        sizeof(SwappedByteCount), totalSize, myUnitNumber);
       this->LogData(s);
 
       this->SendBytes((char*)(&Hdr), sizeof(Hdr));
-      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Header.  #Bytes=%u, STN#%u",
-        H, M, S, t.millitm, sizeof(Hdr), myUnitNumber);
+      sprintf(s, "WriteDataToSUT - Sent Header.  #Bytes=%u, STN#%u",
+        sizeof(Hdr), myUnitNumber);
       this->LogData(s);
 
       this->SendBytes((char*)(LinkMsg), byteCount);
 //      this->SendBytes((char*)(Ptr), Ptr->length);
-      sprintf(s, "WriteDataToSUT - %2u:%2u:%2u.%3u - Sent Packet#%u, Length=%u Bytes, STN=%u",
-        H, M, S, t.millitm, PktCount, byteCount, myUnitNumber);
+      sprintf(s, "WriteDataToSUT - Sent Packet#%u, Length=%u Bytes, STN=%u",
+        PktCount, byteCount, myUnitNumber);
       this->LogData(s);
 
       this->LogData("**********   END of SUT Link Data Output **********");
