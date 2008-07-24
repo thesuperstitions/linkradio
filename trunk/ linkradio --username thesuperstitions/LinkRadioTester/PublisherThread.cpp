@@ -100,47 +100,50 @@ void ReaderThread::threadOperation()
 
   do
   {
-    //BytesReceived = mySocket->ReceiveBytes((char*)&MsgLength, sizeof(MsgLength));
+    BytesReceived = mySocket->ReceiveBytes((char*)&MsgLength, sizeof(MsgLength));
 
-    //MsgLength = ntohl(MsgLength);
-    //mySocket->LogData("");
-    //mySocket->LogData("***** Start Client Socket Message Processor *****");
-    //mySocket->LogData("");
+    MsgLength = ntohl(MsgLength);
+    mySocket->LogData("");
+    mySocket->LogData("***** Start Client Socket Message Processor *****");
+    mySocket->LogData("");
 
-    //sprintf(s, "MessageReader-Rcvd MsgLength (%u bytes).  MsgLength=%u.",
-    //  sizeof(MsgLength), BytesReceived);
-    //mySocket->LogData(s);
+    sprintf(s, "MessageReader-Rcvd MsgLength (%u bytes).  MsgLength=%u.",
+      sizeof(MsgLength), BytesReceived);
+    mySocket->LogData(s);
  
-    DataHeader DHptr;
+    DataHeader*  DHptr = (DataHeader*)&ByteBuffer;
     unsigned int STN;
     unsigned int NumberOfBytesInMessage;
 
-      BytesReceived = mySocket->ReceiveBytes((char*)&DHptr, sizeof(DataHeader));
+      BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, sizeof(DataHeader));
     if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
       return;
     else
     {
-//      STN = htonl(DHptr.STN);
-//      NumberOfBytesInMessage = htonl(DHptr.NumberOfBytesInMessage);
-      STN = DHptr.STN;
-      NumberOfBytesInMessage = DHptr.NumberOfBytesInMessage;
-      sprintf(s, "MessageReader-Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
-      sizeof(DataHeader), BytesReceived, STN);
+      STN = htonl(DHptr->STN);
+      NumberOfBytesInMessage = htonl(DHptr->NumberOfBytesInMessage);
+      sprintf(s, "MessageReader-Rcvd=%u, STN=%u, NumberOfBytesInMessage=%u",
+      BytesReceived, STN, NumberOfBytesInMessage);
       mySocket->LogData(s);
     }
 
+    BytesReceived = mySocket->ReceiveBytes((char*)&MsgLength, sizeof(MsgLength));
+    MsgLength = ntohl(MsgLength);
+    sprintf(s, "MessageReader-Rcvd MsgLength (%u bytes).  Next Msg Length=%u.",
+      sizeof(MsgLength), MsgLength);
+    mySocket->LogData(s);
 
-    //BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, NumberOfBytesInMessage);
-    //if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
-    //  return;
-    //else
-    //{
-    //  sprintf(s, "MessageReader-Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
-    //  NumberOfBytesInMessage, BytesReceived, STN);
-    //  mySocket->LogData(s);
+    BytesReceived = mySocket->ReceiveBytes((char*)&ByteBuffer, MsgLength);
+    if ((BytesReceived == ERROR) || (BytesReceived > MAX_SOCKET_BYTES))
+      return;
+    else
+    {
+      sprintf(s, "MessageReader-Bytes Req=%u, Bytes Rcvd=%u, STN=%u",
+      MsgLength, BytesReceived, STN);
+      mySocket->LogData(s);
 
-    //  this->ProcessLinkMessages((InitialWord*)ByteBuffer);
-    //}
+      this->ProcessLinkMessages((InitialWord*)ByteBuffer);
+    }
 
     PktCount++;
     mySocket->LogData("***** End Client Socket Message Processor *****");
